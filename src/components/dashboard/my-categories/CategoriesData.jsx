@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import ModalForm from "./ModalForm";
+import FormView from "./FormView";
+import FormEdit from "./FormEdit";
 
 const CategoriesData = () => {
   const _accessToken = useSelector((state) => state.auth.accessToken);
@@ -68,7 +69,7 @@ const CategoriesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
-                        <ModalForm/>
+                        <FormView/>
                       </a>
                     </li>
                     <li
@@ -78,7 +79,8 @@ const CategoriesData = () => {
                       title="Edit"
                     >
                       <a href="#">
-                        <span className="flaticon-edit"></span>
+                        {/* <span className="flaticon-edit"></span> */}
+                        <FormEdit/>
                       </a>
                     </li>
                     <li

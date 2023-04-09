@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function ModalForm() {
+function FormView() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -30,4 +30,4 @@ function ModalForm() {
   );
 }
 
-export default ModalForm;
+export default FormView;
