@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import ModalForm from "./ModalForm";
 
 const CategoriesData = () => {
-  const accessToken = useSelector((state) => state.auth.accessToken);
+  const _accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
-  const [categoryType, setCategoryType] = useState("");
+  localStorage.setItem("accessToken", _accessToken);
 
+  // Lấy giá trị accessToken từ local storage
+  const accessToken = localStorage.getItem("accessToken");
   const getData = async () => {
     try {
       const res = await axios.get(
@@ -64,9 +67,8 @@ const CategoriesData = () => {
                       title="View"
                     >
                       <a href="#">
-                        <span
-                          className="flaticon-view"
-                        ></span>
+                        {/* <span className="flaticon-view"></span> */}
+                        <ModalForm/>
                       </a>
                     </li>
                     <li

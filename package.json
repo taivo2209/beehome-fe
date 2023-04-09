@@ -16,13 +16,13 @@
     "eslint-config-next": "13.2.4",
     "next": "13.2.4",
     "react": "18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-modal-video": "^2.0.0",
     "react-pro-sidebar": "^0.7.1",
     "react-redux": "^8.0.5",
     "react-slick": "^0.29.0",
-    "reactstrap": "^9.1.8",
     "sass": "^1.60.0",
     "slick-carousel": "^1.8.1"
   }
