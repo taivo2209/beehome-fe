@@ -31,7 +31,7 @@ const Form = () => {
       console.log(res.data);
       // Do something with the response, such as redirecting to a dashboard page
       dispatch(setAccessToken(res.data.accessToken));
-      // router.push("/");
+      router.push("/my-categories");
     } catch (error) {
       console.error(error);
       // Handle the error, such as displaying an error message to the user
