@@ -18,7 +18,7 @@ const CategoriesData = () => {
         }
       );
       setData(res.data);
-      // console.log(accessToken);
+      console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
