@@ -37,6 +37,7 @@ const Form = () => {
       // Handle the error, such as displaying an error message to the user
     }
   };
+  
   return (
     <form action="#" onSubmit={handleSubmit}>
       <div className="heading text-center">

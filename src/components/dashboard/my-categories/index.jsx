@@ -2,6 +2,7 @@ import Header from "../../common/header/dashboard/Header";
 import SidebarMenu from "../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
 import CategoriesData from "./CategoriesData";
+import FormAdd from "./FormAdd";
 import SearchBox from "./SearchBox";
 
 const index = () => {
@@ -63,6 +64,17 @@ const index = () => {
                     <li className="search_area">
                       <SearchBox />
                     </li>
+                  </ul>
+                </div>
+                <div className="col-md-4 col-lg-4 col-xl-3 mb20">
+                  <ul className="sasw_list mb0">
+                    {/* <button className={`list-inline-item add_listing`} style={{
+                      border: 'none', backgroundColor:'#ee7b35', padding:'10px', color:'white', borderRadius:'30px'
+                    }}>
+                        <span className="flaticon-plus"></span>
+                        <span className="dn-lg"> Create Categories</span>
+                    </button> */}
+                    <FormAdd/>
                   </ul>
                 </div>
                 {/* End .col */}

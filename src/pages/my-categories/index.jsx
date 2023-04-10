@@ -5,7 +5,7 @@ import MyCategories from "../../components/dashboard/my-categories"
 const index = () => {
     return (
       <>
-        <Seo pageTitle="My Saved Search" />
+        <Seo pageTitle="My Categories" />
         <MyCategories />
       </>
     );
