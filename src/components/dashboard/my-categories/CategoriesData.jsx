@@ -14,7 +14,7 @@ const CategoriesData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/lessor/category?page=1&limit=20",
+        "http://localhost:5000/lessor/category?lang=VN&page=1&limit=20",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -22,6 +22,7 @@ const CategoriesData = () => {
         }
       );
       setData(res.data);
+      // console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
@@ -69,7 +70,7 @@ const CategoriesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
-                        <FormView/>
+                        <FormView data={categoryDetail.categoryId}/>
                       </a>
                     </li>
                     <li

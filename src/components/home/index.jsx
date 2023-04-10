@@ -3,9 +3,8 @@ import CopyrightFooter from "../common/footer/CopyrightFooter";
 import Footer from "../common/footer/Footer";
 import MobileMenu from "../common/header/MobileMenu";
 import Partners from "../common/Partners";
-import Blogs from "../common/Blogs";
-import FeaturedProperties from "./FeaturedProperties";
-import FindProperties from "./FindProperties";
+// import FeaturedProperties from "./FeaturedProperties";
+// import FindProperties from "./FindProperties";
 import Header from "./Header";
 import Hero from "./Hero";
 import WhyChoose from "../common/WhyChoose";
@@ -38,7 +37,7 @@ const Index = () => {
             </div>
             <div className="col-lg-12">
               <div className="feature_property_slider gutter-x15">
-                <FeaturedProperties />
+                {/* <FeaturedProperties /> */}
               </div>
             </div>
           </div>
@@ -57,7 +56,7 @@ const Index = () => {
             </div>
           </div>
           <div className="row">
-            <FindProperties />
+            {/* <FindProperties /> */}
           </div>
         </div>
       </section>
@@ -89,9 +88,6 @@ const Index = () => {
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <Blogs />
           </div>
         </div>
       </section>
