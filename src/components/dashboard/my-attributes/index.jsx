@@ -1,8 +1,8 @@
 import Header from "../../common/header/dashboard/Header";
 import SidebarMenu from "../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
-import CategoriesData from "./CategoriesData";
-import FormAdd from "./FormAdd";
+import AttributesData from "./AttributesData";
+// import FormAdd from "./FormAdd";
 import SearchBox from "./SearchBox";
 
 const index = () => {
@@ -54,7 +54,7 @@ const index = () => {
               <div className="row align-items-center">
                 <div className="col-md-8 col-lg-8 col-xl-9 mb20">
                   <div className="breadcrumb_content style2 mb30-991">
-                    <h2 className="breadcrumb_title">My Categories</h2>
+                    <h2 className="breadcrumb_title">My Attributes</h2>
                     <p>We are glad to see you again!</p>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ const index = () => {
                     <div className="col-lg-12">
                       <div className="savesearched_table">
                         <div className="table-responsive mt0">
-                          <CategoriesData />
+                          <AttributesData />
                         </div>
                       </div>
                       {/* End .packages_table */}

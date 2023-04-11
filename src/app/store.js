@@ -6,6 +6,7 @@ import propertiesSlice from "../features/properties/propertiesSlice";
 import authSlice from "../features/auth/authSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
+import categoriesSlice from "../features/categories/categoriesSlice";
 const persistConfig = {
   key: "root",
   storage,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
         filter: filterSlice,
         agent: agentSlice,
         auth: authSlice,
+        categories: categoriesSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig,rootReducer);

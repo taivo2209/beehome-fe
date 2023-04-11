@@ -2,70 +2,35 @@
 // import React, { useEffect, useState } from "react";
 // import Button from "react-bootstrap/Button";
 // import Modal from "react-bootstrap/Modal";
-// import { useForm, useFieldArray, Controller, useWatch } from "react-hook-form";
+// import { useForm, useFieldArray, Controller } from "react-hook-form";
+// import { useSelector } from "react-redux";
 
 // function FormEdit(props) {
 //   const [show, setShow] = useState(false);
 //   const [data, setData] = useState({});
 //   const handleClose = () => setShow(false);
 //   const handleShow = () => setShow(true);
-//   const { register, control, handleSubmit, reset, watch } = useForm({
-//     defaultValues: {
-//       test: [{ firstName: "Bill", lastName: "Luo" }],
-//     },
-//   });
-//   const { fields, append, remove } = useFieldArray({
-//     control,
-//     name: "test",
-//   });
+//   const accessToken = useSelector((state) => state.auth.accessToken);
 
-//   const editCategoryDetails = async (updatedData) => {
+//   const getData = async () => {
 //     try {
-//       const res = await axios.patch(
+//       const res = await axios.get(
 //         `http://localhost:5000/lessor/category/${props.id}`,
-//         updatedData,
 //         {
 //           headers: {
 //             Authorization: `Bearer ${accessToken}`,
 //           },
 //         }
 //       );
-//       console.log(res.data);
+//       setData(res.data);
 //     } catch (err) {
 //       console.log(err);
 //     }
 //   };
 
-//   const onSubmit = (data) => {
-//     const updatedData = {
-//       categoryDetails: [
-//         {
-//           id: data.categoryDetails[0].id,
-//           lang: data.categoryDetails[0].lang,
-//           name: data.categoryDetails[0].name,
-//         },
-//         {
-//           id: data.categoryDetails[1].id,
-//           lang: data.categoryDetails[1].lang,
-//           name: data.categoryDetails[1].name,
-//         },
-//       ],
-//       categoryTypes: [
-//         {
-//           categoryTypeDetails: [
-//             {
-//               id: data.categoryTypes[0].categoryTypeDetails[0].id,
-//               lang: data.categoryTypes[0].categoryTypeDetails[0].lang,
-//               name: data.categoryTypes[0].categoryTypeDetails[0].name,
-//             },
-//           ],
-//           id: data.categoryTypes[0].id,
-//         },
-//       ],
-//     };
-
-//     editCategoryDetails(updatedData);
-//   };
+//   useEffect(() => {
+//     getData();
+//   }, []);
 
 //   return (
 //     <>
@@ -76,56 +41,12 @@
 //           <Modal.Title>Edit Categories</Modal.Title>
 //         </Modal.Header>
 //         <Modal.Body>
-//           <form onSubmit={handleSubmit(onSubmit)}>
-//             <h1>Field Array </h1>
-//             <p>The following demo allow you to delete, append, prepend items</p>
-//             <ul>
-//               {fields.map((item, index) => {
-//                 return (
-//                   <li key={item.id}>
-//                     <input
-//                       {...register(`test.${index}.firstName`, {
-//                         required: true,
-//                       })}
-//                     />
-
-//                     <Controller
-//                       render={({ field }) => <input {...field} />}
-//                       name={`test.${index}.lastName`}
-//                       control={control}
-//                     />
-//                     <button type="button" onClick={() => remove(index)}>
-//                       Delete
-//                     </button>
-//                   </li>
-//                 );
-//               })}
-//             </ul>
-//             <section>
-//               <button
-//                 type="button"
-//                 onClick={() => {
-//                   append({ firstName: "appendBill", lastName: "appendLuo" });
-//                 }}
-//               >
-//                 Append
-//               </button>
-//               <button
-//                 type="button"
-//                 onClick={() =>
-//                   reset({
-//                     test: [{ firstName: "Bill", lastName: "Luo" }],
-//                   })
-//                 }
-//               >
-//                 Reset
-//               </button>
-//             </section>
-
-//             <Button variant="primary" onSubmit={handleSubmit(onSubmit)}>
-//               Save Changes
-//             </Button>
-//           </form>
+//           <Modal.Body>
+//             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae
+//             numquam nihil quod maiores veniam natus, delectus culpa ratione
+//             obcaecati quos minus deleniti sed aspernatur, ipsa eos animi sint
+//             doloribus corrupti.
+//           </Modal.Body>
 //         </Modal.Body>
 //         <Modal.Footer>
 //           <Button variant="secondary" onClick={handleClose}>
@@ -142,7 +63,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useForm, useFieldArray, Controller } from "react-hook-form";
 import { useSelector } from "react-redux";
 
 function FormEdit(props) {
@@ -151,61 +71,68 @@ function FormEdit(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const accessToken = useSelector((state) => state.auth.accessToken);
-  const { register, control, handleSubmit, reset, watch } = useForm({
-    defaultValues: {
-      categoryDetails: data.categoryDetails || [],
-      categoryTypes: data.categoryTypes || [],
-    },
-  });
-  const { fields, append, remove } = useFieldArray({
-    control,
-    name: "categoryDetails",
-  });
-  const {
-    fields: typeFields,
-    append: typeAppend,
-    remove: typeRemove,
-  } = useFieldArray({
-    control,
-    name: "categoryTypes",
-  });
+  const [categoryNameVN, setCategoryNameVN] = useState("");
+  const [categoryNameEN, setCategoryNameEN] = useState("");
+  const [categoryTypeVN, setCategoryTypeVN] = useState("");
+  const [categoryTypeEN, setCategoryTypeEN] = useState("");
 
-  const onSubmit = async (data) => {
-    try {
-      await axios.patch(
-        `http://localhost:5000/lessor/category/${props.id}`,
-        data,
+  const handleEdit = async () => {
+    const formData = {
+      id: data.id,
+      categoryDetails: [
+        {id: data.categoryDetails?.[0]?.id, lang: "VN", name: data.categoryDetails?.[0]?.name},
+        {id: data.categoryDetails?.[1]?.id, lang: "EN", name: data.categoryDetails?.[1]?.name}
+      ],
+      categoryTypes: [
         {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+          categoryTypeDetails: [
+            {id: data.categoryTypes?.[0]?.categoryTypeDetails?.[0]?.id, lang: "VN", name: data.categoryTypes?.[0]?.categoryTypeDetails?.[0]?.name},
+            {id: data.categoryTypes?.[0]?.categoryTypeDetails?.[1]?.id, lang: "VN", name: data.categoryTypes?.[0]?.categoryTypeDetails?.[1]?.name}
+          ]
         }
-      );
-      handleClose();
-    } catch (err) {
-      console.log(err);
+      ],
+      id: data.categoryTypes?.[0]?.id
     }
-  };
-
-  const getData = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/lessor/category/${props.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const res = await axios.patch(`http://localhost:5000/lessor/category/`, formData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
         }
-      );
-      setData(res.data);
-    } catch (err) {
-      console.log(err);
+      });
+      console.log(res.data); // log response data to the console
+      handleClose();
+    } catch (error) {
+      console.error(error);
     }
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    // Fetch category data here and set it to the category state
+    const fetchCategory = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/lessor/category/${props.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        setData(res.data);
+        console.log(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCategory();
+  }, [accessToken, props.id]);
+
+  useEffect(() => {
+    setCategoryNameVN(data.categoryDetails?.[0]?.name);
+    setCategoryNameEN(data.categoryDetails?.[1]?.name);
+    setCategoryTypeVN(data.categoryTypes?.[0]?.categoryTypeDetails?.[0]?.name);
+    setCategoryTypeEN(data.categoryTypes?.[0]?.categoryTypeDetails?.[1]?.name);
+  }, [data]);
 
   return (
     <>
@@ -216,98 +143,41 @@ function FormEdit(props) {
           <Modal.Title>Edit Categories</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Modal.Body>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <h1>Category Details</h1>
-              <p>Use the following fields to edit the category details:</p>
-              <ul>
-                {fields.map((item, index) => {
-                  return (
-                    <li key={item.id}>
-                      <input
-                        {...register(`categoryDetails.${index}.name`, {
-                          required: true,
-                        })}
-                        defaultValue={item.name}
-                      />
-                      <input
-                        {...register(`categoryDetails.${index}.lang`, {
-                          required: true,
-                        })}
-                        defaultValue={item.lang}
-                      />
-                      <button type="button" onClick={() => remove(index)}>
-                        Delete
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-              <section>
-                <button
-                  type="button"
-                  onClick={() => {
-                    append({ name: "", lang: "" });
-                  }}
-                >
-                  Add Category Detail
-                </button>
-              </section>
-
-              <h1>Category Types</h1>
-              <p>Use the following fields to edit the category types:</p>
-              <ul>
-                {typeFields.map((item, index) => {
-                  return (
-                    <li key={item.id}>
-                      <input
-                        {...register(
-                          `categoryTypes.${index}.categoryTypeDetails.${0}.name`,
-                          {
-                            required: true,
-                          }
-                        )}
-                        defaultValue={item.categoryTypeDetails[0].name}
-                      />
-                      <input
-                        {...register(
-                          `categoryTypes.${index}.categoryTypeDetails.${0}.lang`,
-                          {
-                            required: true,
-                          }
-                        )}
-                        defaultValue={item.categoryTypeDetails[0].lang}
-                      />
-                      <button type="button" onClick={() => typeRemove(index)}>
-                        Delete
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-              <section>
-                <button
-                  type="button"
-                  onClick={() => {
-                    typeAppend({
-                      categoryTypeDetails: [{ name: "", lang: "" }],
-                    });
-                  }}
-                >
-                  Add Category Type
-                </button>
-              </section>
-
-              <Button variant="primary" type="submit">
-                Save Changes
-              </Button>
-            </form>
-          </Modal.Body>
+          <label>
+            Category Name:
+            <input
+              type="text"
+              value={categoryNameVN}
+              onChange={(event) => setCategoryNameVN(event.target.value)}
+            />
+            <input
+              type="text"
+              value={categoryNameEN}
+              placeholder="EN"
+              onChange={(event) => setCategoryNameEN(event.target.value)}
+            />
+          </label>
+          <br />
+          <label>
+            Category Type:
+            <input
+              type="text"
+              value={categoryTypeVN}
+              onChange={(event) => setCategoryTypeVN(event.target.value)}
+            />
+            <input
+              type="text"
+              value={categoryTypeEN}
+              onChange={(event) => setCategoryTypeEN(event.target.value)}
+            />
+          </label>
+          
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
+          <Button variant="primary" onClick={handleEdit}>Save Changes</Button>
         </Modal.Footer>
       </Modal>
     </>

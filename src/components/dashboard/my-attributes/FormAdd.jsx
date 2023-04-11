@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
@@ -10,29 +10,31 @@ function FormAdd() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const accessToken = useSelector((state) => state.auth.accessToken);
-  const [categoryNameVN, setCategoryNameVN] = useState("");
-  const [categoryNameEN, setCategoryNameEN] = useState("");
-  const [categoryTypeVN, setCategoryTypeVN] = useState("");
-  const [categoryTypeEN, setCategoryTypeEN] = useState("");
+  const [attributeNameVN, setAttributeNameVN] = useState("");
+  const [attributeNameEN, setAttributeNameEN] = useState("");
+  const [attributeTermVN, setAttributeTermVN] = useState("");
+  const [attributeTermEN, setAttributeTermEN] = useState("");
+  const [attributeSlugVN, setAttributeSlugVN] = useState("");
+  const [attributeSlugEN, setAttributeSlugEN] = useState("");
 
   const handleSaveChanges = async () => {
     const data = {
-      categoryDetails: [
-        { lang: "VN", name: categoryNameVN },
-        { lang: "EN", name: categoryNameEN },
+      roomAttributeDetails: [
+        { lang: "VN", name: attributeNameVN },
+        { lang: "EN", name: attributeNameEN },
       ],
-      categoryTypes: [
+      roomAttributeTerms: [
         {
-          categoryTypeDetails: [
-            { lang: "VN", name: categoryTypeVN },
-            { lang: "EN", name: categoryTypeEN },
+          roomAttributeTermDetails: [
+            { lang: "VN", name: attributeTermVN, slug: attributeSlugVN },
+            { lang: "EN", name: attributeTermEN, slug: attributeSlugEN },
           ],
         },
       ],
     };
     try {
       const res = await axios.post(
-        "http://localhost:5000/lessor/category",
+        "http://localhost:5000/lessor/roomAttribute",
         data,
         {
           headers: {
@@ -40,12 +42,10 @@ function FormAdd() {
           },
         }
       );
-      getData();
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <>
       <button
@@ -60,42 +60,58 @@ function FormAdd() {
         onClick={handleShow}
       >
         <span className="flaticon-plus"></span>
-        <span className="dn-lg"> Create Categories</span>
+        <span className="dn-lg"> Create Attributes</span>
       </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add Category</Modal.Title>
+          <Modal.Title>Add Attribute</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <label>
-            Category Name:
+          Attribute Name:
             <input
               type="text"
-              value={categoryNameVN}
-              onChange={(event) => setCategoryNameVN(event.target.value)}
+              value={attributeNameVN}
+              onChange={(event) => setAttributeNameVN(event.target.value)}
               placeholder="VN"
             />
             <input
               type="text"
-              value={categoryNameEN}
-              onChange={(event) => setCategoryNameEN(event.target.value)}
+              value={attributeNameEN}
+              onChange={(event) => setAttributeNameEN(event.target.value)}
               placeholder="EN"
             />
           </label>
           <br />
           <label>
-            Category Type:
+            Attribute Term:
             <input
               type="text"
-              value={categoryTypeVN}
-              onChange={(event) => setCategoryTypeVN(event.target.value)}
+              value={attributeTermVN}
+              onChange={(event) => setAttributeTermVN(event.target.value)}
               placeholder="VN"
             />
             <input
               type="text"
-              value={categoryTypeEN}
-              onChange={(event) => setCategoryTypeEN(event.target.value)}
+              value={attributeTermEN}
+              onChange={(event) => setAttributeTermEN(event.target.value)}
+              placeholder="EN"
+            />
+          </label>
+          <br />
+          <label>
+            Slug:
+            <input
+              type="text"
+              value={attributeSlugVN}
+              onChange={(event) => setAttributeSlugVN(event.target.value)}
+              placeholder="VN"
+            />
+            <input
+              type="text"
+              value={attributeSlugEN}
+              onChange={(event) => setAttributeSlugEN(event.target.value)}
               placeholder="EN"
             />
           </label>

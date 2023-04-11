@@ -1,20 +1,17 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import FormView from "./FormView";
 import FormEdit from "./FormEdit";
 import FormAdd from "./FormAdd";
-import { setCategories } from "../../../features/categories/categoriesSlice";
 
-const CategoriesData = () => {
+const AttributesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
-  const dispatch = useDispatch();
-
   const getData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/lessor/category?page=1&limit=20",
+        "http://localhost:5000/lessor/roomAttribute?lang=VN&page=1&limit=20",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -22,7 +19,6 @@ const CategoriesData = () => {
         }
       );
       setData(res.data);
-      dispatch(setCategories(res.data.items));
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -36,7 +32,7 @@ const CategoriesData = () => {
   const handleDelete = async (categoryId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/lessor/category/${categoryId}`,
+        `http://localhost:5000/lessor/roomAttribute/${categoryId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -67,7 +63,7 @@ const CategoriesData = () => {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Categories</th>
+            <th scope="col">Attributes</th>
             {/* <th className="dn-lg" scope="col"></th>
           <th className="dn-lg" scope="col"></th>
           <th scope="col"></th>
@@ -83,9 +79,9 @@ const CategoriesData = () => {
             data.items.map((item) => (
               <tr key={item.id}>
                 <td>
-                  {item.categoryDetails.map((categoryDetail, i) => (
+                  {item.roomAttributeDetails.map((roomAttributeDetails, i) => (
                     <tr key={i}>
-                      <td>{categoryDetail.name}</td>
+                      <td>{roomAttributeDetails.name}</td>
                       <td className="dn-lg"></td>
                       <td className="dn-lg"></td>
                       <td></td>
@@ -145,4 +141,4 @@ const CategoriesData = () => {
   );
 };
 
-export default CategoriesData;
+export default AttributesData;
