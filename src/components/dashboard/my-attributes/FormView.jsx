@@ -21,7 +21,7 @@ function FormView(props) {
         }
       );
       setData(res.data);
-      console.log(data);
+      // console.log(data);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);

@@ -1,8 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
 
 function FormView(props) {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -13,15 +13,15 @@ function FormView(props) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/category/${props.id}`,
+        `http://localhost:5000/lessor/tag/${props.id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       setData(res.data);
-      // console.log(data);
+      console.log(data);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -35,16 +35,15 @@ function FormView(props) {
       <span className="flaticon-view" onClick={handleShow}></span>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Category Details</Modal.Title>
+          <Modal.Title>Tags Description</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {data.categoryTypes?.map((categoryType) => (
-            <div key={categoryType.id}>
-              {categoryType.categoryTypeDetails?.map((categoryTypeDetail) => (
-                <h1 key={categoryTypeDetail.id}>{categoryTypeDetail.name}</h1>
-              ))}
-            </div>
-          ))}
+          {/* {data?.map((item) => (
+            <div key={item.id}> */}
+          <p>Slug: {data.slug}</p>
+          <p>Description: {data.description}</p>
+          {/* </div>
+          ))} */}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

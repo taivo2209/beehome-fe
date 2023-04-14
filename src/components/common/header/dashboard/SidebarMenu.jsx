@@ -89,7 +89,7 @@ const SidebarMenu = () => {
             <Link href="/my-categories">
 
               <i className="flaticon-plus"></i>
-              <span> My categories</span>
+              <span> Lessor Categories</span>
 
             </Link>
           </li>
@@ -103,7 +103,21 @@ const SidebarMenu = () => {
             <Link href="/my-attributes">
 
               <i className="flaticon-plus"></i>
-              <span> My attributes</span>
+              <span> Lessor Attributes</span>
+
+            </Link>
+          </li>
+          <li
+            className={`treeview ${
+              isSinglePageActive("/my-tags", route.pathname)
+                ? "active"
+                : ""
+            }`}
+          >
+            <Link href="/my-tags">
+
+              <i className="flaticon-plus"></i>
+              <span> Lessor Tags</span>
 
             </Link>
           </li>

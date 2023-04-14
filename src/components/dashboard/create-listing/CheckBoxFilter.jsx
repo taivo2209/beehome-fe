@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 
-const CheckBoxFilter = () => {
+const CheckBoxFilter = ({ onSelectionChange }) => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState({});
+  const [selections, setSelections] = useState([]);
   const getData = async () => {
     try {
       const res = await axios.get(
@@ -22,7 +23,7 @@ const CheckBoxFilter = () => {
     }
   };
   const chunkedArray = _.chunk(data.items, 3);
-  console.log('tagData', chunkedArray);
+  // console.log('tagData', chunkedArray);
   const handleSelectionChange = (event) => {
     const selectedItem = event.target.value;
     if (event.target.checked) {
@@ -30,11 +31,13 @@ const CheckBoxFilter = () => {
     } else {
       setSelections(selections.filter((item) => item !== selectedItem));
     }
-    onSelectionChange(selections);
+    // onSelectionChange(selections);
   };
   useEffect(() => {
-    getData();
-  }, []);
+    getData();  
+    onSelectionChange(selections);
+  }, [selections]);
+
   return (
     <>
       {chunkedArray?.map((chunk) => (
@@ -49,6 +52,7 @@ const CheckBoxFilter = () => {
                       className="form-check-input"
                       id="customCheck1"
                       onChange={handleSelectionChange}
+                      value={item.id}
                     />
                     <label className="form-check-label" htmlFor="customCheck1">
                       {item.name}
