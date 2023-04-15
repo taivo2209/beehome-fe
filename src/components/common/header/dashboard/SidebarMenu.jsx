@@ -8,31 +8,12 @@ import {
 const SidebarMenu = () => {
   const route = useRouter();
 
-  const myProperties = [
-    { id: 1, name: "General Elements", route: "/my-properties" },
-    { id: 2, name: "Advanced Elements", route: "/my-properties" },
-    { id: 3, name: "Editors", route: "/my-properties" },
+  const lessorManage = [
+    { id: 1, name: "Categories", route: "/my-categories" },
+    { id: 2, name: "Attributes", route: "/my-attributes" },
+    { id: 3, name: "Tags", route: "/my-tags" },
   ];
-  const reviews = [
-    { id: 1, name: "My Reviews", route: "/my-review" },
-    { id: 2, name: "Visitor Reviews", route: "/my-review" },
-  ];
-  const manageAccount = [
-    {
-      id: 1,
-      name: "My Package",
-      route: "/my-package",
-      icon: "flaticon-box",
-    },
-    {
-      id: 2,
-      name: "My Profile",
-      route: "/my-profile",
-      icon: "flaticon-user",
-    },
-    { id: 3, name: "Logout", route: "/login", icon: "flaticon-logout" },
-  ];
-
+  
   return <>
     <ul className="sidebar-menu">
       <li className="sidebar_header header">
@@ -51,7 +32,7 @@ const SidebarMenu = () => {
       <li className="title">
         <span>Main</span>
         <ul>
-          <li
+          {/* <li
             className={`treeview ${
               isSinglePageActive("/my-dashboard", route.pathname)
                 ? "active"
@@ -64,7 +45,7 @@ const SidebarMenu = () => {
               <span> Dashboard</span>
 
             </Link>
-          </li>
+          </li> */}
           <li
             className={`treeview ${
               isSinglePageActive("/create-listing", route.pathname)
@@ -79,7 +60,7 @@ const SidebarMenu = () => {
 
             </Link>
           </li>
-          <li
+          {/* <li
             className={`treeview ${
               isSinglePageActive("/my-categories", route.pathname)
                 ? "active"
@@ -120,8 +101,8 @@ const SidebarMenu = () => {
               <span> Lessor Tags</span>
 
             </Link>
-          </li>
-          <li
+          </li> */}
+          {/* <li
             className={`treeview ${
               isSinglePageActive("/my-message", route.pathname)
                 ? "active"
@@ -134,7 +115,7 @@ const SidebarMenu = () => {
               <span> Message</span>
 
             </Link>
-          </li>
+          </li> */}
         </ul>
       </li>
       {/* End Main */}
@@ -142,7 +123,7 @@ const SidebarMenu = () => {
       <li className="title">
         <span>Manage Listings</span>
         <ul>
-          <li
+          {/* <li
             className={`treeview ${
               isParentPageActive(myProperties, route.pathname) ? "active" : ""
             }`}
@@ -162,10 +143,31 @@ const SidebarMenu = () => {
                 </li>
               ))}
             </ul>
-          </li>
-          {/* end properties */}
+          </li> */}
 
           <li
+            className={`treeview ${
+              isParentPageActive(lessorManage, route.pathname) ? "active" : ""
+            }`}
+          >
+            <a data-bs-toggle="collapse" href="#my-property">
+              <i className="flaticon-plus"></i> <span>Lessor Manage</span>
+              <i className="fa fa-angle-down pull-right"></i>
+            </a>
+            <ul className="treeview-menu collapse" id="my-property">
+              {lessorManage.map((item) => (
+                <li key={item.id}>
+                  <Link href={item.route}>
+
+                    <i className="fa flaticon-plus"></i> {item.name}
+
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+
+          {/* <li
             className={`treeview ${
               isParentPageActive(reviews, route.pathname) ? "active" : ""
             }`}
@@ -187,7 +189,6 @@ const SidebarMenu = () => {
               ))}
             </ul>
           </li>
-          {/* End Review */}
 
           <li
             className={`treeview ${
@@ -216,12 +217,11 @@ const SidebarMenu = () => {
               <span> Saved Search</span>
 
             </Link>
-          </li>
+          </li> */}
         </ul>
       </li>
-      {/* End manage listing */}
 
-      <li className="title">
+      {/* <li className="title">
         <span>Manage Account</span>
         <ul>
           {manageAccount.map((item) => (
@@ -239,7 +239,7 @@ const SidebarMenu = () => {
             </li>
           ))}
         </ul>
-      </li>
+      </li> */}
     </ul>
   </>;
 };

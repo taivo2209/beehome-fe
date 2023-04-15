@@ -463,14 +463,12 @@ const HeaderMenuContent = ({ float = "" }) => {
       {/* End .dropitem */}
 
       <li className={`list-inline-item list_s ${float}`}>
-        <a
-          href="#"
+        <Link
+          href="/login"
           className="btn flaticon-user"
-          data-bs-toggle="modal"
-          data-bs-target=".bd-example-modal-lg"
         >
           <span className="dn-lg">Login/Register</span>
-        </a>
+        </Link>
       </li>
       {/* End .dropitem */}
 
