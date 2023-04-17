@@ -60,7 +60,7 @@ const TagsData = () => {
                         <span className="flaticon-plus"></span>
                         <span className="dn-lg"> Create Categories</span>
                     </button> */}
-          <FormAdd />
+          <FormAdd getData={getData}/>
         </ul>
       </div>
       <table className="table">

@@ -4,10 +4,8 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
-import { useRouter } from "next/router";
 
-function FormAdd() {
-  const router = useRouter();
+function FormAdd({getData}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,8 +45,8 @@ function FormAdd() {
           },
         }
       );
+      getData();
       // reset();
-      router.push('/my-categories')
       handleClose();
     } catch (error) {
       console.log(error);
