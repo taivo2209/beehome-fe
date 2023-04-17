@@ -1,6 +1,7 @@
-import Link from "next/link";
-import Slider from "react-slick";
-import properties from "../../data/properties";
+import Link from 'next/link';
+import Slider from 'react-slick';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const FeaturedProperties = () => {
   const settings = {
@@ -27,15 +28,30 @@ const FeaturedProperties = () => {
       },
     ],
   };
-
-  let content = properties?.slice(0, 12)?.map((item) => (
+  const [data, setData] = useState({});
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/customer/boardingHouse?page=1&limit=20`,
+      );
+      setData(res.data);
+      // console.log(data);
+      // console.log(accessToken);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+  let content = data?.items?.slice(0, 12)?.map((item) => (
     <div className="item" key={item.id}>
       <div className="feat_property">
         <div className="thumb">
           <img className="img-whp" src={item.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
             <ul className="tag mb0">
-              {item.saleTag.map((val, i) => (
+              {item?.saleTag.map((val, i) => (
                 <li className="list-inline-item" key={i}>
                   <a href="#">{val}</a>
                 </li>
@@ -60,7 +76,6 @@ const FeaturedProperties = () => {
             <Link href={`/listing-details-v1/${item.id}`} className="fp_price">
               ${item.price}
               <small>/mo</small>
-
             </Link>
           </div>
         </div>
@@ -70,9 +85,7 @@ const FeaturedProperties = () => {
           <div className="tc_content">
             <p className="text-thm">{item.type}</p>
             <h4>
-              <Link href={`/listing-details-v1/${item.id}`}>
-                {item.title}
-              </Link>
+              <Link href={`/listing-details-v1/${item.id}`}>{item.title}</Link>
             </h4>
             <p>
               <span className="flaticon-placeholder"></span>
@@ -95,15 +108,11 @@ const FeaturedProperties = () => {
             <ul className="fp_meta float-start mb0">
               <li className="list-inline-item">
                 <Link href="/agent-v2">
-
                   <img src={item.posterAvatar} alt="pposter1.png" />
-
                 </Link>
               </li>
               <li className="list-inline-item">
-                <Link href="/agent-v2">
-                  {item.posterName}
-                </Link>
+                <Link href="/agent-v2">{item.posterName}</Link>
               </li>
             </ul>
             <div className="fp_pdate float-end">{item.postedYear}</div>
