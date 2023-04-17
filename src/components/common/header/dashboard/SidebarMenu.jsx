@@ -9,9 +9,10 @@ const SidebarMenu = () => {
   const route = useRouter();
 
   const lessorManage = [
-    { id: 1, name: "Categories", route: "/my-categories" },
-    { id: 2, name: "Attributes", route: "/my-attributes" },
-    { id: 3, name: "Tags", route: "/my-tags" },
+    { id: 1, name: "Boarding House", route: "/my-houses" },
+    { id: 2, name: "Categories", route: "/my-categories" },
+    { id: 3, name: "Attributes", route: "/my-attributes" },
+    { id: 4, name: "Tags", route: "/my-tags" },
   ];
   
   return <>
@@ -46,7 +47,7 @@ const SidebarMenu = () => {
 
             </Link>
           </li> */}
-          <li
+          {/* <li
             className={`treeview ${
               isSinglePageActive("/create-listing", route.pathname)
                 ? "active"
@@ -59,7 +60,7 @@ const SidebarMenu = () => {
               <span> Create Listing</span>
 
             </Link>
-          </li>
+          </li> */}
           {/* <li
             className={`treeview ${
               isSinglePageActive("/my-categories", route.pathname)

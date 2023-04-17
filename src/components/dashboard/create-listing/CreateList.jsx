@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import CheckBoxFilter from './CheckBoxFilter';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 const CreateList = () => {
+  const router = useRouter();
   const [dataProvince, setDataProvince] = useState({});
   const [dataDistrict, setDataDistrict] = useState({});
   const [dataWard, setDataWard] = useState({});
@@ -23,6 +25,10 @@ const CreateList = () => {
   const [floor, setFloor] = useState(0);
   const [tagIds, setTagIds] = useState([]);
   const accessToken = useSelector((state) => state.auth.accessToken);
+
+  const handleBack = () => {
+    router.push('/my-houses');
+  };
 
   const handleSubmit = (e) => {
     const formData = {
@@ -64,10 +70,11 @@ const CreateList = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
+      router.push('/my-houses')
     } catch (err) {
       console.log(err);
     }
-    console.log(formData);
+    // console.log(formData);
   };
 
   const getData = async (type, parentId) => {
@@ -117,11 +124,10 @@ const CreateList = () => {
   };
 
   const handleSelectionChange = async (selections) => {
-   setTagIds(selections); 
+    setTagIds(selections);
   };
 
-  useEffect(() => {
-  }, [tagIds]);
+  useEffect(() => {}, [tagIds]);
   // console.log(tagIds);
   return (
     <>
@@ -221,7 +227,7 @@ const CreateList = () => {
         <h4 className="mb10">Tag</h4>
       </div>
 
-      <CheckBoxFilter onSelectionChange={handleSelectionChange}/>
+      <CheckBoxFilter onSelectionChange={handleSelectionChange} />
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
           <label htmlFor="propertyAddress">Address</label>
@@ -269,7 +275,9 @@ const CreateList = () => {
             value={districtId}
             onChange={handleChangeDistrictId}
           >
-            <option defaultValue={true} disabled>Select</option>
+            <option defaultValue={true} disabled>
+              Select
+            </option>
             {dataDistrict?.items?.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
@@ -305,6 +313,9 @@ const CreateList = () => {
         <div className="my_profile_setting_input overflow-hidden mt20">
           <button className="btn btn2 float-end" onClick={handleSubmit}>
             Create
+          </button>
+          <button className="btn btn1 float-start" onClick={handleBack}>
+            Back
           </button>
         </div>
       </div>
