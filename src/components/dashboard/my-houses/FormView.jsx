@@ -12,7 +12,6 @@ function FormView(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleFloorClick = () => {
-    handleClose();
     setShow(true);
   };
   const getData = async () => {
@@ -37,9 +36,9 @@ function FormView(props) {
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size='xl'>
         <Modal.Header closeButton>
-          <Modal.Title>Thông tin thuê nhà</Modal.Title>
+          <Modal.Title>Thông tin {data?.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ul>
@@ -64,7 +63,7 @@ function FormView(props) {
             <li>
               Tag:{' '}
               {data?.boardingHouseToTags?.map((item) => (
-                <span key={item.id}>{item.tag.name} </span>
+                <span key={item.id}>{item.tag?.name} </span>
               ))}
             </li>
             <li onClick={handleFloorClick}>

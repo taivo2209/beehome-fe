@@ -5,9 +5,8 @@ import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 import { useForm, useFieldArray } from "react-hook-form";
 
-function FormEdit(props) {
+function FormEdit({id, getData}) {
   const [show, setShow] = useState(false);
-  const [data, setData] = useState({});
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -39,7 +38,7 @@ function FormEdit(props) {
       const res = await axios.patch(
         `http://localhost:5000/lessor/roomAttribute`,
         {
-          id: props.id,
+          id: id,
           roomAttributeDetails: formData.roomAttributeDetails.map((item) => ({
             id: item.id,
             lang: item.lang,
@@ -63,7 +62,8 @@ function FormEdit(props) {
           },
         }
       );
-      console.log(res.data); // log response data to the console
+      // console.log(res.data); // log response data to the console
+      getData();
       handleClose();
     } catch (error) {
       console.error(error);
@@ -76,7 +76,7 @@ function FormEdit(props) {
     const fetchCategory = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/lessor/roomAttribute/${props.id}`,
+          `http://localhost:5000/lessor/roomAttribute/${id}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -90,13 +90,13 @@ function FormEdit(props) {
       }
     };
     fetchCategory();
-  }, [accessToken, props.id]);
+  }, [accessToken, id]);
 
   return (
     <>
       <span className="flaticon-edit" onClick={handleShow}></span>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Edit Categories</Modal.Title>
         </Modal.Header>

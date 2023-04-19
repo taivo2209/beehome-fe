@@ -71,7 +71,7 @@ function FormAdd({getData}) {
         <span className="dn-lg"> Create Categories</span>
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>

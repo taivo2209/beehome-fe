@@ -24,7 +24,7 @@ const index = () => {
       </div>
       {/* End sidebar_menu */}
 
-      {/* <!-- Our Dashbord --> */}
+      {/* <!-- Our Dashboard --> */}
       <section className="our-dashbord dashbord bgc-f7 pb50">
         <div className="container-fluid ovh">
           <div className="row">

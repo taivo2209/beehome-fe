@@ -1,24 +1,27 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import FormView from "./FormView";
-import FormEdit from "./FormEdit";
-import FormAdd from "./FormAdd";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import FormView from './FormView';
+import FormEdit from './FormEdit';
+import FormAdd from './FormAdd';
+import { setAttributes } from '../../../features/attributes/attributesSlice';
 
 const AttributesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
   const getData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/lessor/roomAttribute?page=1&limit=20",
+        'http://localhost:5000/lessor/roomAttribute?page=1&limit=20',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       setData(res.data);
+      dispatch(setAttributes(res.data.items));
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -37,7 +40,7 @@ const AttributesData = () => {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       // console.log(res.data);
       // Call getData() again to update the table after deletion
@@ -57,7 +60,7 @@ const AttributesData = () => {
                         <span className="flaticon-plus"></span>
                         <span className="dn-lg"> Create Categories</span>
                     </button> */}
-          <FormAdd getData={getData}/>
+          <FormAdd getData={getData} />
         </ul>
       </div>
       <table className="table">
@@ -114,7 +117,7 @@ const AttributesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-edit"></span> */}
-                        <FormEdit id={item.id} />
+                        <FormEdit id={item.id} getData={getData} />
                       </a>
                     </li>
                     <li

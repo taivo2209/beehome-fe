@@ -60,7 +60,7 @@ const TagsData = () => {
                         <span className="flaticon-plus"></span>
                         <span className="dn-lg"> Create Categories</span>
                     </button> */}
-          <FormAdd getData={getData}/>
+          <FormAdd getData={getData} />
         </ul>
       </div>
       <table className="table">
@@ -68,9 +68,9 @@ const TagsData = () => {
           <tr>
             <th scope="col">Tag</th>
             <th className="dn-lg" scope="col"></th>
-          <th className="dn-lg" scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
+            <th className="dn-lg" scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             <th scope="col">Created</th>
             <th scope="col">Action</th>
           </tr>
@@ -111,7 +111,7 @@ const TagsData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-edit"></span> */}
-                        <FormEdit id={item.id} />
+                        <FormEdit id={item.id} getData={getData} />
                       </a>
                     </li>
                     <li

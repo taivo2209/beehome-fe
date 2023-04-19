@@ -1,11 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
-import { useForm, useFieldArray } from "react-hook-form";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
 
-function FormEdit(props) {
+function FormEdit({ id, getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -24,7 +23,7 @@ function FormEdit(props) {
     };
     try {
       const res = await axios.patch(
-        `http://localhost:5000/lessor/tag/${props.id}`,
+        `http://localhost:5000/lessor/tag/${id}`,
         data,
         {
           headers: {
@@ -33,6 +32,7 @@ function FormEdit(props) {
         },
       );
       // reset();
+      getData();
       handleClose();
     } catch (error) {
       console.log(error);
@@ -49,7 +49,7 @@ function FormEdit(props) {
           <Modal.Title>Edit Categories</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className="input-group mb-2 mr-sm-2">
               <input
                 type="text"

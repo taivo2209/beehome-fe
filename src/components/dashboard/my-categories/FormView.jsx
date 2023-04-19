@@ -1,8 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
 
 function FormView(props) {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -18,7 +18,7 @@ function FormView(props) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       setData(res.data);
       // console.log(data);

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import RoomsData from './my-rooms/RoomsData';
 
 function FloorDetail({floorData}) {
   const [show, setShow] = useState(false);
@@ -28,7 +29,7 @@ function FloorDetail({floorData}) {
         </Modal.Header>
         <Modal.Body>
             <div className='floor-detail'>
-                {floorData.map(item=><span className='floor-items' key={item.id}>{item.floorNumber}{' '}</span>)}
+                {floorData.map(item=> <RoomsData key={item.id} floorData={item}/>)}
             </div>
         </Modal.Body>
         <Modal.Footer>

@@ -118,7 +118,7 @@ const CategoriesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-edit"></span> */}
-                        <FormEdit id={item.id} />
+                        <FormEdit id={item.id} getData={getData}/>
                       </a>
                     </li>
                     <li
