@@ -35,6 +35,24 @@ function RoomsData({ floorData }) {
     }
   };
 
+  const handleDelete = async (roomId) => {
+    try {
+      const res = await axios.delete(
+        `http://localhost:5000/lessor/room/${roomId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
+      // console.log(res.data);
+      // Call getData() again to update the table after deletion
+      getData();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getData();
   }, [floorData.id, accessToken]);
@@ -126,7 +144,7 @@ function RoomsData({ floorData }) {
                                           <span
                                             className="flaticon-garbage"
                                             onClick={() =>
-                                              handleDelete(item.id)
+                                              handleDelete(room.id)
                                             }
                                           ></span>
                                         </a>
