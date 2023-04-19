@@ -19,8 +19,8 @@ function CreateRooms({ floorId, updateData }) {
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const formData = {
       floorId: floorId,
       name: name,
@@ -118,9 +118,7 @@ function CreateRooms({ floorId, updateData }) {
               <AttributesCheckBox onSelectionChange={handleAttributeChange} />
             </div>
             <PropertyMediaUploader onUpload={handleUpload} />
-            <Button variant="primary" type="submit">
-              Create
-            </Button>
+            <button type='submit'>Create</button>
           </form>
         </Modal.Body>
         <Modal.Footer>

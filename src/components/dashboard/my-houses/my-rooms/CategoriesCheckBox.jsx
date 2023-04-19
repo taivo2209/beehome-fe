@@ -41,10 +41,10 @@ const CategoriesCheckBox = ({ onSelectionChange }) => {
 
   return (
     <>
-      {chunkedArray?.map((chunk) => (
+      {chunkedArray?.map((chunk, i) => (
         <>
           {/* {console.log('chunk', chunk)} */}
-          <div className="col-xxs-6 col-sm col-lg col-xl">
+          <div className="col-xxs-6 col-sm col-lg col-xl" key={i}>
             <ul className="ui_kit_checkbox selectable-list">
               {chunk?.map((item) => (
                 <li key={item.id}>
