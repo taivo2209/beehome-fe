@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 
-function FormAdd() {
+function FormAdd({getData}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -32,6 +32,7 @@ function FormAdd() {
         },
       );
       // reset();
+      getData();
       handleClose();
     } catch (error) {
       console.log(error);

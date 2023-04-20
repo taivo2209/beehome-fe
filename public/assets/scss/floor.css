@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.floor-detail {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.floor-items {
+  color: black;
+  font-weight: bold;
+  font-size: 30px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid lightgray;
+  padding: 20px;
+}
+
+.floor-items:hover {
+  background-color: #ee7b35;
+  cursor: pointer;
+}

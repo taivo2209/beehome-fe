@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 
-const CheckBoxFilter = ({ onSelectionChange }) => {
+const CategoriesCheckBox = ({ onSelectionChange }) => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState({});
   const [selections, setSelections] = useState([]);
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/tag?page=1&limit=20`,
+        `http://localhost:5000/lessor/category/type?lang=VN&page=1&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -34,18 +34,21 @@ const CheckBoxFilter = ({ onSelectionChange }) => {
     // onSelectionChange(selections);
   };
   useEffect(() => {
-    getData();  
+    getData();
     onSelectionChange(selections);
   }, [selections]);
+  //   console.log('===',chunkedArray);
 
   return (
     <>
-      {chunkedArray?.map((chunk,i) => (
+      {chunkedArray?.map((chunk, i) => (
         <>
+          {/* {console.log('chunk', chunk)} */}
           <div className="col-xxs-6 col-sm col-lg col-xl" key={i}>
             <ul className="ui_kit_checkbox selectable-list">
               {chunk?.map((item) => (
                 <li key={item.id}>
+                  {/* {console.log('item', item.categoryTypes)} */}
                   <div className="form-check custom-checkbox">
                     <input
                       type="checkbox"
@@ -55,7 +58,7 @@ const CheckBoxFilter = ({ onSelectionChange }) => {
                       value={item.id}
                     />
                     <label className="form-check-label" htmlFor="customCheck1">
-                      {item.name}
+                      {item.categoryTypeDetails?.[0]?.name}
                     </label>
                   </div>
                 </li>
@@ -69,4 +72,4 @@ const CheckBoxFilter = ({ onSelectionChange }) => {
   );
 };
 
-export default CheckBoxFilter;
+export default CategoriesCheckBox;

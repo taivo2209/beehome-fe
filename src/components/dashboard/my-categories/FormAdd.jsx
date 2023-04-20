@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 
-function FormAdd() {
+function FormAdd({getData}) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -45,6 +45,7 @@ function FormAdd() {
           },
         }
       );
+      getData();
       // reset();
       handleClose();
     } catch (error) {
@@ -70,7 +71,7 @@ function FormAdd() {
         <span className="dn-lg"> Create Categories</span>
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>
