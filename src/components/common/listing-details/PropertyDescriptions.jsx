@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 const PropertyDescriptions = () => {
   const [click, setClick] = useState(true);
@@ -12,7 +12,7 @@ const PropertyDescriptions = () => {
         believe them. Mint condition with new hardwood floors. Lots of closets
         plus washer and dryer.
       </p>
-      <p className={click ? "gpara second_para white_goverlay mt10 mb10" : ""}>
+      <p className={click ? 'gpara second_para white_goverlay mt10 mb10' : ''}>
         Fully furnished. Elegantly appointed condominium unit situated on
         premier location. PS6. The wide entry hall leads to a large living room
         with dining area. This expansive 2 bedroom and 2 renovated marble

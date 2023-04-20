@@ -1,10 +1,17 @@
-import ContactWithAgent from "../common/agent-view/ContactWithAgent";
-import Categorie from "../common/listing/Categorie";
-import ListingCreator from "../common/listing/ListingCreator";
-import FeaturedListings from "../common/listing/FeaturedListings";
-import FeatureProperties from "../common/listing/FeatureProperties";
-
+import ContactWithAgent from '../common/agent-view/ContactWithAgent';
+import Categorie from '../common/listing/Categorie';
+import ListingCreator from '../common/listing/ListingCreator';
+import FeaturedListings from '../common/listing/FeaturedListings';
+import FeatureProperties from '../common/listing/FeatureProperties';
+import { useEffect, useState } from 'react';
+import DetailBoardingHouse from '../common/agent-view/detailBoardingHouse';
 const Sidebar = () => {
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
   return (
     <>
       <div className="sidebar_listing_list">
@@ -14,7 +21,17 @@ const Sidebar = () => {
             <ListingCreator />
           </div>
           {/* End .sl_creator */}
-          <ContactWithAgent />
+          {/* <ContactWithAgent /> */}
+          <div className="search_option_button">
+            <button
+              type="submit"
+              className="btn btn-block btn-thm w-100"
+              onClick={toggle}
+            >
+              Xem phòng trống
+            </button>
+          </div>
+          <DetailBoardingHouse isOpen={modal} toggle={toggle} />
         </div>
       </div>
       {/* End .sidebar_listing_list */}
