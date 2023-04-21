@@ -13,16 +13,21 @@ const CreateList = () => {
   const [districtId, setDistrictId] = useState();
   const [wardId, setWardId] = useState();
   const [name, setName] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('SINGLE_ROOM');
   const [contentRuleVN, setContentRuleVN] = useState('');
   const [contentRuleEN, setContentRuleEN] = useState('');
   const [contentDepositVN, setContentDepositVN] = useState('');
   const [contentDepositEN, setContentDepositEN] = useState('');
+  const [contentDescriptionVN, setContentDescriptionVN] = useState('');
+  const [contentDescriptionEN, setContentDescriptionEN] = useState('');
   const [address, setAddress] = useState('');
   const [province, setProvince] = useState('');
   const [ward, setWard] = useState('');
   const [district, setDistrict] = useState('');
   const [floor, setFloor] = useState(0);
+  const [electricFee, setElectricFee] = useState('');
+  const [waterFee, setWaterFee] = useState('');
+  const [serviceFee, setServiceFee] = useState('');
   const [tagIds, setTagIds] = useState([]);
   const accessToken = useSelector((state) => state.auth.accessToken);
 
@@ -35,6 +40,9 @@ const CreateList = () => {
       name: name,
       tagIds: tagIds,
       floor: floor,
+      electricFee: electricFee,
+      waterFee: waterFee,
+      serviceFee: serviceFee,
       type: type,
       houseRentDeposits: [
         {
@@ -43,6 +51,16 @@ const CreateList = () => {
         },
         {
           content: contentDepositEN,
+          lang: 'EN',
+        },
+      ],
+      houseDescriptions: [
+        {
+          content: contentDescriptionVN,
+          lang: 'VN',
+        },
+        {
+          content: contentDescriptionEN,
           lang: 'EN',
         },
       ],
@@ -70,7 +88,7 @@ const CreateList = () => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      router.push('/my-houses')
+      router.push('/my-houses');
     } catch (err) {
       console.log(err);
     }
@@ -175,6 +193,42 @@ const CreateList = () => {
         </div>
       </div>
       {/* End .col */}
+      <div className="col-lg-12">
+        <div className="my_profile_setting_input form-group">
+          <label htmlFor="propertyTitle">Electric Fee</label>
+          <input
+            type="text"
+            className="form-control"
+            id="propertyTitle"
+            onChange={(e) => setElectricFee(e.target.value)}
+          />
+        </div>
+      </div>
+      {/* End .col */}
+      <div className="col-lg-12">
+        <div className="my_profile_setting_input form-group">
+          <label htmlFor="propertyTitle">Water Fee</label>
+          <input
+            type="text"
+            className="form-control"
+            id="propertyTitle"
+            onChange={(e) => setWaterFee(e.target.value)}
+          />
+        </div>
+      </div>
+      {/* End .col */}
+      <div className="col-lg-12">
+        <div className="my_profile_setting_input form-group">
+          <label htmlFor="propertyTitle">Service Fee</label>
+          <input
+            type="text"
+            className="form-control"
+            id="propertyTitle"
+            onChange={(e) => setServiceFee(e.target.value)}
+          />
+        </div>
+      </div>
+      {/* End .col */}
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
@@ -218,6 +272,30 @@ const CreateList = () => {
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentDepositEN(e.target.value)}
+          ></textarea>
+        </div>
+      </div>
+      {/* End .col */}
+
+      <div className="col-lg-12">
+        <div className="my_profile_setting_textarea">
+          <label htmlFor="propertyDescription">Description VN</label>
+          <textarea
+            className="form-control"
+            id="propertyDescription"
+            rows="7"
+            onChange={(e) => setContentDescriptionVN(e.target.value)}
+          ></textarea>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="my_profile_setting_textarea">
+          <label htmlFor="propertyDescription">Description EN</label>
+          <textarea
+            className="form-control"
+            id="propertyDescription"
+            rows="7"
+            onChange={(e) => setContentDescriptionEN(e.target.value)}
           ></textarea>
         </div>
       </div>

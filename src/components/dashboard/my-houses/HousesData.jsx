@@ -104,8 +104,7 @@ const HousesData = () => {
                       title="Edit"
                     >
                       <a href="#">
-                        <span className="flaticon-edit"></span>
-                        {/* <FormEdit id={item.id} /> */}
+                        <FormEdit id={item.id} />
                       </a>
                     </li>
                     <li

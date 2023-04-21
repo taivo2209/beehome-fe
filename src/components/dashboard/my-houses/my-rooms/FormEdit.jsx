@@ -7,7 +7,7 @@ import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
 
-function CreateRooms({ floorId, updateData }) {
+function FormEdit({ id, updateData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,23 +15,41 @@ function CreateRooms({ floorId, updateData }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [acreage, setAcreage] = useState('');
-  const [imgIds, setImgIds] = useState([]);
+  const [status, setStatus] = useState('ACTIVE');
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
+  const [data, setData] = useState({});
+
+  const getData = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5000/lessor/room/${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setData(res.data);
+      // console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
-      floorId: floorId,
+      roomId: id,
       name: name,
       price: price,
       acreage: acreage,
-      imgIds: imgIds,
       categoryIds: categoryIds,
       attributeIds: attributeIds,
+      status: status,
     };
     try {
-      axios.post('http://localhost:5000/lessor/room', formData, {
+      axios.patch('http://localhost:5000/lessor/room', formData, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -40,6 +58,7 @@ function CreateRooms({ floorId, updateData }) {
     } catch (err) {
       console.log(err);
     }
+    console.log(formData);
   };
 
   const handleCategoryChange = async (selections) => {
@@ -50,31 +69,13 @@ function CreateRooms({ floorId, updateData }) {
     setAttributeIds(selections);
   };
 
-  const handleUpload = (newImages) => {
-    setImgIds(newImages);
-  };
-  // console.log('img', imgIds);
-
   useEffect(() => {}, [categoryIds, attributeIds]);
   // console.log('categoryIds', categoryIds);
   // console.log('attri', attributeIds);
 
   return (
     <>
-      <button
-        className={`list-inline-item add_listing`}
-        style={{
-          border: 'none',
-          backgroundColor: '#ee7b35',
-          padding: '10px',
-          color: 'white',
-          borderRadius: '30px',
-        }}
-        onClick={handleShow}
-      >
-        <span className="flaticon-plus"></span>
-        <span className="dn-lg"> Create Rooms</span>
-      </button>
+      <span className="flaticon-edit" onClick={handleShow}></span>
 
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
@@ -88,6 +89,7 @@ function CreateRooms({ floorId, updateData }) {
                 type="text"
                 className="form-control"
                 id="name"
+                defaultValue={data?.name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
@@ -97,6 +99,7 @@ function CreateRooms({ floorId, updateData }) {
                 type="text"
                 className="form-control"
                 id="price"
+                defaultValue={data?.price}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
@@ -106,8 +109,24 @@ function CreateRooms({ floorId, updateData }) {
                 type="text"
                 className="form-control"
                 id="acreage"
+                defaultValue={data?.acreage}
                 onChange={(e) => setAcreage(e.target.value)}
               />
+            </div>
+            <div className="col-lg-6 col-xl-6">
+              <div className="my_profile_setting_input ui_kit_select_search form-group">
+                <label>Status</label>
+                <select
+                  className="selectpicker form-select"
+                  data-live-search="true"
+                  data-width="100%"
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option disabled>Select</option>
+                  <option value="ACTIVE">ACTIVE</option>
+                  <option value="BANNED">BANNED</option>
+                </select>
+              </div>
             </div>
             <div className="form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
@@ -117,8 +136,7 @@ function CreateRooms({ floorId, updateData }) {
               <label htmlFor="attributeIds">Attribute</label>
               <AttributesCheckBox onSelectionChange={handleAttributeChange} />
             </div>
-            <PropertyMediaUploader onUpload={handleUpload} />
-            <Button type='submit'>Create</Button>
+            <Button type="submit">Edit</Button>
           </form>
         </Modal.Body>
         <Modal.Footer>
@@ -131,4 +149,4 @@ function CreateRooms({ floorId, updateData }) {
   );
 }
 
-export default CreateRooms;
+export default FormEdit;

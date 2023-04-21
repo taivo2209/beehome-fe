@@ -4,6 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import CreateRooms from './CreateRooms';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import FormView from './FormView';
+import FormEdit from './FormEdit';
 
 function RoomsData({ floorData }) {
   const [show, setShow] = useState(false);
@@ -78,7 +80,10 @@ function RoomsData({ floorData }) {
                       <div className="table-responsive mt0">
                         <div className="col-md-4 col-lg-4 col-xl-3 mb20">
                           <ul className="sasw_list mb0">
-                            <CreateRooms floorId={floorData.id} updateData={getData}/>
+                            <CreateRooms
+                              floorId={floorData.id}
+                              updateData={getData}
+                            />
                           </ul>
                         </div>
                         <table className="table">
@@ -118,8 +123,8 @@ function RoomsData({ floorData }) {
                                         title="View"
                                       >
                                         <a href="#">
-                                          <span className="flaticon-view"></span>
-                                          {/* <FormView id={item.id} /> */}
+                                          {/* <span className="flaticon-view"></span> */}
+                                          <FormView id={room.id} />
                                           {/* {console.log(item.categoryId)} */}
                                         </a>
                                       </li>
@@ -130,8 +135,11 @@ function RoomsData({ floorData }) {
                                         title="Edit"
                                       >
                                         <a href="#">
-                                          <span className="flaticon-edit"></span>
-                                          {/* <FormEdit id={item.id} /> */}
+                                          {/* <span className="flaticon-edit"></span> */}
+                                          <FormEdit
+                                            id={room.id}
+                                            updateData={getData}
+                                          />
                                         </a>
                                       </li>
                                       <li

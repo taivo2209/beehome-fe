@@ -36,12 +36,13 @@ function FormView(props) {
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
-      <Modal show={show} onHide={handleClose} size='xl'>
+      <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
           <Modal.Title>Thông tin {data?.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ul>
+            <li>Type: {data?.type}</li>
             <li>
               Rent Deposits:{' '}
               {data?.boardingHouseRentDeposits?.map((item) => (
@@ -55,10 +56,13 @@ function FormView(props) {
               ))}
             </li>
             <li>
-              Address: {data?.boardingHouseAddress?.address},{' '}
-              {data?.boardingHouseAddress?.ward},{' '}
-              {data?.boardingHouseAddress?.district},{' '}
-              {data?.boardingHouseAddress?.province}
+              <span>Address: </span>
+              <span>
+                {data?.boardingHouseAddress?.address},{' '}
+                {data?.boardingHouseAddress?.ward},{' '}
+                {data?.boardingHouseAddress?.district},{' '}
+                {data?.boardingHouseAddress?.province}
+              </span>
             </li>
             <li>
               Tag:{' '}
@@ -68,7 +72,7 @@ function FormView(props) {
             </li>
             <li onClick={handleFloorClick}>
               Floor:
-              <FloorDetail floorData={data.floors}/>
+              <FloorDetail floorData={data.floors} />
             </li>
           </ul>
         </Modal.Body>
