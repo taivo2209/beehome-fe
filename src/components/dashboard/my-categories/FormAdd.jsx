@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
-import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useForm, useFieldArray } from 'react-hook-form';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
-function FormAdd({getData}) {
+function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,14 +16,14 @@ function FormAdd({getData}) {
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       categoryDetails: [
-        { lang: "VN", name: "" },
-        { lang: "EN", name: "" },
+        { lang: 'VN', name: '' },
+        { lang: 'EN', name: '' },
       ],
       categoryTypes: [
         {
           categoryTypeDetails: [
-            { lang: "VN", name: "" },
-            { lang: "EN", name: "" },
+            { lang: 'VN', name: '' },
+            { lang: 'EN', name: '' },
           ],
         },
       ],
@@ -30,25 +31,37 @@ function FormAdd({getData}) {
   });
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "categoryTypes",
-    keyName: "categoryTypeKey",
+    name: 'categoryTypes',
+    keyName: 'categoryTypeKey',
   });
 
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/lessor/category",
+        'http://localhost:5000/lessor/category',
         data,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
+      Swal.fire({
+        icon: 'success',
+        title: 'Tạo thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       getData();
       // reset();
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(error);
     }
     // console.log(data);
@@ -59,11 +72,11 @@ function FormAdd({getData}) {
       <button
         className={`list-inline-item add_listing`}
         style={{
-          border: "none",
-          backgroundColor: "#ee7b35",
-          padding: "10px",
-          color: "white",
-          borderRadius: "30px",
+          border: 'none',
+          backgroundColor: '#ee7b35',
+          padding: '10px',
+          color: 'white',
+          borderRadius: '30px',
         }}
         onClick={handleShow}
       >
@@ -81,12 +94,12 @@ function FormAdd({getData}) {
               Category Name:
               <input
                 type="text"
-                {...register("categoryDetails.0.name")}
+                {...register('categoryDetails.0.name')}
                 placeholder="VN"
               />
               <input
                 type="text"
-                {...register("categoryDetails.1.name")}
+                {...register('categoryDetails.1.name')}
                 placeholder="EN"
               />
             </label>
@@ -98,14 +111,14 @@ function FormAdd({getData}) {
                   <input
                     type="text"
                     {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.0.name`
+                      `categoryTypes.${index}.categoryTypeDetails.0.name`,
                     )}
                     placeholder="VN"
                   />
                   <input
                     type="text"
                     {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.1.name`
+                      `categoryTypes.${index}.categoryTypeDetails.1.name`,
                     )}
                     placeholder="EN"
                   />
@@ -119,8 +132,8 @@ function FormAdd({getData}) {
                 onClick={() =>
                   append({
                     categoryTypeDetails: [
-                      { lang: "VN", name: "" },
-                      { lang: "EN", name: "" },
+                      { lang: 'VN', name: '' },
+                      { lang: 'EN', name: '' },
                     ],
                   })
                 }
