@@ -1,11 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
-import { useForm, useFieldArray } from "react-hook-form";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
+import { useForm, useFieldArray } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
-function FormEdit({id, getData}) {
+function FormEdit({ id, getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,14 +16,14 @@ function FormEdit({id, getData}) {
     defaultValues: {
       id: id,
       categoryDetails: [
-        { id: null, lang: "VN", name: "" },
-        { id: null, lang: "EN", name: "" },
+        { id: null, lang: 'VN', name: '' },
+        { id: null, lang: 'EN', name: '' },
       ],
       categoryTypes: [
         {
           categoryTypeDetails: [
-            { id: null, lang: "VN", name: "" },
-            { id: null, lang: "EN", name: "" },
+            { id: null, lang: 'VN', name: '' },
+            { id: null, lang: 'EN', name: '' },
           ],
           id: null,
         },
@@ -31,8 +32,8 @@ function FormEdit({id, getData}) {
   });
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "categoryTypes",
-    keyName: "id",
+    name: 'categoryTypes',
+    keyName: 'id',
   });
 
   const onSubmit = async (formData) => {
@@ -53,7 +54,7 @@ function FormEdit({id, getData}) {
                 id: itemDetails.id,
                 lang: itemDetails.lang,
                 name: itemDetails.name,
-              })
+              }),
             ),
           })),
         },
@@ -61,7 +62,7 @@ function FormEdit({id, getData}) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       // console.log(res.data); // log response data to the console
       getData();
@@ -82,11 +83,23 @@ function FormEdit({id, getData}) {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-          }
+          },
         );
+        Swal.fire({
+          icon: 'success',
+          title: 'Sửa thành công!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         reset(res.data);
         // console.log(res.data);
       } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Đã xảy ra lỗi!',
+          text: 'Vui lòng thử lại sau.',
+          confirmButtonText: 'OK',
+        });
         console.error(error);
       }
     };
@@ -105,8 +118,8 @@ function FormEdit({id, getData}) {
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>
               Category Name:
-              <input type="text" {...register("categoryDetails.0.name")} />
-              <input type="text" {...register("categoryDetails.1.name")} />
+              <input type="text" {...register('categoryDetails.0.name')} />
+              <input type="text" {...register('categoryDetails.1.name')} />
             </label>
             <label>
               Category Type:
@@ -115,14 +128,14 @@ function FormEdit({id, getData}) {
                   <input
                     type="text"
                     {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.${0}.name`
+                      `categoryTypes.${index}.categoryTypeDetails.${0}.name`,
                     )}
                     defaultValue={categoryType.categoryTypeDetails[0].name}
                   />
                   <input
                     type="text"
                     {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.${1}.name`
+                      `categoryTypes.${index}.categoryTypeDetails.${1}.name`,
                     )}
                     defaultValue={categoryType.categoryTypeDetails[1].name}
                   />
@@ -136,8 +149,8 @@ function FormEdit({id, getData}) {
                 onClick={() =>
                   append({
                     categoryTypeDetails: [
-                      { lang: "VN", name: "" },
-                      { lang: "EN", name: "" },
+                      { lang: 'VN', name: '' },
+                      { lang: 'EN', name: '' },
                     ],
                   })
                 }

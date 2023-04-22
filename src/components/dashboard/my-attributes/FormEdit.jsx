@@ -1,11 +1,12 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
-import { useForm, useFieldArray } from "react-hook-form";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
+import { useForm, useFieldArray } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
-function FormEdit({id, getData}) {
+function FormEdit({ id, getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -14,14 +15,14 @@ function FormEdit({id, getData}) {
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       roomAttributeDetails: [
-        { lang: "VN", name: "" },
-        { lang: "EN", name: "" },
+        { lang: 'VN', name: '' },
+        { lang: 'EN', name: '' },
       ],
       roomAttributeTerms: [
         {
           roomAttributeTermDetails: [
-            { lang: "VN", name: "", slug: "" },
-            { lang: "EN", name: "", slug: "" },
+            { lang: 'VN', name: '', slug: '' },
+            { lang: 'EN', name: '', slug: '' },
           ],
         },
       ],
@@ -29,8 +30,8 @@ function FormEdit({id, getData}) {
   });
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "roomAttributeTerms",
-    keyName: "id",
+    name: 'roomAttributeTerms',
+    keyName: 'id',
   });
 
   const onSubmit = async (formData) => {
@@ -52,7 +53,7 @@ function FormEdit({id, getData}) {
                 lang: itemDetails.lang,
                 name: itemDetails.name,
                 slug: itemDetails.slug,
-              })
+              }),
             ),
           })),
         },
@@ -60,12 +61,24 @@ function FormEdit({id, getData}) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       // console.log(res.data); // log response data to the console
+      Swal.fire({
+        icon: 'success',
+        title: 'Sửa thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       getData();
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.error(error);
     }
     console.log(formData);
@@ -81,7 +94,7 @@ function FormEdit({id, getData}) {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-          }
+          },
         );
         reset(res.data);
         // console.log(res.data);
@@ -104,8 +117,8 @@ function FormEdit({id, getData}) {
           <form onSubmit={handleSubmit(onSubmit)}>
             <label>
               Attribute Name:
-              <input type="text" {...register("roomAttributeDetails.0.name")} />
-              <input type="text" {...register("roomAttributeDetails.1.name")} />
+              <input type="text" {...register('roomAttributeDetails.0.name')} />
+              <input type="text" {...register('roomAttributeDetails.1.name')} />
             </label>
             <label>
               Attribute Term:
@@ -114,7 +127,7 @@ function FormEdit({id, getData}) {
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${0}.name`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${0}.name`,
                     )}
                     placeholder="VN"
                     defaultValue={
@@ -124,7 +137,7 @@ function FormEdit({id, getData}) {
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${0}.slug`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${0}.slug`,
                     )}
                     placeholder="Slug VN"
                     defaultValue={
@@ -134,7 +147,7 @@ function FormEdit({id, getData}) {
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${1}.name`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${1}.name`,
                     )}
                     placeholder="EN"
                     defaultValue={
@@ -144,7 +157,7 @@ function FormEdit({id, getData}) {
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${1}.slug`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.${1}.slug`,
                     )}
                     placeholder="Slug EN"
                     defaultValue={
@@ -161,8 +174,8 @@ function FormEdit({id, getData}) {
                 onClick={() =>
                   append({
                     categoryTypeDetails: [
-                      { lang: "VN", name: "", slug: "" },
-                      { lang: "EN", name: "", slug: "" },
+                      { lang: 'VN', name: '', slug: '' },
+                      { lang: 'EN', name: '', slug: '' },
                     ],
                   })
                 }

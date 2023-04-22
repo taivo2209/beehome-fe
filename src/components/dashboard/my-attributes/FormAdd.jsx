@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
-import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useForm, useFieldArray } from 'react-hook-form';
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
-function FormAdd({getData}) {
+function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,14 +16,14 @@ function FormAdd({getData}) {
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       roomAttributeDetails: [
-        { lang: "VN", name: "" },
-        { lang: "EN", name: "" },
+        { lang: 'VN', name: '' },
+        { lang: 'EN', name: '' },
       ],
       roomAttributeTerms: [
         {
           roomAttributeTermDetails: [
-            { lang: "VN", name: "", slug: "" },
-            { lang: "EN", name: "", slug: "" },
+            { lang: 'VN', name: '', slug: '' },
+            { lang: 'EN', name: '', slug: '' },
           ],
         },
       ],
@@ -30,25 +31,37 @@ function FormAdd({getData}) {
   });
   const { fields, append, remove } = useFieldArray({
     control,
-    name: "roomAttributeTerms",
-    keyName: "roomAttributeTermKey",
+    name: 'roomAttributeTerms',
+    keyName: 'roomAttributeTermKey',
   });
 
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/lessor/roomAttribute",
+        'http://localhost:5000/lessor/roomAttribute',
         data,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       reset();
+      Swal.fire({
+        icon: 'success',
+        title: 'Tạo thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       getData();
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(error);
     }
     // console.log(data);
@@ -59,11 +72,11 @@ function FormAdd({getData}) {
       <button
         className={`list-inline-item add_listing`}
         style={{
-          border: "none",
-          backgroundColor: "#ee7b35",
-          padding: "10px",
-          color: "white",
-          borderRadius: "30px",
+          border: 'none',
+          backgroundColor: '#ee7b35',
+          padding: '10px',
+          color: 'white',
+          borderRadius: '30px',
         }}
         onClick={handleShow}
       >
@@ -81,45 +94,45 @@ function FormAdd({getData}) {
               Attribute Name:
               <input
                 type="text"
-                {...register("roomAttributeDetails.0.name")}
+                {...register('roomAttributeDetails.0.name')}
                 placeholder="VN"
               />
               <input
                 type="text"
-                {...register("roomAttributeDetails.1.name")}
+                {...register('roomAttributeDetails.1.name')}
                 placeholder="EN"
               />
             </label>
             <br />
             <label>
-            Attribute Term:
+              Attribute Term:
               {fields.map((field, index) => (
                 <div key={field.roomAttributeTermKey}>
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.0.name`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.0.name`,
                     )}
                     placeholder="VN"
                   />
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.0.slug`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.0.slug`,
                     )}
                     placeholder="Slug VN"
                   />
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.1.name`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.1.name`,
                     )}
                     placeholder="EN"
                   />
                   <input
                     type="text"
                     {...register(
-                      `roomAttributeTerms.${index}.roomAttributeTermDetails.1.slug`
+                      `roomAttributeTerms.${index}.roomAttributeTermDetails.1.slug`,
                     )}
                     placeholder="Slug EN"
                   />
@@ -133,8 +146,8 @@ function FormAdd({getData}) {
                 onClick={() =>
                   append({
                     roomAttributeTermDetails: [
-                      { lang: "VN", name: "", slug: "" },
-                      { lang: "EN", name: "", slug: "" },
+                      { lang: 'VN', name: '', slug: '' },
+                      { lang: 'EN', name: '', slug: '' },
                     ],
                   })
                 }
@@ -143,7 +156,9 @@ function FormAdd({getData}) {
               </button>
             </label>
             <br />
-            <Button variant="primary" type="submit">Create</Button>
+            <Button variant="primary" type="submit">
+              Create
+            </Button>
           </form>
         </Modal.Body>
         <Modal.Footer>

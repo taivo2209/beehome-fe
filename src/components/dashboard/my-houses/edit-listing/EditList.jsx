@@ -3,6 +3,7 @@ import CheckBoxFilter from './CheckBoxFilter';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 const EditList = () => {
   const router = useRouter();
@@ -118,9 +119,23 @@ const EditList = () => {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
+      }).then(() => {
+        Swal.fire({
+          title: 'Thành công!',
+          text: 'Edit Success!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          router.push('/my-houses');
+        });
       });
-      router.push('/my-houses');
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(err);
     }
     // console.log(formData);

@@ -14,6 +14,16 @@ const SidebarMenu = () => {
     { id: 3, name: "Attributes", route: "/my-attributes" },
     { id: 4, name: "Tags", route: "/my-tags" },
   ];
+
+  const manageAccount = [
+    {
+      id: 1,
+      name: "My Profile",
+      route: "/my-profile",
+      icon: "flaticon-user",
+    },
+    { id: 2, name: "Logout", route: "/login", icon: "flaticon-logout" },
+  ];
   
   return <>
     <ul className="sidebar-menu">
@@ -222,7 +232,7 @@ const SidebarMenu = () => {
         </ul>
       </li>
 
-      {/* <li className="title">
+      <li className="title">
         <span>Manage Account</span>
         <ul>
           {manageAccount.map((item) => (
@@ -240,7 +250,7 @@ const SidebarMenu = () => {
             </li>
           ))}
         </ul>
-      </li> */}
+      </li>
     </ul>
   </>;
 };

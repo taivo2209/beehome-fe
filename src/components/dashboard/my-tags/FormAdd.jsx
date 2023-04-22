@@ -3,8 +3,9 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
-function FormAdd({getData}) {
+function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -22,19 +23,28 @@ function FormAdd({getData}) {
       description: description,
     };
     try {
-      const res = await axios.post(
-        'http://localhost:5000/lessor/tag',
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const res = await axios.post('http://localhost:5000/lessor/tag', data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+      });
       // reset();
+      Swal.fire({
+        icon: 'success',
+        title: 'Tạo thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       getData();
+
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(error);
     }
     // console.log(data);

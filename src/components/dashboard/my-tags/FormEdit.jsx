@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 function FormEdit({ id, getData }) {
   const [show, setShow] = useState(false);
@@ -32,9 +33,21 @@ function FormEdit({ id, getData }) {
         },
       );
       // reset();
+      Swal.fire({
+        icon: 'success',
+        title: 'Sửa thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       getData();
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(error);
     }
     // console.log(data);
