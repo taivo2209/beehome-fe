@@ -81,7 +81,7 @@ function FormEdit({ id, getData }) {
       });
       console.error(error);
     }
-    console.log(formData);
+    // console.log(formData);
   };
 
   useEffect(() => {

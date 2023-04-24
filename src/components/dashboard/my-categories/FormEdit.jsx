@@ -64,10 +64,22 @@ function FormEdit({ id, getData }) {
           },
         },
       );
+      Swal.fire({
+        icon: 'success',
+        title: 'Sửa thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       // console.log(res.data); // log response data to the console
       getData();
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.error(error);
     }
     // console.log(formData);
@@ -85,21 +97,9 @@ function FormEdit({ id, getData }) {
             },
           },
         );
-        Swal.fire({
-          icon: 'success',
-          title: 'Sửa thành công!',
-          showConfirmButton: false,
-          timer: 1500,
-        });
         reset(res.data);
         // console.log(res.data);
       } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Đã xảy ra lỗi!',
-          text: 'Vui lòng thử lại sau.',
-          confirmButtonText: 'OK',
-        });
         console.error(error);
       }
     };

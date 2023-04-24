@@ -106,7 +106,7 @@ const CategoriesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
-                        <FormView id={item.id} />
+                        <FormView id={item.id} getDataNew={getData}/>
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>

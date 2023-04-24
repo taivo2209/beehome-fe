@@ -89,18 +89,20 @@ function FormAdd({ getData }) {
           <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className='form'>
             <label>
               Attribute Name:
               <input
                 type="text"
                 {...register('roomAttributeDetails.0.name')}
                 placeholder="VN"
+                className="form-input"
               />
               <input
                 type="text"
                 {...register('roomAttributeDetails.1.name')}
                 placeholder="EN"
+                className="form-input"
               />
             </label>
             <br />
@@ -114,6 +116,7 @@ function FormAdd({ getData }) {
                       `roomAttributeTerms.${index}.roomAttributeTermDetails.0.name`,
                     )}
                     placeholder="VN"
+                    className="form-input"
                   />
                   <input
                     type="text"
@@ -121,6 +124,7 @@ function FormAdd({ getData }) {
                       `roomAttributeTerms.${index}.roomAttributeTermDetails.0.slug`,
                     )}
                     placeholder="Slug VN"
+                    className="form-input"
                   />
                   <input
                     type="text"
@@ -128,6 +132,7 @@ function FormAdd({ getData }) {
                       `roomAttributeTerms.${index}.roomAttributeTermDetails.1.name`,
                     )}
                     placeholder="EN"
+                    className="form-input"
                   />
                   <input
                     type="text"
@@ -135,6 +140,7 @@ function FormAdd({ getData }) {
                       `roomAttributeTerms.${index}.roomAttributeTermDetails.1.slug`,
                     )}
                     placeholder="Slug EN"
+                    className="form-input"
                   />
                   <button type="button" onClick={() => remove(index)}>
                     Remove
