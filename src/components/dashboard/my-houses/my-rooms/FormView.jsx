@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 
-function FormView({ id }) {
+function FormView({ id, getNewData }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
@@ -19,6 +19,7 @@ function FormView({ id }) {
         },
       });
       setData(res.data);
+      getNewData();
       // console.log(data);
     } catch (err) {
       console.log(err);
