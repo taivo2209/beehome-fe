@@ -36,7 +36,50 @@ const CreateList = () => {
     router.push('/my-houses');
   };
 
+  const validateInputs = () => {
+    if (
+      !name ||
+      !contentRuleVN ||
+      !contentRuleEN ||
+      !contentDepositVN ||
+      !contentDepositEN ||
+      !contentDescriptionVN ||
+      !contentDescriptionEN ||
+      !address ||
+      !province ||
+      !district ||
+      !ward ||
+      !floor ||
+      !electricFee ||
+      !waterFee ||
+      !serviceFee
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi',
+        text: 'Vui lòng điền đầy đủ thông tin',
+      });
+      return false;
+    }
+    if (
+      isNaN(Number(electricFee)) ||
+      isNaN(Number(waterFee)) ||
+      isNaN(Number(serviceFee))
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi',
+        text: 'Vui lòng điền thông tin hợp lệ',
+      });
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = (e) => {
+    e.preventDefault();
+    const isValid = validateInputs();
+
     const formData = {
       name: name,
       tagIds: tagIds,
@@ -82,28 +125,29 @@ const CreateList = () => {
         district: district,
       },
     };
-    e.preventDefault();
-    try {
-      axios.post('http://localhost:5000/lessor/boardingHouse', formData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      Swal.fire({
-        icon: 'success',
-        title: 'Tạo thành công!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      router.push('/my-houses');
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonText: 'OK',
-      });
-      console.log(error);
+    if (isValid) {
+      try {
+        axios.post('http://localhost:5000/lessor/boardingHouse', formData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        Swal.fire({
+          icon: 'success',
+          title: 'Tạo thành công!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        router.push('/my-houses');
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Đã xảy ra lỗi!',
+          text: 'Vui lòng thử lại sau.',
+          confirmButtonText: 'OK',
+        });
+        console.log(error);
+      }
     }
     // console.log(formData);
   };
