@@ -89,46 +89,73 @@ function FormAdd({ getData }) {
           <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <label>
-              Category Name:
-              <input
-                type="text"
-                {...register('categoryDetails.0.name')}
-                placeholder="VN"
-              />
-              <input
-                type="text"
-                {...register('categoryDetails.1.name')}
-                placeholder="EN"
-              />
-            </label>
-            <br />
-            <label>
-              Category Type:
-              {fields.map((field, index) => (
-                <div key={field.categoryTypeKey}>
-                  <input
-                    type="text"
-                    {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.0.name`,
-                    )}
-                    placeholder="VN"
-                  />
-                  <input
-                    type="text"
-                    {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.1.name`,
-                    )}
-                    placeholder="EN"
-                  />
-                  <button type="button" onClick={() => remove(index)}>
-                    Remove
-                  </button>
+          <form onSubmit={handleSubmit(onSubmit)} >
+            <div className="row">
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="formGroupExamplePrice">
+                    Category Name:
+                    <input
+                      type="text"
+                      {...register('categoryDetails.0.name')}
+                      placeholder="VN"
+                      className="form-control mb-2"
+                      id="formGroupExamplePrice"
+                    />
+                    <input
+                      type="text"
+                      {...register('categoryDetails.1.name')}
+                      placeholder="EN"
+                      className="form-control"
+                      id="formGroupExamplePrice"
+                    />
+                  </label>
                 </div>
-              ))}
+              </div>
+
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="formGroupExamplePrice">
+                    Category Type:
+                    {fields.map((field, index) => (
+                      <div key={field.categoryTypeKey}>
+                        <input
+                          type="text"
+                          {...register(
+                            `categoryTypes.${index}.categoryTypeDetails.0.name`,
+                          )}
+                          placeholder="VN"
+                          className="form-control mb-2"
+                          id="formGroupExamplePrice"
+                        />
+                        <input
+                          type="text"
+                          {...register(
+                            `categoryTypes.${index}.categoryTypeDetails.1.name`,
+                          )}
+                          placeholder="EN"
+                          className="form-control mb-2"
+                          id="formGroupExamplePrice"
+                        />
+                        <div className="my_profile_setting_input overflow-hidden mb-2">
+                          <button
+                            type="button"
+                            className="btn btn1"
+                            onClick={() => remove(index)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="my_profile_setting_input overflow-hidden mt20">
               <button
                 type="button"
+                className="btn btn3 float-start"
                 onClick={() =>
                   append({
                     categoryTypeDetails: [
@@ -140,16 +167,14 @@ function FormAdd({ getData }) {
               >
                 Add Category Type
               </button>
-            </label>
-            <br />
-            <button type="submit">Save Changes</button>
+            </div>
+            <div className="my_profile_setting_input overflow-hidden mt20">
+              <button type="submit" className="btn btn2 float-end">
+                Create
+              </button>
+            </div>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

@@ -157,7 +157,7 @@ function RoomsData({ floorData }) {
                                             onClick={() =>
                                               handleDelete(room.id)
                                             }
-                                          ></span>
+                                            ></span>
                                         </a>
                                       </li>
                                     </ul>

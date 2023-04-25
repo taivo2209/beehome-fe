@@ -1301,7 +1301,7 @@ header.header-nav.menu_style_home_one.stricky-fixed
   .ace-responsive-menu
   li.add_listing {
   background-color: var(--color-primary);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
 }
 
 header.header-nav.menu_style_home_one.stricky-fixed
@@ -2333,20 +2333,20 @@ header.header-nav.menu_style_home_one.style2
   ul.ace-responsive-menu
   li.add_listing {
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
 }
 
 header.header-nav.menu_style_home_one.style2
   ul.ace-responsive-menu
   li.add_listing.home2 {
   background-color: rgb(36, 50, 74);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
 }
 
 header.header-nav.menu_style_home_one.style3
@@ -3822,10 +3822,10 @@ header.header-nav.menu_style_home_seven .ace-responsive-menu > li.last {
 .home1-advnc-search ul li .search_option_button button {
   border-radius: 8px;
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   color: #ffffff;
   font-weight: bold;
@@ -5048,7 +5048,7 @@ form.home5_advanced_search_form
 }
 
 .home3_home_content .popup_video_btn {
-  background: rgb(255, 90, 95);
+  background: rgb(238, 123, 53);
   border-radius: 50%;
   color: #ffffff;
   font-size: 30px;
@@ -6480,7 +6480,7 @@ form.home5_advanced_search_form
 
 .status_tag.badge {
   border-radius: 3px;
-  background-color: rgb(255, 90, 95);
+  background-color: rgb(238, 123, 53);
   font-size: 14px;
   font-family: 'Nunito';
   color: rgb(254, 254, 254);
@@ -7232,10 +7232,10 @@ form.home5_advanced_search_form
 .modern_apertment .booking_btn {
   border-radius: 8px;
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   color: #ffffff;
@@ -7558,7 +7558,7 @@ form.home5_advanced_search_form
 }
 
 .property_video .thumb .overlay_icon .video_popup_btn {
-  background-color: rgb(255, 90, 95);
+  background-color: rgb(238, 123, 53);
   border-radius: 50%;
   color: #ffffff;
   font-size: 22px;
@@ -7620,12 +7620,12 @@ form.home5_advanced_search_form
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 15px rgba(255, 90, 95, 0);
+    box-shadow: 0 0 0 15px rgba(238, 123, 53, 0);
   }
 
   100% {
     transform: scale(0.9);
-    box-shadow: 0 0 0 0 rgba(255, 90, 95, 0);
+    box-shadow: 0 0 0 0 rgba(238, 123, 53, 0);
   }
 }
 
@@ -8542,10 +8542,10 @@ form.home5_advanced_search_form
 .parner_reg_btn a.btn {
   border-radius: 8px;
   background-color: rgb(255, 120, 124);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   height: 60px;
   line-height: 50px;
   width: 200px;
@@ -8899,16 +8899,16 @@ form.home5_advanced_search_form
 }
 
 .my_profile_setting_input .btn1 {
-  background-color: rgba(255, 90, 95, 0);
-  border: 2px solid rgb(255, 90, 95);
+  background-color: rgba(238, 123, 53, 0);
+  border: 2px solid rgb(238, 123, 53);
   border-radius: 8px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
-  color: rgb(255, 90, 95);
+  color: rgb(238, 123, 53);
   font-weight: bold;
   line-height: 1.2;
   height: 50px;
@@ -8917,18 +8917,18 @@ form.home5_advanced_search_form
 }
 
 .my_profile_setting_input .btn1:hover {
-  background-color: rgb(255, 90, 95);
+  background-color: rgb(238, 123, 53);
   color: #ffffff;
 }
 
 .my_profile_setting_input .btn2 {
-  background-color: rgb(255, 90, 95);
-  border: 2px solid rgb(255, 90, 95);
+  background-color: rgb(238, 123, 53);
+  border: 2px solid rgb(238, 123, 53);
   border-radius: 8px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   color: rgb(255, 255, 255);
@@ -8939,19 +8939,19 @@ form.home5_advanced_search_form
 }
 
 .my_profile_setting_input .btn2:hover {
-  color: rgb(255, 90, 95);
+  color: rgb(238, 123, 53);
   background-color: #ffffff;
-  border: 2px solid rgb(255, 90, 95);
+  border: 2px solid rgb(238, 123, 53);
 }
 
 .my_profile_setting_input .btn3 {
   background-color: rgb(29, 41, 62);
   border: 2px solid rgb(29, 41, 62);
   border-radius: 8px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   color: rgb(255, 255, 255);
@@ -10487,22 +10487,22 @@ ul.ab_counting li:last-child {
   background-image: -moz-linear-gradient(
     -36deg,
     rgb(62, 62, 165) 0%,
-    rgb(255, 90, 95) 100%
+    rgb(238, 123, 53) 100%
   );
   background-image: -webkit-linear-gradient(
     -36deg,
     rgb(62, 62, 165) 0%,
-    rgb(255, 90, 95) 100%
+    rgb(238, 123, 53) 100%
   );
   background-image: -ms-linear-gradient(
     -36deg,
     rgb(62, 62, 165) 0%,
-    rgb(255, 90, 95) 100%
+    rgb(238, 123, 53) 100%
   );
   background-image: linear-gradient(
     -36deg,
     rgb(62, 62, 165) 0%,
-    rgb(255, 90, 95) 100%
+    rgb(238, 123, 53) 100%
   );
   opacity: 0.902;
 }
@@ -11682,10 +11682,10 @@ a.btn.btn_error {
   height: 50px;
   line-height: 35px;
   width: 200px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
 }
 
 /*== Service Pages Style Code ==*/
@@ -11779,10 +11779,10 @@ a.btn.btn_error {
   font-family: 'Nunito';
   font-weight: bold;
   line-height: 30px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   height: 46px;
 }
 
@@ -11995,10 +11995,10 @@ a.btn.btn_error {
 .login_form .btn-log {
   border-radius: 8px;
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   color: #ffffff;
   font-family: 'Nunito';
   font-size: 16px;
@@ -12055,10 +12055,10 @@ a.btn.btn_error {
 .sign_up_form .btn-log {
   border-radius: 8px;
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   color: #ffffff;
   font-size: 16px;
   font-family: 'Nunito';
@@ -13368,14 +13368,14 @@ legend span {
 
 .sidebar_recent_product .media .media-body .post_title a:hover,
 .sidebar_feature_listing .media .media-body .post_title a:hover {
-  color: rgb(255, 90, 95);
+  color: rgb(238, 123, 53);
 }
 
 .sidebar_recent_product .media .media-body a,
 .sidebar_feature_listing .media .media-body a {
   font-size: 16px;
   font-family: 'Nunito';
-  color: rgb(255, 90, 95);
+  color: rgb(238, 123, 53);
   font-weight: bold;
   line-height: 1.2;
 }
@@ -13996,7 +13996,7 @@ legend span {
 .mbp_pagination_comments a.write_review {
   font-size: 14px;
   font-family: 'Nunito';
-  color: rgb(255, 90, 95);
+  color: rgb(238, 123, 53);
   position: absolute;
   right: 30px;
 }
@@ -14266,11 +14266,11 @@ legend span {
 
 .pck_chng_btn .btn {
   border-radius: 8px;
-  background-color: rgb(255, 90, 95);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  background-color: rgb(238, 123, 53);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   color: #ffffff;
@@ -16228,7 +16228,7 @@ legend span {
 
 .portfolio_item .edu_stats_list {
   border-radius: 8px;
-  background-color: rgb(255, 90, 95);
+  background-color: rgb(238, 123, 53);
   cursor: pointer;
   height: 35px;
   line-height: 35px;
@@ -16585,10 +16585,10 @@ legend span {
 .form_grid .contact_form button {
   border-radius: 8px;
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   color: #ffffff;
@@ -19675,7 +19675,7 @@ canvas {
   top: 38px;
   width: 170px;
   z-index: 2;
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
 }
 
 #main2 .filter_open_btn {
@@ -19851,10 +19851,10 @@ canvas {
 
 .shop_grid .details .add_to_cart {
   border-radius: 8px;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   font-weight: bold;
@@ -20053,10 +20053,10 @@ canvas {
   background-color: var(--color-primary);
   border-radius: 8px;
   color: #ffffff;
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   font-size: 16px;
   font-family: 'Nunito';
   font-weight: bold;
@@ -20495,10 +20495,10 @@ canvas {
 
 .shop_single_product_details .cart_btns button.btn {
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   border-radius: 8px;
   font-size: 16px;
   font-family: 'Nunito';
@@ -20838,10 +20838,10 @@ ul.total_reivew_view .star_list li:last-child a {
 .bsp_reveiw_wrt .comments_form button.btn {
   border-radius: 8px;
   background-color: var(--color-primary);
-  -webkit-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -moz-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  -o-box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
-  box-shadow: 0px 1px 4px 0px rgba(255, 90, 95, 0.3);
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
   color: #ffffff;
   font-size: 16px;
   font-family: 'Nunito';

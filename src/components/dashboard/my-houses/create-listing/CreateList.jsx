@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
+import PropertyMediaUploader from '../PropertyMediaUploader';
 
 const CreateList = () => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const CreateList = () => {
   const [waterFee, setWaterFee] = useState('');
   const [serviceFee, setServiceFee] = useState('');
   const [tagIds, setTagIds] = useState([]);
+  const [imgIds, setImgIds] = useState([]);
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   const handleBack = () => {
@@ -84,6 +86,7 @@ const CreateList = () => {
       name: name,
       tagIds: tagIds,
       floor: floor,
+      imgIds: imgIds,
       electricFee: electricFee,
       waterFee: waterFee,
       serviceFee: serviceFee,
@@ -201,6 +204,9 @@ const CreateList = () => {
   const handleSelectionChange = async (selections) => {
     setTagIds(selections);
   };
+  const handleUpload = (newImages) => {
+    setImgIds(newImages);
+  };
 
   useEffect(() => {}, [tagIds]);
   // console.log(tagIds);
@@ -237,7 +243,7 @@ const CreateList = () => {
 
       {/* End .col */}
 
-      <div className="col-lg-4 col-xl-4">
+      <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
           <label htmlFor="formGroupExamplePrice">Floor Number</label>
           <input
@@ -252,7 +258,7 @@ const CreateList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Electric Fee</label>
+          <label htmlFor="propertyTitle">Electric Fee (/1kWh)</label>
           <input
             type="text"
             className="form-control"
@@ -264,7 +270,7 @@ const CreateList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Water Fee</label>
+          <label htmlFor="propertyTitle">Water Fee (/person)</label>
           <input
             type="text"
             className="form-control"
@@ -361,8 +367,11 @@ const CreateList = () => {
       <div className="col-xl-12">
         <h4 className="mb10">Tag</h4>
       </div>
-
       <CheckBoxFilter onSelectionChange={handleSelectionChange} />
+      <div className="col-xl-12">
+        <h4 className="mb10">Images</h4>
+      </div>
+      <PropertyMediaUploader onUpload={handleUpload} />
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
           <label htmlFor="propertyAddress">Address</label>
