@@ -6,6 +6,7 @@ import PropertyMediaUploader from '../PropertyMediaUploader';
 import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
+import Swal from 'sweetalert2';
 
 function CreateRooms({ floorId, updateData }) {
   const [show, setShow] = useState(false);
@@ -36,8 +37,20 @@ function CreateRooms({ floorId, updateData }) {
           Authorization: `Bearer ${accessToken}`,
         },
       });
+      Swal.fire({
+        icon: 'success',
+        title: 'Tạo thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       updateData();
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(err);
     }
   };

@@ -111,7 +111,7 @@ function FormEdit({ id, getData }) {
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Edit Categories</Modal.Title>
+          <Modal.Title>Edit Attributes</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -226,7 +226,7 @@ function FormEdit({ id, getData }) {
             </div>
             <div className="my_profile_setting_input overflow-hidden mt20">
               <button type="submit" className="btn btn2 float-end">
-                Create
+                Edit
               </button>
             </div>
           </form>
