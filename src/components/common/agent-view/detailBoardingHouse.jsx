@@ -4,9 +4,9 @@ import DetailFloor from './detailFloor';
 import * as React from 'react';
 import DetailRoom from './detailRoom';
 import { useState } from 'react';
-import FormToMeet from './formToMeet';
+import FormBookDayToMeet from './formToMeet';
 
-const DetailBoardingHouse = ({ isOpen, toggle }) => {
+const DetailBoardingHouse = ({ isOpen, toggle, data }) => {
   const { className } = PropTypes.string;
   const closeBtn = (
     <button className="close" onClick={() => handleToggle()} type="button">
@@ -17,11 +17,12 @@ const DetailBoardingHouse = ({ isOpen, toggle }) => {
 
   const [detailIsOpen, setDetailIsOpen] = useState(false);
   const [formToMeet, setFormToMeet] = useState(false);
-
+  const [dataRoom, setDataRoom] = useState({});
   const HandleFormToMeet = () => {
     setFormToMeet(!formToMeet);
   };
-  const HandleDetailIsOpen = () => {
+  const HandleDetailIsOpen = (data) => {
+    setDataRoom(data);
     setDetailIsOpen(!detailIsOpen);
   };
   const handleToggle = () => {
@@ -53,11 +54,11 @@ const DetailBoardingHouse = ({ isOpen, toggle }) => {
         }}
       >
         {formToMeet ? (
-          <FormToMeet />
+          <FormBookDayToMeet />
         ) : detailIsOpen ? (
-          <DetailRoom openFormToMeet={HandleFormToMeet} />
+          <DetailRoom openFormToMeet={HandleFormToMeet} dataRoom={dataRoom} />
         ) : (
-          <DetailFloor setDetailIsOpen={HandleDetailIsOpen} />
+          <DetailFloor setDetailIsOpen={HandleDetailIsOpen} data={data} />
         )}
 
         {/* <DetailFloor /> */}

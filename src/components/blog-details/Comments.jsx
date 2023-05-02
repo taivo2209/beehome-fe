@@ -1,56 +1,30 @@
-import Ratings from "./Ratings";
+import { useEffect, useState } from 'react';
+import Ratings from './Ratings';
 
-const Comments = () => {
-  const commmetContent = [
-    {
-      id: 1,
-      img: "1",
-      name: " Diana Cooper",
-      ratings: (
-        <>
-          <Ratings />
-        </>
-      ),
-      data: "",
-      text: `Beautiful home, very picturesque and close to everything in jtree! A
-      little warm for a hot weekend, but would love to come back during
-      the cooler seasons!`,
-    },
-    {
-      id: 2,
-      img: "2",
-      name: "Ali Tufan",
-      ratings: (
-        <>
-          <Ratings />
-        </>
-      ),
-      data: "",
-      text: `Beautiful home, very picturesque and close to everything in jtree! A
-      little warm for a hot weekend, but would love to come back during
-      the cooler seasons!`,
-    },
-  ];
+const Comments = ({ comments }) => {
   return (
     <>
-      {commmetContent.map((item) => (
-        <div className="mbp_first media" key={item.id}>
+      {comments.map((item) => (
+        <div className="mbp_first media" key={item.comment.id}>
           <img
-            src={`/assets/images/testimonial/${item.img}.png`}
+            src={`/assets/images/testimonial/${item.comment.img}.png`}
             className="mr-3"
-            alt={item.img}
+            alt={item.comment.img}
           />
           <div className="media-body">
             <h4 className="sub_title mt-0">
-              {item.name}
+              {item.comment?.user?.customer?.firstName +
+                item.comment?.user?.customer?.lastName}
               <span className="sspd_review">
-                <ul className="mb0 pl15">{item.ratings}</ul>
+                <ul className="mb0 pl15">
+                  <Ratings star={item.comment.star} />
+                </ul>
               </span>
             </h4>
             <a className="sspd_postdate fz14" href="#">
-              {item.data}
+              {item.comment.data}
             </a>
-            <p className="fz14 mt10">{item.text}</p>
+            <p className="fz14 mt10">{item.comment.content}</p>
           </div>
         </div>
       ))}

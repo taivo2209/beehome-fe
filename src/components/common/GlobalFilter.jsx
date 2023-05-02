@@ -1,16 +1,16 @@
-import Router from "next/router";
+import Router from 'next/router';
 import {
   addKeyword,
   addLocation,
-} from "../../features/properties/propertiesSlice";
-import PricingRangeSlider from "./PricingRangeSlider";
-import CheckBoxFilter from "./CheckBoxFilter";
-import GlobalSelectBox from "./GlobalSelectBox";
+} from '../../features/properties/propertiesSlice';
+import PricingRangeSlider from './PricingRangeSlider';
+import CheckBoxFilter from './CheckBoxFilter';
+import GlobalSelectBox from './GlobalSelectBox';
 
-const GlobalFilter = ({ className = "" }) => {
+const GlobalFilter = ({ className = '' }) => {
   // submit handler
   const submitHandler = () => {
-    Router.push("/listing-grid-v1");
+    Router.push('/listing-grid-v1');
   };
 
   return (
@@ -101,7 +101,7 @@ const GlobalFilter = ({ className = "" }) => {
                     <h4 className="text-thm3 mb-4">Amenities</h4>
                   </div>
 
-                  <CheckBoxFilter />
+                  {/* <CheckBoxFilter /> */}
                 </div>
                 {/* End .row */}
 

@@ -1,7 +1,8 @@
-import Link from 'next/link';
 import Slider from 'react-slick';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSlice';
+import Link from 'next/link';
 
 const FeaturedProperties = () => {
   const settings = {
@@ -28,23 +29,23 @@ const FeaturedProperties = () => {
       },
     ],
   };
-  const [data, setData] = useState({});
-  const getData = async () => {
+  const getItem = async (id) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/customer/boardingHouse?page=1&limit=20`,
+        `http://localhost:5000/customer/boardingHouse/${id}`,
       );
-      setData(res.data);
-      // console.log(data);
-      // console.log(accessToken);
+      dispatch(removeFloor(0));
+      dispatch(setFloor(res.data));
     } catch (err) {
       console.log(err);
     }
   };
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.boardingHouses);
   useEffect(() => {
-    getData();
-  }, []);
-  let content = data?.items?.slice(0, 12)?.map((item) => (
+    dispatch(fetchBoardingHouse());
+  }, [dispatch]);
+  let content = data[0].slice(0, 12)?.map((item) => (
     <div className="item" key={item.id}>
       <div className="feat_property">
         <div className="thumb">
@@ -85,7 +86,12 @@ const FeaturedProperties = () => {
           <div className="tc_content">
             <p className="text-thm">{item.type}</p>
             <h4>
-              <Link href={`/listing-details-v1/${item.id}`}>{item.title}</Link>
+              <Link
+                onClick={() => getItem(item.id)}
+                href={`/listing-details-v1/${item.id}`}
+              >
+                {item.title}
+              </Link>
             </h4>
             <p>
               <span className="flaticon-placeholder"></span>

@@ -2,7 +2,7 @@ import PropertyAttribute from '../listing-details/PropertyAttributeRoom';
 import PropertyItem from '../listing-details/PropertyItem';
 import FeatureRooms from '../listing/FeatureRooms';
 
-const DetailRoom = ({ openFormToMeet }) => {
+const DetailRoom = ({ openFormToMeet, dataRoom }) => {
   return (
     <div
       style={{
@@ -24,7 +24,7 @@ const DetailRoom = ({ openFormToMeet }) => {
         <h4 className="mb30">Description</h4>
         <div className="application_statics mt30">
           <div className="row">
-            <PropertyAttribute />
+            <PropertyAttribute attributes={dataRoom} />
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ const DetailRoom = ({ openFormToMeet }) => {
       >
         <h4 className="title">Featured Properties</h4>
         <div className="sidebar_feature_property_slider">
-          <FeatureRooms openFormToMeet={openFormToMeet} />
+          <FeatureRooms openFormToMeet={openFormToMeet} dataRoom={dataRoom} />
         </div>
       </div>
     </div>

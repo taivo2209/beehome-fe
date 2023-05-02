@@ -1,32 +1,15 @@
 import { useState } from 'react';
 
-const PropertyAttribute = () => {
-  const propertyFeatures = [
-    {
-      id: 1,
-      list: ['Air Conditioning', 'Barbeque', 'Dryer', 'Gym', 'Laundry'],
-    },
-    {
-      id: 2,
-      list: ['Lawn', 'Microwave', 'Outdoor Shower', 'Refrigerator', 'Sauna'],
-    },
-    {
-      id: 3,
-      list: ['Swimming Pool', 'TV Cable', 'Washer', 'WiFi', 'Window Coverings'],
-    },
-  ];
-
+const PropertyAttribute = (dataRoom) => {
   return (
     <>
-      {propertyFeatures.map((item) => (
-        <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
+      {dataRoom.attributes.roomToAttributes.map((val, i) => (
+        <div className="col-sm-6 col-md-6 col-lg-4 " key={i}>
           <ul className="order_list list-inline-item">
-            {item.list.map((val, i) => (
-              <li key={i}>
-                <span className="flaticon-tick"></span>
-                {val}
-              </li>
-            ))}
+            <li>
+              <span className="flaticon-tick"></span>
+              {val.roomAttributeTerm.roomAttributeTermDetails[0].name}
+            </li>
           </ul>
         </div>
       ))}

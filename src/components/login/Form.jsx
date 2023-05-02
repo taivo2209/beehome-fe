@@ -1,49 +1,55 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setAccessToken } from "../../features/auth/authSlice";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setAccessToken } from '../../features/auth/authSlice';
 
 const Form = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('customer');
 
   const handleSubmit = async (e) => {
-    const loginData={
+    const loginData = {
       email: email,
       password: password,
+    };
+    let url = '';
+    if (role === 'lessor') {
+      url = 'http://localhost:5000/lessor/auth/login';
+    } else if (role === 'customer') {
+      url = 'http://localhost:5000/customer/auth/login';
+    } else if (role === 'admin') {
+      url = 'http://localhost:5000/admin/auth/login';
     }
-    let url = "";
-    if (role === "lessor") {
-      url = "http://localhost:5000/lessor/auth/login";
-    } else if (role === "customer") {
-      url = "http://localhost:5000/customer/auth/login";
-    } else if (role === "admin") {
-      url = "http://localhost:5000/admin/auth/login";
-    }
+
     e.preventDefault();
     try {
       const res = await axios.post(url, loginData);
-      console.log(res.data);
+
       // Do something with the response, such as redirecting to a dashboard page
       dispatch(setAccessToken(res.data.accessToken));
-      router.push("/my-houses");
+      if (role === 'lessor') {
+        router.push('/my-houses');
+      } else if (role === 'customer') {
+        router.push('/');
+      } else if (role === 'admin') {
+      }
     } catch (error) {
       console.error(error);
       // Handle the error, such as displaying an error message to the user
     }
   };
-  
+
   return (
     <form action="#" onSubmit={handleSubmit}>
       <div className="heading text-center">
         <h3>Login to your account</h3>
         <p className="text-center">
-          Dont have an account?{" "}
+          Dont have an account?{' '}
           <Link href="/register" className="text-thm">
             Sign Up!
           </Link>

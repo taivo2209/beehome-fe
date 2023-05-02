@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const PropertyDescriptions = ({ description }) => {
+const PropertyRule = ({ rule }) => {
   const [click, setClick] = useState(true);
   const handleClick = () => setClick(!click);
 
@@ -9,11 +9,11 @@ const PropertyDescriptions = ({ description }) => {
       <p
         className="mb25"
         dangerouslySetInnerHTML={{
-          __html: description?.replace(/\n/g, '<br/>'),
+          __html: rule?.replace(/\n/g, '<br/>'),
         }}
       ></p>
     </>
   );
 };
 
-export default PropertyDescriptions;
+export default PropertyRule;

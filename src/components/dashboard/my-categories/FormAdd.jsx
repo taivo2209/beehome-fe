@@ -53,7 +53,6 @@ function FormAdd({ getData }) {
         timer: 1500,
       });
       getData();
-      // reset();
       handleClose();
     } catch (error) {
       Swal.fire({
@@ -64,7 +63,6 @@ function FormAdd({ getData }) {
       });
       console.log(error);
     }
-    // console.log(data);
   };
 
   return (

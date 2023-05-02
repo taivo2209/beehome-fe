@@ -1,7 +1,7 @@
 import featureProContent from '../../../data/properties';
 import Slider from 'react-slick';
 
-const FeatureRooms = ({ openFormToMeet }) => {
+const FeatureRooms = ({ openFormToMeet, dataRoom }) => {
   const settings = {
     dots: true,
     arrows: false,
@@ -11,17 +11,18 @@ const FeatureRooms = ({ openFormToMeet }) => {
     autoplay: false,
     speed: 1000,
   };
+  console.log('data ne', dataRoom);
 
   return (
     <>
       <Slider {...settings} arrows={false}>
-        {featureProContent.slice(0, 5).map((item) => (
+        {dataRoom.roomImages.slice(0, 5).map((item) => (
           <div className="item" key={item.id}>
             <div className="feat_property home7">
               <div className="thumb">
                 <img
                   className="img-whp"
-                  src={item.img}
+                  src={item.localFile.path}
                   alt="properties identity"
                 />
               </div>

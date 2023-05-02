@@ -1,18 +1,9 @@
 import * as React from 'react';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
-import {
-  Avatar,
-  ButtonBase,
-  Grid,
-  Paper,
-  Typography,
-  styled,
-} from '@mui/material';
-import { deepOrange } from '@mui/material/colors';
-import Stack from '@mui/material/Stack';
+import roomImg from '../../../../public/assets/images/room.jpg';
+import { ButtonBase, Grid, Paper, Typography, styled } from '@mui/material';
+import Image from 'next/image';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -20,14 +11,14 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-
 const Img = styled('img')({
   margin: 'auto',
   display: 'block',
   maxWidth: '100%',
   maxHeight: '100%',
 });
-const DetailFloor = ({ setDetailIsOpen }) => {
+const DetailFloor = ({ setDetailIsOpen, data }) => {
+  console.log('floor ne', data[0]);
   return (
     <List
       sx={{
@@ -40,22 +31,19 @@ const DetailFloor = ({ setDetailIsOpen }) => {
       }}
       subheader={<li />}
     >
-      {[0, 1, 2, 3, 4].map((sectionId) => (
-        <div key={`section-${sectionId}`}>
-          <ListSubheader>{`Floor ${sectionId}`}</ListSubheader>
+      {data[0].floors.map((itemFloor) => (
+        <div key={`section-${itemFloor.floorNumber}`}>
+          <ListSubheader>{`Floor ${itemFloor.floorNumber}`}</ListSubheader>
           <Grid
             container
             rowSpacing={5}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             pacing={2}
           >
-            {[
-              0, 1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 14, 12, 12, 12, 12, 12, 1, 21,
-              2, 1, 2, 1, 21, 2, 1, 21, 2, 1, 2, 1, 2,
-            ].map((item) => (
+            {itemFloor.rooms.map((item) => (
               <Paper
-                onClick={() => setDetailIsOpen()}
-                key={`item-${sectionId}-${item}`}
+                onClick={() => setDetailIsOpen(item)}
+                key={`item-${itemFloor.floorNumber}-${item.name}`}
                 sx={{
                   p: 2,
                   margin: '30px',
@@ -68,9 +56,16 @@ const DetailFloor = ({ setDetailIsOpen }) => {
                 <Grid container spacing={2}>
                   <Grid item>
                     <ButtonBase sx={{ width: 128, height: 128 }}>
-                      <Img
-                        alt="complex"
-                        src="/static/images/grid/complex.jpg"
+                      {/* <Img alt="complex" src={roomImg} /> */}
+                      <Image
+                        src={roomImg}
+                        alt=""
+                        style={{
+                          margin: 'auto',
+                          display: 'block',
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                        }}
                       />
                     </ButtonBase>
                   </Grid>
@@ -82,24 +77,24 @@ const DetailFloor = ({ setDetailIsOpen }) => {
                           variant="subtitle1"
                           component="div"
                         >
-                          Standard license
-                        </Typography>
-                        <Typography variant="body2" gutterBottom>
-                          Full resolution 1920x1080 • JPEG
+                          Price
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          ID: 1030114
+                          Acreage: {item.acreage}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Room: {item.name}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      {/* <Grid item>
                         <Typography sx={{ cursor: 'pointer' }} variant="body2">
                           Remove
                         </Typography>
-                      </Grid>
+                      </Grid> */}
                     </Grid>
                     <Grid item>
                       <Typography variant="subtitle1" component="div">
-                        $19.00
+                        {item.price}
                       </Typography>
                     </Grid>
                   </Grid>

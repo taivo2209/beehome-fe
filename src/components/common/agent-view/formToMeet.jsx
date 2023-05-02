@@ -7,12 +7,9 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-const steps = [
-  'Select campaign settings',
-  'Create an ad group',
-  'Create an ad',
-];
-const FormToMeet = () => {
+import FormInfoBookDayToMeet from './FormBookDayToMeet';
+const steps = ['Information', 'Select date time to meet', 'Create an ad'];
+const FormBookDayToMeet = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -64,11 +61,11 @@ const FormToMeet = () => {
           {steps.map((label, index) => {
             const stepProps = {};
             const labelProps = {};
-            if (isStepOptional(index)) {
-              labelProps.optional = (
-                <Typography variant="caption">Optional</Typography>
-              );
-            }
+            // if (isStepOptional(index)) {
+            //   labelProps.optional = (
+            //     // <Typography variant="caption">Optional</Typography>
+            //   );
+            // }
             if (isStepSkipped(index)) {
               stepProps.completed = false;
             }
@@ -93,7 +90,7 @@ const FormToMeet = () => {
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
               {activeStep}
-              {/* {activeStep == 0 ? <DetailFloor /> : activeStep + 2} */}
+              {activeStep == 0 ? <FormInfoBookDayToMeet /> : activeStep + 2}
             </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
@@ -122,4 +119,4 @@ const FormToMeet = () => {
   );
 };
 
-export default FormToMeet;
+export default FormBookDayToMeet;

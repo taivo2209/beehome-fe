@@ -22,7 +22,6 @@ const CheckBoxFilter = () => {
     }
   };
   const chunkedArray = _.chunk(data.items, 3);
-  console.log('tagData', chunkedArray);
   const handleSelectionChange = (event) => {
     const selectedItem = event.target.value;
     if (event.target.checked) {

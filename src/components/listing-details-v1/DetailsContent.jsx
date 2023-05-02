@@ -1,46 +1,78 @@
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Comments from '../blog-details/Comments';
 import Ratings from '../blog-details/Ratings';
 import ReviewBox from '../blog-details/ReviewBox';
-import AdditionalDetails from '../common/listing-details/AdditionalDetails';
+import Paginations from '../common/blog/Pagination';
 import PropertyDescriptions from '../common/listing-details/PropertyDescriptions';
 import PropertyDetails from '../common/listing-details/PropertyDetails';
 import PropertyFeatures from '../common/listing-details/PropertyFeatures';
-import PropertyItem from '../common/listing-details/PropertyItem';
 import PropertyLocation from '../common/listing-details/PropertyLocation';
+import PropertyRenDeposits from '../common/listing-details/PropertyRensDeposits';
+import PropertyRule from '../common/listing-details/PropertyRule';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
-const DetailsContent = () => {
+const DetailsContent = ({ dataDetail, boardingHouseId }) => {
+  const [comments, setComment] = useState([]);
+  const [commentsData, setCommentsData] = useState([]);
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  const [customer, setCustomer] = useState();
+
+  const checkLogin = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/customer/auth/current`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
+      setCustomer(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/customer/comment/${boardingHouseId}`,
+      );
+      //  setComment(dataDetail?.comment?.slice(0, 4));
+
+      setCommentsData(res.data?.commentToBoardingHouses);
+      setComment(res.data?.commentToBoardingHouses.slice(0, 4));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getData();
+    console.log('data ne duyy', boardingHouseId);
+  }, [boardingHouseId]);
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   return (
     <>
       <div className="listing_single_description">
-        <div className="lsd_list">
-          <PropertyItem />
-        </div>
-        {/* End .lsd_list */}
-
+        {/* End .listing_single_description */}
         <h4 className="mb30">Description</h4>
-        <PropertyDescriptions />
+        <PropertyDescriptions description={dataDetail?.description} />
       </div>
       {/* End .listing_single_description */}
 
       <div className="additional_details">
         <div className="row">
           <div className="col-lg-12">
+            {/* Fee */}
             <h4 className="mb15">Property Details</h4>
           </div>
-          <PropertyDetails />
+          <PropertyDetails dataDetail={dataDetail} />
         </div>
       </div>
-      {/* End .additional_details */}
-
-      <div className="additional_details">
-        <div className="row">
-          <div className="col-lg-12">
-            <h4 className="mb15">Additional details</h4>
-          </div>
-          <AdditionalDetails />
-        </div>
-      </div>
-      {/* End .additional_details */}
 
       <div className="application_statics mt30">
         <div className="row">
@@ -49,9 +81,22 @@ const DetailsContent = () => {
           </div>
           {/* End .col */}
 
-          <PropertyFeatures />
+          <PropertyFeatures attributes={dataDetail?.attributes} />
         </div>
       </div>
+
+      <div className="listing_single_description">
+        {/* End .listing_single_description */}
+        <h4 className="mb30">Rule</h4>
+        <PropertyRule rule={dataDetail?.rule} />
+      </div>
+
+      <div className="listing_single_description">
+        {/* End .listing_single_description */}
+        <h4 className="mb30">RenDeposits</h4>
+        <PropertyRenDeposits renDeposits={dataDetail?.rentDeposit} />
+      </div>
+
       {/* End .feature_area */}
 
       <div className="application_statics mt30">
@@ -66,6 +111,9 @@ const DetailsContent = () => {
         </div>
       </div>
       {/* End .location_area */}
+
+      {/* COMMENT */}
+
       <div className="product_single_content">
         <div className="mbp_pagination_comments mt30">
           <div className="total_review">
@@ -81,7 +129,16 @@ const DetailsContent = () => {
             </a>
           </div>
           {/* End .total_review */}
-          <Comments />
+          <div className="col-md-12 col-lg-8">
+            <Comments comments={comments} />
+          </div>
+          <div className="row">
+            <div className="col-lg-12 mt20">
+              <div className="mbp_pagination">
+                <Paginations setComment={setComment} data={commentsData} />
+              </div>
+            </div>
+          </div>
           <div className="custom_hr"></div>
 
           <div className="mbp_comment_form style2">
@@ -94,11 +151,23 @@ const DetailsContent = () => {
                   </ul>
                 </span>
               </li>
-              <li className="list-inline-item pr15">
-                <p>Your Rating & Review</p>
-              </li>
             </ul>
-            <ReviewBox />
+            {customer != null ? (
+              <ReviewBox
+                accessToken={accessToken}
+                boardingHouseId={boardingHouseId}
+                getData={getData}
+              />
+            ) : (
+              <button
+                type="submit"
+                className="btn btn-thm col-lg-6 offset-lg-3"
+              >
+                <Link href="/login">
+                  <span> Login for Review</span>
+                </Link>
+              </button>
+            )}
           </div>
         </div>
       </div>
