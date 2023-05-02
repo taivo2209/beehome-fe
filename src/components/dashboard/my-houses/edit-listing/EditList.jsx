@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
+import PropertyMediaUploader from '../PropertyMediaUploader';
 
 const EditList = () => {
   const router = useRouter();
@@ -29,6 +30,7 @@ const EditList = () => {
   const [ward, setWard] = useState('');
   const [district, setDistrict] = useState('');
   const [tagIds, setTagIds] = useState([]);
+  const [imgIds, setImgIds] = useState([]);
   const [electricFee, setElectricFee] = useState('');
   const [waterFee, setWaterFee] = useState('');
   const [serviceFee, setServiceFee] = useState('');
@@ -65,6 +67,7 @@ const EditList = () => {
       name: name,
       status: status,
       tagIds: tagIds,
+      imgIds: imgIds,
       electricFee: electricFee,
       waterFee: waterFee,
       serviceFee: serviceFee,
@@ -115,20 +118,22 @@ const EditList = () => {
     };
     e.preventDefault();
     try {
-      axios.patch('http://localhost:5000/lessor/boardingHouse', formData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }).then(() => {
-        Swal.fire({
-          title: 'Thành công!',
-          text: 'Edit Success!',
-          icon: 'success',
-          confirmButtonText: 'OK'
-        }).then(() => {
-          router.push('/my-houses');
+      axios
+        .patch('http://localhost:5000/lessor/boardingHouse', formData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then(() => {
+          Swal.fire({
+            title: 'Thành công!',
+            text: 'Edit Success!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          }).then(() => {
+            router.push('/my-houses');
+          });
         });
-      });
     } catch (err) {
       Swal.fire({
         icon: 'error',
@@ -189,6 +194,10 @@ const EditList = () => {
 
   const handleSelectionChange = async (selections) => {
     setTagIds(selections);
+  };
+
+  const handleUpload = (newImages) => {
+    setImgIds(newImages);
   };
 
   useEffect(() => {}, [tagIds]);
@@ -365,6 +374,10 @@ const EditList = () => {
       </div>
 
       <CheckBoxFilter onSelectionChange={handleSelectionChange} />
+      <div className="col-xl-12">
+        <h4 className="mb10">Images</h4>
+      </div>
+      <PropertyMediaUploader onUpload={handleUpload} />
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
           <label htmlFor="propertyAddress">Address</label>

@@ -100,9 +100,11 @@ function FormAdd({ getData }) {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <Button variant="primary" type="submit">
-              Add
-            </Button>
+            <div className="my_profile_setting_input overflow-hidden mt20">
+              <button type="submit" className="btn btn2 float-end">
+                Add
+              </button>
+            </div>
           </form>
         </Modal.Body>
         <Modal.Footer>

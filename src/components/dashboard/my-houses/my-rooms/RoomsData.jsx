@@ -124,7 +124,10 @@ function RoomsData({ floorData }) {
                                       >
                                         <a href="#">
                                           {/* <span className="flaticon-view"></span> */}
-                                          <FormView id={room.id} />
+                                          <FormView
+                                            id={room.id}
+                                            getNewData={getData}
+                                          />
                                           {/* {console.log(item.categoryId)} */}
                                         </a>
                                       </li>
@@ -154,7 +157,7 @@ function RoomsData({ floorData }) {
                                             onClick={() =>
                                               handleDelete(room.id)
                                             }
-                                          ></span>
+                                            ></span>
                                         </a>
                                       </li>
                                     </ul>

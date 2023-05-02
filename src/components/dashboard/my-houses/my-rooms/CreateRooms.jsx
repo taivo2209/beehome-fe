@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import PropertyMediaUploader from './PropertyMediaUploader';
+import PropertyMediaUploader from '../PropertyMediaUploader';
 import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
+import Swal from 'sweetalert2';
 
 function CreateRooms({ floorId, updateData }) {
   const [show, setShow] = useState(false);
@@ -36,8 +37,20 @@ function CreateRooms({ floorId, updateData }) {
           Authorization: `Bearer ${accessToken}`,
         },
       });
+      Swal.fire({
+        icon: 'success',
+        title: 'Tạo thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       updateData();
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.log(err);
     }
   };
@@ -82,7 +95,7 @@ function CreateRooms({ floorId, updateData }) {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="my_profile_setting_input form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -91,8 +104,8 @@ function CreateRooms({ floorId, updateData }) {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="price">Price</label>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="price">Price (/month)</label>
               <input
                 type="text"
                 className="form-control"
@@ -100,8 +113,8 @@ function CreateRooms({ floorId, updateData }) {
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-            <div className="form-group">
-              <label htmlFor="acreage">Acreage</label>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="acreage">Acreage (m2)</label>
               <input
                 type="text"
                 className="form-control"
@@ -109,16 +122,19 @@ function CreateRooms({ floorId, updateData }) {
                 onChange={(e) => setAcreage(e.target.value)}
               />
             </div>
-            <div className="form-group col-xl-12">
+            <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
               <CategoriesCheckBox onSelectionChange={handleCategoryChange} />
             </div>
-            <div className="form-group mb-2">
+            <div className="my_profile_setting_input form-group mb-2">
               <label htmlFor="attributeIds">Attribute</label>
               <AttributesCheckBox onSelectionChange={handleAttributeChange} />
             </div>
-            <PropertyMediaUploader onUpload={handleUpload} />
-            <Button type='submit'>Create</Button>
+            <div className="my_profile_setting_input form-group mb-2">
+              <label htmlFor="imagesId">Images</label>
+              <PropertyMediaUploader onUpload={handleUpload} />
+            </div>
+            <Button type="submit">Create</Button>
           </form>
         </Modal.Body>
         <Modal.Footer>

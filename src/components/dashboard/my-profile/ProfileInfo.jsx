@@ -1,22 +1,26 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Swal from 'sweetalert2';
 
 const ProfileInfo = () => {
-  const [profile, setProfile] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [avatarId, setAvatarId] = useState([]);
+  let path = data?.avatar;
+  let newPath = path?.replace(/\\/g, '/');
 
   const getData = async () => {
     try {
-      const res = await axios.get(
-        'http://localhost:5000/lessor/auth/current',
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+      const res = await axios.get('http://localhost:5000/lessor/profile', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
         },
-      );
+      });
       setData(res.data);
       // console.log(accessToken);
     } catch (err) {
@@ -24,13 +28,75 @@ const ProfileInfo = () => {
     }
   };
 
+  // console.log(data.avatar);
+  // console.log(newPath);
+  const handleSubmit = async () => {
+    const formData = {
+      name: name,
+      address: address,
+      phoneNumber: phoneNumber,
+      avatarId: avatarId,
+    };
+    try {
+      const res = await axios.put(
+        'http://localhost:5000/lessor/profile',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
+      Swal.fire({
+        icon: 'success',
+        title: 'Cập nhật thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      // console.log(accessToken);
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
+      console.log(err);
+    }
+    // console.log(formData);
+  };
+
   useEffect(() => {
     getData();
   }, []);
 
-  // upload profile
-  const uploadProfile = (e) => {
-    setProfile(e.target.files[0]);
+  const handleImageUpload = async () => {
+    const formData = new FormData();
+    formData.append('photo_url', selectedImage);
+
+    try {
+      const res = await axios.post(
+        'http://localhost:5000/upload-file/single-file',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
+      setAvatarId(res.data.id);
+      // console.log('Image uploaded successfully!', res.data);
+    } catch (error) {
+      console.error('Error uploading image: ', error);
+    }
+    // console.log('avatarID',avatarId);
+  };
+
+  useEffect(() => {
+    handleImageUpload();
+  }, [selectedImage]);
+  const handleImageSelect = (event) => {
+    setSelectedImage(event.target.files[0]);
   };
 
   return (
@@ -41,15 +107,19 @@ const ProfileInfo = () => {
             type="file"
             id="image1"
             accept="image/png, image/gif, image/jpeg"
-            onChange={uploadProfile}
+            onChange={handleImageSelect}
           />
           <label
             style={
-              profile !== null
+              selectedImage !== null
                 ? {
-                    backgroundImage: `url(${URL.createObjectURL(profile)})`,
+                    backgroundImage: `url(${URL?.createObjectURL(
+                      selectedImage,
+                    )})`,
                   }
-                : undefined
+                : {
+                    backgroundImage: `url(${newPath})`,
+                  }
             }
             htmlFor="image1"
           >
@@ -58,7 +128,7 @@ const ProfileInfo = () => {
             </span>
           </label>
         </div>
-        <p>*minimum 260px x 260px</p>
+        {/* <p>*minimum 260px x 260px</p> */}
       </div>
       {/* End .col */}
 
@@ -70,6 +140,7 @@ const ProfileInfo = () => {
             className="form-control"
             id="formGroupExampleInput1"
             placeholder={data?.name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
       </div>
@@ -96,6 +167,7 @@ const ProfileInfo = () => {
             className="form-control"
             id="formGroupExampleInput3"
             placeholder={data?.address}
+            onChange={(e) => setAddress(e.target.value)}
           />
         </div>
       </div>
@@ -109,6 +181,7 @@ const ProfileInfo = () => {
             className="form-control"
             id="formGroupExampleInput4"
             placeholder={data?.phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </div>
       </div>
@@ -116,8 +189,10 @@ const ProfileInfo = () => {
 
       <div className="col-xl-12 text-right">
         <div className="my_profile_setting_input">
-          <button className="btn btn1">View Public Profile</button>
-          <button className="btn btn2">Update Profile</button>
+          {/* <button className="btn btn1">View Public Profile</button> */}
+          <button className="btn btn2" onClick={handleSubmit}>
+            Update Profile
+          </button>
         </div>
       </div>
       {/* End .col */}

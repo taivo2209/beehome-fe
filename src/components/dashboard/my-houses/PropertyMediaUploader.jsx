@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import selectedFiles from '../../../../utils/selectedFiles';
+import selectedFiles from '../../../utils/selectedFiles';
 import axios from 'axios';
 
 const PropertyMediaUploader = ({ onUpload }) => {

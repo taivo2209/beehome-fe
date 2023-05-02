@@ -64,10 +64,22 @@ function FormEdit({ id, getData }) {
           },
         },
       );
+      Swal.fire({
+        icon: 'success',
+        title: 'Sửa thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       // console.log(res.data); // log response data to the console
       getData();
       handleClose();
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đã xảy ra lỗi!',
+        text: 'Vui lòng thử lại sau.',
+        confirmButtonText: 'OK',
+      });
       console.error(error);
     }
     // console.log(formData);
@@ -85,21 +97,9 @@ function FormEdit({ id, getData }) {
             },
           },
         );
-        Swal.fire({
-          icon: 'success',
-          title: 'Sửa thành công!',
-          showConfirmButton: false,
-          timer: 1500,
-        });
         reset(res.data);
         // console.log(res.data);
       } catch (error) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Đã xảy ra lỗi!',
-          text: 'Vui lòng thử lại sau.',
-          confirmButtonText: 'OK',
-        });
         console.error(error);
       }
     };
@@ -116,36 +116,73 @@ function FormEdit({ id, getData }) {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label>
-              Category Name:
-              <input type="text" {...register('categoryDetails.0.name')} />
-              <input type="text" {...register('categoryDetails.1.name')} />
-            </label>
-            <label>
-              Category Type:
-              {fields.map((categoryType, index) => (
-                <div key={categoryType.id}>
-                  <input
-                    type="text"
-                    {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.${0}.name`,
-                    )}
-                    defaultValue={categoryType.categoryTypeDetails[0].name}
-                  />
-                  <input
-                    type="text"
-                    {...register(
-                      `categoryTypes.${index}.categoryTypeDetails.${1}.name`,
-                    )}
-                    defaultValue={categoryType.categoryTypeDetails[1].name}
-                  />
-                  <button type="button" onClick={() => remove(index)}>
-                    Remove
-                  </button>
+            <div className="row">
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="formGroupExamplePrice">
+                    Category Name:
+                    <input
+                      type="text"
+                      {...register('categoryDetails.0.name')}
+                      className="form-control mb-2"
+                      id="formGroupExamplePrice"
+                    />
+                    <input
+                      type="text"
+                      {...register('categoryDetails.1.name')}
+                      className="form-control mb-2"
+                      id="formGroupExamplePrice"
+                    />
+                  </label>
                 </div>
-              ))}
+              </div>
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="formGroupExamplePrice">
+                    Category Type:
+                    {fields.map((categoryType, index) => (
+                      <div key={categoryType.id}>
+                        <input
+                          type="text"
+                          {...register(
+                            `categoryTypes.${index}.categoryTypeDetails.${0}.name`,
+                          )}
+                          className="form-control mb-2"
+                          id="formGroupExamplePrice"
+                          defaultValue={
+                            categoryType.categoryTypeDetails[0].name
+                          }
+                        />
+                        <input
+                          type="text"
+                          {...register(
+                            `categoryTypes.${index}.categoryTypeDetails.${1}.name`,
+                          )}
+                          className="form-control mb-2"
+                          id="formGroupExamplePrice"
+                          defaultValue={
+                            categoryType.categoryTypeDetails[1].name
+                          }
+                        />
+                        <div className="my_profile_setting_input overflow-hidden mb-2">
+                          <button
+                            type="button"
+                            className="btn btn1"
+                            onClick={() => remove(index)}
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="my_profile_setting_input overflow-hidden mt20">
               <button
                 type="button"
+                className="btn btn3 float-start"
                 onClick={() =>
                   append({
                     categoryTypeDetails: [
@@ -157,19 +194,14 @@ function FormEdit({ id, getData }) {
               >
                 Add Category Type
               </button>
-            </label>
-            <br />
-
-            <Button variant="primary" type="submit">
-              Save Changes
-            </Button>
+            </div>
+            <div className="my_profile_setting_input overflow-hidden mt20">
+              <button type="submit" className="btn btn2 float-end">
+                Save Changes
+              </button>
+            </div>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

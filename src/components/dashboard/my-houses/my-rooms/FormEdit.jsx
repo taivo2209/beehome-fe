@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import PropertyMediaUploader from './PropertyMediaUploader';
+import PropertyMediaUploader from '../PropertyMediaUploader';
 import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
@@ -18,6 +18,7 @@ function FormEdit({ id, updateData }) {
   const [status, setStatus] = useState('ACTIVE');
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
+  const [imgIds, setImgIds] = useState([]);
   const [data, setData] = useState({});
 
   const getData = async () => {
@@ -44,6 +45,7 @@ function FormEdit({ id, updateData }) {
       name: name,
       price: price,
       acreage: acreage,
+      imgIds: imgIds,
       categoryIds: categoryIds,
       attributeIds: attributeIds,
       status: status,
@@ -69,6 +71,10 @@ function FormEdit({ id, updateData }) {
     setAttributeIds(selections);
   };
 
+  const handleUpload = (newImages) => {
+    setImgIds(newImages);
+  };
+
   useEffect(() => {}, [categoryIds, attributeIds]);
   // console.log('categoryIds', categoryIds);
   // console.log('attri', attributeIds);
@@ -83,7 +89,7 @@ function FormEdit({ id, updateData }) {
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
-            <div className="form-group">
+            <div className="my_profile_setting_input form-group">
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -93,7 +99,7 @@ function FormEdit({ id, updateData }) {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div className="form-group">
+            <div className="my_profile_setting_input form-group">
               <label htmlFor="price">Price</label>
               <input
                 type="text"
@@ -103,7 +109,7 @@ function FormEdit({ id, updateData }) {
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-            <div className="form-group">
+            <div className="my_profile_setting_input form-group">
               <label htmlFor="acreage">Acreage</label>
               <input
                 type="text"
@@ -128,13 +134,17 @@ function FormEdit({ id, updateData }) {
                 </select>
               </div>
             </div>
-            <div className="form-group col-xl-12">
+            <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
               <CategoriesCheckBox onSelectionChange={handleCategoryChange} />
             </div>
-            <div className="form-group mb-2">
+            <div className="my_profile_setting_input form-group mb-2">
               <label htmlFor="attributeIds">Attribute</label>
               <AttributesCheckBox onSelectionChange={handleAttributeChange} />
+            </div>
+            <div className="my_profile_setting_input form-group mb-2">
+              <label htmlFor="imagesId">Images</label>
+              <PropertyMediaUploader onUpload={handleUpload} />
             </div>
             <Button type="submit">Edit</Button>
           </form>

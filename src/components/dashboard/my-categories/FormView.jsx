@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 
-function FormView(props) {
+function FormView({ id, getDataNew }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
@@ -13,7 +13,7 @@ function FormView(props) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/category/${props.id}`,
+        `http://localhost:5000/lessor/category/${id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -21,6 +21,7 @@ function FormView(props) {
         },
       );
       setData(res.data);
+      getDataNew();
       // console.log(data);
       // console.log(accessToken);
     } catch (err) {

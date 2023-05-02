@@ -44,6 +44,12 @@ function FormView(props) {
           <ul>
             <li>Type: {data?.type}</li>
             <li>
+              Descriptions:{' '}
+              {data?.boardingHouseDescriptions?.map((item) => (
+                <p key={item.id}>{item.content}</p>
+              ))}
+            </li>
+            <li>
               Rent Deposits:{' '}
               {data?.boardingHouseRentDeposits?.map((item) => (
                 <p key={item.id}>{item.content}</p>
