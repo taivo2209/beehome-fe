@@ -45,7 +45,7 @@ const FeaturedProperties = () => {
   useEffect(() => {
     dispatch(fetchBoardingHouse());
   }, [dispatch]);
-  let content = data[0].slice(0, 12)?.map((item) => (
+  let content = data?.[0]?.slice(0, 12)?.map((item) => (
     <div className="item" key={item.id}>
       <div className="feat_property">
         <div className="thumb">

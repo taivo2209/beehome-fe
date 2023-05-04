@@ -37,6 +37,7 @@ const Form = () => {
       } else if (role === 'customer') {
         router.push('/');
       } else if (role === 'admin') {
+        router.push('/manage-lessor');
       }
     } catch (error) {
       console.error(error);

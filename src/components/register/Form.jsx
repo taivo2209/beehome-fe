@@ -15,8 +15,6 @@ const Form = () => {
       url = "http://localhost:5000/lessor/auth/register";
     } else if (role === "customer") {
       url = "http://localhost:5000/customer/auth/register";
-    } else if (role === "admin") {
-      url = "http://localhost:5000/admin/auth/register";
     }
     try {
       const res = await axios.post(url, { email, password, role });
@@ -80,7 +78,6 @@ const Form = () => {
         >
           <option value="customer">Customer</option>
           <option value="lessor">Lessor</option>
-          <option value="admin">Admin</option>
         </select>
       </div>
       {/* End .form-group */}
