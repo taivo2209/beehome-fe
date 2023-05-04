@@ -164,7 +164,7 @@ const SidebarMenu = () => {
               <i className="fa fa-angle-down pull-right"></i>
             </a>
             <ul className="treeview-menu collapse" id="my-property">
-              {lessorManage.map((item) => (
+              {adminManage.map((item) => (
                 <li key={item.id}>
                   <Link href={item.route}>
 

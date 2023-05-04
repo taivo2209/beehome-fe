@@ -1,21 +1,19 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
-import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
 
-// import { setCategories } from '../../../features/categories/categoriesSlice';
-
-const HousesData = () => {
+const LessorsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
+  // const dispatch = useDispatch();
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/boardingHouse?page=1&limit=20',
+        'http://localhost:5000/admin/lessor?page=1&limit=20',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -23,6 +21,7 @@ const HousesData = () => {
         },
       );
       setData(res.data);
+      // dispatch(setCategories(res.data.items));
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -33,10 +32,10 @@ const HousesData = () => {
     getData();
   }, []);
 
-  const handleDelete = async (houseId) => {
+  const handleDelete = async (lessorId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/lessor/boardingHouse/${houseId}`,
+        `http://localhost:5000/admin/lessor/${lessorId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -57,22 +56,25 @@ const HousesData = () => {
     }
   };
 
+  const getStatusColor = (status) => {
+    if (status === 'VERIFIED' || status === 'APPROVED') {
+      return 'text-success';
+    } else {
+      return 'text-danger';
+    }
+  };
+
   return (
     <>
-      <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-        <ul className="sasw_list mb0">
-          <FormAdd />
-        </ul>
-      </div>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Houses</th>
+            <th scope="col">Lessor</th>
             <th className="dn-lg" scope="col"></th>
             <th className="dn-lg" scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col">Created</th>
+            <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -82,14 +84,12 @@ const HousesData = () => {
           {data.items &&
             data.items.map((item) => (
               <tr key={item.id} className="title" scope="row">
-                <td>{item.name}</td>
+                <td>{item.email}</td>
                 <td className="dn-lg"></td>
                 <td className="dn-lg"></td>
                 <td></td>
                 <td></td>
-                <td className="para">
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
+                <td className={getStatusColor(item.status)}>{item.status}</td>
                 <td>
                   <ul className="view_edit_delete_list mb0">
                     <li
@@ -99,8 +99,8 @@ const HousesData = () => {
                       title="View"
                     >
                       <a href="#">
-                        {/* <span className="flaticon-view"></span> */}
-                        <FormView id={item.id} />
+                        <span className="flaticon-view"></span>
+                        {/* <FormView id={item.id} /> */}
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>
@@ -111,7 +111,8 @@ const HousesData = () => {
                       title="Edit"
                     >
                       <a href="#">
-                        <FormEdit id={item.id} />
+                        {/* <span className="flaticon-edit"></span> */}
+                        <FormEdit id={item.id} getData={getData} />
                       </a>
                     </li>
                     <li
@@ -138,4 +139,4 @@ const HousesData = () => {
   );
 };
 
-export default HousesData;
+export default LessorsData;

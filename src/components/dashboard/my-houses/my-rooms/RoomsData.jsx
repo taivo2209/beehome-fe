@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
+import Swal from 'sweetalert2';
 
 function RoomsData({ floorData }) {
   const [show, setShow] = useState(false);
@@ -50,6 +51,12 @@ function RoomsData({ floorData }) {
       // console.log(res.data);
       // Call getData() again to update the table after deletion
       getData();
+      Swal.fire({
+        icon: 'success',
+        title: 'Xóa thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (err) {
       console.log(err);
     }

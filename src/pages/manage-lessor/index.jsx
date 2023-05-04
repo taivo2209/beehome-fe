@@ -5,7 +5,7 @@ import ManageLessor from "../../components/admin/manage-lessor"
 const index = () => {
     return (
       <>
-        <Seo pageTitle="My Attributes" />
+        <Seo pageTitle="Lessors List" />
         <ManageLessor />
       </>
     );

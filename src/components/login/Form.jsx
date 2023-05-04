@@ -14,7 +14,7 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     const loginData = {
-      email: email,
+      username: email,
       password: password,
     };
     let url = '';

@@ -5,6 +5,7 @@ import FormView from "./FormView";
 import FormEdit from "./FormEdit";
 import FormAdd from "./FormAdd";
 import { setCategories } from "../../../features/categories/categoriesSlice";
+import Swal from "sweetalert2";
 
 const CategoriesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -46,6 +47,12 @@ const CategoriesData = () => {
       // console.log(res.data);
       // Call getData() again to update the table after deletion
       getData();
+      Swal.fire({
+        icon: 'success',
+        title: 'Xóa thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } catch (err) {
       console.log(err);
     }
