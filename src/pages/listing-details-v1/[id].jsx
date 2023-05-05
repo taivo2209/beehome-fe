@@ -7,22 +7,17 @@ import Footer from '../../components/common/footer/Footer';
 import Header from '../../components/common/header/DefaultHeader';
 import MobileMenu from '../../components/common/header/MobileMenu';
 import PopupSignInUp from '../../components/common/PopupSignInUp';
-import properties from '../../data/properties';
 import DetailsContent from '../../components/listing-details-v1/DetailsContent';
 import Sidebar from '../../components/listing-details-v1/Sidebar';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { removeFloor, setFloor } from '../../features/floor/floorSlice';
+import { useSelector } from 'react-redux';
 
 const ListingDynamicDetailsV1 = () => {
-  const boardingHouseData = useSelector((state) => state.boardingHouses);
+  const [customer, setCustomer] = useState();
+  const { data } = useSelector((state) => state.boardingHouses);
   const router = useRouter();
   const id = router.query.id;
-  const boardingHouseDetail = boardingHouseData[0].filter(
-    (item) => item.id == id,
-  );
-  const dispatch = useDispatch();
-  const [data, setData] = useState({});
+  const boardingHouseDetail = data?.filter((item) => item.id == id);
+  const [dataBoarding, setData] = useState({});
   const floorData = useSelector((state) => state.floors);
   useEffect(() => {
     setData(floorData);
@@ -131,6 +126,8 @@ const ListingDynamicDetailsV1 = () => {
           <div className="row">
             <div className="col-md-12 col-lg-8">
               <DetailsContent
+                customer={customer}
+                setCustomer={setCustomer}
                 dataDetail={boardingHouseDetail[0]}
                 boardingHouseId={id}
               />
@@ -138,7 +135,11 @@ const ListingDynamicDetailsV1 = () => {
             {/* End details content .col-lg-8 */}
 
             <div className="col-lg-4 col-xl-4">
-              <Sidebar data={data} />
+              <Sidebar
+                data={dataBoarding}
+                customer={customer}
+                posterId={boardingHouseDetail[0].posterId}
+              />
             </div>
             {/* End sidebar content .col-lg-4 */}
           </div>

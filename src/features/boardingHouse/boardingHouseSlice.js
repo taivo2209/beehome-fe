@@ -10,7 +10,9 @@ const boardingHouseSlice = createSlice({
   name: 'boardingHouses',
   initialState,
   reducers: {
-    setBoardingHouse: (state, action) => [...state.data, action.payload],
+    setBoardingHouse: (state, action) => {
+      state.data = action.payload;
+    },
     addBoardingHouse: (state, action) => [...state.data, action.payload],
     removePost(state, action) {
       state.data.splice(action.payload, 2);
@@ -61,9 +63,9 @@ export const {
 
 export const fetchBoardingHouse = () => async (dispatch) => {
   try {
-    dispatch(setLoading());
     const data = await fetchBoardingHouseData();
-    dispatch(setData(data));
+
+    dispatch(setBoardingHouse(data.items));
   } catch (err) {
     dispatch(setError(err.message));
   }

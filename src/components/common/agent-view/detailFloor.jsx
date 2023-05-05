@@ -18,7 +18,6 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 const DetailFloor = ({ setDetailIsOpen, data }) => {
-  console.log('floor ne', data[0]);
   return (
     <List
       sx={{

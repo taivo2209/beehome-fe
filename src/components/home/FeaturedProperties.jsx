@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSlice';
 import Link from 'next/link';
+import { useMemo } from 'react';
 
 const FeaturedProperties = () => {
   const settings = {
@@ -41,11 +42,13 @@ const FeaturedProperties = () => {
     }
   };
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.boardingHouses);
+  const { data } = useSelector((state) => state.boardingHouses);
+  const memoizedData = useMemo(() => data.slice(0, 12) || [], [data]);
   useEffect(() => {
     dispatch(fetchBoardingHouse());
-  }, [dispatch]);
-  let content = data[0].slice(0, 12)?.map((item) => (
+  }, []);
+
+  let content = memoizedData.slice(0, 12)?.map((item) => (
     <div className="item" key={item.id}>
       <div className="feat_property">
         <div className="thumb">
