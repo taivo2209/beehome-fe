@@ -5,10 +5,14 @@ import FormView from './FormView';
 import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
+import Pagination from './Pagination';
+import { paginate } from '../../../utils/paginate';
 
 const TagsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
+  const pageSize = 5;
+  const [currentPage, setCurrentPage] = useState(1);
   // const dispatch = useDispatch();
 
   const getData = async () => {
@@ -32,6 +36,13 @@ const TagsData = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const paginateData = paginate(data?.items, currentPage, pageSize);
+
 
   const handleDelete = async (tagId) => {
     try {
@@ -85,8 +96,8 @@ const TagsData = () => {
         {/* End thead */}
 
         <tbody>
-          {data.items &&
-            data.items.map((item) => (
+          {paginateData &&
+            paginateData.map((item) => (
               <tr key={item.id} className="title" scope="row">
                 <td>{item.name}</td>
                 <td className="dn-lg"></td>
@@ -141,6 +152,14 @@ const TagsData = () => {
         </tbody>
         {/* End tbody */}
       </table>
+      <div className="mbp_pagination">
+        <Pagination
+          items={data?.items?.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </>
   );
 };

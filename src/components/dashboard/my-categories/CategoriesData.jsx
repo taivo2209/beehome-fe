@@ -1,26 +1,30 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import FormView from "./FormView";
-import FormEdit from "./FormEdit";
-import FormAdd from "./FormAdd";
-import { setCategories } from "../../../features/categories/categoriesSlice";
-import Swal from "sweetalert2";
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import FormView from './FormView';
+import FormEdit from './FormEdit';
+import FormAdd from './FormAdd';
+import { setCategories } from '../../../features/categories/categoriesSlice';
+import Swal from 'sweetalert2';
+import Pagination from './Pagination';
+import { paginate } from '../../../utils/paginate';
 
 const CategoriesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const pageSize = 10;
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/lessor/category?page=1&limit=20",
+        'http://localhost:5000/lessor/category?page=1&limit=20',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       setData(res.data);
       dispatch(setCategories(res.data.items));
@@ -33,6 +37,12 @@ const CategoriesData = () => {
   useEffect(() => {
     getData();
   }, []);
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const paginateData = paginate(data?.items, currentPage, pageSize);
+  // console.log('=====', data?.items?.length);
 
   const handleDelete = async (categoryId) => {
     try {
@@ -42,7 +52,7 @@ const CategoriesData = () => {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       // console.log(res.data);
       // Call getData() again to update the table after deletion
@@ -68,7 +78,7 @@ const CategoriesData = () => {
                         <span className="flaticon-plus"></span>
                         <span className="dn-lg"> Create Categories</span>
                     </button> */}
-          <FormAdd getData={getData}/>
+          <FormAdd getData={getData} />
         </ul>
       </div>
       <table className="table">
@@ -86,8 +96,8 @@ const CategoriesData = () => {
         {/* End thead */}
 
         <tbody>
-          {data.items &&
-            data.items.map((item) => (
+          {paginateData &&
+            paginateData?.map((item) => (
               <tr key={item.id}>
                 <td>
                   {item.categoryDetails.map((categoryDetail, i) => (
@@ -113,7 +123,7 @@ const CategoriesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
-                        <FormView id={item.id} getDataNew={getData}/>
+                        <FormView id={item.id} getDataNew={getData} />
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>
@@ -125,7 +135,7 @@ const CategoriesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-edit"></span> */}
-                        <FormEdit id={item.id} getData={getData}/>
+                        <FormEdit id={item.id} getData={getData} />
                       </a>
                     </li>
                     <li
@@ -148,6 +158,14 @@ const CategoriesData = () => {
         </tbody>
         {/* End tbody */}
       </table>
+      <div className="mbp_pagination">
+        <Pagination
+          items={data?.items?.length}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </>
   );
 };

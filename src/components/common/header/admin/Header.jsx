@@ -26,7 +26,7 @@ const Header = () => {
     >
       <div className="container-fluid p0">
         {/* <!-- Menu Toggle btn--> */}
-        <Link href="/" className="navbar_brand float-start dn-smd">
+        <Link href="/manage-lessor" className="navbar_brand float-start dn-smd">
 
           <img
             className="logo1 img-fluid"
