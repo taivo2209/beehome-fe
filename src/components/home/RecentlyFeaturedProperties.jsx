@@ -7,7 +7,7 @@ import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import axios from 'axios';
 
-const FeaturedProperties = () => {
+const RecentlyFeaturedProperties = () => {
   const settings = {
     dots: true,
     arrows: false,
@@ -46,19 +46,26 @@ const FeaturedProperties = () => {
     }
   };
   const { data } = useSelector((state) => state.boardingHouses);
-  const memoizedData = useMemo(() => data.slice(0, 12) || [], [data]);
-  useEffect(() => {
-    dispatch(fetchBoardingHouse());
-  }, []);
 
-  let content = memoizedData.slice(0, 12)?.map((item) => (
-    <div className="item" key={item.id}>
+  const getViewedItems = () => {
+    const viewedItems = JSON.parse(localStorage.getItem('viewedItems')) || [];
+    return viewedItems;
+  };
+  const viewedItems = getViewedItems();
+  console.log(viewedItems);
+  // const memoizedData = useMemo(() => data.slice(0, 12) || [], [data]);
+  // useEffect(() => {
+  //   dispatch(fetchBoardingHouse());
+  // }, []);
+
+  let content = viewedItems.slice(0, 12)?.map((item) => (
+    <div className="item" key={item[0]?.id}>
       <div className="feat_property">
         <div className="thumb">
-          <img className="img-whp" src={item.img} alt="fp1.jpg" />
+          <img className="img-whp" src={item[0]?.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
             <ul className="tag mb0">
-              {item?.saleTag.map((val, i) => (
+              {item[0]?.saleTag.map((val, i) => (
                 <li className="list-inline-item" key={i}>
                   <a href="#">{val}</a>
                 </li>
@@ -81,11 +88,11 @@ const FeaturedProperties = () => {
             {/* End .icon */}
 
             <Link
-              onClick={() => getItem(item.id)}
-              href={`/listing-details-v1/${item.id}`}
+              onClick={() => getItem(item[0]?.id)}
+              href={`/listing-details-v1/${item[0]?.id}`}
               className="fp_price"
             >
-              ${item.price}
+              ${item[0]?.price}
               <small>/mo</small>
             </Link>
           </div>
@@ -94,29 +101,19 @@ const FeaturedProperties = () => {
 
         <div className="details">
           <div className="tc_content">
-            <p className="text-thm">{item.type}</p>
+            <p className="text-thm">{item[0]?.type}</p>
             <h4>
               <Link
-                onClick={() => getItem(item.id)}
-                href={`/listing-details-v1/${item.id}`}
+                onClick={() => getItem(item[0]?.id)}
+                href={`/listing-details-v1/${item[0]?.id}`}
               >
-                {item.title}
+                {item[0]?.title}
               </Link>
             </h4>
             <p>
               <span className="flaticon-placeholder"></span>
-              {item.location}
+              {item[0]?.location}
             </p>
-
-            {/* <ul className="prop_details mb0">
-              {item.itemDetails.map((val, i) => (
-                <li className="list-inline-item" key={i}>
-                  <a href="#">
-                    {val.name}: {val.number}
-                  </a>
-                </li>
-              ))}
-            </ul> */}
           </div>
           {/* End .tc_content */}
 
@@ -124,14 +121,14 @@ const FeaturedProperties = () => {
             <ul className="fp_meta float-start mb0">
               <li className="list-inline-item">
                 <Link href="/agent-v2">
-                  <img src={item.posterAvatar} alt="pposter1.png" />
+                  <img src={item[0]?.posterAvatar} alt="pposter1.png" />
                 </Link>
               </li>
               <li className="list-inline-item">
-                <Link href="/agent-v2">{item.posterName}</Link>
+                <Link href="/agent-v2">{item[0]?.posterName}</Link>
               </li>
             </ul>
-            <div className="fp_pdate float-end">{item.postedYear}</div>
+            <div className="fp_pdate float-end">{item[0]?.postedYear}</div>
           </div>
           {/* End .fp_footer */}
         </div>
@@ -149,4 +146,4 @@ const FeaturedProperties = () => {
   );
 };
 
-export default FeaturedProperties;
+export default RecentlyFeaturedProperties;

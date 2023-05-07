@@ -15,13 +15,13 @@ import axios from 'axios';
 const steps = ['Information', 'Select date time to meet'];
 const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
   const [book, setBook] = useState({
-    firstName: customer.firstName,
-    lastName: customer.lastName,
-    email: customer.email,
-    phoneNumber: customer.phoneNumber,
+    firstName: customer?.firstName,
+    lastName: customer?.lastName,
+    email: customer?.email,
+    phoneNumber: customer?.phoneNumber,
     dateMeet: null,
     userId: posterId,
-    roomId: dataRoom.id,
+    roomId: dataRoom?.id,
   });
 
   const [activeStep, setActiveStep] = React.useState(0);
@@ -42,9 +42,8 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
       newSkipped.delete(activeStep);
     }
     if (activeStep === steps.length - 1) {
-      // console.log('book', book);
       try {
-        await axios.post('http://localhost:5000/lessor/book', book);
+        await axios.post('http://localhost:5000/customer/book', book);
         Swal.fire({
           icon: 'success',
           title: 'Tạo thành công!',

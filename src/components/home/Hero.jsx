@@ -1,7 +1,12 @@
+import { useDispatch } from 'react-redux';
 import GlobalFilter from '../common/GlobalFilter';
 import LookingItem from './LookingItem';
+import { resetData } from '../../features/searching/searchingSlice';
 
 const Hero = () => {
+  const dispatch = useDispatch();
+
+  dispatch(resetData());
   return (
     <section className="home-one home5-overlay home5_bgi5 parallax">
       <div className="container">

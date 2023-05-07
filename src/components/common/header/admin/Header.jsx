@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import HeaderMenuContent from '../common/header/HeaderMenuContent';
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import HeaderMenuContent from "./HeaderMenuContent";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
@@ -14,31 +14,32 @@ const Header = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeBackground);
+    window.addEventListener("scroll", changeBackground);
   }, []);
 
   return (
     // {/* <!-- /.theme-main-menu --> */}
     <header
-      className={`header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu  ${
-        navbar ? 'stricky-fixed ' : ''
+      className={`header-nav menu_style_home_one style2 navbar-scrolltofixed stricky main-menu  ${
+        navbar ? "stricky-fixed " : ""
       }`}
     >
       <div className="container-fluid p0">
-        {/* <!-- Ace Responsive Menu --> */}
-
+        {/* <!-- Menu Toggle btn--> */}
         <Link href="/" className="navbar_brand float-start dn-smd">
+
           <img
             className="logo1 img-fluid"
-            src="/assets/images/header-logo.png"
-            alt="header-logo.png"
+            src="/assets/images/header-logo2.png"
+            alt="header-logo2.png"
           />
           <img
             className="logo2 img-fluid"
             src="/assets/images/header-logo2.png"
             alt="header-logo2.png"
           />
-          <span>BeeHome</span>
+          <span>FindHouse</span>
+
         </Link>
         {/* site logo brand */}
 

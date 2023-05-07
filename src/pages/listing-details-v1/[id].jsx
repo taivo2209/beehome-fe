@@ -14,13 +14,39 @@ import { useSelector } from 'react-redux';
 const ListingDynamicDetailsV1 = () => {
   const [customer, setCustomer] = useState();
   const { data } = useSelector((state) => state.boardingHouses);
+  const dataSearch = useSelector((state) => state.dataSearch);
+
   const router = useRouter();
   const id = router.query.id;
-  const boardingHouseDetail = data?.filter((item) => item.id == id);
+  const boardingHouseDetail =
+    data?.filter((item) => item.id == id) == null
+      ? dataSearch.data?.filter((item) => item.id == id)
+      : data?.filter((item) => item.id == id);
+
+  const saveViewedItem = (item) => {
+    let viewedItems = JSON.parse(localStorage.getItem('viewedItems')) || [];
+
+    // Nếu item đã tồn tại, loại bỏ item này khỏi danh sách
+    viewedItems = viewedItems.filter(
+      (viewedItem) => viewedItem[0]?.id !== item[0]?.id,
+    );
+
+    // Thêm item vào đầu danh sách
+    viewedItems.unshift(item);
+
+    // Giới hạn số lượng item trong danh sách là 6
+    if (viewedItems.length > 6) {
+      viewedItems.pop();
+    }
+
+    localStorage.setItem('viewedItems', JSON.stringify(viewedItems));
+  };
+  // const test = saveViewedItem(boardingHouseDetail);
   const [dataBoarding, setData] = useState({});
   const floorData = useSelector((state) => state.floors);
   useEffect(() => {
-    setData(floorData);
+    saveViewedItem(boardingHouseDetail);
+    setData(data);
   }, []);
   return (
     <>
@@ -136,9 +162,9 @@ const ListingDynamicDetailsV1 = () => {
 
             <div className="col-lg-4 col-xl-4">
               <Sidebar
-                data={dataBoarding}
+                data={floorData}
                 customer={customer}
-                posterId={boardingHouseDetail[0].posterId}
+                posterId={boardingHouseDetail[0]?.posterId}
               />
             </div>
             {/* End sidebar content .col-lg-4 */}

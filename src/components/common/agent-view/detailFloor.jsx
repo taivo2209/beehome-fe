@@ -30,7 +30,7 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
       }}
       subheader={<li />}
     >
-      {data[0].floors.map((itemFloor) => (
+      {data[0]?.floors?.map((itemFloor) => (
         <div key={`section-${itemFloor.floorNumber}`}>
           <ListSubheader>{`Floor ${itemFloor.floorNumber}`}</ListSubheader>
           <Grid

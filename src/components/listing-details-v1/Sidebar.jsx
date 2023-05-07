@@ -11,7 +11,7 @@ const Sidebar = ({ data, customer, posterId }) => {
   const toggle = () => {
     setModal(!modal);
   };
-  console.log('id', posterId);
+  // console.log('id', posterId);
   return (
     <>
       <div className="sidebar_listing_list">

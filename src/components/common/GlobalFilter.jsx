@@ -6,13 +6,85 @@ import {
 import PricingRangeSlider from './PricingRangeSlider';
 import CheckBoxFilter from './CheckBoxFilter';
 import GlobalSelectBox from './GlobalSelectBox';
+import axios from 'axios';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setDistrict,
+  setProvince,
+  setSearchText,
+  setWard,
+  setProvinceData,
+  setWardData,
+  setDistrictData,
+} from '../../features/searching/searchingSlice';
+import { fetchDataSearch } from '../../features/dataSearch/dataSearchSlice';
 
 const GlobalFilter = ({ className = '' }) => {
   // submit handler
-  const submitHandler = () => {
-    Router.push('/listing-grid-v1');
+
+  const dispatch = useDispatch();
+
+  //------------------------------------------------------------------------------
+
+  const [dataProvince, setDataProvince] = useState({});
+  const [dataDistrict, setDataDistrict] = useState({});
+  const [dataWard, setDataWard] = useState({});
+  const [provinceId, setProvinceId] = useState();
+  const [districtId, setDistrictId] = useState();
+  const [wardId, setWardId] = useState();
+
+  const getData = async (type, parentId) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
+      );
+      if (type === 'PROVINCE') {
+        setDataProvince(res.data);
+        dispatch(setProvinceData(res.data));
+        // console.log('data province', dataProvince, parentDistrict);
+      } else if (type === 'DISTRICT') {
+        setDataDistrict(res.data);
+        dispatch(setDistrictData(res.data));
+        // console.log('data district', dataDistrict, parentWard);
+      } else if (type === 'WARD') {
+        setDataWard(res.data);
+        dispatch(setWardData(res.data));
+        // console.log('data ward', dataWard);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  const handleChangeProvinceId = (event) => {
+    setProvinceId(event.target.value);
+    const data = dataProvince.items.find(
+      (option) => option.id == event.target.value,
+    );
+    dispatch(setProvince(data));
+  };
+  const handleChangeDistrictId = (event) => {
+    setDistrictId(event.target.value);
+    const data = dataDistrict.items.find(
+      (option) => option.id == event.target.value,
+    );
+    dispatch(setDistrict(data));
+  };
+  const handleChangeWardId = (event) => {
+    setWardId(event.target.value);
+    const data = dataWard.items.find(
+      (option) => option.id == event.target.value,
+    );
+    dispatch(setWard(data));
+  };
+  const { data } = useSelector((state) => state.searching);
+
+  const submitHandler = () => {
+    Router.push('/listing-grid-v1');
+
+    dispatch(fetchDataSearch(data));
+  };
   return (
     <div className={`home1-advnc-search ${className}`}>
       <ul className="h1ads_1st_list mb0">
@@ -22,7 +94,7 @@ const GlobalFilter = ({ className = '' }) => {
               type="text"
               className="form-control"
               placeholder="Enter keyword..."
-              onChange={(e) => dispatch(addKeyword(e.target.value))}
+              onChange={(e) => dispatch(setSearchText(e.target.value))}
             />
           </div>
         </li>
@@ -31,14 +103,20 @@ const GlobalFilter = ({ className = '' }) => {
         <li className="list-inline-item">
           <div className="search_option_two">
             <div className="candidate_revew_select">
-              <select className="selectpicker w100 form-select show-tick">
-                <option value="">Property Type</option>
-                <option>Apartment</option>
-                <option>Bungalow</option>
-                <option>Condo</option>
-                <option>House</option>
-                <option>Land</option>
-                <option>Single Family</option>
+              <select
+                className="selectpicker w100 form-select show-tick"
+                data-live-search="true"
+                data-width="100%"
+                onClick={() => getData('PROVINCE', 1)}
+                value={provinceId}
+                onChange={handleChangeProvinceId}
+              >
+                <option value="">Province</option>
+                {dataProvince?.items?.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -50,14 +128,20 @@ const GlobalFilter = ({ className = '' }) => {
         <li className="list-inline-item">
           <div className="search_option_two">
             <div className="candidate_revew_select">
-              <select className="selectpicker w100 form-select show-tick">
-                <option value="">Property Type</option>
-                <option>Apartment</option>
-                <option>Bungalow</option>
-                <option>Condo</option>
-                <option>House</option>
-                <option>Land</option>
-                <option>Single Family</option>
+              <select
+                className="selectpicker w100 form-select show-tick"
+                data-live-search="true"
+                data-width="100%"
+                onClick={() => getData('DISTRICT', provinceId)}
+                value={districtId}
+                onChange={handleChangeDistrictId}
+              >
+                <option value="">District</option>
+                {dataDistrict?.items?.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -68,14 +152,20 @@ const GlobalFilter = ({ className = '' }) => {
         <li className="list-inline-item">
           <div className="search_option_two">
             <div className="candidate_revew_select">
-              <select className="selectpicker w100 form-select show-tick">
-                <option value="">Property Type</option>
-                <option>Apartment</option>
-                <option>Bungalow</option>
-                <option>Condo</option>
-                <option>House</option>
-                <option>Land</option>
-                <option>Single Family</option>
+              <select
+                className="selectpicker w100 form-select show-tick"
+                data-live-search="true"
+                data-width="100%"
+                value={wardId}
+                onClick={() => getData('WARD', districtId)}
+                onChange={handleChangeWardId}
+              >
+                <option value="">Ward</option>
+                {dataWard?.items?.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
