@@ -51,7 +51,7 @@ const Form = () => {
         <h3>Login to your account</h3>
         <p className="text-center">
           Dont have an account?{' '}
-          <Link href="/register" className="text-thm">
+          <Link href="/register-customer" className="text-thm">
             Sign Up!
           </Link>
         </p>

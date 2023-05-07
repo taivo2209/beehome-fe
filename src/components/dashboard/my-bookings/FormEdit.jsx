@@ -9,7 +9,7 @@ function FormEdit({ id, getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('PROCESSING');
 
   const accessToken = useSelector((state) => state.auth.accessToken);
 
@@ -70,6 +70,7 @@ function FormEdit({ id, getData }) {
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option disabled>Select</option>
+                  <option value="PROCESSING">PROCESSING</option>
                   <option value="APPROVED">APPROVED</option>
                   <option value="DONE">DONE</option>
                   <option value="MISSING">MISSING</option>
@@ -83,11 +84,6 @@ function FormEdit({ id, getData }) {
             </div>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );

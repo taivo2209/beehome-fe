@@ -1,9 +1,34 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import MyAccount from './MyAccount';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const HeaderMenuContent = ({ float = '' }) => {
   const route = useRouter();
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  const [data, setData] = useState([]);
+  let path = data?.avatar;
+  let newPath = path?.replace(/\\/g, '/');
+
+  const getData = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/lessor/profile', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setData(res.data);
+      // console.log(accessToken);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const home = [
     {
@@ -465,8 +490,10 @@ const HeaderMenuContent = ({ float = '' }) => {
           <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
             <img
               className="rounded-circle"
-              src="/assets/images/team/e1.png"
-              alt="e1.png"
+              src={newPath}
+              alt="img"
+              width={45}
+              height={45}
             />
             <span className="dn-1199 ms-1"></span>
           </a>

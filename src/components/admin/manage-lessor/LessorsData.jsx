@@ -4,16 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
 import Swal from 'sweetalert2';
+import Pagination from '../../common/Pagination';
 
 const LessorsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   // const dispatch = useDispatch();
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/admin/lessor?page=1&limit=20',
+        `http://localhost:5000/admin/lessor?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -28,7 +30,12 @@ const LessorsData = () => {
     }
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   useEffect(() => {
+    handlePageChange(currentPage);
     getData();
   }, []);
 
@@ -135,6 +142,13 @@ const LessorsData = () => {
         </tbody>
         {/* End tbody */}
       </table>
+      <div className="mbp_pagination">
+        <Pagination
+          pageSize={data?.meta?.totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </>
   );
 };
