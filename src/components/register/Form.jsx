@@ -73,7 +73,7 @@ const Form = () => {
       <div className="form-group input-group  ">
         <select
           value={role}
-          className="form-control"
+          className="selectpicker form-select"
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="customer">Customer</option>

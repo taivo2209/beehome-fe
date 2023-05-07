@@ -6,19 +6,19 @@ import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
 import Pagination from './Pagination';
-import { paginate } from '../../../utils/paginate';
+// import { paginate } from '../../../utils/paginate';
 
 const TagsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
-  const pageSize = 5;
+  // const pageSize = 5;
   const [currentPage, setCurrentPage] = useState(1);
   // const dispatch = useDispatch();
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/tag?page=1&limit=20',
+        `http://localhost:5000/lessor/tag?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -40,8 +40,6 @@ const TagsData = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
-  const paginateData = paginate(data?.items, currentPage, pageSize);
 
 
   const handleDelete = async (tagId) => {
@@ -96,8 +94,8 @@ const TagsData = () => {
         {/* End thead */}
 
         <tbody>
-          {paginateData &&
-            paginateData.map((item) => (
+          {data?.items &&
+            data?.items?.map((item) => (
               <tr key={item.id} className="title" scope="row">
                 <td>{item.name}</td>
                 <td className="dn-lg"></td>
@@ -154,8 +152,8 @@ const TagsData = () => {
       </table>
       <div className="mbp_pagination">
         <Pagination
-          items={data?.items?.length}
-          pageSize={pageSize}
+          items={data?.meta?.itemCount}
+          pageSize={data?.meta?.totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />

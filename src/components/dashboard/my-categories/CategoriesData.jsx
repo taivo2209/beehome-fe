@@ -6,7 +6,7 @@ import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import { setCategories } from '../../../features/categories/categoriesSlice';
 import Swal from 'sweetalert2';
-import Pagination from './Pagination';
+import Pagination from '../my-tags/Pagination';
 import { paginate } from '../../../utils/paginate';
 
 const CategoriesData = () => {
@@ -42,7 +42,7 @@ const CategoriesData = () => {
   };
 
   const paginateData = paginate(data?.items, currentPage, pageSize);
-  // console.log('=====', data?.items?.length);
+  console.log('=====', paginateData);
 
   const handleDelete = async (categoryId) => {
     try {
