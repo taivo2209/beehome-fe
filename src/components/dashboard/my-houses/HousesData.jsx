@@ -5,12 +5,14 @@ import FormView from './FormView';
 import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
+import Pagination from '../../common/Pagination';
 
 // import { setCategories } from '../../../features/categories/categoriesSlice';
 
 const HousesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getData = async () => {
     try {
@@ -29,9 +31,14 @@ const HousesData = () => {
     }
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   useEffect(() => {
+    handlePageChange(currentPage);
     getData();
-  }, []);
+  }, [currentPage]);
 
   const handleDelete = async (houseId) => {
     try {
@@ -134,6 +141,13 @@ const HousesData = () => {
         </tbody>
         {/* End tbody */}
       </table>
+      <div className="mbp_pagination">
+        <Pagination
+          pageSize={data?.meta?.totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </>
   );
 };

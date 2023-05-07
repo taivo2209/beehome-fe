@@ -6,15 +6,18 @@ import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import { setAttributes } from '../../../features/attributes/attributesSlice';
 import Swal from 'sweetalert2';
+import Pagination from '../../common/Pagination';
 
 const AttributesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/roomAttribute?page=1&limit=20',
+        `http://localhost:5000/lessor/roomAttribute?page=${currentPage}&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -29,9 +32,14 @@ const AttributesData = () => {
     }
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   useEffect(() => {
+    handlePageChange(currentPage);
     getData();
-  }, []);
+  }, [currentPage]);
 
   const handleDelete = async (categoryId) => {
     try {
@@ -147,6 +155,13 @@ const AttributesData = () => {
         </tbody>
         {/* End tbody */}
       </table>
+      <div className="mbp_pagination">
+        <Pagination
+          pageSize={data?.meta?.totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </div>
     </>
   );
 };

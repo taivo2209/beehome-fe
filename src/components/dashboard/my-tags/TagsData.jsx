@@ -5,13 +5,11 @@ import FormView from './FormView';
 import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
-import Pagination from './Pagination';
-// import { paginate } from '../../../utils/paginate';
+import Pagination from '../../common/Pagination';
 
 const TagsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
-  // const pageSize = 5;
   const [currentPage, setCurrentPage] = useState(1);
   // const dispatch = useDispatch();
 
@@ -32,15 +30,15 @@ const TagsData = () => {
       console.log(err);
     }
   };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+  
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
+  useEffect(() => {
+    handlePageChange(currentPage);
+    getData();
+  }, [currentPage]);
 
   const handleDelete = async (tagId) => {
     try {
@@ -152,7 +150,6 @@ const TagsData = () => {
       </table>
       <div className="mbp_pagination">
         <Pagination
-          items={data?.meta?.itemCount}
           pageSize={data?.meta?.totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
