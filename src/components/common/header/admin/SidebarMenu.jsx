@@ -26,7 +26,7 @@ const SidebarMenu = () => {
   return <>
     <ul className="sidebar-menu">
       <li className="sidebar_header header">
-        <Link href="/">
+        <Link href="/manage-lessor">
 
           <img
             src="/assets/images/header-logo2.png"
