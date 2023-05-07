@@ -5,13 +5,13 @@ import FeaturedListings from '../common/listing/FeaturedListings';
 import FeatureProperties from '../common/listing/FeatureProperties';
 import { useEffect, useState } from 'react';
 import DetailBoardingHouse from '../common/agent-view/detailBoardingHouse';
-const Sidebar = ({ data }) => {
+const Sidebar = ({ data, customer, posterId }) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => {
     setModal(!modal);
   };
-
+  // console.log('id', posterId);
   return (
     <>
       <div className="sidebar_listing_list">
@@ -31,7 +31,13 @@ const Sidebar = ({ data }) => {
               Xem phòng trống
             </button>
           </div>
-          <DetailBoardingHouse isOpen={modal} toggle={toggle} data={data} />
+          <DetailBoardingHouse
+            isOpen={modal}
+            toggle={toggle}
+            data={data}
+            customer={customer}
+            posterId={posterId}
+          />
         </div>
       </div>
 

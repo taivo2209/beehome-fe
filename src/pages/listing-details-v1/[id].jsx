@@ -7,25 +7,46 @@ import Footer from '../../components/common/footer/Footer';
 import Header from '../../components/common/header/DefaultHeader';
 import MobileMenu from '../../components/common/header/MobileMenu';
 import PopupSignInUp from '../../components/common/PopupSignInUp';
-import properties from '../../data/properties';
 import DetailsContent from '../../components/listing-details-v1/DetailsContent';
 import Sidebar from '../../components/listing-details-v1/Sidebar';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { removeFloor, setFloor } from '../../features/floor/floorSlice';
+import { useSelector } from 'react-redux';
 
 const ListingDynamicDetailsV1 = () => {
-  const boardingHouseData = useSelector((state) => state.boardingHouses);
+  const [customer, setCustomer] = useState();
+  const { data } = useSelector((state) => state.boardingHouses);
+  const dataSearch = useSelector((state) => state.dataSearch);
+
   const router = useRouter();
   const id = router.query.id;
-  const boardingHouseDetail = boardingHouseData[0].filter(
-    (item) => item.id == id,
-  );
-  const dispatch = useDispatch();
-  const [data, setData] = useState({});
+  const boardingHouseDetail =
+    data?.filter((item) => item.id == id) == null
+      ? dataSearch.data?.filter((item) => item.id == id)
+      : data?.filter((item) => item.id == id);
+
+  const saveViewedItem = (item) => {
+    let viewedItems = JSON.parse(localStorage.getItem('viewedItems')) || [];
+
+    // Nếu item đã tồn tại, loại bỏ item này khỏi danh sách
+    viewedItems = viewedItems.filter(
+      (viewedItem) => viewedItem[0]?.id !== item[0]?.id,
+    );
+
+    // Thêm item vào đầu danh sách
+    viewedItems.unshift(item);
+
+    // Giới hạn số lượng item trong danh sách là 6
+    if (viewedItems.length > 6) {
+      viewedItems.pop();
+    }
+
+    localStorage.setItem('viewedItems', JSON.stringify(viewedItems));
+  };
+  // const test = saveViewedItem(boardingHouseDetail);
+  const [dataBoarding, setData] = useState({});
   const floorData = useSelector((state) => state.floors);
   useEffect(() => {
-    setData(floorData);
+    saveViewedItem(boardingHouseDetail);
+    setData(data);
   }, []);
   return (
     <>
@@ -131,6 +152,8 @@ const ListingDynamicDetailsV1 = () => {
           <div className="row">
             <div className="col-md-12 col-lg-8">
               <DetailsContent
+                customer={customer}
+                setCustomer={setCustomer}
                 dataDetail={boardingHouseDetail[0]}
                 boardingHouseId={id}
               />
@@ -138,7 +161,11 @@ const ListingDynamicDetailsV1 = () => {
             {/* End details content .col-lg-8 */}
 
             <div className="col-lg-4 col-xl-4">
-              <Sidebar data={data} />
+              <Sidebar
+                data={floorData}
+                customer={customer}
+                posterId={boardingHouseDetail[0]?.posterId}
+              />
             </div>
             {/* End sidebar content .col-lg-4 */}
           </div>

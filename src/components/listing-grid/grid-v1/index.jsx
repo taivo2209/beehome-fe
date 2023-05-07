@@ -1,15 +1,15 @@
-import Pagination from "../../common/blog/Pagination";
-import CopyrightFooter from "../../common/footer/CopyrightFooter";
-import Footer from "../../common/footer/Footer";
-import Header from "../../common/header/DefaultHeader";
-import MobileMenu from "../../common/header/MobileMenu";
-import FilterTopBar from "../../common/listing/FilterTopBar";
-import GridListButton from "../../common/listing/GridListButton";
-import ShowFilter from "../../common/listing/ShowFilter";
-import SidebarListing from "../../common/listing/SidebarListing";
-import PopupSignInUp from "../../common/PopupSignInUp";
-import BreadCrumb2 from "./BreadCrumb2";
-import FeaturedItem from "./FeaturedItem";
+import Pagination from '../../common/blog/Pagination';
+import CopyrightFooter from '../../common/footer/CopyrightFooter';
+import Footer from '../../common/footer/Footer';
+import Header from '../../common/header/DefaultHeader';
+import MobileMenu from '../../common/header/MobileMenu';
+import FilterTopBar from '../../common/listing/FilterTopBar';
+import GridListButton from '../../common/listing/GridListButton';
+import ShowFilter from '../../common/listing/ShowFilter';
+import SidebarListing from '../../common/listing/SidebarListing';
+import PopupSignInUp from '../../common/PopupSignInUp';
+import BreadCrumb2 from './BreadCrumb2';
+import FeaturedItem from './FeaturedItem';
 
 const index = () => {
   return (
@@ -38,9 +38,7 @@ const index = () => {
               </div>
               {/* End list grid */}
 
-              <div className="dn db-991 mt30 mb0">
-                <ShowFilter />
-              </div>
+              <div className="dn db-991 mt30 mb0">{/* <ShowFilter /> */}</div>
               {/* ENd button for mobile sidebar show  */}
             </div>
             {/* End .col filter grid list */}

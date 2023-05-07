@@ -7,9 +7,23 @@ import {
   Typography,
 } from '@mui/material';
 import React from 'react';
-import FormInfoBookDayToMeet from './FormBookDayToMeet';
-const steps = ['Information', 'Select date time to meet', 'Create an ad'];
-const FormBookDayToMeet = () => {
+import FormInfoBookDayToMeet from './FormInfo';
+import FormDateSelect from './FromDateSelect';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+const steps = ['Information', 'Select date time to meet'];
+const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
+  const [book, setBook] = useState({
+    firstName: customer?.firstName,
+    lastName: customer?.lastName,
+    email: customer?.email,
+    phoneNumber: customer?.phoneNumber,
+    dateMeet: null,
+    userId: posterId,
+    roomId: dataRoom?.id,
+  });
+
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -21,11 +35,30 @@ const FormBookDayToMeet = () => {
     return skipped.has(step);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
+    }
+    if (activeStep === steps.length - 1) {
+      try {
+        await axios.post('http://localhost:5000/customer/book', book);
+        Swal.fire({
+          icon: 'success',
+          title: 'Tạo thành công!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Đã xảy ra lỗi!',
+          text: 'Vui lòng thử lại sau.',
+          confirmButtonText: 'OK',
+        });
+        console.log(error);
+      }
     }
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -89,8 +122,11 @@ const FormBookDayToMeet = () => {
         ) : (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
-              {activeStep}
-              {activeStep == 0 ? <FormInfoBookDayToMeet /> : activeStep + 2}
+              {activeStep == 0 ? (
+                <FormDateSelect customer={book} setBook={setBook} />
+              ) : (
+                <FormInfoBookDayToMeet customer={book} setBook={setBook} />
+              )}
             </Typography>
 
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
@@ -103,11 +139,11 @@ const FormBookDayToMeet = () => {
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
-              {isStepOptional(activeStep) && (
+              {/* {isStepOptional(activeStep) && (
                 <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                   Skip
                 </Button>
-              )}
+              )} */}
               <Button onClick={handleNext}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>

@@ -13,11 +13,15 @@ import PropertyRule from '../common/listing-details/PropertyRule';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-const DetailsContent = ({ dataDetail, boardingHouseId }) => {
+const DetailsContent = ({
+  dataDetail,
+  boardingHouseId,
+  setCustomer,
+  customer,
+}) => {
   const [comments, setComment] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
   const accessToken = useSelector((state) => state.auth.accessToken);
-  const [customer, setCustomer] = useState();
 
   const checkLogin = async () => {
     try {
@@ -39,7 +43,6 @@ const DetailsContent = ({ dataDetail, boardingHouseId }) => {
       const res = await axios.get(
         `http://localhost:5000/customer/comment/${boardingHouseId}`,
       );
-      //  setComment(dataDetail?.comment?.slice(0, 4));
 
       setCommentsData(res.data?.commentToBoardingHouses);
       setComment(res.data?.commentToBoardingHouses.slice(0, 4));
@@ -49,7 +52,6 @@ const DetailsContent = ({ dataDetail, boardingHouseId }) => {
   };
   useEffect(() => {
     getData();
-    console.log('data ne duyy', boardingHouseId);
   }, [boardingHouseId]);
   useEffect(() => {
     checkLogin();

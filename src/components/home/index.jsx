@@ -4,11 +4,11 @@ import Footer from '../common/footer/Footer';
 import MobileMenu from '../common/header/MobileMenu';
 import Partners from '../common/Partners';
 import FeaturedProperties from './FeaturedProperties';
-// import FindProperties from "./FindProperties";
 import Header from './Header';
 import Hero from './Hero';
 import WhyChoose from '../common/WhyChoose';
 import PopupSignInUp from '../common/PopupSignInUp';
+import RecentlyFeaturedProperties from './RecentlyFeaturedProperties';
 
 const Index = () => {
   return (
@@ -54,7 +54,7 @@ const Index = () => {
             </div>
             <div className="col-lg-12">
               <div className="feature_property_slider gutter-x15">
-                <FeaturedProperties />
+                <RecentlyFeaturedProperties />
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@ const Index = () => {
             </div>
             <div className="col-lg-12">
               <div className="feature_property_slider gutter-x15">
-                <FeaturedProperties />
+                {/* <FeaturedProperties /> */}
               </div>
             </div>
           </div>

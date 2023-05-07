@@ -6,7 +6,7 @@ import DetailRoom from './detailRoom';
 import { useState } from 'react';
 import FormBookDayToMeet from './formToMeet';
 
-const DetailBoardingHouse = ({ isOpen, toggle, data }) => {
+const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
   const { className } = PropTypes.string;
   const closeBtn = (
     <button className="close" onClick={() => handleToggle()} type="button">
@@ -32,7 +32,6 @@ const DetailBoardingHouse = ({ isOpen, toggle, data }) => {
   };
   //-----------------------------------------------------------------------------------------
 
-  console.log(detailIsOpen);
   return (
     <Modal
       isOpen={isOpen}
@@ -54,7 +53,11 @@ const DetailBoardingHouse = ({ isOpen, toggle, data }) => {
         }}
       >
         {formToMeet ? (
-          <FormBookDayToMeet />
+          <FormBookDayToMeet
+            customer={customer}
+            dataRoom={dataRoom}
+            posterId={posterId}
+          />
         ) : detailIsOpen ? (
           <DetailRoom openFormToMeet={HandleFormToMeet} dataRoom={dataRoom} />
         ) : (

@@ -10,6 +10,12 @@ import categoriesSlice from '../features/categories/categoriesSlice';
 import attributesSlice from '../features/attributes/attributesSlice';
 import floorSlice from '../features/floor/floorSlice';
 import boardingHouseSlice from '../features/boardingHouse/boardingHouseSlice';
+import customerSlice from '../features/customer/customerSlice';
+import commentSlice from '../features/comment/commentSlice';
+import searchingSlice from '../features/searching/searchingSlice';
+import dataSearchSlice from '../features/dataSearch/dataSearchSlice';
+// import commentSlice from '../features/comment/commentSlice';
+
 const persistConfig = {
   key: 'root',
   storage,
@@ -22,7 +28,11 @@ const rootReducer = combineReducers({
   categories: categoriesSlice,
   attributes: attributesSlice,
   boardingHouses: boardingHouseSlice,
+  customer: customerSlice,
+  comment: commentSlice,
   floors: floorSlice,
+  searching: searchingSlice,
+  dataSearch: dataSearchSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

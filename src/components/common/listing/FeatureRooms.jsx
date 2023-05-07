@@ -11,7 +11,6 @@ const FeatureRooms = ({ openFormToMeet, dataRoom }) => {
     autoplay: false,
     speed: 1000,
   };
-  console.log('data ne', dataRoom);
 
   return (
     <>
