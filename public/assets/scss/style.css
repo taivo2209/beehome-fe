@@ -55,7 +55,7 @@
   }
 }
 
-.overlay {
+/* .overlay {
   visibility: hidden;
   opacity: 0;
   position: fixed;
@@ -65,7 +65,7 @@
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
-}
+} */
 .popup {
   margin: 70px auto;
   padding: 20px;

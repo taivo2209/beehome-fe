@@ -9,6 +9,8 @@ import Hero from './Hero';
 import WhyChoose from '../common/WhyChoose';
 import PopupSignInUp from '../common/PopupSignInUp';
 import RecentlyFeaturedProperties from './RecentlyFeaturedProperties';
+import FindProperties from './FindProperties';
+// import FindProperties from '../../data/findProperties';
 
 const Index = () => {
   return (
@@ -83,17 +85,19 @@ const Index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center">
-                <h2>Find Properties in These Cities</h2>
+                <h2>Địa điểm nổi bật</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
           </div>
-          <div className="row">{/* <FindProperties /> */}</div>
+          <div className="row">
+            <FindProperties />
+          </div>
         </div>
       </section>
 
       {/* <!-- Why Chose Us --> */}
-      <section id="why-chose" className="whychose_us bgc-f7 pb30">
+      {/* <section id="why-chose" className="whychose_us bgc-f7 pb30">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -107,10 +111,10 @@ const Index = () => {
             <WhyChoose />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Our Blog --> */}
-      <section className="our-blog bgc-f7 pb30">
+      {/* <section className="our-blog bgc-f7 pb30">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -121,7 +125,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Our Partners --> */}
       <section id="our-partners" className="our-partners">
