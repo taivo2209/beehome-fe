@@ -1,16 +1,17 @@
-import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const Form = () => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNum, setPhoneNum] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNum, setPhoneNum] = useState('');
+  const [birthDate, setBirthDate] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
@@ -20,13 +21,25 @@ const Form = () => {
       password: password,
       birthDate: birthDate,
       phoneNumber: phoneNum,
-    }
-    const url = "https://localhost:5000/customer/auth/register"
+    };
+    const url = 'https://localhost:5000/customer/auth/register';
     try {
       const res = await axios.post(url, data);
       // console.log(res.data);
-      router.push("/login");
+      Swal.fire({
+        icon: 'success',
+        title: 'Đăng ký thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      router.push('/login');
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Vui lòng nhập đầy đủ thông tin!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.log(err);
     }
   };
@@ -35,7 +48,7 @@ const Form = () => {
       <div className="heading text-center">
         <h3>Register to your account as a Customer</h3>
         <p className="text-center">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link href="/login" className="text-thm">
             Login
           </Link>

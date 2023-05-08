@@ -66,7 +66,7 @@ function FormEdit({ id, getData }) {
       // console.log(res.data); // log response data to the console
       Swal.fire({
         icon: 'success',
-        title: 'Sửa thành công!',
+        title: 'Cập nhật thành công!',
         showConfirmButton: false,
         timer: 1500,
       });

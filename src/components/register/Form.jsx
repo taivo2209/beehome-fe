@@ -2,6 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const Form = () => {
   const router = useRouter();
@@ -14,8 +15,20 @@ const Form = () => {
     try {
       const res = await axios.post(url, { email, password});
       // console.log(res.data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Đăng ký thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       router.push("/login");
     } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Vui lòng nhập đầy đủ thông tin!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.log(err);
     }
   };
