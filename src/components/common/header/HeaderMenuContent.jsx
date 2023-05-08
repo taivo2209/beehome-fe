@@ -1,8 +1,12 @@
+import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import CustomerAccount from './CustomerAccount';
 
 const HeaderMenuContent = ({ float = '' }) => {
   const route = useRouter();
+  const [customer, setCustomer] = useState({});
 
   const home = [
     {
@@ -232,6 +236,26 @@ const HeaderMenuContent = ({ float = '' }) => {
     { id: 10, name: 'Terms & Conditions', routerPath: '/terms' },
   ];
 
+  const checkLogin = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/customer/auth/current`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
+      setCustomer(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   return (
     <ul
       id="respMenu"
@@ -458,11 +482,33 @@ const HeaderMenuContent = ({ float = '' }) => {
       </li> */}
       {/* End .dropitem */}
 
-      <li className={`list-inline-item list_s ${float}`}>
-        <Link href="/login" className="btn flaticon-user">
-          <span className="dn-lg">Login/Register</span>
-        </Link>
-      </li>
+      {customer != null ? (
+        <li className="user_setting">
+          <div className="dropdown">
+            <a
+              className="btn dropdown-toggle"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                className="rounded-circle"
+                src="/assets/images/team/e1.png"
+                alt="img"
+              />
+              <span className="dn-1199 ms-1"></span>
+            </a>
+            <div className="dropdown-menu">
+              <CustomerAccount />
+            </div>
+          </div>
+        </li>
+      ) : (
+        <li className={`list-inline-item list_s ${float}`}>
+          <Link href="/login" className="btn flaticon-user">
+            <span className="dn-lg">Login/Register</span>
+          </Link>
+        </li>
+      )}
       {/* End .dropitem */}
 
       {/* <li className={`list-inline-item add_listing ${float}`}>

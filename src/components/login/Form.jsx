@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAccessToken } from '../../features/auth/authSlice';
+import Swal from 'sweetalert2';
 
 const Form = () => {
   const router = useRouter();
@@ -32,6 +33,12 @@ const Form = () => {
 
       // Do something with the response, such as redirecting to a dashboard page
       dispatch(setAccessToken(res.data.accessToken));
+      Swal.fire({
+        icon: 'success',
+        title: 'Đăng nhập thành công!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       if (role === 'lessor') {
         router.push('/my-houses');
       } else if (role === 'customer') {
@@ -40,6 +47,12 @@ const Form = () => {
         router.push('/manage-lessor');
       }
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Sai tài khoản hoặc mật khẩu',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       console.error(error);
       // Handle the error, such as displaying an error message to the user
     }

@@ -39,29 +39,29 @@ const BookingsData = () => {
     getData();
   }, [currentPage]);
 
-  const handleDelete = async (bookingId) => {
-    try {
-      const res = await axios.delete(
-        `http://localhost:5000/lessor/book/${bookingId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      // console.log(res.data);
-      // Call getData() again to update the table after deletion
-      getData();
-      Swal.fire({
-        icon: 'success',
-        title: 'Xóa thành công!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // const handleDelete = async (bookingId) => {
+  //   try {
+  //     const res = await axios.delete(
+  //       `http://localhost:5000/lessor/book/${bookingId}`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${accessToken}`,
+  //         },
+  //       },
+  //     );
+  //     // console.log(res.data);
+  //     // Call getData() again to update the table after deletion
+  //     getData();
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: 'Xóa thành công!',
+  //       showConfirmButton: false,
+  //       timer: 1500,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const getStatusColor = (status) => {
     if (status === 'DONE' || status === 'APPROVED') {
@@ -128,7 +128,7 @@ const BookingsData = () => {
                         <FormEdit id={item.id} getData={getData} />
                       </a>
                     </li>
-                    <li
+                    {/* <li
                       className="list-inline-item"
                       data-toggle="tooltip"
                       data-placement="top"
@@ -140,7 +140,7 @@ const BookingsData = () => {
                           onClick={() => handleDelete(item.id)}
                         ></span>
                       </a>
-                    </li>
+                    </li> */}
                   </ul>
                 </td>
               </tr>
