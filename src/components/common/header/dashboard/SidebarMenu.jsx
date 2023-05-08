@@ -13,6 +13,7 @@ const SidebarMenu = () => {
     { id: 2, name: "Categories", route: "/my-categories" },
     { id: 3, name: "Attributes", route: "/my-attributes" },
     { id: 4, name: "Tags", route: "/my-tags" },
+    { id: 5, name: "Bookings", route: "/my-bookings" },
   ];
 
   const manageAccount = [

@@ -1,23 +1,21 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
-import FormAdd from './FormAdd';
-import { setAttributes } from '../../../features/attributes/attributesSlice';
 import Swal from 'sweetalert2';
 import Pagination from '../../common/Pagination';
 
-const AttributesData = () => {
+const BookingsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
-  const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  // const dispatch = useDispatch();
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/roomAttribute?page=${currentPage}&limit=20`,
+        `http://localhost:5000/lessor/book?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -25,7 +23,7 @@ const AttributesData = () => {
         },
       );
       setData(res.data);
-      dispatch(setAttributes(res.data.items));
+      // dispatch(setCategories(res.data.items));
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -41,10 +39,10 @@ const AttributesData = () => {
     getData();
   }, [currentPage]);
 
-  const handleDelete = async (categoryId) => {
+  const handleDelete = async (bookingId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/lessor/roomAttribute/${categoryId}`,
+        `http://localhost:5000/lessor/book/${bookingId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -65,51 +63,46 @@ const AttributesData = () => {
     }
   };
 
+  const getStatusColor = (status) => {
+    if (status === 'DONE' || status === 'APPROVED') {
+      return 'text-success';
+    } else if (status === 'MISSING') {
+      return 'text-danger';
+    } else {
+      return 'text-warning';
+    }
+  };
+
   return (
     <>
-      <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-        <ul className="sasw_list mb0">
-          {/* <button className={`list-inline-item add_listing`} style={{
-                      border: 'none', backgroundColor:'#ee7b35', padding:'10px', color:'white', borderRadius:'30px'
-                    }}>
-                        <span className="flaticon-plus"></span>
-                        <span className="dn-lg"> Create Categories</span>
-                    </button> */}
-          <FormAdd getData={getData} />
-        </ul>
-      </div>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Attributes</th>
-            {/* <th className="dn-lg" scope="col"></th>
-          <th className="dn-lg" scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th> */}
+            <th scope="col">Booking</th>
+            <th className="dn-lg" scope="col"></th>
+            <th className="dn-lg" scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
             <th scope="col">Created</th>
+            <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         {/* End thead */}
 
         <tbody>
-          {data.items &&
-            data.items.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  {item.roomAttributeDetails.map((roomAttributeDetails, i) => (
-                    <tr key={i}>
-                      <td>{roomAttributeDetails.name}</td>
-                      <td className="dn-lg"></td>
-                      <td className="dn-lg"></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                  ))}
-                </td>
+          {data?.items &&
+            data?.items?.map((item) => (
+              <tr key={item.id} className="title" scope="row">
+                <td>{item.email}</td>
+                <td className="dn-lg"></td>
+                <td className="dn-lg"></td>
+                <td></td>
+                <td></td>
                 <td className="para">
                   {new Date(item.createdAt).toLocaleDateString()}
                 </td>
+                <td className={getStatusColor(item.status)}>{item.status}</td>
                 <td>
                   <ul className="view_edit_delete_list mb0">
                     <li
@@ -119,8 +112,8 @@ const AttributesData = () => {
                       title="View"
                     >
                       <a href="#">
-                        {/* <span className="flaticon-view"></span> */}
-                        <FormView id={item.id} />
+                        <span className="flaticon-view"></span>
+                        {/* <FormView id={item.id} /> */}
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>
@@ -166,4 +159,4 @@ const AttributesData = () => {
   );
 };
 
-export default AttributesData;
+export default BookingsData;

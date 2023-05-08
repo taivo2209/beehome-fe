@@ -51,7 +51,7 @@ const Form = () => {
         <h3>Login to your account</h3>
         <p className="text-center">
           Dont have an account?{' '}
-          <Link href="/register" className="text-thm">
+          <Link href="/register-customer" className="text-thm">
             Sign Up!
           </Link>
         </p>
@@ -89,10 +89,10 @@ const Form = () => {
         </div>
       </div>
 
-      <div className="form-group input-group  ">
+      <div className="form-group input-group">
         <select
           value={role}
-          className="form-control"
+          className="selectpicker form-select"
           onChange={(e) => setRole(e.target.value)}
         >
           <option value="customer">Customer</option>

@@ -7,12 +7,23 @@ const Form = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let url = "http://localhost:5000/lessor/auth/register";
+    const data = {
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      birthDate: birthDate,
+      phoneNumber: phoneNum,
+    }
+    const url = "https://localhost:5000/customer/auth/register"
     try {
-      const res = await axios.post(url, { email, password});
+      const res = await axios.post(url, data);
       // console.log(res.data);
       router.push("/login");
     } catch (err) {
@@ -22,7 +33,7 @@ const Form = () => {
   return (
     <form action="#" onSubmit={handleSubmit}>
       <div className="heading text-center">
-        <h3>Register to your account as a Lessor</h3>
+        <h3>Register to your account as a Customer</h3>
         <p className="text-center">
           Already have an account?{" "}
           <Link href="/login" className="text-thm">
@@ -33,7 +44,7 @@ const Form = () => {
       {/* End .heading */}
       {/* End .form-group */}
 
-      <div className="form-group input-group">
+      <div className="form-group input-group  ">
         <input
           type="email"
           className="form-control"
@@ -62,6 +73,50 @@ const Form = () => {
             <i className="flaticon-password"></i>
           </div>
         </div>
+      </div>
+      {/* End .form-group */}
+
+      <div className="form-group input-group  ">
+        <input
+          type="text"
+          className="form-control"
+          required
+          placeholder="First Name"
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </div>
+      {/* End .form-group */}
+
+      <div className="form-group input-group  ">
+        <input
+          type="text"
+          className="form-control"
+          required
+          placeholder="Last Name"
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </div>
+      {/* End .form-group */}
+
+      <div className="form-group input-group  ">
+        <input
+          type="text"
+          className="form-control"
+          required
+          placeholder="Phone Number"
+          onChange={(e) => setPhoneNum(e.target.value)}
+        />
+      </div>
+      {/* End .form-group */}
+
+      <div className="form-group input-group  ">
+        <input
+          type="text"
+          className="form-control"
+          required
+          placeholder="Birth Date (YYYY-MM-DD)"
+          onChange={(e) => setBirthDate(e.target.value)}
+        />
       </div>
       {/* End .form-group */}
 

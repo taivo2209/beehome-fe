@@ -6,20 +6,18 @@ import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import { setCategories } from '../../../features/categories/categoriesSlice';
 import Swal from 'sweetalert2';
-import Pagination from './Pagination';
-import { paginate } from '../../../utils/paginate';
+import Pagination from '../../common/Pagination';
 
 const CategoriesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/category?page=1&limit=20',
+        `http://localhost:5000/lessor/category?page=${currentPage}&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -35,14 +33,12 @@ const CategoriesData = () => {
   };
 
   useEffect(() => {
+    handlePageChange(currentPage);
     getData();
-  }, []);
+  }, [currentPage]);
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
-  const paginateData = paginate(data?.items, currentPage, pageSize);
-  // console.log('=====', data?.items?.length);
 
   const handleDelete = async (categoryId) => {
     try {
@@ -96,8 +92,8 @@ const CategoriesData = () => {
         {/* End thead */}
 
         <tbody>
-          {paginateData &&
-            paginateData?.map((item) => (
+          {data?.items &&
+            data?.items?.map((item) => (
               <tr key={item.id}>
                 <td>
                   {item.categoryDetails.map((categoryDetail, i) => (
@@ -160,8 +156,7 @@ const CategoriesData = () => {
       </table>
       <div className="mbp_pagination">
         <Pagination
-          items={data?.items?.length}
-          pageSize={pageSize}
+          pageSize={data?.meta?.totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
