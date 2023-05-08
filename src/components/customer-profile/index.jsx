@@ -70,7 +70,7 @@ const index = () => {
                 <div className="row mt50">
                   <div className="col-lg-12">
                     <div className="copyright-widget text-center">
-                      <p>© 2023 Find House. Made with love.</p>
+                      <p>© 2023 BeeHome. Made with love.</p>
                     </div>
                   </div>
                 </div>
