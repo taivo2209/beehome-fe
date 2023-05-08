@@ -26,6 +26,21 @@ const Index = () => {
 
       {/* <!-- Home Design --> */}
       <Hero />
+      {/* <!-- Property Cities --> */}
+      <section id="property-city" className="property-city pb30">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 offset-lg-3">
+              <div className="main-title text-center">
+                <h2>Địa điểm nổi bật</h2>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            <FindProperties />
+          </div>
+        </div>
+      </section>
 
       {/* <!-- Feature Properties --> */}
       <section id="feature-property" className="feature-property bgc-f7">
@@ -76,22 +91,6 @@ const Index = () => {
                 {/* <FeaturedProperties /> */}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-      {/* <!-- Property Cities --> */}
-      <section id="property-city" className="property-city pb30">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6 offset-lg-3">
-              <div className="main-title text-center">
-                <h2>Địa điểm nổi bật</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <FindProperties />
           </div>
         </div>
       </section>

@@ -33,6 +33,7 @@
     "react-modal-video": "^2.0.0",
     "react-photoswipe-gallery": "^2.2.1",
     "react-pro-sidebar": "^0.7.1",
+    "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",

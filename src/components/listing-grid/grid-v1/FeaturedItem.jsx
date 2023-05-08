@@ -3,16 +3,17 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addLength } from '../../../features/properties/propertiesSlice';
 import properties from '../../../data/properties';
+import { Skeleton } from '@mui/material';
 
 const FeaturedItem = () => {
   const { isGridOrList } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
   //----------------------------------------------------------------------------
-  const data = useSelector((state) => state.dataSearch);
-  console.log(data);
+  const { dataPaging, isLoading } = useSelector((state) => state.dataSearch);
+  console.log('duy ne', dataPaging, isLoading);
   // status handler
-  let content = data.data?.slice(0, 10).map((item) => (
+  let content = dataPaging?.slice(0, 10).map((item) => (
     <div
       className={`${
         isGridOrList ? 'col-12 feature-list' : 'col-md-6 col-lg-6'
@@ -98,12 +99,24 @@ const FeaturedItem = () => {
     </div>
   ));
 
-  // add length of filter items
+  // // add length of filter items
   useEffect(() => {
     dispatch(addLength(content.length));
   }, [dispatch, addLength, content]);
 
-  return <>{content}</>;
+  return (
+    <>
+      {isLoading && (
+        <div>
+          <Skeleton />
+          <Skeleton animation="wave" />
+          <Skeleton animation={false} />
+        </div>
+      )}
+
+      {isLoading == false && content}
+    </>
+  );
 };
 
 export default FeaturedItem;

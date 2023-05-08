@@ -15,9 +15,9 @@ const Hero = () => {
             <div className="home_content home5">
               <div className="home-text home5">
                 <h2 className="fz55">Find Your Dream Home</h2>
-                <p className="discounts_para fz18 color-white">
+                {/* <p className="discounts_para fz18 color-white">
                   From as low as $10 per day with limited time offer discounts.
-                </p>
+                </p> */}
                 <h4>What are you looking for?</h4>
                 <ul className="mb0">
                   <LookingItem />

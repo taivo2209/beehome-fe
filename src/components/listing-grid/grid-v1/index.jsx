@@ -1,4 +1,5 @@
 import Pagination from '../../common/blog/Pagination';
+import PaginationList from '../../common/blog/PaginationList';
 import CopyrightFooter from '../../common/footer/CopyrightFooter';
 import Footer from '../../common/footer/Footer';
 import Header from '../../common/header/DefaultHeader';
@@ -92,7 +93,7 @@ const index = () => {
               <div className="row">
                 <div className="col-lg-12 mt20">
                   <div className="mbp_pagination">
-                    <Pagination />
+                    <PaginationList />
                   </div>
                 </div>
                 {/* End paginaion .col */}
