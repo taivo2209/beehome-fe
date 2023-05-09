@@ -3,10 +3,34 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import CustomerAccount from './CustomerAccount';
+import { useSelector } from 'react-redux';
 
 const HeaderMenuContent = ({ float = '' }) => {
   const route = useRouter();
-  const [customer, setCustomer] = useState({});
+  const [customer, setCustomer] = useState();
+  const { accessToken } = useSelector((state) => state.auth);
+  const [data, setData] = useState([]);
+  // const check = useSelector((state) => state.auth.check);
+  let path = data?.avatar?.path;
+  let newPath = path?.replace(/\\/g, '/');
+
+  const getData = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/customer/profile', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setData(res.data);
+      // console.log(accessToken);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const home = [
     {
@@ -251,6 +275,11 @@ const HeaderMenuContent = ({ float = '' }) => {
       console.log(err);
     }
   };
+  const logOut = async () => {
+    setCustomer(null);
+  };
+
+  // console.log('====', accessToken, customer);
 
   useEffect(() => {
     checkLogin();
@@ -276,211 +305,7 @@ const HeaderMenuContent = ({ float = '' }) => {
           </Link>
           {/* <span className="arrow"></span> */}
         </a>
-        {/* <!-- Level Two--> */}
-
-        {/* <ul className="sub-menu ">
-          {home.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  route.pathname === item.routerPath ? "ui-active" : undefined
-                }>
-
-                {item.name}
-
-              </Link>
-            </li>
-          ))}
-        </ul> */}
       </li>
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            listing.some((parent) => {
-              return parent.items.some(
-                (page) => page.routerPath === route.pathname
-              );
-            })
-              ? "ui-active"
-              : undefined
-          }
-        >
-          <span className="title">Listing</span>
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {listing.map((item) => (
-            <li className="dropitem arrow" key={item.id}>
-              <a
-                href="#"
-                className={
-                  item.items.some((page) => page.routerPath === route.pathname)
-                    ? "ui-active"
-                    : undefined
-                }
-              >
-                {item.title}
-              </a>
-              <ul className="sub-menu ">
-                {item.items.map((val, i) => (
-                  <li key={i}>
-                    <Link
-                      href={val.routerPath}
-                      className={
-                        route.pathname === val.routerPath
-                          ? "ui-active"
-                          : undefined
-                      }>
-
-                      {val.name}
-
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            property.some((parent) => {
-              return parent.items.some(
-                (page) =>
-                  page.routerPath === route.pathname ||
-                  page.routerPath + "/[id]" === route.pathname
-              );
-            })
-              ? "ui-active"
-              : undefined
-          }
-        >
-          <span className="title">Property</span>{" "}
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {property.map((item) => (
-            <li className="dropitem arrow" key={item.id}>
-              <a
-                href="#"
-                className={
-                  item.items.some(
-                    (page) =>
-                      page.routerPath === route.pathname ||
-                      page.routerPath + "/[id]" === route.pathname
-                  )
-                    ? "ui-active"
-                    : undefined
-                }
-              >
-                {item.title}
-              </a>
-              <ul className="sub-menu ">
-                {item.items.map((val, i) => (
-                  <li key={i}>
-                    <Link
-                      href={val.routerPath}
-                      className={
-                        route.pathname === val.routerPath ||
-                        val.routerPath + "/[id]" === route.pathname
-                          ? "ui-active"
-                          : undefined
-                      }>
-
-                      {val.name}
-
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            pages.some((page) => page.routerPath === route.pathname)
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <span className="title">Pages</span>
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {pages.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  route.pathname === item.routerPath ? 'ui-active' : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            blog.some(
-              (page) =>
-                page.routerPath === route.pathname ||
-                page.routerPath + '/[id]' === route.pathname,
-            )
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <span className="title">Blog</span>
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {blog.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  route.pathname === item.routerPath ||
-                  item.routerPath + '/[id]' === route.pathname
-                    ? 'ui-active'
-                    : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="last">
-        <Link
-          href="/contact"
-          className={route.pathname === '/contact' ? 'ui-active' : undefined}
-        >
-          Contact
-        </Link>
-      </li> */}
-      {/* End .dropitem */}
 
       {customer != null ? (
         <li className="user_setting">
@@ -492,13 +317,15 @@ const HeaderMenuContent = ({ float = '' }) => {
             >
               <img
                 className="rounded-circle"
-                src="/assets/images/team/e1.png"
+                src={newPath}
                 alt="img"
+                width={45}
+                height={45}
               />
               <span className="dn-1199 ms-1"></span>
             </a>
             <div className="dropdown-menu">
-              <CustomerAccount />
+              <CustomerAccount checkLogin={logOut} />
             </div>
           </div>
         </li>

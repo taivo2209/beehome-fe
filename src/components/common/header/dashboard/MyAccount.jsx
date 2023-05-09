@@ -38,7 +38,7 @@ const MyAccount = () => {
   return (
     <>
       <div className="user_set_header">
-        <img className="float-start" src={newPath} alt="e1.png" />
+        {/* <img className="float-start" src={newPath} alt="e1.png" /> */}
         <p>
           {data?.name}
           <br />
