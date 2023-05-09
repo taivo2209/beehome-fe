@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { clearAccessToken } from '../../../features/auth/authSlice';
 
-const CustomerAccount = () => {
+const CustomerAccount = ({checkLogin}) => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const route = useRouter();
-  let path = data?.avatar;
+  let path = data?.avatar?.path;
   let newPath = path?.replace(/\\/g, '/');
 
   const getData = async () => {
@@ -22,19 +22,19 @@ const CustomerAccount = () => {
         },
       });
       setData(res.data);
-      // console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
   };
-
   const handleLogout = () => {
     dispatch(clearAccessToken());
+    checkLogin();
+    route.push('/login');
   };
 
   const profileMenuItems = [
     { id: 1, name: 'My Profile', routerPath: '/customer-profile' },
-    { id: 2, name: ' Log out', onClick: handleLogout },
+    { id: 2, name: 'Log out', onClick: handleLogout,  routerPath: '/login'},
   ];
 
   useEffect(() => {

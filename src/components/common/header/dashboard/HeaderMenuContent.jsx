@@ -301,189 +301,7 @@ const HeaderMenuContent = ({ float = '' }) => {
       </li>
       {/* End .dropitem */}
 
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            listing.some((parent) => {
-              return parent.items.some(
-                (page) => page.routerPath === route.pathname,
-              );
-            })
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <span className="title">Listing</span>
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {listing.map((item) => (
-            <li className="dropitem arrow" key={item.id}>
-              <a
-                href="#"
-                className={
-                  item.items.some((page) => page.routerPath === route.pathname)
-                    ? 'ui-active'
-                    : undefined
-                }
-              >
-                {item.title}
-              </a>
-              <ul className="sub-menu ">
-                {item.items.map((val, i) => (
-                  <li key={i}>
-                    <Link
-                      href={val.routerPath}
-                      className={
-                        route.pathname === val.routerPath
-                          ? 'ui-active'
-                          : undefined
-                      }
-                    >
-                      {val.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            property.some((parent) => {
-              return parent.items.some(
-                (page) =>
-                  page.routerPath === route.pathname ||
-                  page.routerPath + '/[id]' === route.pathname,
-              );
-            })
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <span className="title">Property</span>{' '}
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {property.map((item) => (
-            <li className="dropitem arrow" key={item.id}>
-              <a
-                href="#"
-                className={
-                  item.items.some(
-                    (page) =>
-                      page.routerPath === route.pathname ||
-                      page.routerPath + '/[id]' === route.pathname,
-                  )
-                    ? 'ui-active'
-                    : undefined
-                }
-              >
-                {item.title}
-              </a>
-              <ul className="sub-menu ">
-                {item.items.map((val, i) => (
-                  <li key={i}>
-                    <Link
-                      href={val.routerPath}
-                      className={
-                        route.pathname === val.routerPath ||
-                        val.routerPath + '/[id]' === route.pathname
-                          ? 'ui-active'
-                          : undefined
-                      }
-                    >
-                      {val.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            pages.some((page) => page.routerPath === route.pathname)
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <span className="title">Pages</span>
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {pages.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  route.pathname === item.routerPath ? 'ui-active' : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="dropitem">
-        <a
-          href="#"
-          className={
-            blog.some(
-              (page) =>
-                page.routerPath === route.pathname ||
-                page.routerPath + '/[id]' === route.pathname,
-            )
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <span className="title">Blog</span>
-          <span className="arrow"></span>
-        </a>
-        <ul className="sub-menu ">
-          {blog.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  route.pathname === item.routerPath ||
-                  item.routerPath + '/[id]' === route.pathname
-                    ? 'ui-active'
-                    : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </li> */}
-      {/* End .dropitem */}
-
-      {/* <li className="last">
-        <Link
-          href="/contact"
-          className={route.pathname === '/contact' ? 'ui-active' : undefined}
-        >
-          Contact
-        </Link>
-      </li> */}
-      {/* End .dropitem */}
+     
 
       <li className="user_setting">
         <div className="dropdown">
@@ -504,12 +322,12 @@ const HeaderMenuContent = ({ float = '' }) => {
       </li>
       {/* End ."user_setting */}
 
-      <li className={`list-inline-item add_listing ${float}`}>
+      {/* <li className={`list-inline-item add_listing ${float}`}>
         <Link href="/create-listing">
           <span className="flaticon-plus"></span>
           <span className="dn-lg"> Create Listing</span>
         </Link>
-      </li>
+      </li> */}
       {/* End .dropitem */}
     </ul>
   );
