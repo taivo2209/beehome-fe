@@ -57,6 +57,10 @@ const DetailsContent = ({
     checkLogin();
   }, []);
 
+  const sum = comments.reduce(
+    (total, current) => total + current.comment.star,
+    0,
+  );
   return (
     <>
       <div className="listing_single_description">
@@ -119,12 +123,12 @@ const DetailsContent = ({
       <div className="product_single_content">
         <div className="mbp_pagination_comments mt30">
           <div className="total_review">
-            <h4>896 Reviews</h4>
+            <h4>{comments.length} Reviews</h4>
             <ul className="review_star_list mb0 pl10">
               <Ratings />
             </ul>
             <a className="tr_outoff pl10" href="#">
-              ( 4.5 out of 5 )
+              ( {sum / comments.length} out of 5 )
             </a>
             <a className="write_review float-end fn-xsd" href="#">
               Write a Review

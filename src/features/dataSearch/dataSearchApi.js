@@ -16,12 +16,12 @@ export const fetchDataSearchData = async (data) => {
     if (data.district?.name != undefined) {
       url += `&district=${data.district.name}`;
     }
-    // if (data.data.startPrice != undefined) {
-    //   url += `&startPrice=${data.data.startPrice}`;
-    // }
-    // if (data.data.endPrice != undefined) {
-    //   url += `&endPrice=${data.data.endPrice}`;
-    // }
+    if (data.startPrice != undefined) {
+      url += `&startPrice=${data.startPrice}`;
+    }
+    if (data.endPrice != undefined) {
+      url += `&endPrice=${data.endPrice}`;
+    }
 
     const res = await axios.get(url);
     return res.data;

@@ -5,7 +5,9 @@ import { useDispatch } from 'react-redux';
 import { addPrice } from '../../features/searching/searchingSlice';
 
 const RangeSlider = () => {
-  const [price, setPrice] = useState({ value: { min: 10000, max: 20000 } });
+  const [price, setPrice] = useState({
+    value: { min: 1000000, max: 20000000 },
+  });
   const dispath = useDispatch();
 
   const handleOnChange = (value) => {
@@ -27,22 +29,32 @@ const RangeSlider = () => {
       <div className="nft__filter-price-inner d-flex align-items-center justify-content-between">
         <div className="nft__filter-price-box">
           <div className="d-flex align-items-center">
-            <span>$ </span>
-            <span>{price.value.min}</span>
+            {/* <span>$ </span> */}
+            <span>
+              {price.value.min.toLocaleString('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+              })}
+            </span>
           </div>
         </div>
         <div className="nft__filter-price-box">
           <div className="d-flex align-items-center">
-            <span>$ </span>
-            <span>{price.value.max}</span>
+            {/* <span>$ </span> */}
+            <span>
+              {price.value.max.toLocaleString('vi-VN', {
+                style: 'currency',
+                currency: 'VND',
+              })}
+            </span>
           </div>
         </div>
       </div>
 
       <InputRange
         formatLabel={(value) => ``}
-        maxValue={20000}
-        minValue={10000}
+        maxValue={20000000}
+        minValue={1000000}
         value={price.value}
         onChange={(value) => handleOnChange(value)}
       />

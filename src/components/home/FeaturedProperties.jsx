@@ -85,7 +85,7 @@ const FeaturedProperties = () => {
               href={`/listing-details-v1/${item.id}`}
               className="fp_price"
             >
-              ${item.price}
+              from {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
               <small>/mo</small>
             </Link>
           </div>

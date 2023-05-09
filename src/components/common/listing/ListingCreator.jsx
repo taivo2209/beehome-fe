@@ -1,11 +1,18 @@
-const Creaator = () => {
+const Creaator = ({ data }) => {
   return (
     <div className="media d-flex">
-      <img className="me-3" src="/assets/images/team/lc1.png" alt="lc1.png" />
+      {/* <img className="me-3" src={data.posterAvatar} alt="lc1.png" /> */}
+      <div className="thumb">
+        <img
+          className="img-whp"
+          style={{ height: '40px', width: '40px', paddingRight: '10px' }}
+          src={data?.posterAvatar}
+          alt="fp1.jpg"
+        />
+      </div>
       <div className="media-body">
-        <h5 className="mt-0 mb0">Samul Williams</h5>
-        <p className="mb0">(123)456-7890</p>
-        <p className="mb0">info@findhouse.com</p>
+        <h5 className="mt-0 mb0">{data?.posterName}</h5>
+
         <a className="text-thm" href="#">
           View My Listing
         </a>

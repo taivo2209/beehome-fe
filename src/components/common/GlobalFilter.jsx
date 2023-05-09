@@ -17,6 +17,8 @@ import {
   setProvinceData,
   setWardData,
   setDistrictData,
+  resetDistrict,
+  resetWard,
 } from '../../features/searching/searchingSlice';
 import { fetchDataSearch } from '../../features/dataSearch/dataSearchSlice';
 
@@ -42,15 +44,19 @@ const GlobalFilter = ({ className = '' }) => {
       if (type === 'PROVINCE') {
         setDataProvince(res.data);
         dispatch(setProvinceData(res.data));
-        // console.log('data province', dataProvince, parentDistrict);
+        dispatch(resetWard());
+        dispatch(resetDistrict());
+        setDistrictId('');
+        setWardId('');
       } else if (type === 'DISTRICT') {
         setDataDistrict(res.data);
         dispatch(setDistrictData(res.data));
-        // console.log('data district', dataDistrict, parentWard);
+        dispatch(setDistrict(data));
+        dispatch(resetWard());
+        setWardId('');
       } else if (type === 'WARD') {
         setDataWard(res.data);
         dispatch(setWardData(res.data));
-        // console.log('data ward', dataWard);
       }
     } catch (err) {
       console.log(err);

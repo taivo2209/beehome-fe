@@ -74,8 +74,11 @@ const ListingDynamicDetailsV1 = () => {
                 <div className="single_property_social_share position-static transform-none">
                   <div className="price float-start fn-400">
                     <h2>
-                      ${boardingHouseDetail[0]?.price}
-                      <small>/mo</small>
+                      {boardingHouseDetail[0]?.price.replace(
+                        /\B(?=(\d{3})+(?!\d))/g,
+                        '.',
+                      )}
+                      <small>đ/mo</small>
                     </h2>
                   </div>
                 </div>
@@ -165,6 +168,7 @@ const ListingDynamicDetailsV1 = () => {
                 data={floorData}
                 customer={customer}
                 posterId={boardingHouseDetail[0]?.posterId}
+                poster={boardingHouseDetail[0]}
               />
             </div>
             {/* End sidebar content .col-lg-4 */}

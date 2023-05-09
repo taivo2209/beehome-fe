@@ -34,7 +34,6 @@ const FilteringItem = () => {
   const [districtId, setDistrictId] = useState(data.district?.id);
   const [wardId, setWardId] = useState(data.ward?.id);
   const clearAllFilters = () => {
-    // console.log(data);
     dispatch(fetchDataSearch(data));
   };
   const getData = async (type, parentId) => {

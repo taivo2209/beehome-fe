@@ -35,7 +35,6 @@ const EditList = () => {
   const [waterFee, setWaterFee] = useState('');
   const [serviceFee, setServiceFee] = useState('');
   const accessToken = useSelector((state) => state.auth.accessToken);
-  // console.log(id);
 
   const handleBack = () => {
     router.push('/my-houses');
@@ -52,11 +51,11 @@ const EditList = () => {
         },
       );
       setHousesData(res.data);
-      // console.log(data);
     } catch (err) {
       console.log(err);
     }
   };
+
   useEffect(() => {
     getDataHouses();
   }, []);
@@ -143,7 +142,6 @@ const EditList = () => {
       });
       console.log(err);
     }
-    // console.log(formData);
   };
 
   const getData = async (type, parentId) => {
@@ -166,6 +164,150 @@ const EditList = () => {
     }
   };
 
+  // const getDataProvince = async (type, parentId) => {
+  //   try {
+  //     let res = await axios.get(
+  //       `http://localhost:5000/customer/province?type=PROVINCE&parentId=1&page=1&limit=70`,
+  //     );
+
+  //     const province = res?.data?.items.filter(
+  //       (item) => item.name == housesData?.boardingHouseAddress?.province,
+  //     );
+  //     if (province[0]?.id) {
+  //       let res1 = await axios.get(
+  //         `http://localhost:5000/customer/province?type=DISTRICT&parentId=${province[0]?.id}&page=1&limit=70`,
+  //       );
+
+  //       const district = res1?.data?.items.filter(
+  //         (item) => item.name == housesData?.boardingHouseAddress?.district,
+  //       );
+  //     }
+  //     if (district[0]?.id) {
+  //       let res2 = await axios.get(
+  //         `http://localhost:5000/customer/province?type=WARD&parentId=${district[0]?.id}&page=1&limit=70`,
+  //       );
+
+  //       const ward = res2?.data?.items.filter(
+  //         (item) => item.name == housesData?.boardingHouseAddress?.ward,
+  //       );
+  //     }
+  //     setDataProvince(res?.data);
+  //     setProvinceId(province[0]?.id);
+  //     setDataDistrict(res1?.data);
+  //     setDistrictId(district[0]?.id);
+  //     setDataWard(res2?.data);
+  //     setWardId(ward[0]?.id);
+
+  //     // setDataProvince(res.data);
+  //     console.log(
+  //       'data province',
+  //       province[0]?.id,
+
+  //       district[0]?.id,
+  //       ward[0]?.id,
+  //     );
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  const getDataProvince = async (type, parentId) => {
+    try {
+      let res = await axios.get(
+        `http://localhost:5000/customer/province?type=PROVINCE&searchText=${boardingHouseAddress?.province}&page=1&limit=70`,
+      );
+      let res1 = await axios.get(
+        `http://localhost:5000/customer/province?type=DISTRICT&searchText=${boardingHouseAddress?.district}&page=1&limit=70`,
+      );
+      let res2 = await axios.get(
+        `http://localhost:5000/customer/province?type=WARD&searchText=${boardingHouseAddress?.ward}&page=1&limit=70`,
+      );
+
+      // const province = res?.data?.items.filter(
+      //   (item) => item.name == housesData?.boardingHouseAddress?.province,
+      // );
+      // const district = res1?.data?.items.filter(
+      //   (item) => item.name == housesData?.boardingHouseAddress?.district,
+      // );
+      // const ward = res2?.data?.items.filter(
+      //   (item) => item.name == housesData?.boardingHouseAddress?.ward,
+      // );
+
+      // setDataProvince(res?.data);
+      // setProvinceId(province[0]?.id);
+      // setDataDistrict(res1?.data);
+      // setDistrictId(district[0]?.id);
+      // setDataWard(res2?.data);
+      // setWardId(ward[0]?.id);
+
+      console.log(
+        'data province',
+        res,
+        res1,
+        res2,
+        // province[0]?.id,
+        // district[0]?.id,
+        // ward[0]?.id,
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  // const getDataProvince = async (type, parentId) => {
+  //   try {
+  //     let res = await axios.get(
+  //       `http://localhost:5000/customer/province?type=PROVINCE&parentId=1&page=1&limit=70`,
+  //     );
+
+  //     if (res?.data?.items) {
+  //       const province = res?.data?.items.filter(
+  //         (item) => item.name == housesData?.boardingHouseAddress?.province,
+  //       );
+  //       if (province[0]?.id) {
+  //         let res1 = await axios.get(
+  //           `http://localhost:5000/customer/province?type=DISTRICT&parentId=${province[0]?.id}&page=1&limit=70`,
+  //         );
+  //         if (res1?.data?.items) {
+  //           const district = res1?.data?.items.filter(
+  //             (item) => item.name == housesData?.boardingHouseAddress?.district,
+  //           );
+  //           if (district[0]?.id) {
+  //             let res2 = await axios.get(
+  //               `http://localhost:5000/customer/province?type=WARD&parentId=${district[0]?.id}&page=1&limit=70`,
+  //             );
+  //             if (res2?.data?.items) {
+  //               const ward = res2?.data?.items.filter(
+  //                 (item) => item.name == housesData?.boardingHouseAddress?.ward,
+  //               );
+  //               setDataWard(res2?.data);
+  //               setWardId(ward[0]?.id);
+  //             }
+  //           }
+  //           setDataDistrict(res1?.data);
+  //           setDistrictId(district[0]?.id);
+  //         }
+  //       }
+  //       setDataProvince(res?.data);
+  //       setProvinceId(province[0]?.id);
+  //       console.log(
+  //         'data province',
+  //         province[0]?.id,
+  //         district[0]?.id,
+  //         ward[0]?.id,
+  //       );
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // console.log(
+  //   'duy nè',
+  //   dataProvince,
+  //   dataDistrict,
+  //   dataWard,
+  //   provinceId,
+  //   districtId,
+  //   wardId,
+  // );
   const handleChangeProvinceId = (event) => {
     setProvinceId(event.target.value);
     const data = dataProvince.items.find(
@@ -199,8 +341,19 @@ const EditList = () => {
   const handleUpload = (newImages) => {
     setImgIds(newImages);
   };
-
   useEffect(() => {}, [tagIds]);
+  useEffect(() => {
+    getDataProvince();
+  }, []);
+  console.log(
+    'duy nè',
+    dataProvince,
+    dataDistrict,
+    dataWard,
+    provinceId,
+    districtId,
+    wardId,
+  );
   // console.log(tagIds);
   return (
     <>
@@ -404,7 +557,9 @@ const EditList = () => {
             value={provinceId}
             onChange={handleChangeProvinceId}
           >
-            <option disabled>Select</option>
+            <option value="">
+              {housesData?.boardingHouseAddress?.province}
+            </option>
             {dataProvince?.items?.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
@@ -426,8 +581,8 @@ const EditList = () => {
             value={districtId}
             onChange={handleChangeDistrictId}
           >
-            <option defaultValue={true} disabled>
-              Select
+            <option defaultValue={true} value="">
+              {housesData?.boardingHouseAddress?.district}
             </option>
             {dataDistrict?.items?.map((item) => (
               <option key={item.id} value={item.id}>
@@ -450,7 +605,7 @@ const EditList = () => {
             onClick={() => getData('WARD', districtId)}
             onChange={handleChangeWardId}
           >
-            <option disabled>Select</option>
+            <option value="">{housesData?.boardingHouseAddress?.ward}</option>
             {dataWard?.items?.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
