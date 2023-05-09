@@ -32,7 +32,7 @@ const CustomerAccount = ({checkLogin}) => {
 
   const profileMenuItems = [
     { id: 1, name: 'My Profile', routerPath: '/customer-profile' },
-    { id: 2, name: 'Log out', onClick: handleLogout,  routerPath: '/login'},
+    { id: 2, name: 'Log out', onClick: handleLogout},
   ];
 
   useEffect(() => {
