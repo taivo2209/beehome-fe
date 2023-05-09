@@ -11,8 +11,6 @@ const CustomerAccount = ({checkLogin}) => {
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const route = useRouter();
-  let path = data?.avatar?.path;
-  let newPath = path?.replace(/\\/g, '/');
 
   const getData = async () => {
     try {
@@ -46,7 +44,7 @@ const CustomerAccount = ({checkLogin}) => {
       <div className="user_set_header">
         {/* <img className="float-start" src={newPath} alt="e1.png" /> */}
         <p>
-          {data?.name}
+          {data?.firstName} {data?.lastName}
           <br />
           <span className="address">{data?.email}</span>
         </p>
