@@ -42,6 +42,7 @@ const Form = () => {
       });
       console.log(err);
     }
+    console.log(data);
   };
   return (
     <form action="#" onSubmit={handleSubmit}>
@@ -124,7 +125,7 @@ const Form = () => {
 
       <div className="form-group input-group  ">
         <input
-          type="text"
+          type="date"
           className="form-control"
           required
           placeholder="Birth Date (YYYY-MM-DD)"

@@ -216,7 +216,7 @@ const CustomerProfile = () => {
         <div className="my_profile_setting_input form-group">
           <label htmlFor="formGroupExampleInput5">Birth Date</label>
           <input
-            type="text"
+            type="date"
             className="form-control"
             id="formGroupExampleInput5"
             defaultValue={data?.birthDate}

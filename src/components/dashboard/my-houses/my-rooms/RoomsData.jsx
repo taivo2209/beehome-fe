@@ -7,10 +7,13 @@ import axios from 'axios';
 import FormView from './FormView';
 import FormEdit from './FormEdit';
 import Swal from 'sweetalert2';
+import Pagination from '../../../common/Pagination';
 
 function RoomsData({ floorData }) {
   const [show, setShow] = useState(false);
-  const [roomData, setRoomData] = useState({});
+  const [data, setData] = useState();
+  const [roomData, setRoomData] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   const handleShow = () => {
@@ -23,19 +26,24 @@ function RoomsData({ floorData }) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/floor/${floorData.id}`,
+        `http://localhost:5000/lessor/floor/${floorData.id}?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         },
       );
-      setRoomData(res.data);
+      setRoomData(res.data?.items);
+      setData(res.data);
       // console.log('room',res.data);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   const handleDelete = async (roomId) => {
@@ -63,8 +71,9 @@ function RoomsData({ floorData }) {
   };
 
   useEffect(() => {
+    handlePageChange(currentPage);
     getData();
-  }, [floorData.id, accessToken]);
+  }, [floorData.id, accessToken, currentPage]);
 
   return (
     <>
@@ -108,8 +117,8 @@ function RoomsData({ floorData }) {
                           {/* End thead */}
 
                           <tbody>
-                            {roomData?.rooms &&
-                              roomData?.rooms.map((room) => (
+                            {roomData?.[0]?.rooms &&
+                              roomData?.[0]?.rooms.map((room) => (
                                 <tr key={room.id} className="title" scope="row">
                                   <td>{room.name}</td>
                                   <td className="dn-lg"></td>
@@ -164,7 +173,7 @@ function RoomsData({ floorData }) {
                                             onClick={() =>
                                               handleDelete(room.id)
                                             }
-                                            ></span>
+                                          ></span>
                                         </a>
                                       </li>
                                     </ul>
@@ -174,6 +183,13 @@ function RoomsData({ floorData }) {
                           </tbody>
                           {/* End tbody */}
                         </table>
+                        <div className="mbp_pagination">
+                          <Pagination
+                            pageSize={data?.meta?.totalPages}
+                            currentPage={currentPage}
+                            onPageChange={handlePageChange}
+                          />
+                        </div>
                       </div>
                     </div>
                     {/* End .packages_table */}
