@@ -97,6 +97,7 @@ function FormAdd({ getData }) {
                     Attribute Name:
                     <input
                       type="text"
+                      required
                       {...register('roomAttributeDetails.0.name')}
                       placeholder="VN"
                       className="form-control mb-2"
@@ -104,6 +105,7 @@ function FormAdd({ getData }) {
                     />
                     <input
                       type="text"
+                      required
                       {...register('roomAttributeDetails.1.name')}
                       placeholder="EN"
                       className="form-control mb-2"
@@ -120,6 +122,7 @@ function FormAdd({ getData }) {
                       <div key={field.roomAttributeTermKey}>
                         <input
                           type="text"
+                          required
                           {...register(
                             `roomAttributeTerms.${index}.roomAttributeTermDetails.0.name`,
                           )}
@@ -129,6 +132,7 @@ function FormAdd({ getData }) {
                         />
                         <input
                           type="text"
+                          required
                           {...register(
                             `roomAttributeTerms.${index}.roomAttributeTermDetails.0.slug`,
                           )}
@@ -138,6 +142,7 @@ function FormAdd({ getData }) {
                         />
                         <input
                           type="text"
+                          required
                           {...register(
                             `roomAttributeTerms.${index}.roomAttributeTermDetails.1.name`,
                           )}
@@ -147,6 +152,7 @@ function FormAdd({ getData }) {
                         />
                         <input
                           type="text"
+                          required
                           {...register(
                             `roomAttributeTerms.${index}.roomAttributeTermDetails.1.slug`,
                           )}

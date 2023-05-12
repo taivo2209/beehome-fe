@@ -37,6 +37,16 @@ const CustomerProfile = () => {
       console.log(err);
     }
   };
+  const formData = {
+    firstName: firstName,
+    lastName: lastName,
+    birthDate: birthDate,
+    email: email,
+    address: address,
+    avatarId: avatarId,
+    phoneNumber: phoneNumber,
+  };
+  console.log(formData);
 
   const handleSubmit = async () => {
     const formData = {

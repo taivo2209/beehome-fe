@@ -15,37 +15,58 @@ function FormAdd({ getData }) {
 
   const accessToken = useSelector((state) => state.auth.accessToken);
 
+  const validateInputs = () => {
+    if (
+      !name ||
+      !slug ||
+      !description 
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi',
+        text: 'Vui lòng điền đầy đủ thông tin',
+      });
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const isValid = validateInputs();
     const data = {
       name: name,
       slug: slug,
       description: description,
     };
-    try {
-      const res = await axios.post('http://localhost:5000/lessor/tag', data, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      // reset();
-      Swal.fire({
-        icon: 'success',
-        title: 'Tạo thành công!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      getData();
 
-      handleClose();
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonText: 'OK',
-      });
-      console.log(error);
+    if (isValid){
+
+      try {
+        const res = await axios.post('http://localhost:5000/lessor/tag', data, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        // reset();
+        Swal.fire({
+          icon: 'success',
+          title: 'Tạo thành công!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        getData();
+  
+        handleClose();
+      } catch (error) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Đã xảy ra lỗi!',
+          text: 'Thêm mới thất bại.',
+          confirmButtonText: 'OK',
+        });
+        console.log(error);
+      }
     }
     // console.log(data);
   };

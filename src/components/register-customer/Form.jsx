@@ -22,9 +22,9 @@ const Form = () => {
       birthDate: birthDate,
       phoneNumber: phoneNum,
     };
-    const url = 'https://localhost:5000/customer/auth/register';
+    
     try {
-      const res = await axios.post(url, data);
+      const res = await axios.post('http://localhost:5000/customer/auth/register', data);
       // console.log(res.data);
       Swal.fire({
         icon: 'success',
