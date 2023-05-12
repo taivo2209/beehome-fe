@@ -42,6 +42,9 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
       newSkipped.delete(activeStep);
     }
     if (activeStep === steps.length - 1) {
+      if (book.dateMeet === null) {
+        return;
+      }
       try {
         await axios.post('http://localhost:5000/customer/book', book);
         Swal.fire({
@@ -59,9 +62,17 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
         });
         console.log(error);
       }
+    } else {
+      // Kiểm tra nếu ngày không được chọn, không chuyển đến bước tiếp theo
+      if (activeStep === 0 && !book.dateMeet) {
+        return Swal.fire({
+          icon: 'error',
+          title: 'Vui lòng chọn ngày hẹn để tiếp tục!',
+          confirmButtonText: 'OK',
+        });
+      }
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
 

@@ -17219,8 +17219,8 @@ legend span {
 }
 
 .btn-thm2 {
-  background-color: #ff787c;
-  border-color: #ff787c;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: #ffffff;
   border-radius: 0px;
   -webkit-transition: all 0.3s ease;
@@ -17232,8 +17232,8 @@ legend span {
 .btn-thm2:active,
 .btn-thm2:focus {
   background-color: #ffffff;
-  border-color: #ff787c;
-  color: #ff787c;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .btn-thm3 {
