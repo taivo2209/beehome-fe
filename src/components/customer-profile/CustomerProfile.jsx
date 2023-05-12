@@ -25,14 +25,29 @@ const CustomerProfile = () => {
         },
       });
       setData(res.data);
+      setFirstName(res.data.firstName);
+      setLastName(res.data.lastName);
+      setBirthDate(res.data.birthDate);
+      setEmail(res.data.email);
+      setAddress(res.data.address);
+      setAvatarId(res.data.avatar.id);
+      setPhoneNumber(res.data.phoneNumber);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
   };
+  const formData = {
+    firstName: firstName,
+    lastName: lastName,
+    birthDate: birthDate,
+    email: email,
+    address: address,
+    avatarId: avatarId,
+    phoneNumber: phoneNumber,
+  };
+  console.log(formData);
 
-  // console.log(data.avatar);
-  // console.log(newPath);
   const handleSubmit = async () => {
     const formData = {
       firstName: firstName,
@@ -144,7 +159,7 @@ const CustomerProfile = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput1"
-            placeholder={data?.firstName}
+            defaultValue={data?.firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
@@ -158,7 +173,7 @@ const CustomerProfile = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput6"
-            placeholder={data?.lastName}
+            defaultValue={data?.lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </div>
@@ -172,7 +187,7 @@ const CustomerProfile = () => {
             type="email"
             className="form-control"
             id="formGroupExampleEmail"
-            placeholder={data?.email}
+            defaultValue={data?.email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -186,7 +201,7 @@ const CustomerProfile = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput3"
-            placeholder={data?.address}
+            defaultValue={data?.address}
             onChange={(e) => setAddress(e.target.value)}
           />
         </div>
@@ -200,7 +215,7 @@ const CustomerProfile = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput4"
-            placeholder={data?.phoneNumber}
+            defaultValue={data?.phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </div>
@@ -211,10 +226,10 @@ const CustomerProfile = () => {
         <div className="my_profile_setting_input form-group">
           <label htmlFor="formGroupExampleInput5">Birth Date</label>
           <input
-            type="text"
+            type="date"
             className="form-control"
             id="formGroupExampleInput5"
-            placeholder={data?.birthDate}
+            defaultValue={data?.birthDate}
             onChange={(e) => setBirthDate(e.target.value)}
           />
         </div>
@@ -223,7 +238,9 @@ const CustomerProfile = () => {
 
       <div className="col-xl-12 text-right">
         <div className="my_profile_setting_input">
-          <button className="btn btn2" onClick={handleSubmit}>Update Profile</button>
+          <button className="btn btn2" onClick={handleSubmit}>
+            Update Profile
+          </button>
         </div>
       </div>
       {/* End .col */}

@@ -8,7 +8,7 @@ import Pagination from '../../common/Pagination';
 
 const LessorsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   // const dispatch = useDispatch();
 
@@ -37,7 +37,7 @@ const LessorsData = () => {
   useEffect(() => {
     handlePageChange(currentPage);
     getData();
-  }, []);
+  }, [currentPage]);
 
   const handleDelete = async (lessorId) => {
     try {
@@ -88,8 +88,8 @@ const LessorsData = () => {
         {/* End thead */}
 
         <tbody>
-          {data.items &&
-            data.items.map((item) => (
+          {data?.items &&
+            data?.items?.map((item) => (
               <tr key={item.id} className="title" scope="row">
                 <td>{item.email}</td>
                 <td className="dn-lg"></td>

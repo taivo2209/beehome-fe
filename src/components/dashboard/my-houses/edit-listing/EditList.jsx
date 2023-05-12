@@ -51,6 +51,17 @@ const EditList = () => {
         },
       );
       setHousesData(res.data);
+      setName(res.data?.name);
+      setContentRuleVN(res.data?.boardingHouseRules?.[0]?.content);
+      setContentRuleEN(res.data?.boardingHouseRules?.[1]?.content);
+      setContentDepositVN(res.data?.boardingHouseRentDeposits?.[0]?.content);
+      setContentDepositEN(res.data?.boardingHouseRentDeposits?.[1]?.content);
+      setContentDescriptionVN(res.data?.boardingHouseDescriptions?.[0]?.content);
+      setContentDescriptionEN(res.data?.boardingHouseDescriptions?.[1]?.content);
+      setAddress(res.data?.boardingHouseAddress?.address);
+      setElectricFee(res.data?.electricFee);
+      setWaterFee(res.data?.waterFee);
+      setServiceFee(res.data?.serviceFee);
     } catch (err) {
       console.log(err);
     }

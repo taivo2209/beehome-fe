@@ -11,6 +11,7 @@ function FormEdit({ id, updateData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [data, setData] = useState({});
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -19,7 +20,6 @@ function FormEdit({ id, updateData }) {
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
   const [imgIds, setImgIds] = useState([]);
-  const [data, setData] = useState({});
 
   const getData = async () => {
     try {
@@ -29,14 +29,17 @@ function FormEdit({ id, updateData }) {
         },
       });
       setData(res.data);
-      // console.log(data);
+      setName(res.data?.name);
+      setPrice(res.data?.price);
+      setAcreage(res.data?.acreage);
+      setStatus(res.data?.status);
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, []); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,9 +63,7 @@ function FormEdit({ id, updateData }) {
     } catch (err) {
       console.log(err);
     }
-    console.log(formData);
   };
-
   const handleCategoryChange = async (selections) => {
     setCategoryIds(selections);
   };

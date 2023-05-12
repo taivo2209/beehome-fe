@@ -70,8 +70,20 @@ const CreateList = () => {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Lỗi',
-        text: 'Vui lòng điền thông tin hợp lệ',
+        title: 'Vui lòng điền thông tin hợp lệ',
+        text: 'Vui lòng nhập số ở ElectricFee, WaterFee, ServiceFee',
+      });
+      return false;
+    }
+    if (
+      Number(electricFee) < 0 ||
+      Number(waterFee) < 0 ||
+      Number(serviceFee) < 0
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Vui lòng điền thông tin hợp lệ',
+        text: 'Vui lòng không nhập số âm ở ElectricFee, WaterFee, ServiceFee',
       });
       return false;
     }
@@ -261,6 +273,7 @@ const CreateList = () => {
           <label htmlFor="propertyTitle">Electric Fee (/1kWh)</label>
           <input
             type="text"
+            required
             className="form-control"
             id="propertyTitle"
             onChange={(e) => setElectricFee(e.target.value)}
@@ -285,6 +298,7 @@ const CreateList = () => {
           <label htmlFor="propertyTitle">Service Fee</label>
           <input
             type="text"
+            required
             className="form-control"
             id="propertyTitle"
             onChange={(e) => setServiceFee(e.target.value)}
@@ -298,6 +312,7 @@ const CreateList = () => {
           <label htmlFor="propertyDescription">Rule VN</label>
           <textarea
             className="form-control"
+            required
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentRuleVN(e.target.value)}
@@ -309,6 +324,7 @@ const CreateList = () => {
           <label htmlFor="propertyDescription">Rule EN</label>
           <textarea
             className="form-control"
+            required
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentRuleEN(e.target.value)}
@@ -321,6 +337,7 @@ const CreateList = () => {
           <label htmlFor="propertyDescription">Rent Deposit VN</label>
           <textarea
             className="form-control"
+            required
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentDepositVN(e.target.value)}
@@ -332,6 +349,7 @@ const CreateList = () => {
           <label htmlFor="propertyDescription">Rent Deposit EN</label>
           <textarea
             className="form-control"
+            required
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentDepositEN(e.target.value)}
@@ -345,6 +363,7 @@ const CreateList = () => {
           <label htmlFor="propertyDescription">Description VN</label>
           <textarea
             className="form-control"
+            required
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentDescriptionVN(e.target.value)}
@@ -356,6 +375,7 @@ const CreateList = () => {
           <label htmlFor="propertyDescription">Description EN</label>
           <textarea
             className="form-control"
+            required
             id="propertyDescription"
             rows="7"
             onChange={(e) => setContentDescriptionEN(e.target.value)}
@@ -377,6 +397,7 @@ const CreateList = () => {
           <label htmlFor="propertyAddress">Address</label>
           <input
             type="text"
+            required
             className="form-control"
             id="propertyAddress"
             onChange={(e) => setAddress(e.target.value)}

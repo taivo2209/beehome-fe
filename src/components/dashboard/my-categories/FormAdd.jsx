@@ -95,6 +95,7 @@ function FormAdd({ getData }) {
                     Category Name:
                     <input
                       type="text"
+                      required
                       {...register('categoryDetails.0.name')}
                       placeholder="VN"
                       className="form-control mb-2"
@@ -102,6 +103,7 @@ function FormAdd({ getData }) {
                     />
                     <input
                       type="text"
+                      required
                       {...register('categoryDetails.1.name')}
                       placeholder="EN"
                       className="form-control"
@@ -119,6 +121,7 @@ function FormAdd({ getData }) {
                       <div key={field.categoryTypeKey}>
                         <input
                           type="text"
+                          required
                           {...register(
                             `categoryTypes.${index}.categoryTypeDetails.0.name`,
                           )}
@@ -128,6 +131,7 @@ function FormAdd({ getData }) {
                         />
                         <input
                           type="text"
+                          required
                           {...register(
                             `categoryTypes.${index}.categoryTypeDetails.1.name`,
                           )}

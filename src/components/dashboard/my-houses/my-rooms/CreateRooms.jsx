@@ -20,8 +20,45 @@ function CreateRooms({ floorId, updateData }) {
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
 
+  const validateInputs = () => {
+    if (
+      !name ||
+      !price ||
+      !acreage ||
+      !imgIds ||
+      !categoryIds ||
+      !attributeIds
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi',
+        text: 'Vui lòng điền đầy đủ thông tin',
+      });
+      return false;
+    }
+    if (isNaN(Number(price)) || isNaN(Number(acreage))) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Vui lòng điền thông tin hợp lệ',
+        text: 'Vui lòng nhập số ở Price, Acreage',
+      });
+      return false;
+    }
+    if (Number(price) < 0 || Number(acreage) < 0) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Vui lòng điền thông tin hợp lệ',
+        text: 'Vui lòng không nhập số âm ở Price, Acreage',
+      });
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isValid = validateInputs();
+
     const formData = {
       floorId: floorId,
       name: name,
@@ -31,27 +68,29 @@ function CreateRooms({ floorId, updateData }) {
       categoryIds: categoryIds,
       attributeIds: attributeIds,
     };
-    try {
-      axios.post('http://localhost:5000/lessor/room', formData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      Swal.fire({
-        icon: 'success',
-        title: 'Tạo thành công!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      updateData();
-    } catch (err) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonText: 'OK',
-      });
-      console.log(err);
+    if (isValid) {
+      try {
+        axios.post('http://localhost:5000/lessor/room', formData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        Swal.fire({
+          icon: 'success',
+          title: 'Tạo thành công!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        updateData();
+      } catch (err) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Đã xảy ra lỗi!',
+          text: 'Vui lòng thử lại sau.',
+          confirmButtonText: 'OK',
+        });
+        console.log(err);
+      }
     }
   };
 
