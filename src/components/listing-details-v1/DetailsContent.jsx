@@ -13,37 +13,15 @@ import PropertyRule from '../common/listing-details/PropertyRule';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-const DetailsContent = ({
-  dataDetail,
-  boardingHouseId,
-  setCustomer,
-  customer,
-}) => {
+const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
   const [comments, setComment] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
   const accessToken = useSelector((state) => state.auth.accessToken);
-
-  const checkLogin = async () => {
-    try {
-      const res = await axios.get(
-        `http://localhost:5000/customer/auth/current`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      setCustomer(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
   const getData = async () => {
     try {
       const res = await axios.get(
         `http://localhost:5000/customer/comment/${boardingHouseId}`,
       );
-
       setCommentsData(res.data?.commentToBoardingHouses);
       setComment(res.data?.commentToBoardingHouses.slice(0, 4));
     } catch (err) {
@@ -53,12 +31,8 @@ const DetailsContent = ({
   useEffect(() => {
     getData();
   }, [boardingHouseId]);
-  useEffect(() => {
-    checkLogin();
-  }, []);
-
   const sum = comments.reduce(
-    (total, current) => total + current.comment.star,
+    (total, current) => total + current?.comment?.star,
     0,
   );
   return (
@@ -128,7 +102,7 @@ const DetailsContent = ({
               <Ratings />
             </ul>
             <a className="tr_outoff pl10" href="#">
-              ( {sum / comments.length} out of 5 )
+              ( {sum ? sum : '0' / comments.length} out of 5 )
             </a>
             <a className="write_review float-end fn-xsd" href="#">
               Write a Review

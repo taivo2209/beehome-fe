@@ -5,8 +5,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { clearAccessToken } from '../../../features/auth/authSlice';
+import { removeCustomer } from '../../../features/customer/customerSlice';
 
-const CustomerAccount = ({checkLogin}) => {
+const CustomerAccount = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
@@ -26,13 +27,14 @@ const CustomerAccount = ({checkLogin}) => {
   };
   const handleLogout = () => {
     dispatch(clearAccessToken());
-    checkLogin();
+    dispatch(removeCustomer());
+
     route.push('/login');
   };
 
   const profileMenuItems = [
     { id: 1, name: 'My Profile', routerPath: '/customer-profile' },
-    { id: 2, name: 'Log out', onClick: handleLogout},
+    { id: 2, name: 'Log out', onClick: handleLogout },
   ];
 
   useEffect(() => {

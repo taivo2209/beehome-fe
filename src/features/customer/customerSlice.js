@@ -10,10 +10,12 @@ const customerSlice = createSlice({
   name: 'customers',
   initialState,
   reducers: {
-    setCustomer: (state, action) => [...state.data, action.payload],
+    setCustomer: (state, action) => {
+      state.data = action.payload;
+    },
     addCustomer: (state, action) => [...state.data, action.payload],
-    removePost(state, action) {
-      state.data.splice(action.payload, 2);
+    removeCustomer(state) {
+      state.data = initialState.data;
     },
     setLoading: (state) => {
       state.isLoading = true;
@@ -52,22 +54,18 @@ export const {
   updateCustomer,
   deleteCustomer,
   reset,
-  removePost,
+  removeCustomer,
   setLoading,
   setError,
 } = customerSlice.actions;
 
 export const fetchCustomer = (accessToken) => async (dispatch) => {
-  return accessToken;
-  // try {
-  //   // dispatch(setLoading());
-  //   // const data = await fetchCustomerData(accessToken);
-  //   // dispatch(setCustomer(accessToken));
-  //   return accessToken;
-  //   // console.log(accessToken);
-  // } catch (err) {
-  //   // dispatch(setError(err.message));
-  // }
+  try {
+    const data = await fetchCustomerData(accessToken);
+    dispatch(setCustomer(data));
+  } catch (err) {
+    dispatch(setError(err.message));
+  }
 };
 
 export default customerSlice.reducer;

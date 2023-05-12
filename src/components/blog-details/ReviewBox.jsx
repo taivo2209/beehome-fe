@@ -14,6 +14,7 @@ const ReviewBox = ({ accessToken, boardingHouseId, getData }) => {
       star: String(star),
       content: content,
     };
+    console.log(data);
     try {
       const res = await axios.post(
         'http://localhost:5000/customer/comment',

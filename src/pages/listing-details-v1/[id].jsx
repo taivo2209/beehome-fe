@@ -12,8 +12,10 @@ import Sidebar from '../../components/listing-details-v1/Sidebar';
 import { useSelector } from 'react-redux';
 
 const ListingDynamicDetailsV1 = () => {
-  const [customer, setCustomer] = useState();
+  // const [customer, setCustomer] = useState();
   const { data } = useSelector((state) => state.boardingHouses);
+  const customer = useSelector((state) => state.customer.data);
+
   const dataSearch = useSelector((state) => state.dataSearch);
 
   const router = useRouter();
@@ -156,7 +158,6 @@ const ListingDynamicDetailsV1 = () => {
             <div className="col-md-12 col-lg-8">
               <DetailsContent
                 customer={customer}
-                setCustomer={setCustomer}
                 dataDetail={boardingHouseDetail[0]}
                 boardingHouseId={id}
               />

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAccessToken } from '../../features/auth/authSlice';
 import Swal from 'sweetalert2';
+import { fetchCustomer } from '../../features/customer/customerSlice';
 
 const Form = () => {
   const router = useRouter();
@@ -33,6 +34,10 @@ const Form = () => {
 
       // Do something with the response, such as redirecting to a dashboard page
       dispatch(setAccessToken(res.data.accessToken));
+      if (role === 'customer') {
+        dispatch(fetchCustomer(res.data.accessToken));
+      }
+
       Swal.fire({
         icon: 'success',
         title: 'Đăng nhập thành công!',
