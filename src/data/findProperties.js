@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 1,
     img: '/assets/images/property/pc1.jpg',
-    name: 'Miami',
+    name: 'TP Thủ Đức',
     number: '24',
     rows: 2,
     cols: 2,
@@ -10,21 +10,21 @@ module.exports = [
   {
     id: 2,
     img: '/assets/images/property/pc2.jpg',
-    name: 'Los Angeles',
+    name: 'Quận 1',
     number: '18',
     column: 'col-lg-8 col-xl-8',
   },
   {
     id: 3,
     img: '/assets/images/property/pc3.jpg',
-    name: 'New York',
+    name: 'Quận 7',
     number: '89',
     column: 'col-lg-8 col-xl-8',
   },
   {
     id: 4,
     img: '/assets/images/property/pc4.jpg',
-    name: 'Florida',
+    name: 'Quận Bình Thạnh',
     number: '47',
     cols: 2,
   },
