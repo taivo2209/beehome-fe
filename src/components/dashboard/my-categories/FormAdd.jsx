@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+// import categories from '../../../data/categories';
 
 function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
@@ -87,10 +87,10 @@ function FormAdd({ getData }) {
           <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)} >
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
               <div className="col-lg-6 col-xl-6">
-                <div className="my_profile_setting_input form-group">
+                <div className="my_profile_setting_input ui_kit_select_search form-group">
                   <label htmlFor="formGroupExamplePrice">
                     Category Name:
                     <input
@@ -109,6 +109,28 @@ function FormAdd({ getData }) {
                       className="form-control"
                       id="formGroupExamplePrice"
                     />
+                    {/* <select
+                      required
+                      {...register('categoryDetails.0.name')}
+                      className="selectpicker form-select mb-2"
+                    >
+                      {categories.map((items) => (
+                        <option key={items.id} value={items.nameVN}>
+                          {items.nameVN}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      required
+                      {...register('categoryDetails.1.name')}
+                      className="selectpicker form-select mb-2"
+                    >
+                      {categories.map((items) => (
+                        <option key={items.id} value={items.nameEN}>
+                          {items.nameEN}
+                        </option>
+                      ))}
+                    </select> */}
                   </label>
                 </div>
               </div>
