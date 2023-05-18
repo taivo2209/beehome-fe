@@ -10,6 +10,8 @@ function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  // const [nameVN, setNameVN] = useState('');
+  // const [nameEN, setNameEN] = useState('');
 
   const accessToken = useSelector((state) => state.auth.accessToken);
 
@@ -65,6 +67,19 @@ function FormAdd({ getData }) {
     }
   };
 
+  // const handleNameVNChange = (event) => {
+  //   const selectedNameVN = event.target.value;
+  //   setNameVN(selectedNameVN);
+
+  //   // Tìm giá trị tương ứng trong `categories` dựa trên `nameVN` và cập nhật `nameEN` tương ứng
+  //   const selectedCategory = categories.find(
+  //     (item) => item.nameVN === selectedNameVN,
+  //   );
+  //   if (selectedCategory) {
+  //     setNameEN(selectedCategory.nameEN);
+  //   }
+  // };
+
   return (
     <>
       <button
@@ -109,28 +124,6 @@ function FormAdd({ getData }) {
                       className="form-control"
                       id="formGroupExamplePrice"
                     />
-                    {/* <select
-                      required
-                      {...register('categoryDetails.0.name')}
-                      className="selectpicker form-select mb-2"
-                    >
-                      {categories.map((items) => (
-                        <option key={items.id} value={items.nameVN}>
-                          {items.nameVN}
-                        </option>
-                      ))}
-                    </select>
-                    <select
-                      required
-                      {...register('categoryDetails.1.name')}
-                      className="selectpicker form-select mb-2"
-                    >
-                      {categories.map((items) => (
-                        <option key={items.id} value={items.nameEN}>
-                          {items.nameEN}
-                        </option>
-                      ))}
-                    </select> */}
                   </label>
                 </div>
               </div>

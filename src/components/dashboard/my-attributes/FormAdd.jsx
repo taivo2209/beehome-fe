@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import attributes from '../../../data/attributes';
 
 function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
