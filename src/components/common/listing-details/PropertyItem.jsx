@@ -1,17 +1,14 @@
-const PropertyItem = () => {
+const PropertyItem = ({ dataRoom }) => {
   return (
     <ul className="mb0">
       <li className="list-inline-item">
-        <a href="#">Apartment</a>
+        <a href="#">Beds: {dataRoom?.roomSimple}</a>
       </li>
       <li className="list-inline-item">
-        <a href="#">Beds: 4</a>
+        <a href="#">Baths: {dataRoom?.toilet}</a>
       </li>
       <li className="list-inline-item">
-        <a href="#">Baths: 2</a>
-      </li>
-      <li className="list-inline-item">
-        <a href="#">Sq Ft: 5280</a>
+        <a href="#">Sq : {dataRoom?.acreage} </a>
       </li>
     </ul>
   );

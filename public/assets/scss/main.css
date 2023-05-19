@@ -6245,6 +6245,7 @@ form.home5_advanced_search_form
 .feat_property .thumb img {
   opacity: 0.6;
   object-fit: fill;
+  max-height: 300px;
   min-height: 300px;
 }
 
@@ -6563,6 +6564,7 @@ form.home5_advanced_search_form
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 15px;
+  height: 50px;
 }
 
 .feat_property .details .tc_content .prop_details {

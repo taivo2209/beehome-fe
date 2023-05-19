@@ -12,19 +12,26 @@ import Sidebar from '../../components/listing-details-v1/Sidebar';
 import { useSelector } from 'react-redux';
 
 const ListingDynamicDetailsV1 = () => {
-  // const [customer, setCustomer] = useState();
   const { data } = useSelector((state) => state.boardingHouses);
-  const customer = useSelector((state) => state.customer.data);
+  const dataStar = useSelector((state) => state.boardingHouseStar.data);
 
+  const customer = useSelector((state) => state.customer.data);
   const dataSearch = useSelector((state) => state.dataSearch);
+  const dataSource = useSelector((state) => state.dataSource);
 
   const router = useRouter();
   const id = router.query.id;
-  const boardingHouseDetail =
-    data?.filter((item) => item.id == id) == null
-      ? dataSearch.data?.filter((item) => item.id == id)
-      : data?.filter((item) => item.id == id);
+  let boardingHouseDetail;
+  if (dataSource.typeData === 'dataSearch') {
+    boardingHouseDetail = dataSearch.data?.filter((item) => item.id == id);
+  }
+  if (dataSource.typeData === 'dataStar') {
+    boardingHouseDetail = dataStar?.filter((item) => item.id == id);
+  }
 
+  if (dataSource.typeData === 'dataBoardingHouse') {
+    boardingHouseDetail = data?.filter((item) => item.id == id);
+  }
   const saveViewedItem = (item) => {
     let viewedItems = JSON.parse(localStorage.getItem('viewedItems')) || [];
 
@@ -43,7 +50,6 @@ const ListingDynamicDetailsV1 = () => {
 
     localStorage.setItem('viewedItems', JSON.stringify(viewedItems));
   };
-  // const test = saveViewedItem(boardingHouseDetail);
   const [dataBoarding, setData] = useState({});
   const floorData = useSelector((state) => state.floors);
   useEffect(() => {

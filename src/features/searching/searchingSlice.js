@@ -3,7 +3,7 @@ import { fetchSearchingData } from './searchingApi';
 
 const initialState = {
   data: {
-    searchText: {},
+    searchText: '',
     province: {},
     ward: {},
     district: {},

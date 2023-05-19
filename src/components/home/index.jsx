@@ -10,6 +10,7 @@ import WhyChoose from '../common/WhyChoose';
 import PopupSignInUp from '../common/PopupSignInUp';
 import RecentlyFeaturedProperties from './RecentlyFeaturedProperties';
 import FindProperties from './FindProperties';
+import FeaturedAvgStarProperties from './FeaturedAvgStarProperties';
 // import FindProperties from '../../data/findProperties';
 
 const Index = () => {
@@ -38,6 +39,24 @@ const Index = () => {
           </div>
           <div className="row">
             <FindProperties />
+          </div>
+        </div>
+      </section>
+
+      {/* <!-- Feature Properties --> */}
+      <section id="feature-property" className="feature-property bgc-f7">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 offset-lg-3">
+              <div className="main-title text-center mb40">
+                <h2>Yêu thích nhất </h2>
+              </div>
+            </div>
+            <div className="col-lg-12">
+              <div className="feature_property_slider gutter-x15">
+                <FeaturedAvgStarProperties />
+              </div>
+            </div>
           </div>
         </div>
       </section>

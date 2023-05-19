@@ -14,6 +14,8 @@ import customerSlice from '../features/customer/customerSlice';
 import commentSlice from '../features/comment/commentSlice';
 import searchingSlice from '../features/searching/searchingSlice';
 import dataSearchSlice from '../features/dataSearch/dataSearchSlice';
+import dataSourceSlice from '../features/dataSource/dataSourceSlice';
+import boardingHouseStarSlice from '../features/boardingHouseStar/boardingHouseStarSlice';
 // import commentSlice from '../features/comment/commentSlice';
 
 const persistConfig = {
@@ -29,10 +31,12 @@ const rootReducer = combineReducers({
   attributes: attributesSlice,
   boardingHouses: boardingHouseSlice,
   customer: customerSlice,
+  dataSource: dataSourceSlice,
   comment: commentSlice,
   floors: floorSlice,
   searching: searchingSlice,
   dataSearch: dataSearchSlice,
+  boardingHouseStar: boardingHouseStarSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

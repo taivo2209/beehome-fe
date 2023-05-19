@@ -3,6 +3,7 @@ import PropertyItem from '../listing-details/PropertyItem';
 import FeatureRooms from '../listing/FeatureRooms';
 
 const DetailRoom = ({ openFormToMeet, dataRoom }) => {
+  console.log('=================', dataRoom);
   return (
     <div
       style={{
@@ -18,10 +19,10 @@ const DetailRoom = ({ openFormToMeet, dataRoom }) => {
         }}
       >
         <div className="lsd_list">
-          <PropertyItem />
+          <PropertyItem dataRoom={dataRoom} />
         </div>
         {/* End .lsd_list */}
-        <h4 className="mb30">Description</h4>
+        <h4 className="mb30">Attribute</h4>
         <div className="application_statics mt30">
           <div className="row">
             <PropertyAttribute attributes={dataRoom} />

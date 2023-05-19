@@ -21,6 +21,7 @@ import {
   resetWard,
 } from '../../features/searching/searchingSlice';
 import { fetchDataSearch } from '../../features/dataSearch/dataSearchSlice';
+import { setDataSearch } from '../../features/dataSource/dataSourceSlice';
 
 const GlobalFilter = ({ className = '' }) => {
   // submit handler
@@ -90,6 +91,7 @@ const GlobalFilter = ({ className = '' }) => {
     Router.push('/listing-grid-v1');
 
     dispatch(fetchDataSearch(data));
+    dispatch(setDataSearch());
   };
   return (
     <div className={`home1-advnc-search ${className}`}>

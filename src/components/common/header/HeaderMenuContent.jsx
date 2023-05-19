@@ -29,7 +29,6 @@ const HeaderMenuContent = ({ float = '' }) => {
     getData();
   }, []);
 
-  console.log('customer', customer);
   return (
     <ul
       id="respMenu"

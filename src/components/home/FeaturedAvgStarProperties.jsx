@@ -6,9 +6,10 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import axios from 'axios';
-import { setDataBoardingHouse } from '../../features/dataSource/dataSourceSlice';
+import { setDataStar } from '../../features/dataSource/dataSourceSlice';
+import { fetchBoardingHouseStar } from '../../features/boardingHouseStar/boardingHouseStarSlice';
 
-const FeaturedProperties = () => {
+const FeaturedAvgStarProperties = () => {
   const settings = {
     dots: true,
     arrows: false,
@@ -40,17 +41,17 @@ const FeaturedProperties = () => {
       const res = await axios.get(
         `http://localhost:5000/customer/boardingHouse/${id}`,
       );
-      dispatch(setDataBoardingHouse());
+      dispatch(setDataStar());
       dispatch(removeFloor(0));
       dispatch(setFloor(res.data));
     } catch (err) {
       console.log(err);
     }
   };
-  const { data } = useSelector((state) => state.boardingHouses);
+  const { data } = useSelector((state) => state.boardingHouseStar);
   const memoizedData = useMemo(() => data.slice(0, 12) || [], [data]);
   useEffect(() => {
-    dispatch(fetchBoardingHouse());
+    dispatch(fetchBoardingHouseStar());
   }, []);
 
   let content = memoizedData.slice(0, 12)?.map((item) => (
@@ -151,4 +152,4 @@ const FeaturedProperties = () => {
   );
 };
 
-export default FeaturedProperties;
+export default FeaturedAvgStarProperties;
