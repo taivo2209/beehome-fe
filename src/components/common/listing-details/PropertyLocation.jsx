@@ -1,26 +1,34 @@
+import GoogleMapReact from 'google-map-react';
+
 const PropertyLocation = () => {
+  const defaultProps = {
+    center: {
+      lat: 10.837704,
+      lng: 106.765316,
+    },
+    zoom: 11,
+  };
+
   return (
     <>
       <div className="thumb">
         <div className="h400" id="map-canvas">
-          <div className="gmap_canvas ">
-            <iframe
-              title="map"
-              className="gmap_iframe"
-              src="https://www.google.com/maps/d/embed?mid=1tJl0-uRax4AKBfbh1eLPLX5WzOk&hl=en&ehbc=2E312F"
-            ></iframe>
-          </div>
-        </div>
-        <div className="overlay_icon">
-          <a href="#">
-            <img
-              className="map_img_icon"
-              src="/assets/images/header-logo.png"
-              alt="header-logo.png"
-            />
-          </a>
+          <GoogleMapReact
+            bootstrapURLKeys={{
+              key: 'AIzaSyB5v4EEj3ZA8qEohuxds5A7IWs3eEaKA3c',
+            }}
+            defaultCenter={defaultProps.center}
+            defaultZoom={defaultProps.zoom}
+          ></GoogleMapReact>
         </div>
       </div>
+      {/* <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: 'AIzaSyB5v4EEj3ZA8qEohuxds5A7IWs3eEaKA3c' }}
+          defaultCenter={defaultProps.center}
+          defaultZoom={defaultProps.zoom}
+        ></GoogleMapReact>
+      </div> */}
     </>
   );
 };

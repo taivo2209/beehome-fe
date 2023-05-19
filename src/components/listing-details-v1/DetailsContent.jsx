@@ -35,6 +35,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
     (total, current) => total + current?.comment?.star,
     0,
   );
+  console.log('tai', dataDetail);
   return (
     <>
       <div className="listing_single_description">
