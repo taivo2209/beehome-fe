@@ -78,7 +78,7 @@ const Form = () => {
 
       <div className="input-group mb-2 mr-sm-2">
         <input
-          type="text"
+          type="email"
           className="form-control"
           required
           placeholder="Email"

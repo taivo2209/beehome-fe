@@ -25,28 +25,19 @@ const CustomerProfile = () => {
         },
       });
       setData(res.data);
-      setFirstName(res.data.firstName);
-      setLastName(res.data.lastName);
-      setBirthDate(res.data.birthDate);
-      setEmail(res.data.email);
-      setAddress(res.data.address);
-      setAvatarId(res.data.avatar.id);
-      setPhoneNumber(res.data.phoneNumber);
+      setFirstName(res.data?.firstName);
+      setLastName(res.data?.lastName);
+      setBirthDate(res.data?.birthDate);
+      setEmail(res.data?.email);
+      setAddress(res.data?.address);
+      setAvatarId(res.data?.avatar.id);
+      setPhoneNumber(res.data?.phoneNumber);
+      setBirthDate(res.data?.birthDate);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
     }
   };
-  const formData = {
-    firstName: firstName,
-    lastName: lastName,
-    birthDate: birthDate,
-    email: email,
-    address: address,
-    avatarId: avatarId,
-    phoneNumber: phoneNumber,
-  };
-  console.log(formData);
 
   const handleSubmit = async () => {
     const formData = {

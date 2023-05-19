@@ -4,23 +4,20 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import dayjs from 'dayjs';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [name, setName] = useState('');
-  const [slug, setSlug] = useState('');
-  const [description, setDescription] = useState('');
+  const [dateDisable, setDateDisable] = useState('');
 
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   const validateInputs = () => {
-    if (
-      !name ||
-      !slug ||
-      !description 
-    ) {
+    if (!dateDisable) {
       Swal.fire({
         icon: 'error',
         title: 'Lỗi',
@@ -35,19 +32,20 @@ function FormAdd({ getData }) {
     e.preventDefault();
     const isValid = validateInputs();
     const data = {
-      name: name,
-      slug: slug,
-      description: description,
+      dateDisable: dateDisable,
     };
 
-    if (isValid){
-
+    if (isValid) {
       try {
-        const res = await axios.post('http://localhost:5000/lessor/tag', data, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
+        const res = await axios.post(
+          'http://localhost:5000/lessor/book-disable',
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
           },
-        });
+        );
         // reset();
         Swal.fire({
           icon: 'success',
@@ -56,7 +54,7 @@ function FormAdd({ getData }) {
           timer: 1500,
         });
         getData();
-  
+
         handleClose();
       } catch (error) {
         Swal.fire({
@@ -69,6 +67,16 @@ function FormAdd({ getData }) {
       }
     }
     // console.log(data);
+  };
+
+  const handleDateChange = (date) => {
+    setDateDisable(dayjs(date).tz('Asia/Ho_Chi_Minh').set('hour', 9));
+  };
+
+  const disablePastDates = (date) => {
+    const today = dayjs().tz('Asia/Ho_Chi_Minh');
+    const minDate = today.add(14, 'day');
+    return date < minDate;
   };
 
   return (
@@ -85,41 +93,28 @@ function FormAdd({ getData }) {
         onClick={handleShow}
       >
         <span className="flaticon-plus"></span>
-        <span className="dn-lg"> Create Tags</span>
+        <span className="dn-lg"> Busy Dates</span>
       </button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Add Tags</Modal.Title>
-        </Modal.Header>
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <div className="input-group mb-2 mr-sm-2">
-              <input
-                type="text"
+              {/* <input
+                type="date"
                 className="form-control"
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setDateDisable(e.target.value)}
                 required
-                placeholder="Tag Name"
-              />
-            </div>
-            <div className="input-group form-group mb-2 mr-sm-2">
-              <input
-                type="text"
-                className="form-control"
-                required
-                placeholder="Tag Slug"
-                onChange={(e) => setSlug(e.target.value)}
-              />
-            </div>
-            <div className="input-group form-group mb-2 mr-sm-2">
-              <input
-                type="text"
-                className="form-control"
-                required
-                placeholder="Tag Description"
-                onChange={(e) => setDescription(e.target.value)}
-              />
+              /> */}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DatePicker
+                  label="Select a date"
+                  inputFormat="dd/MM/yyyy"
+                  shouldDisableDate={disablePastDates}
+                  onChange={handleDateChange}
+                />
+              </LocalizationProvider>
             </div>
             <div className="my_profile_setting_input overflow-hidden mt20">
               <button type="submit" className="btn btn2 float-end">

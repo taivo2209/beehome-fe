@@ -91,11 +91,27 @@ const FindProperties = () => {
             cols={item.cols || 1}
             rows={item.rows || 1}
           >
-            <img
+            {/* <img
               {...srcset(item.img, 121, item.rows, item.cols)}
               alt={item.title}
               loading="lazy"
-            />
+              // className='img-fluid w-100'
+            /> */}
+            <div className="properti_city d-block">
+              <div className="thumb">
+                <img
+                  className="img-fluid w100"
+                  {...srcset(item.img, 121, item.rows, item.cols)}
+                  loading="lazy"
+                  alt={item.title}
+                />
+              </div>
+              <div className="overlay">
+                <div className="details">
+                  <h4>{item.name}</h4>
+                </div>
+              </div>
+            </div>
           </ImageListItem>
         ))}
       </ImageList>

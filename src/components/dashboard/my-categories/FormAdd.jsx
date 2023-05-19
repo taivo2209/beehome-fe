@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+// import categories from '../../../data/categories';
 
 function FormAdd({ getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  // const [nameVN, setNameVN] = useState('');
+  // const [nameEN, setNameEN] = useState('');
 
   const accessToken = useSelector((state) => state.auth.accessToken);
 
@@ -65,6 +67,19 @@ function FormAdd({ getData }) {
     }
   };
 
+  // const handleNameVNChange = (event) => {
+  //   const selectedNameVN = event.target.value;
+  //   setNameVN(selectedNameVN);
+
+  //   // Tìm giá trị tương ứng trong `categories` dựa trên `nameVN` và cập nhật `nameEN` tương ứng
+  //   const selectedCategory = categories.find(
+  //     (item) => item.nameVN === selectedNameVN,
+  //   );
+  //   if (selectedCategory) {
+  //     setNameEN(selectedCategory.nameEN);
+  //   }
+  // };
+
   return (
     <>
       <button
@@ -87,10 +102,10 @@ function FormAdd({ getData }) {
           <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit(onSubmit)} >
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row">
               <div className="col-lg-6 col-xl-6">
-                <div className="my_profile_setting_input form-group">
+                <div className="my_profile_setting_input ui_kit_select_search form-group">
                   <label htmlFor="formGroupExamplePrice">
                     Category Name:
                     <input

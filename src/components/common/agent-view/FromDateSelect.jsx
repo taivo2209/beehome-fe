@@ -10,12 +10,38 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Ho_Chi_Minh'); // Set default timezone
 function FormDateSelect({ customer, setBook }) {
   const [selectedDate, setSelectedDate] = useState(null);
+  const [data, setData] = useState();
+  const accessToken = useSelector((state) => state.auth.accessToken);
+
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/lessor/book-disable?page=1&limit=100`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        },
+      );
+      setData(res.data);
+      // dispatch(setCategories(res.data.items));
+      // console.log(accessToken);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  });
 
   const handleDateChange = (date) => {
     setSelectedDate(dayjs(date).tz('Asia/Ho_Chi_Minh').set('hour', 9));
@@ -32,11 +58,10 @@ function FormDateSelect({ customer, setBook }) {
     }
   };
 
-  const disableDates = [
-    new Date('2023-05-02'),
-    new Date('2023-05-05'),
-    new Date('2023-05-09'),
-  ];
+  const disableDates = data?.items?.map((item) => {
+    return new Date(item.dateDisable);
+  });
+  // console.log(disableDates);
 
   const disablePastDates = (date) => {
     const today = dayjs().tz('Asia/Ho_Chi_Minh');

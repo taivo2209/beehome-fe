@@ -16,6 +16,8 @@ function FormEdit({ id, updateData }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [acreage, setAcreage] = useState('');
+  const [roomSimple, setRoomSimple] = useState('');
+  const [toilet, setToilet] = useState('1');
   const [status, setStatus] = useState('ACTIVE');
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
@@ -33,13 +35,15 @@ function FormEdit({ id, updateData }) {
       setPrice(res.data?.price);
       setAcreage(res.data?.acreage);
       setStatus(res.data?.status);
+      setRoomSimple(res.data?.roomSimple);
+      setToilet(res.data?.toilet);
     } catch (err) {
       console.log(err);
     }
   };
   useEffect(() => {
     getData();
-  }, []); 
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,6 +52,8 @@ function FormEdit({ id, updateData }) {
       name: name,
       price: price,
       acreage: acreage,
+      roomSimple: roomSimple,
+      toilet: toilet,
       imgIds: imgIds,
       categoryIds: categoryIds,
       attributeIds: attributeIds,
@@ -118,6 +124,26 @@ function FormEdit({ id, updateData }) {
                 id="acreage"
                 defaultValue={data?.acreage}
                 onChange={(e) => setAcreage(e.target.value)}
+              />
+            </div>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="roomSimple">Room Simple</label>
+              <input
+                type="text"
+                className="form-control"
+                id="roomSimple"
+                defaultValue={data?.roomSimple}
+                onChange={(e) => setRoomSimple(e.target.value)}
+              />
+            </div>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="toilet">Toilet</label>
+              <input
+                type="text"
+                className="form-control"
+                id="toilet"
+                defaultValue={data?.toilet}
+                onChange={(e) => setToilet(e.target.value)}
               />
             </div>
             <div className="col-lg-6 col-xl-6">

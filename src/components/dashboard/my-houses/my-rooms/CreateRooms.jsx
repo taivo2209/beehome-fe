@@ -16,6 +16,8 @@ function CreateRooms({ floorId, updateData }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [acreage, setAcreage] = useState('');
+  const [roomSimple, setRoomSimple] = useState('');
+  const [toilet, setToilet] = useState('1');
   const [imgIds, setImgIds] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
@@ -25,6 +27,8 @@ function CreateRooms({ floorId, updateData }) {
       !name ||
       !price ||
       !acreage ||
+      !roomSimple ||
+      !toilet ||
       !imgIds ||
       !categoryIds ||
       !attributeIds
@@ -36,7 +40,11 @@ function CreateRooms({ floorId, updateData }) {
       });
       return false;
     }
-    if (isNaN(Number(price)) || isNaN(Number(acreage))) {
+    if (
+      isNaN(Number(price)) ||
+      isNaN(Number(acreage)) ||
+      isNaN(Number(toilet))
+    ) {
       Swal.fire({
         icon: 'error',
         title: 'Vui lòng điền thông tin hợp lệ',
@@ -44,11 +52,11 @@ function CreateRooms({ floorId, updateData }) {
       });
       return false;
     }
-    if (Number(price) < 0 || Number(acreage) < 0) {
+    if (Number(price) < 0 || Number(acreage) < 0 || Number(toilet) < 0) {
       Swal.fire({
         icon: 'error',
         title: 'Vui lòng điền thông tin hợp lệ',
-        text: 'Vui lòng không nhập số âm ở Price, Acreage',
+        text: 'Vui lòng không nhập số âm ở Price, Acreage, Toilet',
       });
       return false;
     }
@@ -64,6 +72,8 @@ function CreateRooms({ floorId, updateData }) {
       name: name,
       price: price,
       acreage: acreage,
+      roomSimple: roomSimple,
+      toilet: toilet,
       imgIds: imgIds,
       categoryIds: categoryIds,
       attributeIds: attributeIds,
@@ -159,6 +169,24 @@ function CreateRooms({ floorId, updateData }) {
                 className="form-control"
                 id="acreage"
                 onChange={(e) => setAcreage(e.target.value)}
+              />
+            </div>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="roomSimple">Room Simple</label>
+              <input
+                type="text"
+                className="form-control"
+                id="roomSimple"
+                onChange={(e) => setRoomSimple(e.target.value)}
+              />
+            </div>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="toilet">Toilet</label>
+              <input
+                type="text"
+                className="form-control"
+                id="toilet"
+                onChange={(e) => setToilet(e.target.value)}
               />
             </div>
             <div className="my_profile_setting_input form-group col-xl-12">

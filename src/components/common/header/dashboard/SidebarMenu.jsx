@@ -14,6 +14,7 @@ const SidebarMenu = () => {
     { id: 3, name: "Attributes", route: "/my-attributes" },
     { id: 4, name: "Tags", route: "/my-tags" },
     { id: 5, name: "Bookings", route: "/my-bookings" },
+    { id: 6, name: "Busy Dates", route: "/busy-date" },
   ];
 
   const manageAccount = [
