@@ -9,6 +9,7 @@ import MobileMenu from '../../components/common/header/MobileMenu';
 import PopupSignInUp from '../../components/common/PopupSignInUp';
 import DetailsContent from '../../components/listing-details-v1/DetailsContent';
 import Sidebar from '../../components/listing-details-v1/Sidebar';
+import Seo from '../../components/common/seo';
 import { useSelector } from 'react-redux';
 
 const ListingDynamicDetailsV1 = () => {
@@ -52,6 +53,8 @@ const ListingDynamicDetailsV1 = () => {
   }, []);
   return (
     <>
+      <Seo pageTitle="Property Detail" />
+
       {/* <!-- Main Header Nav --> */}
       <Header />
 

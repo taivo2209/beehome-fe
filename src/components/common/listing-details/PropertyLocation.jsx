@@ -1,14 +1,10 @@
 import GoogleMapReact from 'google-map-react';
+import {HiLocationMarker} from 'react-icons/hi';
 
-const PropertyLocation = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.837704,
-      lng: 106.765316,
-    },
-    zoom: 11,
-  };
+const AnyReactComponent = ({ icon }) => <div>{icon}</div>;
 
+const PropertyLocation = ({coords}) => {
+  console.log(coords);
   return (
     <>
       <div className="thumb">
@@ -17,18 +13,18 @@ const PropertyLocation = () => {
             bootstrapURLKeys={{
               key: 'AIzaSyB5v4EEj3ZA8qEohuxds5A7IWs3eEaKA3c',
             }}
-            defaultCenter={defaultProps.center}
-            defaultZoom={defaultProps.zoom}
-          ></GoogleMapReact>
+            defaultCenter={coords}
+            defaultZoom={11}
+            center={coords}
+          >
+            <AnyReactComponent
+              lat={coords?.lat}
+              lng={coords?.lng}
+              icon={<HiLocationMarker color="red" size={25}/>}
+            />
+          </GoogleMapReact>
         </div>
       </div>
-      {/* <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyB5v4EEj3ZA8qEohuxds5A7IWs3eEaKA3c' }}
-          defaultCenter={defaultProps.center}
-          defaultZoom={defaultProps.zoom}
-        ></GoogleMapReact>
-      </div> */}
     </>
   );
 };

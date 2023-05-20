@@ -52,7 +52,7 @@ const RecentlyFeaturedProperties = () => {
     return viewedItems;
   };
   const viewedItems = getViewedItems();
-  console.log(viewedItems);
+  // console.log(viewedItems);
   // const memoizedData = useMemo(() => data.slice(0, 12) || [], [data]);
   // useEffect(() => {
   //   dispatch(fetchBoardingHouse());

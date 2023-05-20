@@ -69,7 +69,7 @@ function FormDateSelect({ customer, setBook }) {
     return (
       date < today ||
       date > maxDate ||
-      disableDates.some((disabledDate) =>
+      disableDates?.some((disabledDate) =>
         dayjs(disabledDate).tz('Asia/Ho_Chi_Minh').isSame(date, 'day'),
       )
     );
