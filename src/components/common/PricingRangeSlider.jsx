@@ -13,7 +13,6 @@ const RangeSlider = () => {
   const handleOnChange = (value) => {
     setPrice({ value });
   };
-  console.log(price.value.min, price.value.max);
   // price add to state
   useEffect(() => {
     dispath(

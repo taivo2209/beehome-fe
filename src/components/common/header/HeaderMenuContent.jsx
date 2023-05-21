@@ -2,12 +2,16 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import CustomerAccount from './CustomerAccount';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import { setEN, setVI } from '../../../features/langType/langTypeSlice';
 
 const HeaderMenuContent = ({ float = '' }) => {
+  const route = useRouter();
+  const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.auth);
   const customer = useSelector((state) => state.customer.data);
-
+  const { typeData } = useSelector((state) => state.langType);
   const [data, setData] = useState([]);
   let path = data?.avatar?.path;
   let newPath = path?.replace(/\\/g, '/');
@@ -35,11 +39,38 @@ const HeaderMenuContent = ({ float = '' }) => {
       className="ace-responsive-menu text-end d-lg-block d-none"
       data-menu-style="horizontal"
     >
+      {/* End .dropitem */}
+
+      <li className="dropitem">
+        <a>
+          <span className="title">Lang</span>
+          <span className="arrow"></span>
+        </a>
+        <ul className="sub-menu ">
+          <li>
+            <div
+              onClick={() => dispatch(setVI('vi'))}
+              className={'vi' === typeData ? 'ui-active' : undefined}
+            >
+              vi
+            </div>
+          </li>
+          <li>
+            <div
+              onClick={() => dispatch(setEN('en'))}
+              className={'en' === typeData ? 'ui-active' : undefined}
+            >
+              en
+            </div>
+          </li>
+        </ul>
+      </li>
+      {/* End .dropitem */}
+
       <li className="dropitem">
         <Link href={'/'}>
           <span className="title">Home</span>
         </Link>
-        {/* </a> */}
       </li>
 
       {customer != null ? (

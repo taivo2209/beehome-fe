@@ -69,7 +69,7 @@ function FormDateSelect({ customer, setBook }) {
     return (
       date < today ||
       date > maxDate ||
-      disableDates.some((disabledDate) =>
+      disableDates?.some((disabledDate) =>
         dayjs(disabledDate).tz('Asia/Ho_Chi_Minh').isSame(date, 'day'),
       )
     );
@@ -98,6 +98,7 @@ function FormDateSelect({ customer, setBook }) {
         <div style={{ width: '50%' }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DigitalClock
+              className="time_select"
               views={['hours', 'minutes']}
               ampm={true}
               minutesStep={5}

@@ -100,22 +100,21 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
   };
   return (
     <>
+      {/* <div style={{ color: '#0000' }}> */}
       <Box sx={{ width: '100%' }}>
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
-            const labelProps = {};
-            // if (isStepOptional(index)) {
-            //   labelProps.optional = (
-            //     // <Typography variant="caption">Optional</Typography>
-            //   );
-            // }
+            const labelProps = { color: '#ee7b35' };
+
             if (isStepSkipped(index)) {
               stepProps.completed = false;
             }
             return (
               <Step key={label} {...stepProps}>
-                <StepLabel {...labelProps}>{label}</StepLabel>
+                <StepLabel className="step_color" {...labelProps}>
+                  {label}
+                </StepLabel>
               </Step>
             );
           })}
@@ -142,7 +141,8 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
 
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Button
-                color="inherit"
+                style={{ color: '#ee7b35' }}
+                color="primary"
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 sx={{ mr: 1 }}
@@ -150,18 +150,15 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
                 Back
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
-              {/* {isStepOptional(activeStep) && (
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
-                </Button>
-              )} */}
-              <Button onClick={handleNext}>
+
+              <Button onClick={handleNext} style={{ color: '#ee7b35' }}>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </Box>
           </React.Fragment>
         )}
       </Box>
+      {/* </div> */}
     </>
   );
 };

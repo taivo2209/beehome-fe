@@ -70,14 +70,14 @@ const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
         {formToMeet ? (
           ''
         ) : detailIsOpen ? (
-          <Button color="primary" onClick={() => HandleDetailIsOpen()}>
-            Do Something
+          <Button className="btn_orange" onClick={() => HandleDetailIsOpen()}>
+            Back
           </Button>
         ) : (
           ''
         )}
 
-        <Button color="secondary" onClick={() => handleToggle()}>
+        <Button className="btn_orange" onClick={() => handleToggle()}>
           Cancel
         </Button>
       </ModalFooter>

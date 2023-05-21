@@ -12,8 +12,10 @@ import PropertyRenDeposits from '../common/listing-details/PropertyRensDeposits'
 import PropertyRule from '../common/listing-details/PropertyRule';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import useTrans from '../../pages/hooks/useTran';
 
 const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
+  const trans = useTrans();
   const [comments, setComment] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -35,11 +37,13 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
     (total, current) => total + current?.comment?.star,
     0,
   );
+  console.log('=================', dataDetail);
+
   return (
     <>
       <div className="listing_single_description">
         {/* End .listing_single_description */}
-        <h4 className="mb30">Description</h4>
+        <h4 className="mb30">{trans.detail.mo_ta}</h4>
         <PropertyDescriptions description={dataDetail?.description} />
       </div>
       {/* End .listing_single_description */}
@@ -81,10 +85,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
 
       <div className="application_statics mt30">
         <h4 className="mb30">
-          Location{' '}
-          <small className="float-end">
-            1421 San Pedro St, Los Angeles, CA 90015
-          </small>
+          Location <small className="float-end">{dataDetail?.location}</small>
         </h4>
         <div className="property_video p0">
           <PropertyLocation />

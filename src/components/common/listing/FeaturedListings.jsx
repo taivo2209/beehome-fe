@@ -7,7 +7,6 @@ const FeaturedListings = ({ data }) => {
     return viewedItems;
   };
   const viewedItems = getViewedItems();
-  console.log(viewedItems);
   return (
     <>
       {viewedItems.slice(0, 3).map((item) => (

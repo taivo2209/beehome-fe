@@ -3,7 +3,6 @@ import PropertyItem from '../listing-details/PropertyItem';
 import FeatureRooms from '../listing/FeatureRooms';
 
 const DetailRoom = ({ openFormToMeet, dataRoom }) => {
-  console.log('=================', dataRoom);
   return (
     <div
       style={{

@@ -2,6 +2,8 @@ import * as React from 'react';
 import List from '@mui/material/List';
 import ListSubheader from '@mui/material/ListSubheader';
 import roomImg from '../../../../public/assets/images/room.jpg';
+import disableRoom from '../../../../public/assets/images/disableRoom.png';
+
 import { ButtonBase, Grid, Paper, Typography, styled } from '@mui/material';
 import Image from 'next/image';
 const Item = styled(Paper)(({ theme }) => ({
@@ -55,7 +57,6 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                 <Grid container spacing={2}>
                   <Grid item>
                     <ButtonBase sx={{ width: 128, height: 128 }}>
-                      {/* <Img alt="complex" src={roomImg} /> */}
                       <Image
                         src={roomImg}
                         alt=""
@@ -76,7 +77,7 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                           variant="subtitle1"
                           component="div"
                         >
-                          Price
+                          Price : {item.price}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           Acreage: {item.acreage}
@@ -85,19 +86,45 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                           Room: {item.name}
                         </Typography>
                       </Grid>
-                      {/* <Grid item>
-                        <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                          Remove
-                        </Typography>
-                      </Grid> */}
                     </Grid>
-                    <Grid item>
-                      <Typography variant="subtitle1" component="div">
-                        {item.price}
-                      </Typography>
-                    </Grid>
+                    <Grid item></Grid>
                   </Grid>
                 </Grid>
+                {/* <Grid container spacing={2}>
+                  <Grid item>
+                    <ButtonBase sx={{ width: 128, height: 128 }}>
+                      <Image
+                        src={disableRoom}
+                        alt=""
+                        style={{
+                          margin: 'auto',
+                          display: 'block',
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                        }}
+                      />
+                    </ButtonBase>
+                  </Grid>
+                  <Grid item xs={12} sm container>
+                    <Grid item xs container direction="column" spacing={2}>
+                      <Grid item xs>
+                        <Typography
+                          gutterBottom
+                          variant="subtitle1"
+                          component="div"
+                        >
+                          Phòng đã được thuê
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Acreage: {item.acreage}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          Room: {item.name}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid> */}
               </Paper>
             ))}
           </Grid>

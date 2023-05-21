@@ -16,6 +16,7 @@ import searchingSlice from '../features/searching/searchingSlice';
 import dataSearchSlice from '../features/dataSearch/dataSearchSlice';
 import dataSourceSlice from '../features/dataSource/dataSourceSlice';
 import boardingHouseStarSlice from '../features/boardingHouseStar/boardingHouseStarSlice';
+import langTypeSlice from '../features/langType/langTypeSlice';
 // import commentSlice from '../features/comment/commentSlice';
 
 const persistConfig = {
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   searching: searchingSlice,
   dataSearch: dataSearchSlice,
   boardingHouseStar: boardingHouseStarSlice,
+  langType: langTypeSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

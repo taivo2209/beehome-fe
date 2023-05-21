@@ -11,9 +11,11 @@ import PopupSignInUp from '../common/PopupSignInUp';
 import RecentlyFeaturedProperties from './RecentlyFeaturedProperties';
 import FindProperties from './FindProperties';
 import FeaturedAvgStarProperties from './FeaturedAvgStarProperties';
-// import FindProperties from '../../data/findProperties';
+import { useTranslation } from 'react-i18next';
+import useTrans from '../../pages/hooks/useTran';
 
 const Index = () => {
+  const trans = useTrans();
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -33,7 +35,7 @@ const Index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center">
-                <h2>Địa điểm nổi bật</h2>
+                <h2>{trans.home.dia_diem_noi_bat}</h2>
               </div>
             </div>
           </div>

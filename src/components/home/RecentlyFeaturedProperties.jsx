@@ -52,11 +52,6 @@ const RecentlyFeaturedProperties = () => {
     return viewedItems;
   };
   const viewedItems = getViewedItems();
-  console.log(viewedItems);
-  // const memoizedData = useMemo(() => data.slice(0, 12) || [], [data]);
-  // useEffect(() => {
-  //   dispatch(fetchBoardingHouse());
-  // }, []);
 
   let content = viewedItems.slice(0, 12)?.map((item) => (
     <div className="item" key={item[0]?.id}>
