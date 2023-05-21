@@ -11,6 +11,7 @@ import PropertyLocation from '../common/listing-details/PropertyLocation';
 import PropertyRenDeposits from '../common/listing-details/PropertyRensDeposits';
 import PropertyRule from '../common/listing-details/PropertyRule';
 import { useSelector } from 'react-redux';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import axios from 'axios';
 import useTrans from '../../pages/hooks/useTran';
 
@@ -18,6 +19,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
   const trans = useTrans();
   const [comments, setComment] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
+  const [coords, setCoords] = useState(null);
   const accessToken = useSelector((state) => state.auth.accessToken);
   const getData = async () => {
     try {
@@ -33,11 +35,18 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
   useEffect(() => {
     getData();
   }, [boardingHouseId]);
+  useEffect(() => {
+    const getCoords = async () => {
+      const results = await geocodeByAddress(dataDetail.location);
+      const latLng = await getLatLng(results[0]);
+      setCoords(latLng);
+    };
+    dataDetail && getCoords();
+  }, [dataDetail]);
   const sum = comments.reduce(
     (total, current) => total + current?.comment?.star,
     0,
   );
-  console.log('=================', dataDetail);
 
   return (
     <>
@@ -83,14 +92,16 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
 
       {/* End .feature_area */}
 
-      <div className="application_statics mt30">
-        <h4 className="mb30">
-          Location <small className="float-end">{dataDetail?.location}</small>
-        </h4>
-        <div className="property_video p0">
-          <PropertyLocation />
+      {dataDetail && (
+        <div className="application_statics mt30">
+          <h4 className="mb30">
+            Location <small className="float-end">{dataDetail?.location}</small>
+          </h4>
+          <div className="property_video p0">
+            <PropertyLocation coords={coords} />
+          </div>
         </div>
-      </div>
+      )}
       {/* End .location_area */}
 
       {/* COMMENT */}

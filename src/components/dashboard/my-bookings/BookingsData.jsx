@@ -1,9 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import FormView from './FormView';
 import FormEdit from './FormEdit';
-import Swal from 'sweetalert2';
 import Pagination from '../../common/Pagination';
 
 const BookingsData = () => {
@@ -39,29 +37,6 @@ const BookingsData = () => {
     getData();
   }, [currentPage]);
 
-  // const handleDelete = async (bookingId) => {
-  //   try {
-  //     const res = await axios.delete(
-  //       `http://localhost:5000/lessor/book/${bookingId}`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`,
-  //         },
-  //       },
-  //     );
-  //     // console.log(res.data);
-  //     // Call getData() again to update the table after deletion
-  //     getData();
-  //     Swal.fire({
-  //       icon: 'success',
-  //       title: 'Xóa thành công!',
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const getStatusColor = (status) => {
     if (status === 'DONE' || status === 'APPROVED') {
