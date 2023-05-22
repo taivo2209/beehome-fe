@@ -11,6 +11,7 @@ import DetailsContent from '../../components/listing-details-v1/DetailsContent';
 import Sidebar from '../../components/listing-details-v1/Sidebar';
 import Seo from '../../components/common/seo';
 import { useSelector } from 'react-redux';
+import useTrans from '../hooks/useTran';
 
 const ListingDynamicDetailsV1 = () => {
   const { data } = useSelector((state) => state.boardingHouses);
@@ -19,7 +20,7 @@ const ListingDynamicDetailsV1 = () => {
   const customer = useSelector((state) => state.customer.data);
   const dataSearch = useSelector((state) => state.dataSearch);
   const dataSource = useSelector((state) => state.dataSource);
-
+  const trans = useTrans();
   const router = useRouter();
   const id = router.query.id;
   let boardingHouseDetail;
@@ -89,7 +90,7 @@ const ListingDynamicDetailsV1 = () => {
                         /\B(?=(\d{3})+(?!\d))/g,
                         '.',
                       )}
-                      <small>đ/mo</small>
+                      <small>{trans.detail.gia_thang}</small>
                     </h2>
                   </div>
                 </div>

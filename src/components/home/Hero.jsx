@@ -2,10 +2,11 @@ import { useDispatch } from 'react-redux';
 import GlobalFilter from '../common/GlobalFilter';
 import LookingItem from './LookingItem';
 import { resetData } from '../../features/searching/searchingSlice';
+import useTrans from '../../pages/hooks/useTran';
 
 const Hero = () => {
   const dispatch = useDispatch();
-
+  const trans = useTrans();
   dispatch(resetData());
   return (
     <section className="home-one home5-overlay home5_bgi5 parallax">
@@ -14,11 +15,11 @@ const Hero = () => {
           <div className="col-lg-7">
             <div className="home_content home5">
               <div className="home-text home5">
-                <h2 className="fz55">Find Your Dream Home</h2>
+                <h2 className="fz55">{trans.home.banner}</h2>
                 {/* <p className="discounts_para fz18 color-white">
                   From as low as $10 per day with limited time offer discounts.
                 </p> */}
-                <h4>What are you looking for?</h4>
+                <h4>{trans.home.banner_}</h4>
                 <ul className="mb0">
                   <LookingItem />
                 </ul>

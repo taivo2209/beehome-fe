@@ -61,7 +61,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
         <div className="row">
           <div className="col-lg-12">
             {/* Fee */}
-            <h4 className="mb15">Property Details</h4>
+            <h4 className="mb15">{trans.detail.chi_phi}</h4>
           </div>
           <PropertyDetails dataDetail={dataDetail} />
         </div>
@@ -70,7 +70,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
       <div className="application_statics mt30">
         <div className="row">
           <div className="col-lg-12">
-            <h4 className="mb10">Features</h4>
+            <h4 className="mb10">{trans.detail.tien_ich}</h4>
           </div>
           {/* End .col */}
 
@@ -80,13 +80,13 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
 
       <div className="listing_single_description">
         {/* End .listing_single_description */}
-        <h4 className="mb30">Rule</h4>
+        <h4 className="mb30">{trans.detail.quy_dinh}</h4>
         <PropertyRule rule={dataDetail?.rule} />
       </div>
 
       <div className="listing_single_description">
         {/* End .listing_single_description */}
-        <h4 className="mb30">RenDeposits</h4>
+        <h4 className="mb30">{trans.detail.tien_coc}</h4>
         <PropertyRenDeposits renDeposits={dataDetail?.rentDeposit} />
       </div>
 
@@ -95,10 +95,11 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
       {dataDetail && (
         <div className="application_statics mt30">
           <h4 className="mb30">
-            Location <small className="float-end">{dataDetail?.location}</small>
+            {trans.detail.vi_tri}{' '}
+            <small className="float-end">{dataDetail?.location}</small>
           </h4>
           <div className="property_video p0">
-            <PropertyLocation coords={coords} />
+            {/* <PropertyLocation coords={coords} /> */}
           </div>
         </div>
       )}
@@ -109,15 +110,18 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
       <div className="product_single_content">
         <div className="mbp_pagination_comments mt30">
           <div className="total_review">
-            <h4>{comments.length} Reviews</h4>
+            <h4>
+              {comments.length} {trans.detail.danh_gia.viet_danh_gia}
+            </h4>
             <ul className="review_star_list mb0 pl10">
               <Ratings />
             </ul>
             <a className="tr_outoff pl10" href="#">
-              ( {sum ? sum : '0' / comments.length} out of 5 )
+              ( {sum ? sum : '0' / comments.length} {trans.detail.danh_gia.tren}{' '}
+              5 )
             </a>
             <a className="write_review float-end fn-xsd" href="#">
-              Write a Review
+              {trans.detail.danh_gia.viet_danh_gia}
             </a>
           </div>
           {/* End .total_review */}
@@ -134,7 +138,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
           <div className="custom_hr"></div>
 
           <div className="mbp_comment_form style2">
-            <h4>Write a Review</h4>
+            <h4>{trans.detail.danh_gia.viet_danh_gia}</h4>
             <ul className="review_star">
               <li className="list-inline-item">
                 <span className="sspd_review">
@@ -156,7 +160,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
                 className="btn btn-thm col-lg-6 offset-lg-3"
               >
                 <Link href="/login">
-                  <span> Login for Review</span>
+                  <span>{trans.detail.danh_gia.dang_nhap}</span>
                 </Link>
               </button>
             )}

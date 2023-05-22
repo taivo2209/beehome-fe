@@ -43,12 +43,15 @@ const HeaderMenuContent = ({ float = '' }) => {
 
       <li className="dropitem">
         <a>
-          <span className="title">Lang</span>
+          <span className="title" style={{ cursor: 'pointer' }}>
+            Lang
+          </span>
           <span className="arrow"></span>
         </a>
         <ul className="sub-menu ">
           <li>
             <div
+              style={{ cursor: 'pointer' }}
               onClick={() => dispatch(setVI('vi'))}
               className={'vi' === typeData ? 'ui-active' : undefined}
             >
@@ -57,6 +60,7 @@ const HeaderMenuContent = ({ float = '' }) => {
           </li>
           <li>
             <div
+              style={{ cursor: 'pointer' }}
               onClick={() => dispatch(setEN('en'))}
               className={'en' === typeData ? 'ui-active' : undefined}
             >
