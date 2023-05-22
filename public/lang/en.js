@@ -9,7 +9,8 @@ export default {
     da_xem_gan_day: 'Recently Viewed',
     dang_ky: 'Register Now',
     thanh_vien: 'Become our Partner',
-
+    banner: 'Find Your Dream Home',
+    banner_: 'What are you looking for?'
   },
   filter: {
     nhap_tu_khoa: 'Enter keywords',
@@ -34,5 +35,29 @@ export default {
     },
     xem_phong: 'Available Rooms',
     chu_nha: 'Owner',
+  },
+  login:{
+    dang_nhap: 'Login',
+    mat_khau:'Password',
+    quen_mk: 'Forgot Password?',
+    dang_ky:'Sign Up!',
+    khach_hang: 'Customer',
+    chu_nha: 'Lessor',
+    text: 'Login to your account',
+    text_1: 'Dont have an account?',
+    text_2: 'Become our Partner?',
+  },
+  register: {
+    mat_khau: 'Password',
+    dang_ky: 'Sign Up',
+    dang_nhap: 'Login',
+    text: 'Already have an account?',
+    text_1: 'Register a Customer account',
+    text_2: 'Register a Lessor account',
+    text_3: 'I have read and accept the Terms and Privacy Policy?',
+    xac_nhan:'Conform Password',
+    ten:'First Name',
+    ho:'Last Name',
+    sdt:'Phone Number',
   },
 };

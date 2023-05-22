@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setAccessToken } from '../../features/auth/authSlice';
 import Swal from 'sweetalert2';
 import { fetchCustomer } from '../../features/customer/customerSlice';
+import useTrans from '../../pages/hooks/useTran';
 
 const Form = () => {
   const router = useRouter();
@@ -62,15 +63,21 @@ const Form = () => {
       // Handle the error, such as displaying an error message to the user
     }
   };
-
+  const trans = useTrans();
   return (
     <form action="#" onSubmit={handleSubmit}>
       <div className="heading text-center">
-        <h3>Login to your account</h3>
+        <h3>{trans.login.text}</h3>
         <p className="text-center">
-          Dont have an account?{' '}
+          {trans.login.text_1}{' '}
           <Link href="/register-customer" className="text-thm">
-            Sign Up!
+            {trans.login.dang_ky}
+          </Link>
+        </p>
+        <p className="text-center">
+          {trans.login.dang_ky}{' '}
+          <Link href="/register" className="text-thm">
+          {trans.login.dang_ky}
           </Link>
         </p>
       </div>
@@ -97,7 +104,7 @@ const Form = () => {
           type="password"
           className="form-control"
           required
-          placeholder="Password"
+          placeholder={trans.login.mat_khau}
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="input-group-prepend">
@@ -113,15 +120,15 @@ const Form = () => {
           className="selectpicker form-select"
           onChange={(e) => setRole(e.target.value)}
         >
-          <option value="customer">Customer</option>
-          <option value="lessor">Lessor</option>
+          <option value="customer">{trans.login.khach_hang}</option>
+          <option value="lessor">{trans.login.chu_nha}</option>
           <option value="admin">Admin</option>
         </select>
       </div>
       {/* End .input-group */}
 
       <div className="form-group form-check custom-checkbox mb-3">
-        <input
+        {/* <input
           className="form-check-input"
           type="checkbox"
           value=""
@@ -132,16 +139,16 @@ const Form = () => {
           htmlFor="remeberMe"
         >
           Remember me
-        </label>
+        </label> */}
 
         <a className="btn-fpswd float-end" href="#">
-          Forgot password?
+          {trans.login.quen_mk}
         </a>
       </div>
       {/* End .form-group */}
 
       <button type="submit" className="btn btn-log w-100 btn-thm">
-        Log In
+        {trans.login.dang_nhap}
       </button>
       {/* login button */}
     </form>
