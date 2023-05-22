@@ -37,7 +37,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
   }, [boardingHouseId]);
   useEffect(() => {
     const getCoords = async () => {
-      const results = await geocodeByAddress(dataDetail.location);
+      const results = await geocodeByAddress(dataDetail?.location);
       const latLng = await getLatLng(results[0]);
       setCoords(latLng);
     };

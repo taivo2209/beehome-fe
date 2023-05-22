@@ -28,7 +28,7 @@ const FeaturedItem = () => {
         <div className="thumb">
           <img className="img-whp" src={item.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
-            <ul className="tag mb0">
+            {/* <ul className="tag mb0">
               <li className="list-inline-item">
                 <a href="#">Featured</a>
               </li>
@@ -37,8 +37,8 @@ const FeaturedItem = () => {
                   {item.featured}
                 </a>
               </li>
-            </ul>
-            <ul className="icon mb0">
+            </ul> */}
+            {/* <ul className="icon mb0">
               <li className="list-inline-item">
                 <a href="#">
                   <span className="flaticon-transfer-1"></span>
@@ -49,7 +49,7 @@ const FeaturedItem = () => {
                   <span className="flaticon-heart"></span>
                 </a>
               </li>
-            </ul>
+            </ul> */}
 
             <Link href={`/listing-details-v1/${item.id}`} className="fp_price">
               ${item.price}

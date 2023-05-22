@@ -13,6 +13,7 @@ import FindProperties from './FindProperties';
 import FeaturedAvgStarProperties from './FeaturedAvgStarProperties';
 import { useTranslation } from 'react-i18next';
 import useTrans from '../../pages/hooks/useTran';
+import FeaturedPropertiesHome3 from './FeaturedPropertiesHome3';
 
 const Index = () => {
   const trans = useTrans();
@@ -29,6 +30,24 @@ const Index = () => {
 
       {/* <!-- Home Design --> */}
       <Hero />
+
+      <section
+        id="feature-property"
+        className="feature-property mt80 pb50 bgc-f7"
+      >
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="main-title text-center mb40 ">
+              <h2>Xu hướng</h2>
+            </div>
+          </div>
+          <div className="col-lg-12">
+            <div className="feature_property_home3_slider gutter-x15">
+              <FeaturedPropertiesHome3 />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* <!-- Property Cities --> */}
       <section id="property-city" className="property-city pb30">
         <div className="container">
@@ -64,22 +83,6 @@ const Index = () => {
       </section>
 
       {/* <!-- Feature Properties --> */}
-      <section id="feature-property" className="feature-property bgc-f7">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6 offset-lg-3">
-              <div className="main-title text-center mb40">
-                <h2>Xu hướng </h2>
-              </div>
-            </div>
-            <div className="col-lg-12">
-              <div className="feature_property_slider gutter-x15">
-                <FeaturedProperties />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* <!-- Feature Properties --> */}
       <section id="feature-property" className="property-city pb30">
@@ -99,7 +102,7 @@ const Index = () => {
         </div>
       </section>
       {/* <!-- Feature Properties --> */}
-      <section id="feature-property" className="feature-property bgc-f7">
+      {/* <section id="feature-property" className="feature-property bgc-f7">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -109,12 +112,12 @@ const Index = () => {
             </div>
             <div className="col-lg-12">
               <div className="feature_property_slider gutter-x15">
-                {/* <FeaturedProperties /> */}
+                <FeaturedProperties />
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Why Chose Us --> */}
       {/* <section id="why-chose" className="whychose_us bgc-f7 pb30">

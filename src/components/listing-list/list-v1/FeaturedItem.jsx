@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addLength } from "../../../features/properties/propertiesSlice";
-import properties from "../../../data/properties";
+import Link from 'next/link';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLength } from '../../../features/properties/propertiesSlice';
+import properties from '../../../data/properties';
 
 const FeaturedItem = () => {
   const {
@@ -19,7 +19,7 @@ const FeaturedItem = () => {
     amenities,
   } = useSelector((state) => state.properties);
   const { statusType, featured, isGridOrList } = useSelector(
-    (state) => state.filter
+    (state) => state.filter,
   );
 
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const FeaturedItem = () => {
 
   // bathroom handler
   const bathroomHandler = (item) => {
-    if (bathrooms !== "") {
+    if (bathrooms !== '') {
       return item.itemDetails[1].number == bathrooms;
     }
     return true;
@@ -55,7 +55,7 @@ const FeaturedItem = () => {
 
   // bedroom handler
   const bedroomHandler = (item) => {
-    if (bedrooms !== "") {
+    if (bedrooms !== '') {
       return item.itemDetails[0].number == bedrooms;
     }
     return true;
@@ -63,18 +63,18 @@ const FeaturedItem = () => {
 
   // garages handler
   const garagesHandler = (item) =>
-    garages !== ""
+    garages !== ''
       ? item.garages?.toLowerCase().includes(garages.toLowerCase())
       : true;
 
   // built years handler
   const builtYearsHandler = (item) =>
-    yearBuilt !== "" ? item?.built == yearBuilt : true;
+    yearBuilt !== '' ? item?.built == yearBuilt : true;
 
   // area handler
   const areaHandler = (item) => {
     if (area.min !== 0 && area.max !== 0) {
-      if (area.min !== "" && area.max !== "") {
+      if (area.min !== '' && area.max !== '') {
         return (
           parseInt(item.itemDetails[2].number) > area.min &&
           parseInt(item.itemDetails[2].number) < area.max
@@ -88,7 +88,7 @@ const FeaturedItem = () => {
   const advanceHandler = (item) => {
     if (amenities.length !== 0) {
       return amenities.find((item2) =>
-        item2.toLowerCase().includes(item.amenities.toLowerCase())
+        item2.toLowerCase().includes(item.amenities.toLowerCase()),
       );
     }
     return true;
@@ -96,19 +96,19 @@ const FeaturedItem = () => {
 
   // status filter
   const statusTypeHandler = (a, b) => {
-    if (statusType === "recent") {
+    if (statusType === 'recent') {
       return a.created_at + b.created_at;
-    } else if (statusType === "old") {
+    } else if (statusType === 'old') {
       return a.created_at - b.created_at;
-    } else if (statusType === "all-status") {
+    } else if (statusType === 'all-status') {
       return a.created_at + b.created_at;
     }
   };
 
   // featured handler
   const featuredHandler = (item) => {
-    if (featured !== "") {
-      if (featured === "featured-all") {
+    if (featured !== '') {
+      if (featured === 'featured-all') {
         return item;
       }
       return item.featured === featured;
@@ -138,13 +138,13 @@ const FeaturedItem = () => {
           <div className="thumb">
             <img className="img-whp" src={item.img} alt="fp1.jpg" />
             <div className="thmb_cntnt">
-              <ul className="tag mb0">
+              {/* <ul className="tag mb0">
                 {item.saleTag.map((val, i) => (
                   <li className="list-inline-item" key={i}>
                     <a href="#">{val}</a>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
               <ul className="icon mb0">
                 <li className="list-inline-item">
                   <a href="#">
@@ -158,10 +158,12 @@ const FeaturedItem = () => {
                 </li>
               </ul>
 
-              <Link href={`/listing-details-v1/${item.id}`} className="fp_price">
+              <Link
+                href={`/listing-details-v1/${item.id}`}
+                className="fp_price"
+              >
                 ${item.price}
                 <small>/mo</small>
-
               </Link>
             </div>
           </div>
@@ -194,15 +196,11 @@ const FeaturedItem = () => {
               <ul className="fp_meta float-start mb0">
                 <li className="list-inline-item">
                   <Link href="/agent-v1">
-
                     <img src={item.posterAvatar} alt="pposter1.png" />
-
                   </Link>
                 </li>
                 <li className="list-inline-item">
-                  <Link href="/agent-v1">
-                    {item.posterName}
-                  </Link>
+                  <Link href="/agent-v1">{item.posterName}</Link>
                 </li>
               </ul>
               <div className="fp_pdate float-end">{item.postedYear}</div>

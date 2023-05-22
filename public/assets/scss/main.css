@@ -6392,6 +6392,17 @@ form.home5_advanced_search_form
   position: absolute;
 }
 
+.feat_property .thumb .thmb_cntnt div.fp_price {
+  bottom: 15px;
+  font-size: 22px;
+  font-family: 'Nunito';
+  color: #ffffff;
+  font-weight: bold;
+  left: 20px;
+  line-height: 1.2;
+  position: absolute;
+}
+
 .feat_property.home8 {
   overflow: visible;
   position: relative;
@@ -6555,6 +6566,8 @@ form.home5_advanced_search_form
   font-family: 'Nunito';
   color: #484848;
   line-height: 20px;
+
+
 }
 
 .feat_property .details .tc_content h4 {
@@ -6564,7 +6577,13 @@ form.home5_advanced_search_form
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 15px;
-  height: 50px;
+  /* height: 50px; */
+
+  
+ white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 
 .feat_property .details .tc_content .prop_details {
