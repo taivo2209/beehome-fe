@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
+import useTrans from '../../pages/hooks/useTran';
+import { t } from 'i18next';
 
 const Form = () => {
   const router = useRouter();
@@ -11,7 +13,7 @@ const Form = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
+  const trans = useTrans();
   const handleTogglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -63,11 +65,11 @@ const Form = () => {
   return (
     <form action="#" onSubmit={handleSubmit}>
       <div className="heading text-center">
-        <h3>Register to your account as a Lessor</h3>
+        <h3>{trans.register.text_2}</h3>
         <p className="text-center">
-          Already have an account?{' '}
+          {trans.register.text}{' '}
           <Link href="/login" className="text-thm">
-            Login
+            {trans.register.dang_nhap}
           </Link>
         </p>
       </div>
@@ -95,7 +97,7 @@ const Form = () => {
           type={passwordVisible ? 'text' : 'password'}
           className="form-control"
           required
-          placeholder="Password"
+          placeholder={trans.register.mat_khau}
           onChange={(e) => setPassword(e.target.value)}
         />
         {/* <div className="input-group-prepend">
@@ -124,7 +126,7 @@ const Form = () => {
           type={confirmPasswordVisible ? 'text' : 'password'}
           className="form-control"
           required
-          placeholder="Confirm Password"
+          placeholder={trans.register.xac_nhan}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         {/* <div className="input-group-prepend">
@@ -161,13 +163,13 @@ const Form = () => {
           id="terms"
         />
         <label className="form-check-label form-check-label" htmlFor="terms">
-          I have read and accept the Terms and Privacy Policy?
+          {trans.register.text_3}
         </label>
       </div>
       {/* End .form-group */}
 
       <button type="submit" className="btn btn-log w-100 btn-thm">
-        Register
+        {trans.register.dang_ky}
       </button>
       {/* login button */}
     </form>
