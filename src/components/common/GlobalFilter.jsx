@@ -22,10 +22,11 @@ import {
 } from '../../features/searching/searchingSlice';
 import { fetchDataSearch } from '../../features/dataSearch/dataSearchSlice';
 import { setDataSearch } from '../../features/dataSource/dataSourceSlice';
+import useTrans from '../../pages/hooks/useTran';
 
 const GlobalFilter = ({ className = '' }) => {
   // submit handler
-
+  const trans = useTrans();
   const dispatch = useDispatch();
 
   //------------------------------------------------------------------------------
@@ -101,7 +102,7 @@ const GlobalFilter = ({ className = '' }) => {
             <input
               type="text"
               className="form-control"
-              placeholder="Enter keyword..."
+              placeholder={trans.filter.nhap_tu_khoa}
               onChange={(e) => dispatch(setSearchText(e.target.value))}
             />
           </div>
@@ -119,7 +120,7 @@ const GlobalFilter = ({ className = '' }) => {
                 value={provinceId}
                 onChange={handleChangeProvinceId}
               >
-                <option value="">Province</option>
+                <option value="">{trans.filter.tinh}</option>
                 {dataProvince?.items?.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.name}
@@ -144,7 +145,7 @@ const GlobalFilter = ({ className = '' }) => {
                 value={districtId}
                 onChange={handleChangeDistrictId}
               >
-                <option value="">District</option>
+                <option value="">{trans.filter.quan_huyen}</option>
                 {dataDistrict?.items?.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.name}
@@ -168,7 +169,7 @@ const GlobalFilter = ({ className = '' }) => {
                 onClick={() => getData('WARD', districtId)}
                 onChange={handleChangeWardId}
               >
-                <option value="">Ward</option>
+                <option value="">{trans.filter.xa_phuong}</option>
                 {dataWard?.items?.map((item) => (
                   <option key={item.id} value={item.id}>
                     {item.name}
@@ -194,7 +195,7 @@ const GlobalFilter = ({ className = '' }) => {
               data-bs-auto-close="outside"
               aria-expanded="false"
             >
-              <span>Price</span>
+              <span>{trans.filter.gia}</span>
               <label htmlFor="InputEmail2">
                 <span className="fa fa-angle-down"></span>
               </label>
@@ -215,7 +216,7 @@ const GlobalFilter = ({ className = '' }) => {
               type="submit"
               className="btn btn-thm"
             >
-              Search
+              {trans.filter.tim_kiem}
             </button>
           </div>
         </li>

@@ -1,12 +1,13 @@
 import Link from "next/link";
+import useTrans from "../../pages/hooks/useTran";
 
 const CallToAction = () => {
+  const trans = useTrans();
   return (
     <div className="row">
       <div className="col-lg-8">
         <div className="start_partner tac-smd">
-          <h2>Become a Real Estate Agent</h2>
-          <p>We only work with the best companies around the globe</p>
+          <h2>{trans.home.thanh_vien}</h2>
         </div>
       </div>
       {/* End .col */}
@@ -14,7 +15,7 @@ const CallToAction = () => {
       <div className="col-lg-4">
         <div className="parner_reg_btn text-right tac-smd">
           <Link href="/register" className="btn btn-thm2">
-            Register Now
+            {trans.home.dang_ky}
           </Link>
         </div>
       </div>

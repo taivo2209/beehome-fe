@@ -6,12 +6,10 @@ import Partners from '../common/Partners';
 import FeaturedProperties from './FeaturedProperties';
 import Header from './Header';
 import Hero from './Hero';
-import WhyChoose from '../common/WhyChoose';
 import PopupSignInUp from '../common/PopupSignInUp';
 import RecentlyFeaturedProperties from './RecentlyFeaturedProperties';
 import FindProperties from './FindProperties';
 import FeaturedAvgStarProperties from './FeaturedAvgStarProperties';
-import { useTranslation } from 'react-i18next';
 import useTrans from '../../pages/hooks/useTran';
 
 const Index = () => {
@@ -51,7 +49,7 @@ const Index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center mb40">
-                <h2>Yêu thích nhất </h2>
+                <h2>{trans.home.duoc_danh_gia_cao} </h2>
               </div>
             </div>
             <div className="col-lg-12">
@@ -69,7 +67,7 @@ const Index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center mb40">
-                <h2>Xu hướng </h2>
+                <h2>{trans.home.xu_huong} </h2>
               </div>
             </div>
             <div className="col-lg-12">
@@ -87,7 +85,7 @@ const Index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center mb40">
-                <h2>Trọ đã xem</h2>
+                <h2>{trans.home.da_xem_gan_day}</h2>
               </div>
             </div>
             <div className="col-lg-12">
@@ -99,7 +97,7 @@ const Index = () => {
         </div>
       </section>
       {/* <!-- Feature Properties --> */}
-      <section id="feature-property" className="feature-property bgc-f7">
+      {/* <section id="feature-property" className="feature-property bgc-f7">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -109,12 +107,12 @@ const Index = () => {
             </div>
             <div className="col-lg-12">
               <div className="feature_property_slider gutter-x15">
-                {/* <FeaturedProperties /> */}
+                <FeaturedProperties />
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Why Chose Us --> */}
       {/* <section id="why-chose" className="whychose_us bgc-f7 pb30">
@@ -148,7 +146,7 @@ const Index = () => {
       </section> */}
 
       {/* <!-- Our Partners --> */}
-      <section id="our-partners" className="our-partners">
+      {/* <section id="our-partners" className="our-partners">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
@@ -162,7 +160,7 @@ const Index = () => {
             <Partners />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <!-- Start Call to Action --> */}
       <section className="start-partners bgc-thm pt50 pb50">

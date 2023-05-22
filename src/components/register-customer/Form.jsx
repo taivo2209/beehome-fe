@@ -12,8 +12,30 @@ const Form = () => {
   const [lastName, setLastName] = useState('');
   const [phoneNum, setPhoneNum] = useState('');
   const [birthDate, setBirthDate] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+  const handleToggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible(!confirmPasswordVisible);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Mật khẩu không khớp!',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+
     const data = {
       email: email,
       firstName: firstName,
@@ -22,9 +44,12 @@ const Form = () => {
       birthDate: birthDate,
       phoneNumber: phoneNum,
     };
-    
+
     try {
-      const res = await axios.post('http://localhost:5000/customer/auth/register', data);
+      const res = await axios.post(
+        'http://localhost:5000/customer/auth/register',
+        data,
+      );
       // console.log(res.data);
       Swal.fire({
         icon: 'success',
@@ -34,15 +59,23 @@ const Form = () => {
       });
       router.push('/login');
     } catch (err) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Vui lòng nhập đầy đủ thông tin!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      console.log(err);
+      if (err.response && err.response.data.debugInfo.status === 409) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Email đã được sử dụng!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Vui lòng nhập đầy đủ thông tin!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      // console.log(err);
     }
-    console.log(data);
   };
   return (
     <form action="#" onSubmit={handleSubmit}>
@@ -74,18 +107,64 @@ const Form = () => {
       </div>
       {/* End .form-group */}
 
-      <div className="form-group input-group  ">
+      <div className="form-group input-group">
         <input
-          type="password"
+          type={passwordVisible ? 'text' : 'password'}
           className="form-control"
           required
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="input-group-prepend">
+        {/* <div className="input-group-prepend">
           <div className="input-group-text">
             <i className="flaticon-password"></i>
           </div>
+        </div> */}
+        <div className="input-group-append">
+          <button
+            className="input-group-text"
+            type="button"
+            onClick={handleTogglePasswordVisibility}
+          >
+            {passwordVisible ? (
+              <i className="fa fa-eye-slash"></i>
+            ) : (
+              <i className="fa fa-eye"></i>
+            )}
+          </button>
+        </div>
+      </div>
+      {/* End .form-group */}
+
+      <div className="form-group input-group">
+        <input
+          type={confirmPasswordVisible ? 'text' : 'password'}
+          className="form-control"
+          required
+          placeholder="Confirm Password"
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        {/* <div className="input-group-prepend">
+          <div className="input-group-text">
+            <i className="flaticon-password"></i>
+          </div>
+        </div> */}
+        <div className="input-group-prepend">
+          <button
+            className="input-group-text"
+            type="button"
+            onClick={handleToggleConfirmPasswordVisibility}
+          >
+            {confirmPasswordVisible ? (
+              <span>
+                <i className="fa fa-eye-slash"></i>
+              </span>
+            ) : (
+              <span>
+                <i className="fa fa-eye"></i>
+              </span>
+            )}
+          </button>
         </div>
       </div>
       {/* End .form-group */}

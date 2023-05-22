@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import featureContent from '../../../data/properties';
+import useTrans from '../../../pages/hooks/useTran';
 
 const FeaturedListings = ({ data }) => {
   const getViewedItems = () => {
@@ -7,6 +8,7 @@ const FeaturedListings = ({ data }) => {
     return viewedItems;
   };
   const viewedItems = getViewedItems();
+  const trans = useTrans();
   return (
     <>
       {viewedItems.slice(0, 3).map((item) => (
@@ -26,8 +28,8 @@ const FeaturedListings = ({ data }) => {
               </Link>
             </h5>
             <Link href={`/listing-details-v1/${item[0]?.id}`}>
-              from {item[0]?.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-              <small>đ/mo</small>
+              {trans.from} {item[0]?.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
         </div>

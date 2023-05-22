@@ -7,8 +7,10 @@ import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import axios from 'axios';
 import { setDataBoardingHouse } from '../../features/dataSource/dataSourceSlice';
+import useTrans from '../../pages/hooks/useTran';
 
 const FeaturedProperties = () => {
+  const trans = useTrans();
   const settings = {
     dots: true,
     arrows: false,
@@ -87,8 +89,8 @@ const FeaturedProperties = () => {
               href={`/listing-details-v1/${item.id}`}
               className="fp_price"
             >
-              from {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-              <small>/mo</small>
+              {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
         </div>

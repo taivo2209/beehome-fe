@@ -11,10 +11,12 @@ import {
 import PricingRangeSlider from '../PricingRangeSlider';
 import axios from 'axios';
 import { fetchDataSearch } from '../../../features/dataSearch/dataSearchSlice';
+import useTrans from '../../../pages/hooks/useTran';
 
 const FilteringItem = () => {
   const { data } = useSelector((state) => state.searching);
   const dispatch = useDispatch();
+  const trans = useTrans();
 
   const { keyword, propertyType } = useSelector((state) => state.properties);
   // input state
@@ -91,7 +93,7 @@ const FilteringItem = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="keyword"
+            placeholder={trans.filter.nhap_tu_khoa}
             value={data?.searchText}
             onChange={(e) => dispatch(setSearchText(e.target.value))}
           />
@@ -112,7 +114,7 @@ const FilteringItem = () => {
               value={provinceId}
               onChange={handleChangeProvinceId}
             >
-              <option value="">Province</option>
+              <option value="">{trans.filter.tinh}</option>
               {dataProvince?.items?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
@@ -134,7 +136,7 @@ const FilteringItem = () => {
               value={districtId}
               onChange={handleChangeDistrictId}
             >
-              <option value="">District</option>
+              <option value="">{trans.filter.quan_huyen}</option>
               {dataDistrict?.items?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
@@ -156,7 +158,7 @@ const FilteringItem = () => {
               onClick={() => getData('WARD', districtId)}
               onChange={handleChangeWardId}
             >
-              <option value="">Ward</option>
+              <option value="">{trans.filter.xa_phuong}</option>
               {dataWard?.items?.map((item) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
@@ -176,7 +178,7 @@ const FilteringItem = () => {
             data-bs-auto-close="outside"
             aria-expanded="false"
           >
-            <span>Price Range</span>
+            <span>{trans.filter.gia}</span>
             <label htmlFor="prncgs2">
               <span className="fa fa-angle-down"></span>
             </label>
@@ -196,7 +198,7 @@ const FilteringItem = () => {
             type="button"
             className="btn btn-block btn-thm w-100"
           >
-            Clear Filters
+            {trans.filter.tim_kiem}
           </button>
         </div>
       </li>
