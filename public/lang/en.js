@@ -1,5 +1,6 @@
 export default {
   from: 'from',
+  han_hanh:'We are glad to see you again!',
   home: {
     title: 'Home',
     content: 'Home',
@@ -31,7 +32,10 @@ export default {
     danh_gia: {
       viet_danh_gia: 'Write a Review', 
       tren: 'out of',
-      dang_nhap: 'Login to Review'
+      dang_nhap: 'Login to Review',
+      thanh_cong:'Your review has been posted!',
+      loi: 'Error!',
+      loi_1:'Please try again later!'
     },
     xem_phong: 'Available Rooms',
     chu_nha: 'Owner',
@@ -46,6 +50,8 @@ export default {
     text: 'Login to your account',
     text_1: 'Dont have an account?',
     text_2: 'Become our Partner?',
+    thong_bao:'Login Success!',
+    thong_bao_1:'Email or password is incorrect!',
   },
   register: {
     mat_khau: 'Password',
@@ -59,5 +65,32 @@ export default {
     ten:'First Name',
     ho:'Last Name',
     sdt:'Phone Number',
+    thong_bao_cus:'Please enter your email to verify to proceed to login!',
+    thong_bao: 'Register Success!',
+    thong_bao_1:'This Email is being used!',
+    thong_bao_2:'Please fill in all the information!',
+    thong_bao_3:'Password and Confirm password must be the same!',
   },
+  header: {
+    trang_chu:'Home',
+    ngon_ngu:'Language',
+    dang_nhap_dang_ky:'Login/Register',
+    dang_xuat:'Log out',
+    thong_tin:'My Profile',
+    doi_mk:'Change Password',
+  },
+  cus_profile:{
+    thong_tin:'Profile Information',
+    chon_anh:'Upload Photo',
+    ten:'First Name',
+    ho:'Last Name',
+    dia_chi:'Address',
+    sdt:'Phone Number',
+    ngay_sinh:'Birthday',
+    cap_nhat:'Update Profile',
+    mk_hien_tai:'Password',
+    mk_moi:'New Password',
+    thong_bao:'Update password success!',
+    thong_bao_1:'Current password is incorrect!',
+  }
 };

@@ -8,12 +8,12 @@ import { t } from 'i18next';
 
 const Form = () => {
   const router = useRouter();
+  const trans = useTrans();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-  const trans = useTrans();
   const handleTogglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -26,7 +26,7 @@ const Form = () => {
     if (password !== confirmPassword) {
       Swal.fire({
         icon: 'error',
-        title: 'Mật khẩu không khớp!',
+        title: `${trans.register.thong_bao_3}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -38,7 +38,7 @@ const Form = () => {
       // console.log(res.data);
       Swal.fire({
         icon: 'success',
-        title: 'Đăng ký thành công!',
+        title: `${trans.register.thong_bao}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -47,14 +47,14 @@ const Form = () => {
       if (err.response && err.response.data.debugInfo.status === 409) {
         Swal.fire({
           icon: 'error',
-          title: 'Email đã được sử dụng!',
+          title: `${trans.register.thong_bao_1}`,
           showConfirmButton: false,
           timer: 1500,
         });
       } else {
         Swal.fire({
           icon: 'error',
-          title: 'Vui lòng nhập đầy đủ thông tin!',
+          title: `${trans.register.thong_bao_2}`,
           showConfirmButton: false,
           timer: 1500,
         });

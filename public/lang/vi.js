@@ -1,5 +1,6 @@
 export default {
-  from: 'chỉ',
+  from: 'chỉ từ',
+  han_hanh:'Hân hạnh gặp lại!',
   home: {
     title: 'Chào mừng tới Viblo!',
     content: 'Bắt đầu một bài viết nào',
@@ -31,8 +32,12 @@ export default {
     vi_tri: 'Vị trí',
     danh_gia: {
       viet_danh_gia: 'Đánh giá', 
+      danh_gia:'Đánh giá của bạn',
       tren: 'trên',
-      dang_nhap: 'Đăng nhập để đánh giá'
+      dang_nhap: 'Đăng nhập để đánh giá',
+      thanh_cong:'Đánh giá của bạn đã được đăng lên!',
+      loi: 'Đã xảy ra lỗi!!',
+      loi_1:'Vui lòng thử lại sau.'
     },
     xem_phong: 'Xem phòng trống',
     chu_nha: 'Chủ nhà',
@@ -47,6 +52,8 @@ export default {
     text: 'Đăng nhập bằng tài khoản của bạn',
     text_1: 'Chưa có tài khoản?',
     text_2: 'Trở thành đối tác của chúng tôi?',
+    thong_bao:'Đăng nhập thành công!',
+    thong_bao_1:'Email hoặc mật khẩu không đúng!',
   },
   register: {
     mat_khau: 'Mật khẩu',
@@ -60,5 +67,33 @@ export default {
     ten:'Tên',
     ho:'Họ',
     sdt:'Số điện thoại',
+    thong_bao_cus:'Vui lòng vào email của bạn xác thực để tiến hành đăng nhập!',
+    thong_bao: 'Đăng ký thành công!',
+    thong_bao_1:'Email này đã được sử dụng!',
+    thong_bao_2:'Vui lòng điến đầy đủ thông tin',
+    thong_bao_3:'Mật khẩu không khớp!',
   },
+  header: {
+    trang_chu:'Trang chủ',
+    ngon_ngu:'Ngôn ngữ',
+    dang_nhap_dang_ky:'Đăng nhập/Đăng ký',
+    dang_xuat:'Đăng xuất',
+    thong_tin:'Quản lý tài khoản',
+    doi_mk:'Thay đổi mật khẩu',
+  },
+  cus_profile:{
+    thong_tin:'Thông tin khách hàng',
+    chon_anh:'Chọn ảnh',
+    ten:'Tên',
+    ho:'Họ',
+    dia_chi:'Địa chỉ',
+    sdt:'Số điện thoại',
+    ngay_sinh:'Ngày sinh',
+    cap_nhat:'Cập nhật',
+    mk_hien_tai:'Mật khẩu hiện tại',
+    mk_moi:'Mật khẩu mới',
+    thong_bao:'Đổi mật khẩu thành công!',
+    thong_bao_1:'Mật khẩu hiện tại không đúng!',
+
+  }
 };
