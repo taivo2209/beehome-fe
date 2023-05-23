@@ -92,5 +92,11 @@ export default {
     mk_moi:'New Password',
     thong_bao:'Update password success!',
     thong_bao_1:'Current password is incorrect!',
+    quen_mk_text: 'Enter your registered email to retrieve your password',
+    quen_mk_text_1: 'Password has been sent to your Email!', 
+    quen_mk_text_2: 'Please go to your Email to check!',
+    loi: 'This email is not registered for an account!',
+    loi_1:'An error occurred. Please try again later! Please try again later.',
+    submit: 'Submit',
   }
 };

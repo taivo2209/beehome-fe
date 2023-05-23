@@ -158,9 +158,9 @@ const Form = () => {
           Remember me
         </label> */}
 
-        <a className="btn-fpswd float-end" href="#">
+        <Link className="btn-fpswd float-end" href="/customer-forgot-password">
           {trans.login.quen_mk}
-        </a>
+        </Link>
       </div>
       {/* End .form-group */}
 

@@ -94,6 +94,11 @@ export default {
     mk_moi:'Mật khẩu mới',
     thong_bao:'Đổi mật khẩu thành công!',
     thong_bao_1:'Mật khẩu hiện tại không đúng!',
-
+    quen_mk_text: 'Nhập Email bạn đã đăng ký để lấy lại mật khẩu',
+    quen_mk_text_1: 'Mật khẩu đã được gửi đến Email của bạn!', 
+    quen_mk_text_2: 'Vui lòng vào Email của bạn để kiểm tra!',
+    loi: 'Email này chưa đăng ký tài khoản!',
+    loi_1:'Đã xảy ra lỗi! Vui lòng thử lại sau.',
+    submit: 'Xác nhận',
   }
 };

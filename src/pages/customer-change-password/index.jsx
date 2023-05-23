@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Seo from "../../components/common/seo";
-import UpdatePassword from "../../components/customer-change-password";
+import UpdatePassword from "../../components/customer/change-password";
 
 const index = () => {
   return (

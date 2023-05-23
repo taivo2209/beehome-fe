@@ -1,7 +1,7 @@
-import CopyrightFooter from '../common/footer/CopyrightFooter';
-import Footer from '../common/footer/Footer';
-import Header from '../common/header/DefaultHeader';
-import MobileMenu from '../common/header/MobileMenu';
+import CopyrightFooter from '../../common/footer/CopyrightFooter';
+import Footer from '../../common/footer/Footer';
+import Header from '../../common/header/DefaultHeader';
+import MobileMenu from '../../common/header/MobileMenu';
 import BreadCrumbBanner from './BreadCrumbBanner';
 import Form from './Form';
 

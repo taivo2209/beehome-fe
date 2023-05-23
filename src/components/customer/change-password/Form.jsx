@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import useTrans from '../../pages/hooks/useTran';
+import useTrans from '../../../pages/hooks/useTran';
 import { useRouter } from 'next/router';
 
 const Form = () => {

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
-import useTrans from '../../pages/hooks/useTran';
+import useTrans from '../../../pages/hooks/useTran';
 
 const CustomerProfile = () => {
   const trans = useTrans();

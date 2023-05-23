@@ -1,8 +1,8 @@
-import useTrans from '../../pages/hooks/useTran';
-import CopyrightFooter from '../common/footer/CopyrightFooter';
-import Footer from '../common/footer/Footer';
-import Header from '../common/header/DefaultHeader';
-import MobileMenu from '../common/header/MobileMenu';
+import useTrans from '../../../pages/hooks/useTran';
+import CopyrightFooter from '../../common/footer/CopyrightFooter';
+import Footer from '../../common/footer/Footer';
+import Header from '../../common/header/DefaultHeader';
+import MobileMenu from '../../common/header/MobileMenu';
 import CustomerProfile from './CustomerProfile';
 
 const Index = () => {

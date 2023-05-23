@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import useTrans from '../../pages/hooks/useTran';
+import useTrans from '../../../pages/hooks/useTran';
 
 const Form = () => {
   const router = useRouter();
