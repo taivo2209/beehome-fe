@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
@@ -11,11 +10,14 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    const data = {
+      email: email,
+    };
+
     try {
       const res = await axios.post(
         'http://localhost:5000/customer/auth/forget-password',
-        email,
+        data,
       );
       // console.log(res.data);
       Swal.fire({
@@ -24,7 +26,6 @@ const Form = () => {
         text: `${trans.cus_profile.quen_mk_text_2}`,
         confirmButtonText: 'OK',
       });
-      router.push('/login');
     } catch (err) {
       if (err.response && err.response.data.debugInfo.status === 417) {
         Swal.fire({
@@ -67,8 +68,6 @@ const Form = () => {
         </div>
       </div>
       {/* End .form-group */}
-
-      
 
       <button type="submit" className="btn btn-log w-100 btn-thm">
         {trans.cus_profile.submit}
