@@ -1,9 +1,11 @@
+import useTrans from "../../../../pages/hooks/useTran";
 import Header from "../../../common/header/dashboard/Header";
 import SidebarMenu from "../../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../../common/header/MobileMenu";
 import EditList from "./EditList";
 
-const index = () => {
+const Index = () => {
+  const trans = useTrans();
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -49,8 +51,8 @@ const index = () => {
 
                 <div className="col-lg-12 mb10">
                   <div className="breadcrumb_content style2">
-                    <h2 className="breadcrumb_title">Edit Property</h2>
-                    <p>We are glad to see you again!</p>
+                    <h2 className="breadcrumb_title">{trans.lessor.houses.chinh_sua_nha}</h2>
+                    <p>{trans.han_hanh}</p>
                   </div>
                 </div>
                 {/* End .col */}
@@ -58,10 +60,6 @@ const index = () => {
                 <div className="col-lg-12">
                   <div className="my_dashboard_review">
                     <div className="row">
-                      <div className="col-lg-12">
-                        <h3 className="mb30">Create Listing</h3>
-                      </div>
-
                       <EditList />
                     </div>
                   </div>
@@ -96,4 +94,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

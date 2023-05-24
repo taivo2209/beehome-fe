@@ -4,6 +4,7 @@ import { isSinglePageActive } from '../../../../utils/daynamicNavigation';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import useTrans from '../../../../pages/hooks/useTran';
 
 const MyAccount = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -11,6 +12,7 @@ const MyAccount = () => {
   const route = useRouter();
   let path = data?.avatar;
   let newPath = path?.replace(/\\/g, '/');
+  const trans = useTrans();
 
   const getData = async () => {
     try {
@@ -26,9 +28,8 @@ const MyAccount = () => {
     }
   };
   const profileMenuItems = [
-    { id: 1, name: 'My Profile', routerPath: '/my-profile' },
-    { id: 2, name: ' My Message', routerPath: '/my-message' },
-    { id: 3, name: ' Log out', routerPath: '/login' },
+    { id: 1, name: `${trans.lessor.sidebar.tk_cua_toi}`, routerPath: '/my-profile' },
+    { id: 2, name: `${trans.lessor.sidebar.dang_xuat}`, routerPath: '/login' },
   ];
 
   useEffect(() => {

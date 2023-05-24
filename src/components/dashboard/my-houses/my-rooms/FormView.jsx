@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
+import useTrans from '../../../../pages/hooks/useTran';
 
 function FormView({ id, getNewData }) {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
@@ -34,21 +36,45 @@ function FormView({ id, getNewData }) {
       <span className="flaticon-view" onClick={handleShow}></span>
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Thông tin {data?.name}</Modal.Title>
+          <Modal.Title>
+            {trans.lessor.rooms.thong_tin} {data?.name}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ul>
             <li>
-              <span className="color-danger">Price: </span>
-              <span>{data?.price}{"/month"}</span>
+              <span className="color-danger">{trans.lessor.rooms.gia}: </span>
+              <span>
+                {data?.price}
+                {trans.detail.gia_thang}
+              </span>
             </li>
             <li>
-              <span className="color-danger">Acreage: </span>
-              <span>{data?.acreage}{"m2"}</span>
+              <span className="color-danger">
+                {trans.lessor.rooms.dien_tich}:{' '}
+              </span>
+              <span>
+                {data?.acreage}
+                {'m2'}
+              </span>
             </li>
             <li>
-              <span className="color-danger">Status: </span>
+              <span className="color-danger">
+                {trans.lessor.rooms.tinh_trang}:{' '}
+              </span>
               <span>{data?.status}</span>
+            </li>
+            <li>
+              <span className="color-danger">
+                {trans.lessor.rooms.so_phong_ngu}:{' '}
+              </span>
+              <span>{data?.roomSimple}</span>
+            </li>
+            <li>
+              <span className="color-danger">
+                {trans.lessor.rooms.toilet}:{' '}
+              </span>
+              <span>{data?.toilet}</span>
             </li>
             <li>
               <span className="color-danger">Room Categories: </span>
@@ -67,7 +93,9 @@ function FormView({ id, getNewData }) {
               </span>
             </li>
             <li>
-              <span className="color-danger">Room Attributes: </span>
+              <span className="color-danger">
+                {trans.lessor.rooms.tien_ich}:{' '}
+              </span>
               <span>
                 {data?.roomToAttributes?.map((roomAttribute) => (
                   <div key={roomAttribute.id}>
@@ -83,29 +111,7 @@ function FormView({ id, getNewData }) {
               </span>
             </li>
             <li>
-              <span className="color-danger">Room Images: </span>
-              {/* <span className="d-flex flex-wrap">
-                {data?.roomImages?.map((roomImage) => (
-                  <div key={roomImage.id} className="m-3 w-25">
-                    <img
-                      src={roomImage?.localFile?.path.replace(/\\/g, '/')}
-                      className="img-fluid cover"
-                      alt="img"
-                    />
-                    <div
-                      className="edu_stats_list"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Delete"
-                      data-original-title="Delete"
-                    >
-                      <a onClick={() => deleteImage(item.name)}>
-                        <span className="flaticon-garbage"></span>
-                      </a>
-                    </div>
-                  </div>
-                ))}
-              </span> */}
+              <span className="color-danger">{trans.lessor.rooms.anh}: </span>
               <div className="col-lg-12">
                 <ul className="mb-0">
                   {data?.roomImages?.length > 0
@@ -133,7 +139,7 @@ function FormView({ id, getNewData }) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Đóng
+            {trans.dong}
           </Button>
         </Modal.Footer>
       </Modal>

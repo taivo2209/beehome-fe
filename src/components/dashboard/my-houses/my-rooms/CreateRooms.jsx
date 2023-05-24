@@ -7,8 +7,10 @@ import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
 import Swal from 'sweetalert2';
+import useTrans from '../../../../pages/hooks/useTran';
 
-function CreateRooms({ floorId, updateData }) {
+function CreateRooms({ floorId, updateData, province, district, ward }) {
+  const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,6 +23,7 @@ function CreateRooms({ floorId, updateData }) {
   const [imgIds, setImgIds] = useState([]);
   const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
+  const [prediction, setPrediction] = useState();
 
   const validateInputs = () => {
     if (
@@ -35,8 +38,9 @@ function CreateRooms({ floorId, updateData }) {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Lỗi',
-        text: 'Vui lòng điền đầy đủ thông tin',
+        title: `${trans.lessor.loi}`,
+        text: `${trans.lessor.loi_2}`,
+        confirmButtonText: 'OK',
       });
       return false;
     }
@@ -47,16 +51,16 @@ function CreateRooms({ floorId, updateData }) {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Vui lòng điền thông tin hợp lệ',
-        text: 'Vui lòng nhập số ở Price, Acreage',
+        title: `${trans.lessor.rooms.text}`,
+        text: `${trans.lessor.rooms.text_1}`,
       });
       return false;
     }
     if (Number(price) < 0 || Number(acreage) < 0 || Number(toilet) < 0) {
       Swal.fire({
         icon: 'error',
-        title: 'Vui lòng điền thông tin hợp lệ',
-        text: 'Vui lòng không nhập số âm ở Price, Acreage, Toilet',
+        title: `${trans.lessor.rooms.text}`,
+        text: `${trans.lessor.rooms.text_2}`,
       });
       return false;
     }
@@ -87,7 +91,7 @@ function CreateRooms({ floorId, updateData }) {
         });
         Swal.fire({
           icon: 'success',
-          title: 'Tạo thành công!',
+          title: `${trans.lessor.tao_thanh_cong}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -95,8 +99,8 @@ function CreateRooms({ floorId, updateData }) {
       } catch (err) {
         Swal.fire({
           icon: 'error',
-          title: 'Đã xảy ra lỗi!',
-          text: 'Vui lòng thử lại sau.',
+          title: `${trans.lessor.loi}`,
+          text: `${trans.lessor.loi_1}`,
           confirmButtonText: 'OK',
         });
         console.log(err);
@@ -120,6 +124,16 @@ function CreateRooms({ floorId, updateData }) {
   useEffect(() => {}, [categoryIds, attributeIds]);
   // console.log('categoryIds', categoryIds);
   // console.log('attri', attributeIds);
+  const predict = async () => {
+    if (province && district && ward && acreage && toilet && roomSimple) {
+      let url = `http://localhost:5000/lessor/predict/predictions?province=${province}&district=${district}&ward=${ward}&acreage=${acreage}&toilet=${toilet}&room=${roomSimple}`;
+      const res = await axios.get(url);
+      setPrediction(res.data?.predictions?.[0]);
+    }
+  };
+  useEffect(() => {
+    predict();
+  }, [acreage, toilet, roomSimple]);
 
   return (
     <>
@@ -135,17 +149,17 @@ function CreateRooms({ floorId, updateData }) {
         onClick={handleShow}
       >
         <span className="flaticon-plus"></span>
-        <span className="dn-lg"> Create Rooms</span>
+        <span className="dn-lg"> {trans.lessor.rooms.tao_phong}</span>
       </button>
 
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
-          <Modal.Title>Add Room</Modal.Title>
+          <Modal.Title>{trans.lessor.rooms.tao_phong}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">{trans.lessor.rooms.ten_phong}</label>
               <input
                 type="text"
                 className="form-control"
@@ -154,16 +168,7 @@ function CreateRooms({ floorId, updateData }) {
               />
             </div>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="price">Price (/month)</label>
-              <input
-                type="text"
-                className="form-control"
-                id="price"
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="acreage">Acreage (m2)</label>
+              <label htmlFor="acreage">{trans.lessor.rooms.dien_tich}</label>
               <input
                 type="text"
                 className="form-control"
@@ -172,7 +177,9 @@ function CreateRooms({ floorId, updateData }) {
               />
             </div>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="roomSimple">Room Simple</label>
+              <label htmlFor="roomSimple">
+                {trans.lessor.rooms.so_phong_ngu}
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -181,7 +188,7 @@ function CreateRooms({ floorId, updateData }) {
               />
             </div>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="toilet">Toilet</label>
+              <label htmlFor="toilet">{trans.lessor.rooms.toilet}</label>
               <input
                 type="text"
                 className="form-control"
@@ -189,24 +196,36 @@ function CreateRooms({ floorId, updateData }) {
                 onChange={(e) => setToilet(e.target.value)}
               />
             </div>
+            <div className="my_profile_setting_input form-group">
+              <label htmlFor="price">{trans.lessor.rooms.gia}</label>
+              <input
+                type="text"
+                className="form-control"
+                id="price"
+                onChange={(e) => setPrice(e.target.value)}
+              />
+              {prediction ? <span className='text-danger'>{String(prediction).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}{trans.detail.gia_thang}</span> : null}
+            </div>
             <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
               <CategoriesCheckBox onSelectionChange={handleCategoryChange} />
             </div>
             <div className="my_profile_setting_input form-group mb-2">
-              <label htmlFor="attributeIds">Attribute</label>
+              <label htmlFor="attributeIds">
+                {trans.lessor.rooms.tien_ich}
+              </label>
               <AttributesCheckBox onSelectionChange={handleAttributeChange} />
             </div>
             <div className="my_profile_setting_input form-group mb-2">
-              <label htmlFor="imagesId">Images</label>
+              <label htmlFor="imagesId">{trans.lessor.rooms.anh}</label>
               <PropertyMediaUploader onUpload={handleUpload} />
             </div>
-            <Button type="submit">Create</Button>
+            <Button type="submit">{trans.lessor.tao}</Button>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {trans.dong}
           </Button>
         </Modal.Footer>
       </Modal>

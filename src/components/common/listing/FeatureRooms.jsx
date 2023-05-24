@@ -1,5 +1,6 @@
 import featureProContent from '../../../data/properties';
 import Slider from 'react-slick';
+import useTrans from '../../../pages/hooks/useTran';
 
 const FeatureRooms = ({ openFormToMeet, dataRoom }) => {
   const settings = {
@@ -11,6 +12,7 @@ const FeatureRooms = ({ openFormToMeet, dataRoom }) => {
     autoplay: false,
     speed: 1000,
   };
+  const trans = useTrans();
 
   return (
     <>
@@ -36,7 +38,7 @@ const FeatureRooms = ({ openFormToMeet, dataRoom }) => {
           className="btn btn-block btn-thm w-100"
           onClick={openFormToMeet}
         >
-          Đặt lịch hẹn
+          {trans.booking.dat_lich}
         </button>
       </div>
     </>

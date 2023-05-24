@@ -5,8 +5,10 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
 import PropertyMediaUploader from '../PropertyMediaUploader';
+import useTrans from '../../../../pages/hooks/useTran';
 
 const EditList = () => {
+  const trans = useTrans();
   const router = useRouter();
   const { id } = router.query;
   const [housesData, setHousesData] = useState({});
@@ -136,8 +138,7 @@ const EditList = () => {
         })
         .then(() => {
           Swal.fire({
-            title: 'Thành công!',
-            text: 'Edit Success!',
+            title: `${trans.lessor.cap_nhat}`,
             icon: 'success',
             confirmButtonText: 'OK',
           }).then(() => {
@@ -147,8 +148,8 @@ const EditList = () => {
     } catch (err) {
       Swal.fire({
         icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
+        title: `${trans.lessor.loi}`,
+        text: `${trans.lessor.loi_1}`,
         confirmButtonText: 'OK',
       });
       console.log(err);
@@ -370,7 +371,7 @@ const EditList = () => {
     <>
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Property Title</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.tieu_de}</label>
           <input
             type="text"
             className="form-control"
@@ -384,7 +385,7 @@ const EditList = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Status</label>
+          <label>{trans.lessor.houses.tinh_trang}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -401,7 +402,7 @@ const EditList = () => {
       {/* End .col */}
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Type</label>
+          <label>{trans.lessor.houses.loai}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -418,7 +419,7 @@ const EditList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Electric Fee</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.dien}</label>
           <input
             type="text"
             className="form-control"
@@ -431,7 +432,7 @@ const EditList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Water Fee</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.nuoc}</label>
           <input
             type="text"
             className="form-control"
@@ -444,7 +445,7 @@ const EditList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Service Fee</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.dich_vu}</label>
           <input
             type="text"
             className="form-control"
@@ -458,7 +459,7 @@ const EditList = () => {
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rule VN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.quy_dinh_vn}</label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -470,7 +471,7 @@ const EditList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rule EN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.quy_dinh_en}</label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -483,7 +484,7 @@ const EditList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rent Deposit VN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.tien_coc_vn}</label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -495,7 +496,7 @@ const EditList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rent Deposit EN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.tien_coc_en}</label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -509,7 +510,7 @@ const EditList = () => {
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rent Deposit VN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.mo_ta_vn}</label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -521,7 +522,7 @@ const EditList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rent Deposit EN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.mo_ta_en}</label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -539,12 +540,12 @@ const EditList = () => {
 
       <CheckBoxFilter onSelectionChange={handleSelectionChange} />
       <div className="col-xl-12">
-        <h4 className="mb10">Images</h4>
+        <h4 className="mb10">{trans.lessor.houses.anh}</h4>
       </div>
       <PropertyMediaUploader onUpload={handleUpload} />
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyAddress">Address</label>
+          <label htmlFor="propertyAddress">{trans.lessor.houses.dia_chi}</label>
           <input
             type="text"
             className="form-control"
@@ -559,7 +560,7 @@ const EditList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Province</label>
+          <label>{trans.lessor.houses.tinh}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -583,7 +584,7 @@ const EditList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>District</label>
+          <label>{trans.lessor.houses.quan_huyen}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -607,7 +608,7 @@ const EditList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Ward</label>
+          <label>{trans.lessor.houses.xa_phuong}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -632,7 +633,7 @@ const EditList = () => {
             Edit
           </button>
           <button className="btn btn1 float-start" onClick={handleBack}>
-            Back
+          {trans.tro_lai}
           </button>
         </div>
       </div>

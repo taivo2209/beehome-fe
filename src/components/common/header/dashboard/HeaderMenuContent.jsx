@@ -1,13 +1,18 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import MyAccount from './MyAccount';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { setEN, setVI } from '../../../../features/langType/langTypeSlice';
+import useTrans from '../../../../pages/hooks/useTran';
 
 const HeaderMenuContent = ({ float = '' }) => {
+  const trans = useTrans();
   const route = useRouter();
+  const dispatch = useDispatch();
   const accessToken = useSelector((state) => state.auth.accessToken);
+  const { typeData } = useSelector((state) => state.langType);
   const [data, setData] = useState([]);
   let path = data?.avatar;
   let newPath = path?.replace(/\\/g, '/');
@@ -269,39 +274,34 @@ const HeaderMenuContent = ({ float = '' }) => {
       data-menu-style="horizontal"
     >
       <li className="dropitem">
-        <a
-          href="#"
-          className={
-            home.some((page) => page.routerPath === route.pathname)
-              ? 'ui-active'
-              : undefined
-          }
-        >
-          <Link href={'/'}>
-            <span className="title">Home</span>
-          </Link>
-          {/* <span className="arrow"></span> */}
+        <a>
+          <span className="title" style={{ cursor: 'pointer' }}>
+            {trans.header.ngon_ngu}
+          </span>
+          <span className="arrow"></span>
         </a>
-        {/* <!-- Level Two--> */}
-
-        {/* <ul className="sub-menu ">
-          {home.map((item) => (
-            <li key={item.id}>
-              <Link
-                href={item.routerPath}
-                className={
-                  route.pathname === item.routerPath ? 'ui-active' : undefined
-                }
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul> */}
+        <ul className="sub-menu ">
+          <li>
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => dispatch(setVI('vi'))}
+              className={'vi' === typeData ? 'ui-active' : undefined}
+            >
+              vi
+            </div>
+          </li>
+          <li>
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => dispatch(setEN('en'))}
+              className={'en' === typeData ? 'ui-active' : undefined}
+            >
+              en
+            </div>
+          </li>
+        </ul>
       </li>
       {/* End .dropitem */}
-
-     
 
       <li className="user_setting">
         <div className="dropdown">
