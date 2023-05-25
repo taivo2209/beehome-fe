@@ -8,8 +8,10 @@ import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import axios from 'axios';
 import { setDataStar } from '../../features/dataSource/dataSourceSlice';
 import { fetchBoardingHouseStar } from '../../features/boardingHouseStar/boardingHouseStarSlice';
+import useTrans from '../../pages/hooks/useTran';
 
 const FeaturedAvgStarProperties = () => {
+  const trans= useTrans();
   const settings = {
     dots: true,
     arrows: false,
@@ -88,8 +90,8 @@ const FeaturedAvgStarProperties = () => {
               href={`/listing-details-v1/${item.id}`}
               className="fp_price"
             >
-              from {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-              <small>/mo</small>
+              {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
         </div>

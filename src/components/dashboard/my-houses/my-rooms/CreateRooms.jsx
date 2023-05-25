@@ -204,7 +204,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
                 id="price"
                 onChange={(e) => setPrice(e.target.value)}
               />
-              {prediction ? <span className='text-danger'>{String(prediction).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}{trans.detail.gia_thang}</span> : null}
+              {prediction ? <span className='text-danger'>{trans.lessor.rooms.du_doan}{String(prediction).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}{trans.detail.gia_thang}</span> : null}
             </div>
             <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>

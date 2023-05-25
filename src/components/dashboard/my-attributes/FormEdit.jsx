@@ -5,8 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import { useForm, useFieldArray } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import useTrans from '../../../pages/hooks/useTran';
 
 function FormEdit({ id, getData }) {
+  const trans= useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -66,7 +68,7 @@ function FormEdit({ id, getData }) {
       // console.log(res.data); // log response data to the console
       Swal.fire({
         icon: 'success',
-        title: 'Cập nhật thành công!',
+        title: `${trans.lessor.cap_nhat}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -75,8 +77,8 @@ function FormEdit({ id, getData }) {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
+        title: `${trans.lessor.loi}`,
+        text: `${trans.lessor.loi_1}`,
         confirmButtonText: 'OK',
       });
       console.error(error);
@@ -119,7 +121,7 @@ function FormEdit({ id, getData }) {
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice">
-                    Attribute Name:
+                    {trans.lessor.attributes.ten_tien_ich}:
                     <input
                       className="form-control mb-2"
                       id="formGroupExamplePrice"
@@ -138,7 +140,7 @@ function FormEdit({ id, getData }) {
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice">
-                    Attribute Term:
+                    {trans.lessor.attributes.loai_tien_ich}:
                     {fields.map((roomAttributeTerm, index) => (
                       <div key={roomAttributeTerm.id}>
                         <input
@@ -199,7 +201,7 @@ function FormEdit({ id, getData }) {
                             className="btn btn1"
                             onClick={() => remove(index)}
                           >
-                            Remove
+                            {trans.lessor.xoa}
                           </button>
                         </div>
                       </div>
@@ -221,7 +223,7 @@ function FormEdit({ id, getData }) {
                   })
                 }
               >
-                Add Attribute Term
+                {trans.lessor.attributes.them_loai_tien_ich}
               </button>
             </div>
             <div className="my_profile_setting_input overflow-hidden mt20">

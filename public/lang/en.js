@@ -115,6 +115,7 @@ export default {
     tao:'Create',
     duoc_tao: 'Created',
     hanh_dong: 'Action',
+    xoa:'Remove',
     tao_thanh_cong: 'Create Success!',
     loi: 'Error!',
     loi_1: 'Please try again later!',
@@ -129,6 +130,7 @@ export default {
       lich_hen: ' Bookings',
       ngay_nghi: 'Offdates',
       quan_ly_tk: 'Manage Account',
+      thanh_vien:'Membership',
       tk_cua_toi: 'My Profile',
       dang_xuat: 'Logout',
     },
@@ -179,6 +181,15 @@ export default {
       text: 'Please fill in valid information!',
       text_1: 'Please enter the number at Price and Acreage!',
       text_2: 'Please do not enter negative numbers in Price and Acreage!',
-    }
+      du_doan:'Based on the information you provided, the average house price in this area is around ',
+    },
+    attributes: {
+      tien_ich: 'Attributes',
+      them_tien_ich: 'Create Attribute',
+      loai_tien_ich: 'Attribute Type',
+      ten_tien_ich: 'Attribute Name',
+      viet_tat: 'Slug',
+      them_loai_tien_ich: 'Add Attribute Type',
+    },
   },
 };

@@ -25,7 +25,13 @@ const SidebarMenu = () => {
       route: "/my-profile",
       icon: "flaticon-user",
     },
-    { id: 2, name: `${trans.lessor.sidebar.dang_xuat}`, route: "/login", icon: "flaticon-logout" },
+    {
+      id: 2,
+      name: `${trans.lessor.sidebar.thanh_vien}`,
+      route: "/membership",
+      icon: "flaticon-user",
+    },
+    { id: 3, name: `${trans.lessor.sidebar.dang_xuat}`, route: "/login", icon: "flaticon-logout" },
   ];
   
   return <>

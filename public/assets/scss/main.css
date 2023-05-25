@@ -6383,7 +6383,7 @@ form.home5_advanced_search_form
 
 .feat_property .thumb .thmb_cntnt a.fp_price {
   bottom: 15px;
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Nunito';
   color: #ffffff;
   font-weight: bold;
@@ -6394,7 +6394,7 @@ form.home5_advanced_search_form
 
 .feat_property .thumb .thmb_cntnt div.fp_price {
   bottom: 15px;
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Nunito';
   color: #ffffff;
   font-weight: bold;
@@ -6450,7 +6450,7 @@ form.home5_advanced_search_form
 }
 
 .feat_property.list .dtls_headr a.fp_price {
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Nunito';
   color: #484848;
   font-weight: bold;
@@ -6541,7 +6541,7 @@ form.home5_advanced_search_form
 .feat_property.home8 a.fp_price {
   color: var(--color-primary);
   float: left;
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Nunito';
   font-weight: bold;
   line-height: 1.2;
@@ -6566,8 +6566,6 @@ form.home5_advanced_search_form
   font-family: 'Nunito';
   color: #484848;
   line-height: 20px;
-
-
 }
 
 .feat_property .details .tc_content h4 {
@@ -6579,11 +6577,10 @@ form.home5_advanced_search_form
   margin-bottom: 15px;
   /* height: 50px; */
 
-  
- white-space: nowrap; 
-  width: 100%; 
+  white-space: nowrap;
+  width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 .feat_property .details .tc_content .prop_details {
@@ -6883,7 +6880,7 @@ form.home5_advanced_search_form
 }
 
 .properti_city.home6 .details a.fp_price {
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Nunito';
   color: #ffffff;
   font-weight: bold;
