@@ -7,8 +7,10 @@ import FormAdd from './FormAdd';
 import { setAttributes } from '../../../features/attributes/attributesSlice';
 import Swal from 'sweetalert2';
 import Pagination from '../../common/Pagination';
+import useTrans from '../../../pages/hooks/useTran';
 
 const AttributesData = () => {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
@@ -81,13 +83,13 @@ const AttributesData = () => {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Attributes</th>
+            <th scope="col">{trans.lessor.attributes.tien_ich}</th>
             {/* <th className="dn-lg" scope="col"></th>
           <th className="dn-lg" scope="col"></th>
           <th scope="col"></th>
           <th scope="col"></th> */}
-            <th scope="col">Created</th>
-            <th scope="col">Action</th>
+            <th scope="col">{trans.lessor.duoc_tao}</th>
+            <th scope="col">{trans.lessor.hanh_dong}</th>
           </tr>
         </thead>
         {/* End thead */}
@@ -120,7 +122,7 @@ const AttributesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
-                        <FormView id={item.id} />
+                        <FormView id={item.id} getDataNew={data}/>
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>

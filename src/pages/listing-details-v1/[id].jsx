@@ -16,7 +16,7 @@ import useTrans from '../hooks/useTran';
 const ListingDynamicDetailsV1 = () => {
   const { data } = useSelector((state) => state.boardingHouses);
   const dataStar = useSelector((state) => state.boardingHouseStar.data);
-
+  const accessToken = useSelector((state) => state.auth.accessToken);
   const customer = useSelector((state) => state.customer.data);
   const dataSearch = useSelector((state) => state.dataSearch);
   const dataSource = useSelector((state) => state.dataSource);
@@ -180,6 +180,7 @@ const ListingDynamicDetailsV1 = () => {
                 customer={customer}
                 posterId={boardingHouseDetail[0]?.posterId}
                 poster={boardingHouseDetail[0]}
+                accessToken={accessToken}
               />
             </div>
             {/* End sidebar content .col-lg-4 */}

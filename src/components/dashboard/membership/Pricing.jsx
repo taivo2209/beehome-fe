@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const Pricing = () => {
   const pricingContent = [
     {
@@ -34,13 +36,20 @@ const Pricing = () => {
       ],
     },
   ];
+  const handleClick = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Thanh toán thành công',
+      confirmButtonText: 'OK'
+    });
+  }
   return (
     <>
       {pricingContent.map((item) => (
         <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
           <div className="pricing_table">
             <div className="pricing_header">
-              <div className="price">${item.price}</div>
+              <div className="price">{item.price}đ</div>
               <h4>{item.title}</h4>
             </div>
             <div className="pricing_content">
@@ -51,7 +60,7 @@ const Pricing = () => {
               </ul>
             </div>
             <div className="pricing_footer">
-              <a className="btn pricing_btn btn-block" href="#">
+              <a className="btn pricing_btn btn-block" onClick={handleClick}>
                 Select Package
               </a>
             </div>

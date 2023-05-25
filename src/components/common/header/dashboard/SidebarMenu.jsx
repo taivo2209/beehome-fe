@@ -29,7 +29,7 @@ const SidebarMenu = () => {
       id: 2,
       name: `${trans.lessor.sidebar.thanh_vien}`,
       route: "/membership",
-      icon: "flaticon-user",
+      icon: "flaticon-box",
     },
     { id: 3, name: `${trans.lessor.sidebar.dang_xuat}`, route: "/login", icon: "flaticon-logout" },
   ];

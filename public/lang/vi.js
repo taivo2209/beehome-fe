@@ -44,6 +44,8 @@ export default {
     },
     xem_phong: 'Xem phòng trống',
     chu_nha: 'Chủ nhà',
+    bao_cao:'Báo cáo',
+    noi_dung_bc:'Nội dung báo cáo',
   },
   login: {
     dang_nhap: 'Đăng nhập',

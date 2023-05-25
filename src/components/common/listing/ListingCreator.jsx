@@ -1,4 +1,4 @@
-const Creaator = ({ data }) => {
+const Creator = ({ data }) => {
   return (
     <div className="media d-flex">
       {/* <img className="me-3" src={data.posterAvatar} alt="lc1.png" /> */}
@@ -21,4 +21,4 @@ const Creaator = ({ data }) => {
   );
 };
 
-export default Creaator;
+export default Creator;

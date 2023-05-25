@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
 import useTrans from "../../../pages/hooks/useTran";
 
-function FormView(props) {
+function FormView({id, getDataNew}) {
   const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
@@ -15,7 +15,7 @@ function FormView(props) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/roomAttribute/${props.id}`,
+        `http://localhost:5000/lessor/roomAttribute/${id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -31,7 +31,7 @@ function FormView(props) {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [getDataNew]);
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>

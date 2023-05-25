@@ -43,6 +43,8 @@ export default {
     },
     xem_phong: 'Available Rooms',
     chu_nha: 'Owner',
+    bao_cao:'Report',
+    noi_dung_bc:'Report details',
   },
   login: {
     dang_nhap: 'Login',
