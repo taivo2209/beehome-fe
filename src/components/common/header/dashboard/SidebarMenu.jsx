@@ -4,27 +4,34 @@ import {
   isParentPageActive,
   isSinglePageActive,
 } from "../../../../utils/daynamicNavigation";
+import useTrans from "../../../../pages/hooks/useTran";
 
 const SidebarMenu = () => {
   const route = useRouter();
-
+  const trans = useTrans();
   const lessorManage = [
-    { id: 1, name: "Boarding House", route: "/my-houses" },
+    { id: 1, name: `${trans.lessor.sidebar.nha}`, route: "/my-houses" },
     { id: 2, name: "Categories", route: "/my-categories" },
-    { id: 3, name: "Attributes", route: "/my-attributes" },
+    { id: 3, name: `${trans.lessor.sidebar.tien_ich}`, route: "/my-attributes" },
     { id: 4, name: "Tags", route: "/my-tags" },
-    { id: 5, name: "Bookings", route: "/my-bookings" },
-    { id: 6, name: "Busy Dates", route: "/busy-date" },
+    { id: 5, name: `${trans.lessor.sidebar.lich_hen}`, route: "/my-bookings" },
+    { id: 6, name: `${trans.lessor.sidebar.ngay_nghi}`, route: "/busy-date" },
   ];
 
   const manageAccount = [
     {
       id: 1,
-      name: "My Profile",
+      name: `${trans.lessor.sidebar.tk_cua_toi}`,
       route: "/my-profile",
       icon: "flaticon-user",
     },
-    { id: 2, name: "Logout", route: "/login", icon: "flaticon-logout" },
+    {
+      id: 2,
+      name: `${trans.lessor.sidebar.thanh_vien}`,
+      route: "/membership",
+      icon: "flaticon-box",
+    },
+    { id: 3, name: `${trans.lessor.sidebar.dang_xuat}`, route: "/login", icon: "flaticon-logout" },
   ];
   
   return <>
@@ -43,98 +50,7 @@ const SidebarMenu = () => {
       {/* End header */}
 
       <li className="title">
-        <span>Main</span>
-        <ul>
-          {/* <li
-            className={`treeview ${
-              isSinglePageActive("/my-dashboard", route.pathname)
-                ? "active"
-                : ""
-            }`}
-          >
-            <Link href="/my-dashboard">
-
-              <i className="flaticon-layers"></i>
-              <span> Dashboard</span>
-
-            </Link>
-          </li> */}
-          {/* <li
-            className={`treeview ${
-              isSinglePageActive("/create-listing", route.pathname)
-                ? "active"
-                : ""
-            }`}
-          >
-            <Link href="/create-listing">
-
-              <i className="flaticon-plus"></i>
-              <span> Create Listing</span>
-
-            </Link>
-          </li> */}
-          {/* <li
-            className={`treeview ${
-              isSinglePageActive("/my-categories", route.pathname)
-                ? "active"
-                : ""
-            }`}
-          >
-            <Link href="/my-categories">
-
-              <i className="flaticon-plus"></i>
-              <span> Lessor Categories</span>
-
-            </Link>
-          </li>
-          <li
-            className={`treeview ${
-              isSinglePageActive("/my-attributes", route.pathname)
-                ? "active"
-                : ""
-            }`}
-          >
-            <Link href="/my-attributes">
-
-              <i className="flaticon-plus"></i>
-              <span> Lessor Attributes</span>
-
-            </Link>
-          </li>
-          <li
-            className={`treeview ${
-              isSinglePageActive("/my-tags", route.pathname)
-                ? "active"
-                : ""
-            }`}
-          >
-            <Link href="/my-tags">
-
-              <i className="flaticon-plus"></i>
-              <span> Lessor Tags</span>
-
-            </Link>
-          </li> */}
-          {/* <li
-            className={`treeview ${
-              isSinglePageActive("/my-message", route.pathname)
-                ? "active"
-                : ""
-            }`}
-          >
-            <Link href="/my-message">
-
-              <i className="flaticon-envelope"></i>
-              <span> Message</span>
-
-            </Link>
-          </li> */}
-        </ul>
-      </li>
-      {/* End Main */}
-
-      <li className="title">
-        <span>Manage Listings</span>
+        <span>{trans.lessor.sidebar.danh_sach}</span>
         <ul>
           {/* <li
             className={`treeview ${
@@ -164,7 +80,7 @@ const SidebarMenu = () => {
             }`}
           >
             <a data-bs-toggle="collapse" href="#my-property">
-              <i className="flaticon-plus"></i> <span>Lessor Manage</span>
+              <i className="flaticon-plus"></i> <span>{trans.lessor.sidebar.quan_ly}</span>
               <i className="fa fa-angle-down pull-right"></i>
             </a>
             <ul className="treeview-menu collapse" id="my-property">
@@ -235,7 +151,7 @@ const SidebarMenu = () => {
       </li>
 
       <li className="title">
-        <span>Manage Account</span>
+        <span>{trans.lessor.sidebar.quan_ly_tk}</span>
         <ul>
           {manageAccount.map((item) => (
             <li

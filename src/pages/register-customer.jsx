@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import Seo from "../components/common/seo";
-import SignUpCustomer from "../components/register-customer";
+import SignUpCustomer from "../components/customer/register";
 
 const index = () => {
   return (

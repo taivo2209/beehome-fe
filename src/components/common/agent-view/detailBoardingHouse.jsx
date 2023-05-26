@@ -5,8 +5,10 @@ import * as React from 'react';
 import DetailRoom from './detailRoom';
 import { useState } from 'react';
 import FormBookDayToMeet from './formToMeet';
+import useTrans from '../../../pages/hooks/useTran';
 
 const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
+  const trans = useTrans();
   const { className } = PropTypes.string;
   const closeBtn = (
     <button className="close" onClick={() => handleToggle()} type="button">
@@ -43,9 +45,7 @@ const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
         width: '1000px',
       }}
     >
-      <ModalHeader toggle={toggle} close={closeBtn}>
-        Modal title
-      </ModalHeader>
+      <ModalHeader toggle={toggle} close={closeBtn}></ModalHeader>
       <ModalBody
         style={{
           height: '70vh',
@@ -71,14 +71,14 @@ const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
           ''
         ) : detailIsOpen ? (
           <Button className="btn_orange" onClick={() => HandleDetailIsOpen()}>
-            Back
+            {trans.tro_lai}
           </Button>
         ) : (
           ''
         )}
 
         <Button className="btn_orange" onClick={() => handleToggle()}>
-          Cancel
+          {trans.huy_bo}
         </Button>
       </ModalFooter>
     </Modal>

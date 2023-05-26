@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { clearAccessToken } from '../../../features/auth/authSlice';
 import { removeCustomer } from '../../../features/customer/customerSlice';
+import useTrans from '../../../pages/hooks/useTran';
 
 const CustomerAccount = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const route = useRouter();
+  const trans = useTrans();
 
   const getData = async () => {
     try {
@@ -33,8 +35,9 @@ const CustomerAccount = () => {
   };
 
   const profileMenuItems = [
-    { id: 1, name: 'My Profile', routerPath: '/customer-profile' },
-    { id: 2, name: 'Log out', onClick: handleLogout },
+    { id: 1, name: `${trans.header.thong_tin}`, routerPath: '/customer-profile' },
+    { id: 2, name: `${trans.header.doi_mk}`, routerPath: '/customer-change-password' },
+    { id: 2, name: `${trans.header.dang_xuat}`, onClick: handleLogout },
   ];
 
   useEffect(() => {

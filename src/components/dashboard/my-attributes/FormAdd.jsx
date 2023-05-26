@@ -5,8 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import attributes from '../../../data/attributes';
+import useTrans from '../../../pages/hooks/useTran';
 
 function FormAdd({ getData }) {
+  const trans= useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -49,7 +51,7 @@ function FormAdd({ getData }) {
       reset();
       Swal.fire({
         icon: 'success',
-        title: 'Tạo thành công!',
+        title: `${trans.lessor.tao_thanh_cong}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -58,8 +60,8 @@ function FormAdd({ getData }) {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
+        title: `${trans.lessor.loi}`,
+        text: `${trans.lessor.loi_1}`,
         confirmButtonText: 'OK',
       });
       console.log(error);
@@ -81,7 +83,7 @@ function FormAdd({ getData }) {
         onClick={handleShow}
       >
         <span className="flaticon-plus"></span>
-        <span className="dn-lg"> Create Attributes</span>
+        <span className="dn-lg"> {trans.lessor.attributes.them_tien_ich}</span>
       </button>
 
       <Modal show={show} onHide={handleClose} size="lg">
@@ -94,7 +96,7 @@ function FormAdd({ getData }) {
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice">
-                    Attribute Name:
+                    {trans.lessor.attributes.ten_tien_ich}:
                     <input
                       type="text"
                       required
@@ -117,7 +119,7 @@ function FormAdd({ getData }) {
               <div className="col-lg-6 col-xl-6">
                 <div lassName="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice">
-                    Attribute Term:
+                    {trans.lessor.attributes.loai_tien_ich}:
                     {fields.map((field, index) => (
                       <div key={field.roomAttributeTermKey}>
                         <input
@@ -166,7 +168,7 @@ function FormAdd({ getData }) {
                             className="btn btn1"
                             onClick={() => remove(index)}
                           >
-                            Remove
+                            {trans.lessor.xoa}
                           </button>
                         </div>
                       </div>
@@ -188,12 +190,12 @@ function FormAdd({ getData }) {
                   })
                 }
               >
-                Add Attribute Term
+                {trans.lessor.attributes.them_loai_tien_ich}
               </button>
             </div>
             <div className="my_profile_setting_input overflow-hidden mt20">
               <button type="submit" className="btn btn2 float-end">
-                Create
+                {trans.lessor.tao}
               </button>
             </div>
           </form>

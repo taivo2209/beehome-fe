@@ -12,8 +12,10 @@ import FormDateSelect from './FromDateSelect';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import useTrans from '../../../pages/hooks/useTran';
 const steps = ['Information', 'Select date time to meet'];
 const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
+  const trans = useTrans();
   const [book, setBook] = useState({
     firstName: customer?.firstName,
     lastName: customer?.lastName,
@@ -49,15 +51,15 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
         await axios.post('http://localhost:5000/customer/book', book);
         Swal.fire({
           icon: 'success',
-          title: 'Tạo thành công!',
-          showConfirmButton: false,
-          timer: 1500,
+          title: `${trans.booking.dat_lich_ok}`,
+          text:`${trans.booking.xac_nhan_dat}`,
+          confirmButtonText: 'OK',
         });
       } catch (error) {
         Swal.fire({
           icon: 'error',
-          title: 'Đã xảy ra lỗi!',
-          text: 'Vui lòng thử lại sau.',
+          title: `${trans.booking.loi}`,
+          text: `${trans.booking.loi_1}`,
           confirmButtonText: 'OK',
         });
         console.log(error);
@@ -67,7 +69,7 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
       if (activeStep === 0 && !book.dateMeet) {
         return Swal.fire({
           icon: 'error',
-          title: 'Vui lòng chọn ngày hẹn để tiếp tục!',
+          title: `${trans.booking.chon_ngay}`,
           confirmButtonText: 'OK',
         });
       }

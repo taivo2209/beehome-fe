@@ -1,18 +1,17 @@
-import ContactWithAgent from '../common/agent-view/ContactWithAgent';
-import Categorie from '../common/listing/Categorie';
 import ListingCreator from '../common/listing/ListingCreator';
 import FeaturedListings from '../common/listing/FeaturedListings';
-import FeatureProperties from '../common/listing/FeatureProperties';
 import { useEffect, useState } from 'react';
 import DetailBoardingHouse from '../common/agent-view/detailBoardingHouse';
 import useTrans from '../../pages/hooks/useTran';
-const Sidebar = ({ data, customer, posterId, poster }) => {
+import Link from 'next/link';
+import ReportBox from '../blog-details/ReportBox';
+const Sidebar = ({ data, customer, posterId, poster, accessToken }) => {
   const [modal, setModal] = useState(false);
   const trans = useTrans();
   const toggle = () => {
     setModal(!modal);
   };
-  // console.log('id', posterId);
+  // console.log('====', customer);
   return (
     <>
       <div className="sidebar_listing_list">
@@ -47,6 +46,17 @@ const Sidebar = ({ data, customer, posterId, poster }) => {
         <FeaturedListings />
       </div>
       {/* End .Recently Viewed */}
+      {customer != null ? (
+        <ReportBox
+          accessToken={accessToken}
+        />
+      ) : (
+        <button type="submit" className="btn btn-thm col-lg-8 bg-danger border-0">
+          <Link href="/login">
+            <span className='text-white'>{trans.detail.bao_cao}</span>
+          </Link>
+        </button>
+      )}
     </>
   );
 };

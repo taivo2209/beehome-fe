@@ -6,8 +6,10 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import axios from 'axios';
+import useTrans from '../../pages/hooks/useTran';
 
 const RecentlyFeaturedProperties = () => {
+  const trans= useTrans();
   const settings = {
     dots: true,
     arrows: false,
@@ -87,8 +89,8 @@ const RecentlyFeaturedProperties = () => {
               href={`/listing-details-v1/${item[0]?.id}`}
               className="fp_price"
             >
-              from {item[0]?.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-              <small>/mo</small>
+              {trans.from} {item[0]?.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
         </div>

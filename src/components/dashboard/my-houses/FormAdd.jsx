@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
+import useTrans from '../../../pages/hooks/useTran';
 
 function FormAdd() {
   const router = useRouter();
+  const trans = useTrans();
 
   const handleClick = () => {
     router.push('/create-listing');
@@ -21,7 +23,7 @@ function FormAdd() {
         onClick={handleClick}
       >
         <span className="flaticon-plus"></span>
-        <span className="dn-lg"> Create Houses</span>
+        <span className="dn-lg"> {trans.lessor.houses.them_nha}</span>
       </button>
     </>
   );

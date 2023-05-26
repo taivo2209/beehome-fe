@@ -11,7 +11,7 @@ import PropertyLocation from '../common/listing-details/PropertyLocation';
 import PropertyRenDeposits from '../common/listing-details/PropertyRensDeposits';
 import PropertyRule from '../common/listing-details/PropertyRule';
 import { useSelector } from 'react-redux';
-import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
+// import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import axios from 'axios';
 import useTrans from '../../pages/hooks/useTran';
 
@@ -35,14 +35,14 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
   useEffect(() => {
     getData();
   }, [boardingHouseId]);
-  useEffect(() => {
-    const getCoords = async () => {
-      const results = await geocodeByAddress(dataDetail?.location);
-      const latLng = await getLatLng(results[0]);
-      setCoords(latLng);
-    };
-    dataDetail && getCoords();
-  }, [dataDetail]);
+  // useEffect(() => {
+  //   const getCoords = async () => {
+  //     const results = await geocodeByAddress(dataDetail?.location);
+  //     const latLng = await getLatLng(results[0]);
+  //     setCoords(latLng);
+  //   };
+  //   dataDetail && getCoords();
+  // }, [dataDetail]);
   const sum = comments.reduce(
     (total, current) => total + current?.comment?.star,
     0,
@@ -99,7 +99,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
             <small className="float-end">{dataDetail?.location}</small>
           </h4>
           <div className="property_video p0">
-            {/* <PropertyLocation coords={coords} /> */}
+            <PropertyLocation/>
           </div>
         </div>
       )}

@@ -36,7 +36,7 @@ const Index = () => {
         <div className="row">
           <div className="col-lg-12">
             <div className="main-title text-center mb40 ">
-              <h2>Xu hướng</h2>
+              <h2>{trans.home.xu_huong}</h2>
             </div>
           </div>
           <div className="col-lg-12">

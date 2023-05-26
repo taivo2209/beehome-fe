@@ -8,6 +8,7 @@ import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSl
 import { setDataBoardingHouse } from '../../features/dataSource/dataSourceSlice';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import { Button, Tooltip } from '@mui/material';
+import useTrans from '../../pages/hooks/useTran';
 
 const FeaturedPropertiesHome3 = () => {
   const settings = {
@@ -60,6 +61,7 @@ const FeaturedPropertiesHome3 = () => {
   useEffect(() => {
     dispatch(fetchBoardingHouse());
   }, []);
+  const trans = useTrans();
 
   return (
     <>
@@ -75,8 +77,9 @@ const FeaturedPropertiesHome3 = () => {
                     href={`/listing-details-v1/${item.id}`}
                   >
                     <div className="fp_price">
-                      ${item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-                      <small>/mo</small>
+                      {trans.from}{' '}
+                      {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                      <small>{trans.detail.gia_thang}</small>
                     </div>
                   </Link>
                 </div>

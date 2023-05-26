@@ -6,6 +6,7 @@ import FormEdit from './FormEdit';
 import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
 import Pagination from '../../common/Pagination';
+import useTrans from '../../../pages/hooks/useTran';
 
 // import { setCategories } from '../../../features/categories/categoriesSlice';
 
@@ -13,7 +14,7 @@ const HousesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const trans = useTrans();
   const getData = async () => {
     try {
       const res = await axios.get(
@@ -55,7 +56,7 @@ const HousesData = () => {
       getData();
       Swal.fire({
         icon: 'success',
-        title: 'Xóa thành công!',
+        title: `${trans.lessor.xoa_thanh_cong}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -74,13 +75,13 @@ const HousesData = () => {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Houses</th>
+            <th scope="col">{trans.lessor.sidebar.nha}</th>
             <th className="dn-lg" scope="col"></th>
             <th className="dn-lg" scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col">Created</th>
-            <th scope="col">Action</th>
+            <th scope="col">{trans.lessor.duoc_tao}</th>
+            <th scope="col">{trans.lessor.hanh_dong}</th>
           </tr>
         </thead>
         {/* End thead */}

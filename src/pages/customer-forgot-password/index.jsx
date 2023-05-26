@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
 import Seo from "../../components/common/seo";
-import CustomerProfile from "../../components/customer/profile";
+import ForgotPassword from "../../components/customer/forgot-password";
 
 const index = () => {
   return (
     <>
-      <Seo pageTitle="Profile" />
-      <CustomerProfile />
+      <Seo pageTitle="Update Password" />
+      <ForgotPassword />
     </>
   );
 };

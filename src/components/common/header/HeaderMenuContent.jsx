@@ -5,9 +5,10 @@ import CustomerAccount from './CustomerAccount';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { setEN, setVI } from '../../../features/langType/langTypeSlice';
+import useTrans from '../../../pages/hooks/useTran';
 
 const HeaderMenuContent = ({ float = '' }) => {
-  const route = useRouter();
+  const trans = useTrans();
   const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.auth);
   const customer = useSelector((state) => state.customer.data);
@@ -44,7 +45,7 @@ const HeaderMenuContent = ({ float = '' }) => {
       <li className="dropitem">
         <a>
           <span className="title" style={{ cursor: 'pointer' }}>
-            Lang
+            {trans.header.ngon_ngu}
           </span>
           <span className="arrow"></span>
         </a>
@@ -73,7 +74,7 @@ const HeaderMenuContent = ({ float = '' }) => {
 
       <li className="dropitem">
         <Link href={'/'}>
-          <span className="title">Home</span>
+          <span className="title">{trans.header.trang_chu}</span>
         </Link>
       </li>
 
@@ -102,7 +103,7 @@ const HeaderMenuContent = ({ float = '' }) => {
       ) : (
         <li className={`list-inline-item list_s ${float}`}>
           <Link href="/login" className="btn flaticon-user">
-            <span className="dn-lg">Login/Register</span>
+            <span className="dn-lg">{trans.header.dang_nhap_dang_ky}</span>
           </Link>
         </li>
       )}

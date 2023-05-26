@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
+import useTrans from "../../../pages/hooks/useTran";
 
-function FormView(props) {
+function FormView({id, getDataNew}) {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
@@ -13,7 +15,7 @@ function FormView(props) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/roomAttribute/${props.id}`,
+        `http://localhost:5000/lessor/roomAttribute/${id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -29,13 +31,13 @@ function FormView(props) {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [getDataNew]);
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Category Details</Modal.Title>
+          <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {data.roomAttributeTerms?.map((roomAttributeTerms) => (
@@ -48,7 +50,7 @@ function FormView(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {trans.dong}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,11 +1,9 @@
-import useTrans from "../../../../pages/hooks/useTran";
-import Header from "../../../common/header/dashboard/Header";
-import SidebarMenu from "../../../common/header/dashboard/SidebarMenu";
-import MobileMenu from "../../../common/header/MobileMenu";
-import EditList from "./EditList";
+import Header from '../../common/header/dashboard/Header';
+import SidebarMenu from '../../common/header/dashboard/SidebarMenu';
+import MobileMenu from '../../common/header/MobileMenu';
+import Pricing from './Pricing';
 
-const Index = () => {
-  const trans = useTrans();
+const index = () => {
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -26,7 +24,7 @@ const Index = () => {
       </div>
       {/* End sidebar_menu */}
 
-      {/* <!-- Our Dashboard --> */}
+      {/* <!-- Our Dashbord --> */}
       <section className="our-dashbord dashbord bgc-f7 pb50">
         <div className="container-fluid ovh">
           <div className="row">
@@ -48,34 +46,26 @@ const Index = () => {
                   </div>
                 </div>
                 {/* End Dashboard Navigation */}
-
-                <div className="col-lg-12 mb10">
-                  <div className="breadcrumb_content style2">
-                    <h2 className="breadcrumb_title">{trans.lessor.houses.chinh_sua_nha}</h2>
-                    <p>{trans.han_hanh}</p>
-                  </div>
-                </div>
-                {/* End .col */}
-
-                <div className="col-lg-12">
-                  <div className="my_dashboard_review">
-                    <div className="row">
-                      <EditList />
-                    </div>
-                  </div>
-                  {/* <div className="my_dashboard_review mt30">
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <h3 className="mb30">Location</h3>
-                      </div>
-
-                      <LocationField />
-                    </div>
-                  </div> */}
-                </div>
-                {/* End .col */}
               </div>
               {/* End .row */}
+              <section className="our-service pb30">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-6 offset-lg-3">
+                      <div className="main-title text-center">
+                        <h2>Choose Your Perfect Plan From Us</h2>
+                        <p>We provide full service at every step</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* End .row */}
+
+                  <div className="row">
+                    <Pricing />
+                  </div>
+                  {/* End .row */}
+                </div>
+              </section>
 
               <div className="row mt50">
                 <div className="col-lg-12">
@@ -94,4 +84,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default index;

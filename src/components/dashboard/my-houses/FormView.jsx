@@ -4,8 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import FloorDetail from './FloorDetail';
+import useTrans from '../../../pages/hooks/useTran';
 
 function FormView(props) {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
   const [data, setData] = useState({});
@@ -38,31 +40,35 @@ function FormView(props) {
       <span className="flaticon-view" onClick={handleShow}></span>
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
-          <Modal.Title>Thông tin {data?.name}</Modal.Title>
+          <Modal.Title>
+            {trans.lessor.houses.thong_tin} {data?.name}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <ul>
-            <li>Type: {data?.type}</li>
             <li>
-              Descriptions:{' '}
+              {trans.lessor.houses.loai}: {data?.type}
+            </li>
+            <li>
+              {trans.lessor.houses.mo_ta}:{' '}
               {data?.boardingHouseDescriptions?.map((item) => (
                 <p key={item.id}>{item.content}</p>
               ))}
             </li>
             <li>
-              Rent Deposits:{' '}
+              {trans.lessor.houses.tien_coc}:{' '}
               {data?.boardingHouseRentDeposits?.map((item) => (
                 <p key={item.id}>{item.content}</p>
               ))}
             </li>
             <li>
-              Rent Rules:{' '}
+              {trans.lessor.houses.quy_dinh}:{' '}
               {data?.boardingHouseRules?.map((item) => (
                 <p key={item.id}>{item.content}</p>
               ))}
             </li>
             <li>
-              <span>Address: </span>
+              <span>{trans.lessor.houses.dia_chi}: </span>
               <span>
                 {data?.boardingHouseAddress?.address},{' '}
                 {data?.boardingHouseAddress?.ward},{' '}
@@ -77,14 +83,19 @@ function FormView(props) {
               ))}
             </li>
             <li onClick={handleFloorClick}>
-              Floor:
-              <FloorDetail floorData={data.floors} />
+              {trans.lessor.houses.tang}:
+              <FloorDetail
+                floorData={data?.floors}
+                province={data?.boardingHouseAddress?.province}
+                district={data?.boardingHouseAddress?.district}
+                ward={data?.boardingHouseAddress?.ward}
+              />
             </li>
           </ul>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Đóng
+            {trans.dong}
           </Button>
         </Modal.Footer>
       </Modal>

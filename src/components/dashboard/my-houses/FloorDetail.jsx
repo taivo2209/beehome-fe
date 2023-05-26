@@ -3,12 +3,14 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import RoomsData from './my-rooms/RoomsData';
+import useTrans from '../../../pages/hooks/useTran';
 
-function FloorDetail({floorData}) {
+function FloorDetail({ floorData, province, district, ward }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-//   console.log(floorData);
+  //   console.log(floorData);
+  const trans = useTrans();
 
   return (
     <>
@@ -25,16 +27,24 @@ function FloorDetail({floorData}) {
       ></button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Thông tin các tầng</Modal.Title>
+          <Modal.Title>{trans.lessor.houses.thong_tin_tang}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <div className='floor-detail'>
-                {floorData.map(item=> <RoomsData key={item.id} floorData={item}/>)}
-            </div>
+          <div className="floor-detail">
+            {floorData?.map((item) => (
+              <RoomsData
+                key={item.id}
+                floorData={item}
+                province={province}
+                district={district}
+                ward={ward}
+              />
+            ))}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Đóng
+            {trans.dong}
           </Button>
         </Modal.Footer>
       </Modal>

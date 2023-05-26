@@ -14,6 +14,10 @@ const Form = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('customer');
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const handleTogglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   const handleSubmit = async (e) => {
     const loginData = {
@@ -41,7 +45,7 @@ const Form = () => {
 
       Swal.fire({
         icon: 'success',
-        title: 'Đăng nhập thành công!',
+        title: `${trans.login.thong_bao}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -55,7 +59,7 @@ const Form = () => {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Sai tài khoản hoặc mật khẩu',
+        title: `${trans.login.thong_bao_1}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -75,7 +79,7 @@ const Form = () => {
           </Link>
         </p>
         <p className="text-center">
-          {trans.login.dang_ky}{' '}
+          {trans.login.text_2}{' '}
           <Link href="/register" className="text-thm">
           {trans.login.dang_ky}
           </Link>
@@ -99,18 +103,31 @@ const Form = () => {
       </div>
       {/* End .input-group */}
 
-      <div className="input-group form-group">
+      <div className="form-group input-group">
         <input
-          type="password"
+          type={passwordVisible ? 'text' : 'password'}
           className="form-control"
           required
           placeholder={trans.login.mat_khau}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="input-group-prepend">
+        {/* <div className="input-group-prepend">
           <div className="input-group-text">
             <i className="flaticon-password"></i>
           </div>
+        </div> */}
+        <div className="input-group-append">
+          <button
+            className="input-group-text"
+            type="button"
+            onClick={handleTogglePasswordVisibility}
+          >
+            {passwordVisible ? (
+              <i className="fa fa-eye-slash"></i>
+            ) : (
+              <i className="fa fa-eye"></i>
+            )}
+          </button>
         </div>
       </div>
 
@@ -141,9 +158,9 @@ const Form = () => {
           Remember me
         </label> */}
 
-        <a className="btn-fpswd float-end" href="#">
+        <Link className="btn-fpswd float-end" href="/customer-forgot-password">
           {trans.login.quen_mk}
-        </a>
+        </Link>
       </div>
       {/* End .form-group */}
 

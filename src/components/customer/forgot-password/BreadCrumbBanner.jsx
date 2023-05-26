@@ -1,5 +1,5 @@
-import useTrans from "../../pages/hooks/useTran";
-import BreadCrumb from "../common/BreadCrumb";
+import useTrans from "../../../pages/hooks/useTran";
+import BreadCrumb from "../../common/BreadCrumb";
 
 const BreadCrumbBanner = () => {
   const trans = useTrans();
@@ -10,8 +10,8 @@ const BreadCrumbBanner = () => {
         <div className="row">
           <div className="col-xl-6">
             <div className="breadcrumb_content">
-              <BreadCrumb title={trans.register.dang_ky} />
-              <h4 className="breadcrumb_title">{trans.register.dang_ky}</h4>
+              <BreadCrumb title={trans.login.quen_mk} />
+              <h4 className="breadcrumb_title">{trans.login.quen_mk}</h4>
             </div>
           </div>
           {/* End .col */}

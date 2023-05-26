@@ -2,8 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import useTrans from '../../../pages/hooks/useTran';
 
 const CustomerProfile = () => {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -136,7 +138,7 @@ const CustomerProfile = () => {
             htmlFor="image1"
           >
             <span>
-              <i className="flaticon-download"></i> Upload Photo{' '}
+              <i className="flaticon-download"></i> {trans.cus_profile.chon_anh}{' '}
             </span>
           </label>
         </div>
@@ -145,7 +147,7 @@ const CustomerProfile = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExampleInput1">First Name</label>
+          <label htmlFor="formGroupExampleInput1">{trans.cus_profile.ten}</label>
           <input
             type="text"
             className="form-control"
@@ -159,7 +161,7 @@ const CustomerProfile = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExampleInput6">Last Name</label>
+          <label htmlFor="formGroupExampleInput6">{trans.cus_profile.ho}</label>
           <input
             type="text"
             className="form-control"
@@ -187,7 +189,7 @@ const CustomerProfile = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExampleInput3">Address</label>
+          <label htmlFor="formGroupExampleInput3">{trans.cus_profile.dia_chi}</label>
           <input
             type="text"
             className="form-control"
@@ -201,7 +203,7 @@ const CustomerProfile = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExampleInput4">Phone Number</label>
+          <label htmlFor="formGroupExampleInput4">{trans.cus_profile.sdt}</label>
           <input
             type="text"
             className="form-control"
@@ -215,7 +217,7 @@ const CustomerProfile = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExampleInput5">Birth Date</label>
+          <label htmlFor="formGroupExampleInput5">{trans.cus_profile.ngay_sinh}</label>
           <input
             type="date"
             className="form-control"
@@ -230,7 +232,7 @@ const CustomerProfile = () => {
       <div className="col-xl-12 text-right">
         <div className="my_profile_setting_input">
           <button className="btn btn2" onClick={handleSubmit}>
-            Update Profile
+            {trans.cus_profile.cap_nhat}
           </button>
         </div>
       </div>

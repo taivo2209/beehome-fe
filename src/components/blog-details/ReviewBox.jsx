@@ -2,10 +2,12 @@ import { Rating } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import useTrans from '../../pages/hooks/useTran';
 
 const ReviewBox = ({ accessToken, boardingHouseId, getData }) => {
   const [star, setStar] = useState(2);
   const [content, setContent] = useState('');
+  const trans = useTrans();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,7 +30,7 @@ const ReviewBox = ({ accessToken, boardingHouseId, getData }) => {
       getData();
       Swal.fire({
         icon: 'success',
-        title: 'Tạo thành công!',
+        title: `${trans.detail.danh_gia.thanh_cong}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -37,8 +39,8 @@ const ReviewBox = ({ accessToken, boardingHouseId, getData }) => {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
+        title: `${trans.detail.danh_gia.loi}`,
+        text: `${trans.detail.danh_gia.loi_1}`,
         confirmButtonText: 'OK',
       });
       console.log(error);
@@ -59,7 +61,7 @@ const ReviewBox = ({ accessToken, boardingHouseId, getData }) => {
         <textarea
           className="form-control"
           rows="6"
-          placeholder="Your Review"
+          placeholder={trans.detail.danh_gia.danh_gia}
           required
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
@@ -67,7 +69,7 @@ const ReviewBox = ({ accessToken, boardingHouseId, getData }) => {
       {/* End .form-group */}
 
       <button type="submit" className="btn btn-thm" onClick={handleSubmit}>
-        Submit Review
+        {trans.detail.danh_gia.viet_danh_gia}
       </button>
       {/* End .btn */}
     </form>

@@ -5,9 +5,11 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
 import PropertyMediaUploader from '../PropertyMediaUploader';
+import useTrans from '../../../../pages/hooks/useTran';
 
 const CreateList = () => {
   const router = useRouter();
+  const trans = useTrans();
   const [dataProvince, setDataProvince] = useState({});
   const [dataDistrict, setDataDistrict] = useState({});
   const [dataWard, setDataWard] = useState({});
@@ -58,8 +60,8 @@ const CreateList = () => {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Lỗi',
-        text: 'Vui lòng điền đầy đủ thông tin',
+        title: `${trans.lessor.loi}`,
+        text: `${trans.lessor.loi_2}`,
       });
       return false;
     }
@@ -70,8 +72,8 @@ const CreateList = () => {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Vui lòng điền thông tin hợp lệ',
-        text: 'Vui lòng nhập số ở ElectricFee, WaterFee, ServiceFee',
+        title: `${trans.lessor.houses.text}`,
+        text: `${trans.lessor.houses.text_1}`,
       });
       return false;
     }
@@ -82,8 +84,8 @@ const CreateList = () => {
     ) {
       Swal.fire({
         icon: 'error',
-        title: 'Vui lòng điền thông tin hợp lệ',
-        text: 'Vui lòng không nhập số âm ở ElectricFee, WaterFee, ServiceFee',
+        title: `${trans.lessor.houses.text}`,
+        text: `${trans.lessor.houses.text_2}`,
       });
       return false;
     }
@@ -149,7 +151,7 @@ const CreateList = () => {
         });
         Swal.fire({
           icon: 'success',
-          title: 'Tạo thành công!',
+          title: `${trans.lessor.tao_thanh_cong}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -157,8 +159,8 @@ const CreateList = () => {
       } catch (error) {
         Swal.fire({
           icon: 'error',
-          title: 'Đã xảy ra lỗi!',
-          text: 'Vui lòng thử lại sau.',
+          title: `${trans.lessor.loi}`,
+          text: `${trans.lessor.loi_1}`,
           confirmButtonText: 'OK',
         });
         console.log(error);
@@ -226,7 +228,7 @@ const CreateList = () => {
     <>
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Property Title</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.tieu_de}</label>
           <input
             type="text"
             className="form-control"
@@ -239,7 +241,7 @@ const CreateList = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Type</label>
+          <label>{trans.lessor.houses.loai}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -257,7 +259,7 @@ const CreateList = () => {
 
       <div className="col-lg-6 col-xl-6">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="formGroupExamplePrice">Floor Number</label>
+          <label htmlFor="formGroupExamplePrice">{trans.lessor.houses.so_tang}</label>
           <input
             type="number"
             required
@@ -270,7 +272,7 @@ const CreateList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Electric Fee (/1kWh)</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.dien}</label>
           <input
             type="text"
             required
@@ -283,7 +285,7 @@ const CreateList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Water Fee (/person)</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.nuoc}</label>
           <input
             type="text"
             className="form-control"
@@ -295,7 +297,7 @@ const CreateList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyTitle">Service Fee</label>
+          <label htmlFor="propertyTitle">{trans.lessor.houses.dich_vu}</label>
           <input
             type="text"
             required
@@ -309,7 +311,7 @@ const CreateList = () => {
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rule VN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.quy_dinh_vn}</label>
           <textarea
             className="form-control"
             required
@@ -321,7 +323,7 @@ const CreateList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rule EN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.quy_dinh_en}</label>
           <textarea
             className="form-control"
             required
@@ -334,7 +336,7 @@ const CreateList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rent Deposit VN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.tien_coc_vn}</label>
           <textarea
             className="form-control"
             required
@@ -346,7 +348,7 @@ const CreateList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Rent Deposit EN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.tien_coc_en}</label>
           <textarea
             className="form-control"
             required
@@ -360,7 +362,7 @@ const CreateList = () => {
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Description VN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.mo_ta_vn}</label>
           <textarea
             className="form-control"
             required
@@ -372,7 +374,7 @@ const CreateList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">Description EN</label>
+          <label htmlFor="propertyDescription">{trans.lessor.houses.mo_ta_en}</label>
           <textarea
             className="form-control"
             required
@@ -389,12 +391,12 @@ const CreateList = () => {
       </div>
       <CheckBoxFilter onSelectionChange={handleSelectionChange} />
       <div className="col-xl-12">
-        <h4 className="mb10">Images</h4>
+        <h4 className="mb10">{trans.lessor.houses.anh}</h4>
       </div>
       <PropertyMediaUploader onUpload={handleUpload} />
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
-          <label htmlFor="propertyAddress">Address</label>
+          <label htmlFor="propertyAddress">{trans.lessor.houses.dia_chi}</label>
           <input
             type="text"
             required
@@ -409,7 +411,7 @@ const CreateList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Province</label>
+          <label>{trans.lessor.houses.tinh}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -431,7 +433,7 @@ const CreateList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>District</label>
+          <label>{trans.lessor.houses.quan_huyen}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -455,7 +457,7 @@ const CreateList = () => {
 
       <div className="col-lg-4 col-xl-4">
         <div className="my_profile_setting_input ui_kit_select_search form-group">
-          <label>Ward</label>
+          <label>{trans.lessor.houses.xa_phuong}</label>
           <select
             className="selectpicker form-select"
             data-live-search="true"
@@ -477,10 +479,10 @@ const CreateList = () => {
       <div className="col-xl-12">
         <div className="my_profile_setting_input overflow-hidden mt20">
           <button className="btn btn2 float-end" onClick={handleSubmit}>
-            Create
+          {trans.lessor.tao}
           </button>
           <button className="btn btn1 float-start" onClick={handleBack}>
-            Back
+            {trans.tro_lai}
           </button>
         </div>
       </div>

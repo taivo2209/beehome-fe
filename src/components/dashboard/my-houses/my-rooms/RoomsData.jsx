@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import CreateRooms from './CreateRooms';
 import { useSelector } from 'react-redux';
@@ -8,8 +7,10 @@ import FormView from './FormView';
 import FormEdit from './FormEdit';
 import Swal from 'sweetalert2';
 import Pagination from '../../../common/Pagination';
+import useTrans from '../../../../pages/hooks/useTran';
 
-function RoomsData({ floorData }) {
+function RoomsData({ floorData, province, district, ward }) {
+  const trans = useTrans();
   const [show, setShow] = useState(false);
   const [data, setData] = useState();
   const [roomData, setRoomData] = useState();
@@ -99,19 +100,22 @@ function RoomsData({ floorData }) {
                             <CreateRooms
                               floorId={floorData.id}
                               updateData={getData}
+                              province={province}
+                              district={district}
+                              ward={ward}
                             />
                           </ul>
                         </div>
                         <table className="table">
                           <thead className="thead-light">
                             <tr>
-                              <th scope="col">Rooms</th>
+                              <th scope="col">{trans.lessor.rooms.phong}</th>
                               <th className="dn-lg" scope="col"></th>
                               <th className="dn-lg" scope="col"></th>
                               <th scope="col"></th>
                               <th scope="col"></th>
-                              <th scope="col">Created</th>
-                              <th scope="col">Action</th>
+                              <th scope="col">{trans.lessor.duoc_tao}</th>
+                              <th scope="col">{trans.lessor.hanh_dong}</th>
                             </tr>
                           </thead>
                           {/* End thead */}

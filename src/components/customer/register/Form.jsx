@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import useTrans from '../../pages/hooks/useTran';
+import useTrans from '../../../pages/hooks/useTran';
 
 const Form = () => {
   const router = useRouter();
@@ -30,7 +30,7 @@ const Form = () => {
     if (password !== confirmPassword) {
       Swal.fire({
         icon: 'error',
-        title: 'Mật khẩu không khớp!',
+        title: `${trans.register.thong_bao_3}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -54,23 +54,23 @@ const Form = () => {
       // console.log(res.data);
       Swal.fire({
         icon: 'success',
-        title: 'Đăng ký thành công!',
-        showConfirmButton: false,
-        timer: 1500,
+        title: `${trans.register.thong_bao}`,
+        text: `${trans.register.thong_bao_cus}`,
+        confirmButtonText: 'OK',
       });
       router.push('/login');
     } catch (err) {
       if (err.response && err.response.data.debugInfo.status === 409) {
         Swal.fire({
           icon: 'error',
-          title: 'Email đã được sử dụng!',
+          title: `${trans.register.thong_bao_1}`,
           showConfirmButton: false,
           timer: 1500,
         });
       } else {
         Swal.fire({
           icon: 'error',
-          title: 'Vui lòng nhập đầy đủ thông tin!',
+          title: `${trans.register.thong_bao_2}`,
           showConfirmButton: false,
           timer: 1500,
         });

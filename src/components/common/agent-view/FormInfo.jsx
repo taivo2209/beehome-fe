@@ -1,7 +1,9 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import useTrans from '../../../pages/hooks/useTran';
 
 function FormInfoBookDayToMeet({ customer, setBook }) {
+  const trans = useTrans();
   return (
     <>
       <form>
@@ -10,7 +12,7 @@ function FormInfoBookDayToMeet({ customer, setBook }) {
             type="text"
             className="form-control"
             required
-            placeholder="First Name"
+            placeholder={trans.register.ten}
             defaultValue={customer.firstName}
             onChange={(e) =>
               setBook({ ...customer, firstName: e.target.value })
@@ -22,7 +24,7 @@ function FormInfoBookDayToMeet({ customer, setBook }) {
             type="text"
             className="form-control"
             required
-            placeholder="Last Name"
+            placeholder={trans.register.ho}
             defaultValue={customer.lastName}
             onChange={(e) => setBook({ ...customer, lastName: e.target.value })}
           />
@@ -43,7 +45,7 @@ function FormInfoBookDayToMeet({ customer, setBook }) {
             type="text"
             className="form-control"
             required
-            placeholder="Phone number"
+            placeholder={trans.register.sdt}
             defaultValue={customer.phoneNumber}
             onChange={(e) =>
               setBook({ ...customer, phoneNumber: e.target.value })
