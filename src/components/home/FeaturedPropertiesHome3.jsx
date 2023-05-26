@@ -3,10 +3,11 @@ import Slider from 'react-slick';
 import properties from '../../data/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSlice';
 import { setDataBoardingHouse } from '../../features/dataSource/dataSourceSlice';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
+import { Button, Tooltip } from '@mui/material';
 
 const FeaturedPropertiesHome3 = () => {
   const settings = {
@@ -89,7 +90,9 @@ const FeaturedPropertiesHome3 = () => {
                       onClick={() => getItem(item.id)}
                       href={`/listing-details-v1/${item.id}`}
                     >
-                      <div>{item.title}</div>
+                      <Tooltip title={item.title} placement="bottom">
+                        <div>{item.title}</div>
+                      </Tooltip>
                     </Link>
                   </h4>
                   <p>
