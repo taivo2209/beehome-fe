@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 const Pricing = () => {
   const [data, setData] = useState();
   const accessToken = useSelector((state) => state.auth.accessToken);
+  const [price, setPrice] = useState();
   const member = data?.package;
 
   const getData = async () => {
@@ -17,6 +18,23 @@ const Pricing = () => {
         },
       });
       setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getPrice = async (e) => {
+    try {
+      const res = await axios.get(`http://localhost:5000/vn-pay/vnpay_price?status=${e}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setPrice(res.data);
+      Swal.fire({
+        title: `${price}`,
+        confirmButtonText: 'OK',
+      });
     } catch (err) {
       console.log(err);
     }
@@ -75,14 +93,6 @@ const Pricing = () => {
     },
   ];
 
-  const handleClick = () => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Thanh toán thành công',
-      confirmButtonText: 'OK',
-    });
-  };
-
   return (
     <>
       {pricingContent.map((item) => {
@@ -109,6 +119,7 @@ const Pricing = () => {
                   className={clsx('btn pricing_btn btn-block', {
                     ['disabled']: isDisabled(member, item.title),
                   })}
+                  onClick={()=>getPrice(item.title)}
                 >
                   {member === item.title ? 'My Package' : 'Select'}
                 </button>
