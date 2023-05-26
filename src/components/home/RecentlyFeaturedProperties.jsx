@@ -7,9 +7,10 @@ import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
 import axios from 'axios';
 import useTrans from '../../pages/hooks/useTran';
+import { Tooltip } from '@mui/material';
 
 const RecentlyFeaturedProperties = () => {
-  const trans= useTrans();
+  const trans = useTrans();
   const settings = {
     dots: true,
     arrows: false,
@@ -89,7 +90,8 @@ const RecentlyFeaturedProperties = () => {
               href={`/listing-details-v1/${item[0]?.id}`}
               className="fp_price"
             >
-              {trans.from} {item[0]?.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+              {trans.from}{' '}
+              {item[0]?.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
               <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
@@ -104,7 +106,9 @@ const RecentlyFeaturedProperties = () => {
                 onClick={() => getItem(item[0]?.id)}
                 href={`/listing-details-v1/${item[0]?.id}`}
               >
-                {item[0]?.title}
+                <Tooltip title={item[0]?.title} placement="bottom">
+                  <div>{item[0]?.title}</div>
+                </Tooltip>
               </Link>
             </h4>
             <p>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
@@ -24,6 +25,19 @@ const Pricing = () => {
   useEffect(() => {
     getData();
   }, [member]);
+
+  const isDisabled = (mem, type) => {
+    if (mem === type) {
+      return true;
+    }
+    if (mem === 'FREE') {
+      return false;
+    }
+    if (mem === 'BASIC' && type === 'PREMIUM') {
+      return false;
+    }
+    return true;
+  };
 
   const pricingContent = [
     {
@@ -72,110 +86,36 @@ const Pricing = () => {
   return (
     <>
       {pricingContent.map((item) => {
-        if (member === 'FREE' && item.id === 1) {
-          return (
-            <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
-              <div className="pricing_table">
-                <div className="pricing_header">
-                  <div className="price">{item.price}</div>
-                  <h4>{item.title}</h4>
-                </div>
-                <div className="pricing_content">
-                  <ul className="mb0">
-                    {item.features.map((val, i) => (
-                      <li key={i}>{val}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pricing_footer">
-                  <a
-                    className="btn pricing_btn btn-block"
-                  >
-                    Your Package
-                  </a>
-                </div>
+        return (
+          <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
+            <div
+              className={
+                member === item.title ? 'pricing_table' : 'pricing_table_use'
+              }
+            >
+              <div className="pricing_header">
+                <div className="price">{item.price}</div>
+                <h4>{item.title}</h4>
+              </div>
+              <div className="pricing_content">
+                <ul className="mb0">
+                  {item.features.map((val, i) => (
+                    <li key={i}>{val}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="pricing_footer">
+                <button
+                  className={clsx('btn pricing_btn btn-block', {
+                    ['disabled']: isDisabled(member, item.title),
+                  })}
+                >
+                  {member === item.title ? 'My Package' : 'Select'}
+                </button>
               </div>
             </div>
-          );
-        } else if (member === 'BASIC' && item.id === 2) {
-          return (
-            <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
-              <div className="pricing_table">
-                <div className="pricing_header">
-                  <div className="price">{item.price}đ</div>
-                  <h4>{item.title}</h4>
-                </div>
-                <div className="pricing_content">
-                  <ul className="mb0">
-                    {item.features.map((val, i) => (
-                      <li key={i}>{val}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pricing_footer">
-                  <a
-                    className="btn pricing_btn btn-block"
-                    onClick={handleClick}
-                  >
-                    Your Package
-                  </a>
-                </div>
-              </div>
-            </div>
-          );
-        } else if (member === 'PREMIUM' && item.id === 3) {
-          return (
-            <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
-              <div className="pricing_table">
-                <div className="pricing_header">
-                  <div className="price">{item.price}đ</div>
-                  <h4>{item.title}</h4>
-                </div>
-                <div className="pricing_content">
-                  <ul className="mb0">
-                    {item.features.map((val, i) => (
-                      <li key={i}>{val}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pricing_footer">
-                  <a
-                    className="btn pricing_btn btn-block"
-                    onClick={handleClick}
-                  >
-                    Your Package
-                  </a>
-                </div>
-              </div>
-            </div>
-          );
-        } else {
-          return (
-            <div className="col-sm-6 col-md-6 col-lg-4" key={item.id}>
-              <div className="pricing_table_use">
-                <div className="pricing_header">
-                  <div className="price">{item.price}đ</div>
-                  <h4>{item.title}</h4>
-                </div>
-                <div className="pricing_content">
-                  <ul className="mb0">
-                    {item.features.map((val, i) => (
-                      <li key={i}>{val}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="pricing_footer">
-                  <a
-                    className="btn pricing_btn btn-block"
-                    onClick={handleClick}
-                  >
-                    Select Package
-                  </a>
-                </div>
-              </div>
-            </div>
-          );
-        }
+          </div>
+        );
       })}
     </>
   );

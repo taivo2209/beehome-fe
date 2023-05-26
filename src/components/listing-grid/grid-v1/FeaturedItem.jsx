@@ -2,9 +2,11 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addLength } from '../../../features/properties/propertiesSlice';
-import { Skeleton } from '@mui/material';
+import { Skeleton, Tooltip } from '@mui/material';
+import useTrans from '../../../pages/hooks/useTran';
 
 const FeaturedItem = () => {
+  const trans = useTrans();
   const { isGridOrList } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
@@ -51,8 +53,8 @@ const FeaturedItem = () => {
             </ul> */}
 
             <Link href={`/listing-details-v1/${item.id}`} className="fp_price">
-              ${item.price}
-              <small>/mo</small>
+              {trans.from} {item.price}
+              <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
         </div>
@@ -60,7 +62,11 @@ const FeaturedItem = () => {
           <div className="tc_content">
             <p className="text-thm">{item.type}</p>
             <h4>
-              <Link href={`/listing-details-v1/${item.id}`}>{item.title}</Link>
+              <Link href={`/listing-details-v1/${item.id}`}>
+                <Tooltip title={item.title} placement="bottom">
+                  <div>{item.title}</div>
+                </Tooltip>
+              </Link>
             </h4>
             <p>
               <span className="flaticon-placeholder"></span>

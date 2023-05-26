@@ -81,7 +81,7 @@ const Form = () => {
         <p className="text-center">
           {trans.login.text_2}{' '}
           <Link href="/register" className="text-thm">
-          {trans.login.dang_ky}
+            {trans.login.dang_ky}
           </Link>
         </p>
       </div>

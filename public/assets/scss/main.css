@@ -11758,7 +11758,6 @@ a.btn.btn_error {
 }
 
 .pricing_table:hover {
-  cursor: pointer;
   -webkit-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
   -moz-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
   -o-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
@@ -11796,7 +11795,7 @@ a.btn.btn_error {
   margin-top: 20px;
 }
 
-.pricing_table .pricing_footer a.btn.pricing_btn {
+.pricing_table .pricing_footer button.btn.pricing_btn {
   background-color: #ffffff;
   border: 2px solid green;
   border-radius: 8px;
@@ -11832,7 +11831,6 @@ a.btn.btn_error {
 }
 
 .pricing_table_use:hover {
-  cursor: pointer;
   -webkit-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
   -moz-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
   -o-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
@@ -11870,7 +11868,7 @@ a.btn.btn_error {
   margin-top: 20px;
 }
 
-.pricing_table_use .pricing_footer a.btn.pricing_btn {
+.pricing_table_use .pricing_footer button.btn.pricing_btn {
   background-color: #ffffff;
   border: 2px solid var(--color-primary);
   border-radius: 8px;
@@ -11886,7 +11884,7 @@ a.btn.btn_error {
   height: 46px;
 }
 
-.pricing_table_use .pricing_footer a.btn.pricing_btn:hover {
+.pricing_table_use .pricing_footer button.btn.pricing_btn:hover {
   background-color: var(--color-primary);
   color: #ffffff;
 }

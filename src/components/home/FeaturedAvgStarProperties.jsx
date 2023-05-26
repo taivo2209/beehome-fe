@@ -9,9 +9,10 @@ import axios from 'axios';
 import { setDataStar } from '../../features/dataSource/dataSourceSlice';
 import { fetchBoardingHouseStar } from '../../features/boardingHouseStar/boardingHouseStarSlice';
 import useTrans from '../../pages/hooks/useTran';
+import { Tooltip } from '@mui/material';
 
 const FeaturedAvgStarProperties = () => {
-  const trans= useTrans();
+  const trans = useTrans();
   const settings = {
     dots: true,
     arrows: false,
@@ -105,7 +106,9 @@ const FeaturedAvgStarProperties = () => {
                 onClick={() => getItem(item.id)}
                 href={`/listing-details-v1/${item.id}`}
               >
-                {item.title}
+                <Tooltip title={item.title} placement="bottom">
+                  <div>{item.title}</div>
+                </Tooltip>
               </Link>
             </h4>
             <p>
