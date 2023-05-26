@@ -3,10 +3,11 @@ import Slider from 'react-slick';
 import properties from '../../data/properties';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSlice';
 import { setDataBoardingHouse } from '../../features/dataSource/dataSourceSlice';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
+import { Button, Tooltip } from '@mui/material';
 import useTrans from '../../pages/hooks/useTran';
 
 const FeaturedPropertiesHome3 = () => {
@@ -76,7 +77,8 @@ const FeaturedPropertiesHome3 = () => {
                     href={`/listing-details-v1/${item.id}`}
                   >
                     <div className="fp_price">
-                      {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                      {trans.from}{' '}
+                      {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                       <small>{trans.detail.gia_thang}</small>
                     </div>
                   </Link>
@@ -91,7 +93,9 @@ const FeaturedPropertiesHome3 = () => {
                       onClick={() => getItem(item.id)}
                       href={`/listing-details-v1/${item.id}`}
                     >
-                      <div>{item.title}</div>
+                      <Tooltip title={item.title} placement="bottom">
+                        <div>{item.title}</div>
+                      </Tooltip>
                     </Link>
                   </h4>
                   <p>
