@@ -181,6 +181,7 @@ const ListingDynamicDetailsV1 = () => {
                 posterId={boardingHouseDetail[0]?.posterId}
                 poster={boardingHouseDetail[0]}
                 accessToken={accessToken}
+                boardingHouseId={id}
               />
             </div>
             {/* End sidebar content .col-lg-4 */}

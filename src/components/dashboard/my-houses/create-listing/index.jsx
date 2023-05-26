@@ -63,15 +63,6 @@ const Index = () => {
                       <CreateList />
                     </div>
                   </div>
-                  {/* <div className="my_dashboard_review mt30">
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <h3 className="mb30">Location</h3>
-                      </div>
-
-                      <LocationField />
-                    </div>
-                  </div> */}
                 </div>
                 {/* End .col */}
               </div>

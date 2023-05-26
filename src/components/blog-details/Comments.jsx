@@ -13,8 +13,8 @@ const Comments = ({ comments }) => {
           />
           <div className="media-body">
             <h4 className="sub_title mt-0">
-              {item.comment?.user?.customer?.firstName +
-                item.comment?.user?.customer?.lastName}
+              {item.comment?.user?.customer?.firstName}{' '}
+              {item.comment?.user?.customer?.lastName}
               <span className="sspd_review">
                 <ul className="mb0 pl15">
                   <Ratings star={item.comment.star} />

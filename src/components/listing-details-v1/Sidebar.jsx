@@ -5,7 +5,14 @@ import DetailBoardingHouse from '../common/agent-view/detailBoardingHouse';
 import useTrans from '../../pages/hooks/useTran';
 import Link from 'next/link';
 import ReportBox from '../blog-details/ReportBox';
-const Sidebar = ({ data, customer, posterId, poster, accessToken }) => {
+const Sidebar = ({
+  data,
+  customer,
+  posterId,
+  poster,
+  accessToken,
+  boardingHouseId,
+}) => {
   const [modal, setModal] = useState(false);
   const trans = useTrans();
   const toggle = () => {
@@ -49,11 +56,15 @@ const Sidebar = ({ data, customer, posterId, poster, accessToken }) => {
       {customer != null ? (
         <ReportBox
           accessToken={accessToken}
+          boardingHouseId={boardingHouseId}
         />
       ) : (
-        <button type="submit" className="btn btn-thm col-lg-8 bg-danger border-0">
+        <button
+          type="submit"
+          className="btn btn-thm col-lg-8 bg-danger border-0"
+        >
           <Link href="/login">
-            <span className='text-white'>{trans.detail.bao_cao}</span>
+            <span className="text-white">{trans.detail.dang_nhap_bc}</span>
           </Link>
         </button>
       )}

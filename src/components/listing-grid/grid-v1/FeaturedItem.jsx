@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addLength } from '../../../features/properties/propertiesSlice';
-import properties from '../../../data/properties';
 import { Skeleton } from '@mui/material';
 
 const FeaturedItem = () => {
@@ -11,7 +10,7 @@ const FeaturedItem = () => {
   const dispatch = useDispatch();
   //----------------------------------------------------------------------------
   const { dataPaging, isLoading } = useSelector((state) => state.dataSearch);
-  console.log('duy ne', dataPaging, isLoading);
+  // console.log('duy ne', dataPaging, isLoading);
   // status handler
   let content = dataPaging?.slice(0, 10).map((item) => (
     <div

@@ -11798,6 +11798,80 @@ a.btn.btn_error {
 
 .pricing_table .pricing_footer a.btn.pricing_btn {
   background-color: #ffffff;
+  border: 2px solid green;
+  border-radius: 8px;
+  color: green;
+  font-size: 16px;
+  font-family: 'Nunito';
+  font-weight: bold;
+  line-height: 30px;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  -o-box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  box-shadow: 0px 1px 4px 0px rgba(238, 123, 53, 0.3);
+  height: 46px;
+}
+
+/* .pricing_table .pricing_footer a.btn.pricing_btn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+} */
+
+.pricing_table_use {
+  background-color: lightgray;
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  padding: 30px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.pricing_table_use:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
+  -moz-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
+  -o-box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
+  box-shadow: 0px 0px 50px 0px rgba(19, 19, 28, 0.12);
+}
+
+.pricing_table_use .pricing_header {
+  padding: 35px 0;
+}
+
+.pricing_table_use .pricing_header .price {
+  font-size: 40px;
+  color: var(--color-primary);
+  font-weight: bold;
+  line-height: 0.65;
+  margin-bottom: 20px;
+}
+
+.pricing_table_use .pricing_header h4 {
+  font-size: 18px;
+  font-family: 'Nunito';
+  color: #484848;
+  font-weight: bold;
+  line-height: 1.444;
+}
+
+.pricing_table_use .pricing_content ul li {
+  font-size: 14px;
+  font-family: 'Nunito';
+  color: #484848;
+  line-height: 3.571;
+}
+
+.pricing_table_use .pricing_footer {
+  margin-top: 20px;
+}
+
+.pricing_table_use .pricing_footer a.btn.pricing_btn {
+  background-color: #ffffff;
   border: 2px solid var(--color-primary);
   border-radius: 8px;
   color: var(--color-primary);
@@ -11812,7 +11886,7 @@ a.btn.btn_error {
   height: 46px;
 }
 
-.pricing_table .pricing_footer a.btn.pricing_btn:hover {
+.pricing_table_use .pricing_footer a.btn.pricing_btn:hover {
   background-color: var(--color-primary);
   color: #ffffff;
 }

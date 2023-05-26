@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import FormEdit from './FormEdit';
 import Pagination from '../../common/Pagination';
+import FormView from './FormView';
 
 const BookingsData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -87,8 +88,8 @@ const BookingsData = () => {
                       title="View"
                     >
                       <a href="#">
-                        <span className="flaticon-view"></span>
-                        {/* <FormView id={item.id} /> */}
+                        {/* <span className="flaticon-view"></span> */}
+                        <FormView id={item.id} />
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>
