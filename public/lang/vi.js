@@ -119,6 +119,7 @@ export default {
     loi: 'Đã xảy ra lỗi!',
     loi_1: 'Vui lòng thử lại sau.',
     chon_ngay: 'Vui lòng chọn ngày hẹn để tiếp tục!',
+    chon:'Chọn ngày',
   },
   lessor: {
     tao: 'Tạo mới',

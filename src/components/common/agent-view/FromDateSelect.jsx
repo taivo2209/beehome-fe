@@ -12,11 +12,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import useTrans from '../../../pages/hooks/useTran';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Ho_Chi_Minh'); // Set default timezone
 function FormDateSelect({ customer, setBook }) {
+  const trans = useTrans();
   const [selectedDate, setSelectedDate] = useState(null);
   const [data, setData] = useState();
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -88,7 +90,7 @@ function FormDateSelect({ customer, setBook }) {
         <div style={{ width: '50%' }}>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
-              label="Select a date"
+              label={trans.booking.chon}
               inputFormat="dd/MM/yyyy"
               shouldDisableDate={disablePastDates}
               onChange={handleDateChange}

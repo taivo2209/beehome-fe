@@ -117,6 +117,7 @@ export default {
     loi: 'Error!',
     loi_1: 'Please try again later!',
     chon_ngay: 'Please select an appointment date to continue!',
+    chon:'Select a date',
   },
   lessor: {
     tao: 'Create',
