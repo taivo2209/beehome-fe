@@ -13,7 +13,7 @@ const SidebarMenu = () => {
     { id: 1, name: `${trans.lessor.sidebar.nha}`, route: "/my-houses", icon: "flaticon-house" },
     // { id: 2, name: "Categories", route: "/my-categories" },
     { id: 2, name: `${trans.lessor.sidebar.tien_ich}`, route: "/my-attributes", icon: "flaticon-tick"},
-    { id: 3, name: "Tags", route: "/my-tags", icon: "flaticon-pin" },
+    // { id: 3, name: "Tags", route: "/my-tags", icon: "flaticon-pin" },
     { id: 4, name: `${trans.lessor.sidebar.lich_hen}`, route: "/my-bookings",icon: "flaticon-calendar" },
     { id: 5, name: `${trans.lessor.sidebar.ngay_nghi}`, route: "/busy-date",icon: "flaticon-calendar" },
   ];

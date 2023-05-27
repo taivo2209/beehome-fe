@@ -123,7 +123,7 @@ export default {
   },
   lessor: {
     tao: 'Tạo mới',
-    duoc_tao: 'Được tạo',
+    duoc_tao: 'Ngày đăng',
     hanh_dong: 'Hành động',
     xoa: 'Xóa',
     tao_thanh_cong: 'Tạo thành công!',
@@ -207,7 +207,7 @@ export default {
       lich_hen: 'Lịch hẹn',
       tinh_trang: 'Tình trạng',
       dang_cho: 'CHỜ XÁC NHẬN',
-      da_xn: 'ĐÃ XÁC NHẬN',
+      da_xn: 'XÁC NHẬN',
       hoan_thanh: 'HOÀN THÀNH',
       lo_hen: 'LỠ HẸN',
       ngay_hen: 'Ngày hẹn',

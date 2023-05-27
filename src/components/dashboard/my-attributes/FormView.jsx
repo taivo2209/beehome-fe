@@ -1,11 +1,11 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
-import useTrans from "../../../pages/hooks/useTran";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import { useSelector } from 'react-redux';
+import useTrans from '../../../pages/hooks/useTran';
 
-function FormView({id, getDataNew}) {
+function FormView({ id, getDataNew }) {
   const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
@@ -20,7 +20,7 @@ function FormView({id, getDataNew}) {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       setData(res.data);
       // console.log(data);
@@ -40,13 +40,22 @@ function FormView({id, getDataNew}) {
           <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {data.roomAttributeTerms?.map((roomAttributeTerms) => (
-            <div key={roomAttributeTerms.id}>
-              {roomAttributeTerms.roomAttributeTermDetails?.map((roomAttributeTermDetails) => (
-                <h1 key={roomAttributeTermDetails.id}>{roomAttributeTermDetails.name}</h1>
-              ))}
-            </div>
-          ))}
+          <div className="row">
+            {data.roomAttributeTerms?.map((roomAttributeTerms) => (
+              <div key={roomAttributeTerms.id} className="col-lg-6 col-xl-6">
+                {roomAttributeTerms.roomAttributeTermDetails?.map(
+                  (roomAttributeTermDetails) => (
+                    <h1
+                      className="form-control"
+                      key={roomAttributeTermDetails.id}
+                    >
+                      {roomAttributeTermDetails.name}
+                    </h1>
+                  ),
+                )}
+              </div>
+            ))}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

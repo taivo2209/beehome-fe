@@ -4,8 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import useTrans from '../../../pages/hooks/useTran';
 
 function FormEdit({ id, getData }) {
+  const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -32,7 +34,7 @@ function FormEdit({ id, getData }) {
       // reset();
       Swal.fire({
         icon: 'success',
-        title: 'Cập nhật thành công!',
+        title: `${trans.lessor.cap_nhat}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -41,8 +43,8 @@ function FormEdit({ id, getData }) {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
+        title: `${trans.lessor.loi}`,
+        text: `${trans.lessor.loi_1}`,
         confirmButtonText: 'OK',
       });
       console.log(error);
@@ -56,13 +58,13 @@ function FormEdit({ id, getData }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Status</Modal.Title>
+          <Modal.Title>{trans.lessor.bookings.tinh_trang}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <div className="col-lg-6 col-xl-6">
               <div className="my_profile_setting_input ui_kit_select_search form-group">
-                <label>Status</label>
+                <label>{trans.lessor.bookings.tinh_trang}</label>
                 <select
                   className="selectpicker form-select"
                   data-live-search="true"
@@ -70,10 +72,10 @@ function FormEdit({ id, getData }) {
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option disabled>Select</option>
-                  <option value="PROCESSING">PROCESSING</option>
-                  <option value="APPROVED">APPROVED</option>
-                  <option value="DONE">DONE</option>
-                  <option value="MISSING">MISSING</option>
+                  <option value="PROCESSING">{trans.lessor.bookings.dang_cho}</option>
+                  <option value="APPROVED">{trans.lessor.bookings.da_xn}</option>
+                  <option value="DONE">{trans.lessor.bookings.hoan_thanh}</option>
+                  <option value="MISSING">{trans.lessor.bookings.lo_hen}</option>
                 </select>
               </div>
             </div>
