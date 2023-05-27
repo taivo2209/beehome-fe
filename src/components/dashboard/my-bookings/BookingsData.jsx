@@ -72,7 +72,6 @@ const BookingsData = () => {
             <th scope="col">{trans.lessor.bookings.lich_hen}</th>
             <th className="dn-lg" scope="col"></th>
             <th scope="col"></th>
-            <th scope="col">{trans.lessor.duoc_tao}</th>
             <th scope="col">{trans.lessor.bookings.tinh_trang}</th>
             <th scope="col">{trans.lessor.hanh_dong}</th>
           </tr>
@@ -83,12 +82,9 @@ const BookingsData = () => {
           {data?.items &&
             data?.items?.map((item) => (
               <tr key={item.id} className="title" scope="row">
-                <td>{item.email}</td>
+                <td>{item.phoneNumber}</td>
                 <td className="dn-lg"></td>
                 <td></td>
-                <td className="para">
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
                 <td className={getStatusColor(item.status)}>{tranStatus(item.status)}</td>
                 <td>
                   <ul className="view_edit_delete_list mb0">
