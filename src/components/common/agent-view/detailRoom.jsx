@@ -1,8 +1,10 @@
+import useTrans from '../../../pages/hooks/useTran';
 import PropertyAttribute from '../listing-details/PropertyAttributeRoom';
 import PropertyItem from '../listing-details/PropertyItem';
 import FeatureRooms from '../listing/FeatureRooms';
 
 const DetailRoom = ({ openFormToMeet, dataRoom }) => {
+  const trans= useTrans();
   return (
     <div
       style={{
@@ -21,7 +23,7 @@ const DetailRoom = ({ openFormToMeet, dataRoom }) => {
           <PropertyItem dataRoom={dataRoom} />
         </div>
         {/* End .lsd_list */}
-        <h4 className="mb30">Attribute</h4>
+        <h4 className="mb30">{trans.lessor.rooms.tien_ich}</h4>
         <div className="application_statics mt30">
           <div className="row">
             <PropertyAttribute attributes={dataRoom} />
@@ -37,7 +39,7 @@ const DetailRoom = ({ openFormToMeet, dataRoom }) => {
           height: '60vh',
         }}
       >
-        <h4 className="title">Featured Properties</h4>
+        <h4 className="title">{trans.lessor.rooms.anh}</h4>
         <div className="sidebar_feature_property_slider">
           <FeatureRooms openFormToMeet={openFormToMeet} dataRoom={dataRoom} />
         </div>

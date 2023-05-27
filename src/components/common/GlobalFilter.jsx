@@ -89,7 +89,7 @@ const GlobalFilter = ({ className = '' }) => {
   const { data } = useSelector((state) => state.searching);
 
   const submitHandler = () => {
-    Router.push('/listing-grid-v1');
+    Router.push('/searching-list');
 
     dispatch(fetchDataSearch(data));
     dispatch(setDataSearch());

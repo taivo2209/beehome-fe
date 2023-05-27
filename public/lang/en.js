@@ -1,5 +1,7 @@
 export default {
+  danh_sach_tk:'Searching list',
   from: 'from',
+  finish: 'Finish',
   han_hanh: 'We are glad to see you again!',
   tiep_tuc: 'Next',
   tro_lai: 'Back',

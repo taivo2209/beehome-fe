@@ -1,5 +1,7 @@
 export default {
+  danh_sach_tk:'Danh sách tìm kiếm',
   from: 'giá từ',
+  finish: 'Hoàn thành',
   han_hanh: 'Hân hạnh gặp lại!',
   tiep_tuc: 'Tiếp',
   tro_lai: 'Trở lại',

@@ -8,7 +8,7 @@ const LookingItem = () => {
         <li className="list-inline-item" key={item.id}>
           <div className="icon_home5">
             <div className="icon">
-              <Link href="/listing-grid-v1">
+              <Link href="/searching-list">
                 {/* <a> */}
                 <span className={item.icon}></span>
                 <p>{item.title}</p>
