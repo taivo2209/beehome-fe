@@ -10,12 +10,12 @@ const SidebarMenu = () => {
   const route = useRouter();
   const trans = useTrans();
   const lessorManage = [
-    { id: 1, name: `${trans.lessor.sidebar.nha}`, route: "/my-houses" },
-    { id: 2, name: "Categories", route: "/my-categories" },
-    { id: 3, name: `${trans.lessor.sidebar.tien_ich}`, route: "/my-attributes" },
-    { id: 4, name: "Tags", route: "/my-tags" },
-    { id: 5, name: `${trans.lessor.sidebar.lich_hen}`, route: "/my-bookings" },
-    { id: 6, name: `${trans.lessor.sidebar.ngay_nghi}`, route: "/busy-date" },
+    { id: 1, name: `${trans.lessor.sidebar.nha}`, route: "/my-houses", icon: "flaticon-house" },
+    // { id: 2, name: "Categories", route: "/my-categories" },
+    { id: 2, name: `${trans.lessor.sidebar.tien_ich}`, route: "/my-attributes", icon: "flaticon-tick"},
+    { id: 3, name: "Tags", route: "/my-tags", icon: "flaticon-pin" },
+    { id: 4, name: `${trans.lessor.sidebar.lich_hen}`, route: "/my-bookings",icon: "flaticon-calendar" },
+    { id: 5, name: `${trans.lessor.sidebar.ngay_nghi}`, route: "/busy-date",icon: "flaticon-calendar" },
   ];
 
   const manageAccount = [
@@ -88,7 +88,7 @@ const SidebarMenu = () => {
                 <li key={item.id}>
                   <Link href={item.route}>
 
-                    <i className="fa flaticon-plus"></i> {item.name}
+                    <i className={item.icon}></i> {item.name}
 
                   </Link>
                 </li>
