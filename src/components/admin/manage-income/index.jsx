@@ -1,8 +1,8 @@
-import Header from "../../common/header/admin/Header";
-import SidebarMenu from "../../common/header/admin/SidebarMenu";
-import MobileMenu from "../../common/header/MobileMenu";
-import CustomersData from "./CustomersData";
-import SearchBox from "./SearchBox";
+import Header from '../../common/header/admin/Header';
+import SidebarMenu from '../../common/header/admin/SidebarMenu';
+import MobileMenu from '../../common/header/MobileMenu';
+import StatisticsChart from './StatisticsChart';
+import IncomesData from './IncomesData';
 
 const index = () => {
   return (
@@ -47,48 +47,48 @@ const index = () => {
                   </div>
                 </div>
                 {/* End Dashboard Navigation */}
-              </div>
-              {/* End .row */}
 
-              <div className="row align-items-center">
-                <div className="col-md-8 col-lg-8 col-xl-9 mb20">
-                  <div className="breadcrumb_content style2 mb30-991">
-                    <h2 className="breadcrumb_title">Customers List</h2>
+                <div className="col-lg-12 mb10">
+                  <div className="breadcrumb_content style2">
+                    <h2 className="breadcrumb_title">Income</h2>
                     <p>We are glad to see you again!</p>
                   </div>
                 </div>
-                {/* End .col */}
-                <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-                  <ul className="sasw_list mb0">
-                    <li className="search_area">
-                      <SearchBox />
-                    </li>
-                  </ul>
-                </div>
-                {/* End .col */}
               </div>
               {/* End .row */}
 
+              {/* End .row Dashboard top statistics */}
+
               <div className="row">
-                <div className="col-lg-12">
-                  <div className="my_dashboard_review mb40">
-                    <div className="col-lg-12">
-                      <div className="savesearched_table">
-                        <div className="table-responsive mt0">
-                          <CustomersData />
+                <div className="col-xl-12">
+                  <div className="application_statics">
+                    <h4 className="mb-4">Income Statistics</h4>
+                    <StatisticsChart />
+                  </div>
+                </div>
+                {/* End statistics chart */}
+                <div className="row mt-4">
+                  <div className="col-lg-12">
+                    <div className="my_dashboard_review mb40">
+                      <div className="col-lg-12">
+                        <div className="savesearched_table">
+                          <div className="table-responsive mt0">
+                            <h4 className="mb-4">Income Table</h4>
+                            <IncomesData />
+                          </div>
                         </div>
+                        {/* End .packages_table */}
                       </div>
-                      {/* End .packages_table */}
                     </div>
                   </div>
                 </div>
               </div>
-              {/* End .row */}
+              {/* End .row  */}
 
               <div className="row mt50">
                 <div className="col-lg-12">
                   <div className="copyright-widget text-center">
-                    <p>© 2023 BeeHome. Made with love.</p>
+                    <p>© 2023 Beehome. Made with love.</p>
                   </div>
                 </div>
               </div>

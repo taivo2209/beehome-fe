@@ -7,17 +7,20 @@ import { useSelector } from 'react-redux';
 function FormView({ id }) {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [show, setShow] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const getData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/admin/lessor/${id}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+      const res = await axios.get(
+        `http://localhost:5000/admin/customer/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      });
-      setData(res.data.lessor);
+      );
+      setData(res.data);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -29,9 +32,9 @@ function FormView({ id }) {
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Lessor Information</Modal.Title>
+          <Modal.Title>Customer Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="col-lg-12">
@@ -39,17 +42,17 @@ function FormView({ id }) {
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice">
-                    Lessor&apos;s Name:
+                    Customer&apos;s Name:
                   </label>
                   <p className="form-control" id="formGroupExamplePrice">
-                    {data?.name}
+                    {data?.firstName} {data?.lastName}
                   </p>
                 </div>
               </div>
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice1">
-                    Lessor&apos;s Address:
+                    Customer&apos;s Address:
                   </label>
                   <p className="form-control" id="formGroupExamplePrice1">
                     {data?.address}
@@ -59,7 +62,7 @@ function FormView({ id }) {
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice2">
-                    Lessor&apos;s Phone Number:
+                    Customer&apos;s Phone Number:
                   </label>
                   <p className="form-control" id="formGroupExamplePrice2">
                     {data?.phoneNumber}
@@ -69,10 +72,10 @@ function FormView({ id }) {
               <div className="col-lg-6 col-xl-6">
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice2">
-                    Lessor&apos;s Package:
+                    Lessor&apos;s Birthday:
                   </label>
                   <p className="form-control" id="formGroupExamplePrice2">
-                    {data?.packType}
+                    {new Date(data?.birthDate).toLocaleDateString()}
                   </p>
                 </div>
               </div>

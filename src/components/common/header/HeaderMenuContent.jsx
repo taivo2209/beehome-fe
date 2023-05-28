@@ -56,7 +56,7 @@ const HeaderMenuContent = ({ float = '' }) => {
               onClick={() => dispatch(setVI('vi'))}
               className={'vi' === typeData ? 'ui-active' : undefined}
             >
-              vi
+              VI
             </div>
           </li>
           <li>
@@ -65,7 +65,7 @@ const HeaderMenuContent = ({ float = '' }) => {
               onClick={() => dispatch(setEN('en'))}
               className={'en' === typeData ? 'ui-active' : undefined}
             >
-              en
+              EN
             </div>
           </li>
         </ul>
