@@ -43,7 +43,7 @@ const ListingDynamicDetailsV1 = () => {
     );
 
     // Thêm item vào đầu danh sách
-    viewedItems.unshift(item);
+    if (item) viewedItems.unshift(item);
 
     // Giới hạn số lượng item trong danh sách là 6
     if (viewedItems.length > 6) {
