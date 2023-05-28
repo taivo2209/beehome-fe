@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 import FormEdit from './FormEdit';
 import Pagination from '../../common/Pagination';
 import FormView from './FormView';
+import useTrans from '../../../pages/hooks/useTran';
 
 const BookingsData = () => {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -38,7 +40,6 @@ const BookingsData = () => {
     getData();
   }, [currentPage]);
 
-
   const getStatusColor = (status) => {
     if (status === 'DONE' || status === 'APPROVED') {
       return 'text-success';
@@ -49,19 +50,30 @@ const BookingsData = () => {
     }
   };
 
+  const tranStatus = (status) => {
+    if (status === 'PROCESSING') {
+      return `${trans.lessor.bookings.dang_cho}`;
+    } else if (status === 'APPROVED') {
+      return `${trans.lessor.bookings.da_xn}`;
+    } else if (status === 'DONE') {
+      return `${trans.lessor.bookings.hoan_thanh}`;
+    } else if (status === 'MISSING') {
+      return `${trans.lessor.bookings.lo_hen}`;
+    } else {
+      return status;
+    }
+  };
+
   return (
     <>
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Booking</th>
-            <th className="dn-lg" scope="col"></th>
+            <th scope="col">{trans.lessor.bookings.lich_hen}</th>
             <th className="dn-lg" scope="col"></th>
             <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col">Created</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
+            <th scope="col">{trans.lessor.bookings.tinh_trang}</th>
+            <th scope="col">{trans.lessor.hanh_dong}</th>
           </tr>
         </thead>
         {/* End thead */}
@@ -70,15 +82,10 @@ const BookingsData = () => {
           {data?.items &&
             data?.items?.map((item) => (
               <tr key={item.id} className="title" scope="row">
-                <td>{item.email}</td>
-                <td className="dn-lg"></td>
+                <td>{item.phoneNumber}</td>
                 <td className="dn-lg"></td>
                 <td></td>
-                <td></td>
-                <td className="para">
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
-                <td className={getStatusColor(item.status)}>{item.status}</td>
+                <td className={getStatusColor(item.status)}>{tranStatus(item.status)}</td>
                 <td>
                   <ul className="view_edit_delete_list mb0">
                     <li

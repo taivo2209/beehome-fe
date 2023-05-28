@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropertyMediaUploader from '../PropertyMediaUploader';
 import CategoriesCheckBox from './CategoriesCheckBox';
@@ -176,25 +175,31 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
                 onChange={(e) => setAcreage(e.target.value)}
               />
             </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="roomSimple">
-                {trans.lessor.rooms.so_phong_ngu}
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="roomSimple"
-                onChange={(e) => setRoomSimple(e.target.value)}
-              />
-            </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="toilet">{trans.lessor.rooms.toilet}</label>
-              <input
-                type="text"
-                className="form-control"
-                id="toilet"
-                onChange={(e) => setToilet(e.target.value)}
-              />
+            <div className="row">
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="roomSimple">
+                    {trans.lessor.rooms.so_phong_ngu}
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="roomSimple"
+                    onChange={(e) => setRoomSimple(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="toilet">{trans.lessor.rooms.toilet}</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="toilet"
+                    onChange={(e) => setToilet(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
             <div className="my_profile_setting_input form-group">
               <label htmlFor="price">{trans.lessor.rooms.gia}</label>
@@ -204,7 +209,13 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
                 id="price"
                 onChange={(e) => setPrice(e.target.value)}
               />
-              {prediction ? <span className='text-danger'>{trans.lessor.rooms.du_doan}{String(prediction).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}{trans.detail.gia_thang}</span> : null}
+              {prediction ? (
+                <span className="text-danger">
+                  {trans.lessor.rooms.du_doan}
+                  {String(prediction).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                  {trans.detail.gia_thang}
+                </span>
+              ) : null}
             </div>
             <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
@@ -220,14 +231,19 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
               <label htmlFor="imagesId">{trans.lessor.rooms.anh}</label>
               <PropertyMediaUploader onUpload={handleUpload} />
             </div>
-            <Button type="submit">{trans.lessor.tao}</Button>
+            <div className="col-xl-12">
+              <div className="my_profile_setting_input overflow-hidden mt20">
+                <button className="btn btn2" type="submit">
+                  {trans.lessor.tao}
+                </button>
+              </div>
+            </div>
+            {/* <button className="btn btn2" type="submit">
+              {trans.lessor.tao}
+            </button> */}
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            {trans.dong}
-          </Button>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

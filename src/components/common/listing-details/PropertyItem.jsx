@@ -1,14 +1,17 @@
+import useTrans from "../../../pages/hooks/useTran";
+
 const PropertyItem = ({ dataRoom }) => {
+  const trans = useTrans();
   return (
     <ul className="mb0">
       <li className="list-inline-item">
-        <a href="#">Beds: {dataRoom?.roomSimple}</a>
+        <a href="#">{trans.lessor.rooms.so_phong_ngu}: {dataRoom?.roomSimple}</a>
       </li>
       <li className="list-inline-item">
-        <a href="#">Baths: {dataRoom?.toilet}</a>
+        <a href="#">{trans.lessor.rooms.toilet}: {dataRoom?.toilet}</a>
       </li>
       <li className="list-inline-item">
-        <a href="#">Sq : {dataRoom?.acreage} </a>
+        <a href="#">{trans.lessor.rooms.dien_tich} : {dataRoom?.acreage}</a>
       </li>
     </ul>
   );

@@ -4,7 +4,7 @@ const Seo = ({ pageTitle, font }) => (
   <>
     <Head>
       <title>
-        {pageTitle && `${pageTitle} || BeeHome - Real Estate React Template}`}
+        {pageTitle && `${pageTitle} || BeeHome`}
       </title>
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta
@@ -13,7 +13,7 @@ const Seo = ({ pageTitle, font }) => (
       />
       <meta
         name="description"
-        content="BeeHome - Real Estate React Template"
+        content="BeeHome"
       />
       <meta name="ibthemes" content="ATFN" />
       <meta

@@ -1,5 +1,7 @@
 export default {
+  danh_sach_tk:'Searching list',
   from: 'from',
+  finish: 'Finish',
   han_hanh: 'We are glad to see you again!',
   tiep_tuc: 'Next',
   tro_lai: 'Back',
@@ -115,6 +117,7 @@ export default {
     loi: 'Error!',
     loi_1: 'Please try again later!',
     chon_ngay: 'Please select an appointment date to continue!',
+    chon:'Select a date',
   },
   lessor: {
     tao: 'Create',
@@ -177,6 +180,7 @@ export default {
       thong_tin: 'Information',
       phong: 'Rooms',
       tao_phong: 'Create Room',
+      cap_nhat:'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
       dien_tich: 'acreage (m2)',

@@ -47,28 +47,41 @@ function FormView(props) {
         <Modal.Body>
           <ul>
             <li>
-              {trans.lessor.houses.loai}: {data?.type}
+              <span className="text-danger">{trans.lessor.houses.loai}: </span>
+              <span>{data?.type}</span>
             </li>
             <li>
-              {trans.lessor.houses.mo_ta}:{' '}
-              {data?.boardingHouseDescriptions?.map((item) => (
-                <p key={item.id}>{item.content}</p>
-              ))}
+              <span className="text-danger">{trans.lessor.houses.mo_ta}: </span>
+              <span>
+                {data?.boardingHouseDescriptions?.map((item) => (
+                  <p key={item.id}>{item.content}</p>
+                ))}
+              </span>
             </li>
             <li>
-              {trans.lessor.houses.tien_coc}:{' '}
-              {data?.boardingHouseRentDeposits?.map((item) => (
-                <p key={item.id}>{item.content}</p>
-              ))}
+              <span className="text-danger">
+                {trans.lessor.houses.tien_coc}:{' '}
+              </span>
+              <span>
+                {data?.boardingHouseRentDeposits?.map((item) => (
+                  <p key={item.id}>{item.content}</p>
+                ))}
+              </span>
             </li>
             <li>
-              {trans.lessor.houses.quy_dinh}:{' '}
-              {data?.boardingHouseRules?.map((item) => (
-                <p key={item.id}>{item.content}</p>
-              ))}
+              <span className="text-danger">
+                {trans.lessor.houses.quy_dinh}:{' '}
+              </span>
+              <span>
+                {data?.boardingHouseRules?.map((item) => (
+                  <p key={item.id}>{item.content}</p>
+                ))}
+              </span>
             </li>
             <li>
-              <span>{trans.lessor.houses.dia_chi}: </span>
+              <span className="text-danger">
+                {trans.lessor.houses.dia_chi}:{' '}
+              </span>
               <span>
                 {data?.boardingHouseAddress?.address},{' '}
                 {data?.boardingHouseAddress?.ward},{' '}
@@ -76,14 +89,8 @@ function FormView(props) {
                 {data?.boardingHouseAddress?.province}
               </span>
             </li>
-            <li>
-              Tag:{' '}
-              {data?.boardingHouseToTags?.map((item) => (
-                <span key={item.id}>{item.tag?.name} </span>
-              ))}
-            </li>
             <li onClick={handleFloorClick}>
-              {trans.lessor.houses.tang}:
+              <span className="text-danger">{trans.lessor.houses.tang}: </span>
               <FloorDetail
                 floorData={data?.floors}
                 province={data?.boardingHouseAddress?.province}

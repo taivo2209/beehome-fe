@@ -149,12 +149,12 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
                 onClick={handleBack}
                 sx={{ mr: 1 }}
               >
-                Back
+                {trans.tro_lai}
               </Button>
               <Box sx={{ flex: '1 1 auto' }} />
 
               <Button onClick={handleNext} style={{ color: '#ee7b35' }}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                {activeStep === steps.length - 1 ? `${trans.finish}` : `${trans.tiep_tuc}`}
               </Button>
             </Box>
           </React.Fragment>

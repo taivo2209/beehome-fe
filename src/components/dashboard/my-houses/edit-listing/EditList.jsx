@@ -535,7 +535,7 @@ const EditList = () => {
       {/* End .col */}
 
       <div className="col-xl-12">
-        <h4 className="mb10">Tag</h4>
+        {/* <h4 className="mb10">Tag</h4> */}
       </div>
 
       <CheckBoxFilter onSelectionChange={handleSelectionChange} />

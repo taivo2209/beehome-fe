@@ -6,6 +6,7 @@ import disableRoom from '../../../../public/assets/images/disableRoom.png';
 
 import { ButtonBase, Grid, Paper, Typography, styled } from '@mui/material';
 import Image from 'next/image';
+import useTrans from '../../../pages/hooks/useTran';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -20,6 +21,7 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 const DetailFloor = ({ setDetailIsOpen, data }) => {
+  const trans = useTrans();
   return (
     <List
       sx={{
@@ -34,7 +36,7 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
     >
       {data[0]?.floors?.map((itemFloor) => (
         <div key={`section-${itemFloor.floorNumber}`}>
-          <ListSubheader>{`Floor ${itemFloor.floorNumber}`}</ListSubheader>
+          <ListSubheader>{`${trans.lessor.houses.tang} ${itemFloor.floorNumber}`}</ListSubheader>
           <Grid
             container
             rowSpacing={5}
@@ -77,13 +79,13 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                           variant="subtitle1"
                           component="div"
                         >
-                          Price : {item.price}
+                          {trans.lessor.rooms.gia} : {item.price}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          Acreage: {item.acreage}
+                          {trans.lessor.rooms.dien_tich}: {item.acreage}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          Room: {item.name}
+                          {trans.lessor.rooms.ten_phong}: {item.name}
                         </Typography>
                       </Grid>
                     </Grid>

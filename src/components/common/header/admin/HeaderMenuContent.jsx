@@ -33,7 +33,7 @@ const HeaderMenuContent = ({ float = '' }) => {
       items: [
         {
           name: 'Grid v1',
-          routerPath: '/listing-grid-v1',
+          routerPath: '/searching-list',
         },
         {
           name: 'Grid v2',
