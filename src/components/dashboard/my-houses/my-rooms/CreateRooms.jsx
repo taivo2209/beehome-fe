@@ -175,25 +175,31 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
                 onChange={(e) => setAcreage(e.target.value)}
               />
             </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="roomSimple">
-                {trans.lessor.rooms.so_phong_ngu}
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="roomSimple"
-                onChange={(e) => setRoomSimple(e.target.value)}
-              />
-            </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="toilet">{trans.lessor.rooms.toilet}</label>
-              <input
-                type="text"
-                className="form-control"
-                id="toilet"
-                onChange={(e) => setToilet(e.target.value)}
-              />
+            <div className="row">
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="roomSimple">
+                    {trans.lessor.rooms.so_phong_ngu}
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="roomSimple"
+                    onChange={(e) => setRoomSimple(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="toilet">{trans.lessor.rooms.toilet}</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="toilet"
+                    onChange={(e) => setToilet(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
             <div className="my_profile_setting_input form-group">
               <label htmlFor="price">{trans.lessor.rooms.gia}</label>
@@ -237,8 +243,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
             </button> */}
           </form>
         </Modal.Body>
-        <Modal.Footer>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

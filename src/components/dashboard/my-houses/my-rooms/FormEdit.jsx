@@ -6,8 +6,10 @@ import PropertyMediaUploader from '../PropertyMediaUploader';
 import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
+import useTrans from '../../../../pages/hooks/useTran';
 
 function FormEdit({ id, updateData }) {
+  const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -92,12 +94,12 @@ function FormEdit({ id, updateData }) {
 
       <Modal show={show} onHide={handleClose} size="xl">
         <Modal.Header closeButton>
-          <Modal.Title>Add Room</Modal.Title>
+          <Modal.Title>{trans.lessor.rooms.cap_nhat}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">{trans.lessor.rooms.ten_phong}</label>
               <input
                 type="text"
                 className="form-control"
@@ -107,17 +109,7 @@ function FormEdit({ id, updateData }) {
               />
             </div>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="price">Price</label>
-              <input
-                type="text"
-                className="form-control"
-                id="price"
-                defaultValue={data?.price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="acreage">Acreage</label>
+              <label htmlFor="acreage">{trans.lessor.rooms.dien_tich}</label>
               <input
                 type="text"
                 className="form-control"
@@ -126,29 +118,47 @@ function FormEdit({ id, updateData }) {
                 onChange={(e) => setAcreage(e.target.value)}
               />
             </div>
-            <div className="my_profile_setting_input form-group">
-              <label htmlFor="roomSimple">Room Simple</label>
-              <input
-                type="text"
-                className="form-control"
-                id="roomSimple"
-                defaultValue={data?.roomSimple}
-                onChange={(e) => setRoomSimple(e.target.value)}
-              />
+            <div className="row">
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="roomSimple">
+                    {trans.lessor.rooms.so_phong_ngu}
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="roomSimple"
+                    defaultValue={data?.roomSimple}
+                    onChange={(e) => setRoomSimple(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="toilet">{trans.lessor.rooms.toilet}</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="toilet"
+                    defaultValue={data?.toilet}
+                    onChange={(e) => setToilet(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
             <div className="my_profile_setting_input form-group">
-              <label htmlFor="toilet">Toilet</label>
+              <label htmlFor="price">{trans.lessor.rooms.gia}</label>
               <input
                 type="text"
                 className="form-control"
-                id="toilet"
-                defaultValue={data?.toilet}
-                onChange={(e) => setToilet(e.target.value)}
+                id="price"
+                defaultValue={data?.price}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </div>
             <div className="col-lg-6 col-xl-6">
               <div className="my_profile_setting_input ui_kit_select_search form-group">
-                <label>Status</label>
+                <label>{trans.lessor.rooms.tinh_trang}</label>
                 <select
                   className="selectpicker form-select"
                   data-live-search="true"
@@ -161,26 +171,30 @@ function FormEdit({ id, updateData }) {
                 </select>
               </div>
             </div>
-            <div className="my_profile_setting_input form-group col-xl-12">
+            {/* <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
               <CategoriesCheckBox onSelectionChange={handleCategoryChange} />
-            </div>
+            </div> */}
             <div className="my_profile_setting_input form-group mb-2">
-              <label htmlFor="attributeIds">Attribute</label>
+              <label htmlFor="attributeIds">
+                {trans.lessor.rooms.tien_ich}
+              </label>
               <AttributesCheckBox onSelectionChange={handleAttributeChange} />
             </div>
             <div className="my_profile_setting_input form-group mb-2">
-              <label htmlFor="imagesId">Images</label>
+              <label htmlFor="imagesId">{trans.lessor.rooms.anh}</label>
               <PropertyMediaUploader onUpload={handleUpload} />
             </div>
-            <Button type="submit">Edit</Button>
+            <div className="col-xl-12">
+              <div className="my_profile_setting_input overflow-hidden mt20">
+                <button className="btn btn2" type="submit">
+                  Edit
+                </button>
+              </div>
+            </div>
           </form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

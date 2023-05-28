@@ -180,6 +180,7 @@ export default {
       thong_tin: 'Information',
       phong: 'Rooms',
       tao_phong: 'Create Room',
+      cap_nhat:'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
       dien_tich: 'acreage (m2)',

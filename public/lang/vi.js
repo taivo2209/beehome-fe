@@ -181,6 +181,7 @@ export default {
       thong_tin: 'Thông tin',
       phong: 'Phòng',
       tao_phong: 'Tạo phòng',
+      cap_nhat:'Sửa phòng',
       ten_phong: 'Tên phòng',
       gia: 'Giá (đ/tháng)',
       dien_tich: 'Diện tích (m2)',
