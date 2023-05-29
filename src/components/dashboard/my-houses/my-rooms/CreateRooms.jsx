@@ -217,6 +217,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
                 </span>
               ) : null}
             </div>
+            {/* <span className="text-danger">{trans.lessor.rooms.du_doan_tb}</span> */}
             {/* <div className="my_profile_setting_input form-group col-xl-12">
               <label htmlFor="categoryIds">Category</label>
               <CategoriesCheckBox onSelectionChange={handleCategoryChange} />

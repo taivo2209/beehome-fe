@@ -50,6 +50,7 @@ export default {
     noi_dung_bc: 'Report details',
     bao_cao_tc: 'Report has been sented to Admin',
     bc_full: 'You reported too many times!',
+    video: 'Video Review',
   },
   login: {
     dang_nhap: 'Login',
@@ -194,6 +195,7 @@ export default {
       text_2: 'Please do not enter negative numbers in Price and Acreage!',
       du_doan:
         'Based on the information you provided, the average house price in this area is around ',
+        du_doan_tb:'Currently, I do not have much information about the price of accommodation in this area.'
     },
     attributes: {
       tien_ich: 'Attributes',

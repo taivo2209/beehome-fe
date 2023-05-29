@@ -170,6 +170,7 @@ const ListingDynamicDetailsV1 = () => {
                 customer={customer}
                 dataDetail={boardingHouseDetail[0]}
                 boardingHouseId={id}
+                pic={boardingHouseDetail[0]?.itemDetails[0]}
               />
             </div>
             {/* End details content .col-lg-8 */}

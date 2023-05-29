@@ -14,8 +14,9 @@ import { useSelector } from 'react-redux';
 // import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import axios from 'axios';
 import useTrans from '../../pages/hooks/useTran';
+import PropertyVideo from '../common/listing-details/PropertyVideo';
 
-const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
+const DetailsContent = ({ dataDetail, boardingHouseId, customer, pic }) => {
   const trans = useTrans();
   const [comments, setComment] = useState([]);
   const [commentsData, setCommentsData] = useState([]);
@@ -50,6 +51,9 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
 
   return (
     <>
+      <div className="shop_single_tab_content style2 mb30">
+        <PropertyVideo thumbnail={pic}/>
+      </div>
       <div className="listing_single_description">
         {/* End .listing_single_description */}
         <h4 className="mb30">{trans.detail.mo_ta}</h4>
@@ -57,7 +61,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
       </div>
       {/* End .listing_single_description */}
 
-      <div className="additional_details">
+      <div className="additional_details mt30">
         <div className="row">
           <div className="col-lg-12">
             {/* Fee */}
@@ -99,7 +103,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer }) => {
             <small className="float-end">{dataDetail?.location}</small>
           </h4>
           <div className="property_video p0">
-            <PropertyLocation/>
+            <PropertyLocation />
           </div>
         </div>
       )}

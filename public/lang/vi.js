@@ -51,6 +51,7 @@ export default {
     noi_dung_bc: 'Nội dung báo cáo',
     bao_cao_tc: 'Báo cáo đã được gửi đến Admin',
     bc_full:'Bạn đã báo cáo quá số lần!',
+    video: 'Review nhà trọ',
   },
   login: {
     dang_nhap: 'Đăng nhập',
@@ -195,6 +196,7 @@ export default {
       text_2: 'Vui lòng không nhập âm số ở Giá và Diện tích!',
       du_doan:
         'Dựa theo những thông tin bạn cung cấp thì giá nhà trung bình ở khu vực này là khoảng ',
+        du_doan_tb:'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này.'
     },
     attributes: {
       tien_ich: 'Tiện ích',
