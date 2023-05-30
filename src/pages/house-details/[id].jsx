@@ -6,7 +6,6 @@ import CopyrightFooter from '../../components/common/footer/CopyrightFooter';
 import Footer from '../../components/common/footer/Footer';
 import Header from '../../components/common/header/DefaultHeader';
 import MobileMenu from '../../components/common/header/MobileMenu';
-import PopupSignInUp from '../../components/common/PopupSignInUp';
 import DetailsContent from '../../components/listing-details-v1/DetailsContent';
 import Sidebar from '../../components/listing-details-v1/Sidebar';
 import Seo from '../../components/common/seo';
@@ -67,9 +66,6 @@ const ListingDynamicDetailsV1 = () => {
 
       {/* <!--  Mobile Menu --> */}
       <MobileMenu />
-
-      {/* <!-- Modal --> */}
-      <PopupSignInUp />
 
       {/* <!-- Hình ảnh các phòng + địa chỉ giá cả + tên của tòa --> */}
       <section className="listing-title-area mt85 md-mt0">

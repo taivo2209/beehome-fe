@@ -86,7 +86,7 @@ const FeaturedProperties = () => {
 
             <Link
               onClick={() => getItem(item.id)}
-              href={`/listing-details-v1/${item.id}`}
+              href={`/house-details/${item.id}`}
               className="fp_price"
             >
               {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
@@ -102,7 +102,7 @@ const FeaturedProperties = () => {
             <h4>
               <Link
                 onClick={() => getItem(item.id)}
-                href={`/listing-details-v1/${item.id}`}
+                href={`/house-details/${item.id}`}
               >
                 {item.title}
               </Link>

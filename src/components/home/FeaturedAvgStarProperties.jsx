@@ -88,7 +88,7 @@ const FeaturedAvgStarProperties = () => {
 
             <Link
               onClick={() => getItem(item.id)}
-              href={`/listing-details-v1/${item.id}`}
+              href={`/house-details/${item.id}`}
               className="fp_price"
             >
               {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
@@ -104,7 +104,7 @@ const FeaturedAvgStarProperties = () => {
             <h4>
               <Link
                 onClick={() => getItem(item.id)}
-                href={`/listing-details-v1/${item.id}`}
+                href={`/house-details/${item.id}`}
               >
                 <Tooltip title={item.title} placement="bottom">
                   <div>{item.title}</div>

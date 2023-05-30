@@ -1,4 +1,3 @@
-import featureProContent from '../../../data/properties';
 import Slider from 'react-slick';
 import useTrans from '../../../pages/hooks/useTran';
 

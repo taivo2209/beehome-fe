@@ -20,7 +20,7 @@ const HousesData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/boardingHouse?page=1&limit=20',
+        `http://localhost:5000/lessor/boardingHouse?page=${currentPage}&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

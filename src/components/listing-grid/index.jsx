@@ -1,14 +1,12 @@
-import Pagination from '../../common/blog/Pagination';
-import PaginationList from '../../common/blog/PaginationList';
-import CopyrightFooter from '../../common/footer/CopyrightFooter';
-import Footer from '../../common/footer/Footer';
-import Header from '../../common/header/DefaultHeader';
-import MobileMenu from '../../common/header/MobileMenu';
-import FilterTopBar from '../../common/listing/FilterTopBar';
-import GridListButton from '../../common/listing/GridListButton';
-import ShowFilter from '../../common/listing/ShowFilter';
-import SidebarListing from '../../common/listing/SidebarListing';
-import PopupSignInUp from '../../common/PopupSignInUp';
+import PaginationList from '../common/blog/PaginationList';
+import CopyrightFooter from '../common/footer/CopyrightFooter';
+import Footer from '../common/footer/Footer';
+import Header from '../common/header/DefaultHeader';
+import MobileMenu from '../common/header/MobileMenu';
+import FilterTopBar from '../common/listing/FilterTopBar';
+import GridListButton from '../common/listing/GridListButton';
+import SidebarListing from '../common/listing/SidebarListing';
+import SidebarListing2 from '../common/listing/SidebarListing2';
 import BreadCrumb2 from './BreadCrumb2';
 import FeaturedItem from './FeaturedItem';
 
@@ -20,9 +18,6 @@ const index = () => {
 
       {/* <!--  Mobile Menu --> */}
       <MobileMenu />
-
-      {/* <!-- Modal --> */}
-      <PopupSignInUp />
 
       {/* <!-- Listing Grid View --> */}
       <section className="our-listing bgc-f7 pb30-991 mt85 md-mt0 ">
@@ -70,7 +65,7 @@ const index = () => {
                 {/* End .offcanvas-heade */}
 
                 <div className="offcanvas-body">
-                  <SidebarListing />
+                  <SidebarListing2 />
                 </div>
               </div>
               {/* End mobile sidebar listing  */}

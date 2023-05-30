@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addLength } from '../../../features/properties/propertiesSlice';
+import { addLength } from '../../features/properties/propertiesSlice';
 import { Skeleton, Tooltip } from '@mui/material';
-import useTrans from '../../../pages/hooks/useTran';
+import useTrans from '../../pages/hooks/useTran';
 
 const FeaturedItem = () => {
   const trans = useTrans();
@@ -52,7 +52,7 @@ const FeaturedItem = () => {
               </li>
             </ul> */}
 
-            <Link href={`/listing-details-v1/${item.id}`} className="fp_price">
+            <Link href={`/house-details/${item.id}`} className="fp_price">
               {trans.from} {item.price}
               <small>{trans.detail.gia_thang}</small>
             </Link>
@@ -62,7 +62,7 @@ const FeaturedItem = () => {
           <div className="tc_content">
             <p className="text-thm">{item.type}</p>
             <h4>
-              <Link href={`/listing-details-v1/${item.id}`}>
+              <Link href={`/house-details/${item.id}`}>
                 <Tooltip title={item.title} placement="bottom">
                   <div>{item.title}</div>
                 </Tooltip>

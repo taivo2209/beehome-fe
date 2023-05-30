@@ -74,7 +74,7 @@ const FeaturedPropertiesHome3 = () => {
                 <div className="thmb_cntnt">
                   <Link
                     onClick={() => getItem(item.id)}
-                    href={`/listing-details-v1/${item.id}`}
+                    href={`/house-details/${item.id}`}
                   >
                     <div className="fp_price">
                       {trans.from}{' '}
@@ -91,7 +91,7 @@ const FeaturedPropertiesHome3 = () => {
                   <h4>
                     <Link
                       onClick={() => getItem(item.id)}
-                      href={`/listing-details-v1/${item.id}`}
+                      href={`/house-details/${item.id}`}
                     >
                       <Tooltip title={item.title} placement="bottom">
                         <div>{item.title}</div>
