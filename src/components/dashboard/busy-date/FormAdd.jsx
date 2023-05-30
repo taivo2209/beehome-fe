@@ -99,7 +99,7 @@ function FormAdd({ getData }) {
         <span className="dn-lg"> Busy Dates</span>
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           <form onSubmit={handleSubmit}>

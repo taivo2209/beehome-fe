@@ -5,20 +5,14 @@ import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import useTrans from '../../../pages/hooks/useTran';
 import { useRouter } from 'next/router';
-import FormPayment from './FormPayment';
 
-const Pricing = () => {
+const BillsData = () => {
   const router = useRouter();
   const trans = useTrans();
   const [data, setData] = useState();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [price, setPrice] = useState();
   const member = data?.package;
-  const orderInfo = router?.query?.vnp_OrderInfo;
-  const newOrderInfo = String(orderInfo).split(':')[1];
-  const packType = String(newOrderInfo).slice(1);
-  const currentDate = new Date();
-  const currentDateTimeString = currentDate.toISOString();
 
   const getData = async () => {
     try {
@@ -33,37 +27,25 @@ const Pricing = () => {
     }
   };
 
-  const paymentSuccess = async () => {
-    if (router?.query?.vnp_TransactionStatus == '00') {
-      const formData = {
-        packType: packType,
-        startDate: currentDateTimeString,
-      };
-      try {
-        const res = await axios.post(
-          'http://localhost:5000/lessor/service-pack',
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          },
-        );
-        Swal.fire({
-          icon: 'success',
-          title: `${trans.lessor.membership.thanh_toan_tc}`,
-          confirmButtonText: 'OK',
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  //   useEffect(() => {
+  //     TourBillService.updateTourBill(Number(router?.query.vnp_TxnRef), {
+  //       paymentStatus: getStatusPayment(router?.query?.vnp_TransactionStatus),
+  //     })
+  //       .then(() => {
+  //         setTimeout(() => {
+  //           router.push('/my-bill');
+  //         }, 15000);
+  //       })
+  //       .catch((e) => {
+  //         dispatch(setErrorMess(e));
+  //       });
+  //   }, [router]);
+  console.log(router?.query.vnp_OrderInfo);
 
   const getPrice = async (e) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/service-pack/service_pack_price?packType=${e}`,
+        `http://localhost:5000/vn-pay/vnpay_price?status=${e}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -71,6 +53,10 @@ const Pricing = () => {
         },
       );
       setPrice(res.data);
+      Swal.fire({
+        title: `${price}`,
+        confirmButtonText: 'OK',
+      });
     } catch (err) {
       console.log(err);
     }
@@ -78,7 +64,6 @@ const Pricing = () => {
 
   useEffect(() => {
     getData();
-    paymentSuccess();
   }, [member]);
 
   const isDisabled = (mem, type) => {
@@ -103,7 +88,7 @@ const Pricing = () => {
     },
     {
       id: 2,
-      price: '400.000đ',
+      price: '400000',
       title: 'BASIC',
       features: [
         '50 Bài đăng',
@@ -113,7 +98,7 @@ const Pricing = () => {
     },
     {
       id: 3,
-      price: '1.000.000đ',
+      price: '1000000',
       title: 'PREMIUM',
       features: [
         'Không giới hạn bài đăng',
@@ -151,11 +136,9 @@ const Pricing = () => {
                   })}
                   onClick={() => getPrice(item.title)}
                 >
-                  <FormPayment
-                    title={item.title}
-                    member={member}
-                    price={price}
-                  />
+                  {member === item.title
+                    ? `${trans.lessor.membership.goi_ht}`
+                    : `${trans.lessor.membership.chon}`}
                 </button>
               </div>
             </div>
@@ -166,4 +149,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default BillsData;

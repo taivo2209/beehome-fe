@@ -12,6 +12,8 @@ import useTrans from '../../../pages/hooks/useTran';
 
 const HousesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
+  const endDate = useSelector((state) => state.auth.endDate);
+  console.log('====', endDate);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const trans = useTrans();

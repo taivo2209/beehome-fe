@@ -1,9 +1,11 @@
+import useTrans from '../../../pages/hooks/useTran';
 import Header from '../../common/header/dashboard/Header';
 import SidebarMenu from '../../common/header/dashboard/SidebarMenu';
 import MobileMenu from '../../common/header/MobileMenu';
 import Pricing from './Pricing';
 
-const index = () => {
+const Index = () => {
+  const trans = useTrans();
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -53,8 +55,8 @@ const index = () => {
                   <div className="row">
                     <div className="col-lg-6 offset-lg-3">
                       <div className="main-title text-center">
-                        <h2>Choose Your Perfect Plan From Us</h2>
-                        <p>We provide full service at every step</p>
+                        <h2>{trans.lessor.membership.chon_goi_thich_hop}</h2>
+                        <p>{trans.lessor.membership.cung_cap}</p>
                       </div>
                     </div>
                   </div>
@@ -84,4 +86,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

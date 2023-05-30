@@ -34,7 +34,7 @@ function FormView({ id, getNewData }) {
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>
             {trans.lessor.rooms.thong_tin} {data?.name}

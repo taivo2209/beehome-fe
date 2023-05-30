@@ -56,7 +56,7 @@ function FormEdit({ id, getData }) {
     <>
       <span className="flaticon-edit" onClick={handleShow}></span>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>{trans.lessor.bookings.tinh_trang}</Modal.Title>
         </Modal.Header>

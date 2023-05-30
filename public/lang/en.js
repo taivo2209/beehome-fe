@@ -218,5 +218,12 @@ export default {
       sdt: 'Phone Number',
       phong_muon_xem: 'Room want to see',
     },
+    membership:{
+      chon_goi_thich_hop:'Choose Your Perfect Plan From Us',
+      cung_cap:'We provide full service at every step',
+      chon:'Select',
+      goi_ht:'My Package',
+      thanh_toan_tc:'Payment success!',
+    }
   },
 };

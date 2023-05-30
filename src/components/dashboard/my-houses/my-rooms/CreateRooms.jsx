@@ -126,8 +126,19 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   const predict = async () => {
     if (province && district && ward && acreage && toilet && roomSimple) {
       let url = `http://localhost:5000/lessor/predict/predictions?province=${province}&district=${district}&ward=${ward}&acreage=${acreage}&toilet=${toilet}&room=${roomSimple}`;
-      const res = await axios.get(url);
-      setPrediction(res.data?.predictions?.[0]);
+      try {
+        const res = await axios.get(url);
+        const title =
+          trans.lessor.rooms.du_doan +
+          String(res.data?.predictions?.[0]).replace(
+            /\B(?=(\d{3})+(?!\d))/g,
+            '.',
+          ) +
+          trans.detail.gia_thang;
+        setPrediction(title);
+      } catch (error) {
+        setPrediction(`${trans.lessor.rooms.du_doan_tb}`);
+      }
     }
   };
   useEffect(() => {
@@ -151,7 +162,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
         <span className="dn-lg"> {trans.lessor.rooms.tao_phong}</span>
       </button>
 
-      <Modal show={show} onHide={handleClose} size="xl">
+      <Modal show={show} onHide={handleClose} size="xl" centered>
         <Modal.Header closeButton>
           <Modal.Title>{trans.lessor.rooms.tao_phong}</Modal.Title>
         </Modal.Header>
@@ -211,9 +222,9 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
               />
               {prediction ? (
                 <span className="text-danger">
-                  {trans.lessor.rooms.du_doan}
+                  {/* {trans.lessor.rooms.du_doan} */}
                   {String(prediction).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
-                  {trans.detail.gia_thang}
+                  {/* {trans.detail.gia_thang} */}
                 </span>
               ) : null}
             </div>

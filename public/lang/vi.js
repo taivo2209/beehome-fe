@@ -196,7 +196,7 @@ export default {
       text_2: 'Vui lòng không nhập âm số ở Giá và Diện tích!',
       du_doan:
         'Dựa theo những thông tin bạn cung cấp thì giá nhà trung bình ở khu vực này là khoảng ',
-        du_doan_tb:'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này.'
+        du_doan_tb:'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này!'
     },
     attributes: {
       tien_ich: 'Tiện ích',
@@ -219,5 +219,13 @@ export default {
       sdt: 'Số điện thoại',
       phong_muon_xem: 'Phòng muốn xem',
     },
+    membership:{
+      chon_goi_thich_hop:'Chọn gói thích hợp với bạn',
+      cung_cap:'Chúng tôi cung cấp dịch vụ thích hợp với bạn',
+      chon:'Chọn',
+      goi_ht:'Gói Hiện tại',
+      thanh_toan_tc:'Thanh toán thành công!',
+
+    }
   },
 };
