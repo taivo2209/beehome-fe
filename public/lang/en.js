@@ -1,5 +1,5 @@
 export default {
-  danh_sach_tk:'Searching list',
+  danh_sach_tk: 'Searching list',
   from: 'from',
   finish: 'Finish',
   han_hanh: 'We are glad to see you again!',
@@ -118,7 +118,7 @@ export default {
     loi: 'Error!',
     loi_1: 'Please try again later!',
     chon_ngay: 'Please select an appointment date to continue!',
-    chon:'Select a date',
+    chon: 'Select a date',
   },
   lessor: {
     tao: 'Create',
@@ -181,7 +181,7 @@ export default {
       thong_tin: 'Information',
       phong: 'Rooms',
       tao_phong: 'Create Room',
-      cap_nhat:'Edit Room',
+      cap_nhat: 'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
       dien_tich: 'acreage (m2)',
@@ -195,7 +195,10 @@ export default {
       text_2: 'Please do not enter negative numbers in Price and Acreage!',
       du_doan:
         'Based on the information you provided, the average house price in this area is around ',
-        du_doan_tb:'Currently, I do not have much information about the price of accommodation in this area.'
+      du_doan_tb:
+        'Currently, I do not have much information about the price of accommodation in this area.',
+      het_phong: 'Your current package cannot create more rooms!',
+      het_phong_text: 'Please upgrade your membership!',
     },
     attributes: {
       tien_ich: 'Attributes',
@@ -218,12 +221,13 @@ export default {
       sdt: 'Phone Number',
       phong_muon_xem: 'Room want to see',
     },
-    membership:{
-      chon_goi_thich_hop:'Choose Your Perfect Plan From Us',
-      cung_cap:'We provide full service at every step',
-      chon:'Select',
-      goi_ht:'My Package',
-      thanh_toan_tc:'Payment success!',
-    }
+    membership: {
+      chon_goi_thich_hop: 'Choose Your Perfect Plan From Us',
+      cung_cap: 'We provide full service at every step',
+      chon: 'Select',
+      goi_ht: 'My Package',
+      thanh_toan_tc: 'Payment success!',
+      tg_gia_han: 'It is not time to renew your membership yet!',
+    },
   },
 };

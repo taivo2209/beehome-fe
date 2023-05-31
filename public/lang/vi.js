@@ -1,5 +1,5 @@
 export default {
-  danh_sach_tk:'Danh sách tìm kiếm',
+  danh_sach_tk: 'Danh sách tìm kiếm',
   from: 'giá từ',
   finish: 'Hoàn thành',
   han_hanh: 'Hân hạnh gặp lại!',
@@ -50,7 +50,7 @@ export default {
     dang_nhap_bc: 'Đăng nhập để báo cáo',
     noi_dung_bc: 'Nội dung báo cáo',
     bao_cao_tc: 'Báo cáo đã được gửi đến Admin',
-    bc_full:'Bạn đã báo cáo quá số lần!',
+    bc_full: 'Bạn đã báo cáo quá số lần!',
     video: 'Review nhà trọ',
   },
   login: {
@@ -120,7 +120,7 @@ export default {
     loi: 'Đã xảy ra lỗi!',
     loi_1: 'Vui lòng thử lại sau.',
     chon_ngay: 'Vui lòng chọn ngày hẹn để tiếp tục!',
-    chon:'Chọn ngày',
+    chon: 'Chọn ngày',
   },
   lessor: {
     tao: 'Tạo mới',
@@ -182,7 +182,7 @@ export default {
       thong_tin: 'Thông tin',
       phong: 'Phòng',
       tao_phong: 'Tạo phòng',
-      cap_nhat:'Sửa phòng',
+      cap_nhat: 'Sửa phòng',
       ten_phong: 'Tên phòng',
       gia: 'Giá (đ/tháng)',
       dien_tich: 'Diện tích (m2)',
@@ -196,7 +196,10 @@ export default {
       text_2: 'Vui lòng không nhập âm số ở Giá và Diện tích!',
       du_doan:
         'Dựa theo những thông tin bạn cung cấp thì giá nhà trung bình ở khu vực này là khoảng ',
-        du_doan_tb:'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này!'
+      du_doan_tb:
+        'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này!',
+      het_phong: 'Gói bạn sử dụng hiện tại không thể tạo thêm phòng!',
+      het_phong_text:'Vui lòng nâng cấp gói thành viên!',
     },
     attributes: {
       tien_ich: 'Tiện ích',
@@ -214,18 +217,18 @@ export default {
       hoan_thanh: 'HOÀN THÀNH',
       lo_hen: 'LỠ HẸN',
       ngay_hen: 'Ngày hẹn',
-      gio_hen:'Giờ hẹn',
+      gio_hen: 'Giờ hẹn',
       ten_ng_hen: 'Tên người hẹn',
       sdt: 'Số điện thoại',
       phong_muon_xem: 'Phòng muốn xem',
     },
-    membership:{
-      chon_goi_thich_hop:'Chọn gói thích hợp với bạn',
-      cung_cap:'Chúng tôi cung cấp dịch vụ thích hợp với bạn',
-      chon:'Chọn',
-      goi_ht:'Gói Hiện tại',
-      thanh_toan_tc:'Thanh toán thành công!',
-
-    }
+    membership: {
+      chon_goi_thich_hop: 'Chọn gói thích hợp với bạn',
+      cung_cap: 'Chúng tôi cung cấp dịch vụ thích hợp với bạn',
+      chon: 'Chọn',
+      goi_ht: 'Gói Hiện tại',
+      thanh_toan_tc: 'Thanh toán thành công!',
+      tg_gia_han: 'Hiện tại chưa đến lúc gia hạn!',
+    },
   },
 };

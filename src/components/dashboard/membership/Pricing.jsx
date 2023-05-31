@@ -60,6 +60,33 @@ const Pricing = () => {
     }
   };
 
+  const createBill = async () => {
+    if (router?.query?.vnp_TransactionStatus == '00') {
+      const formData = {
+        packType: packType,
+        vnp_Amount: router?.query?.vnp_Amount,
+        vnp_BankCode: router?.query?.vnp_BankCode,
+        vnp_CardType: router?.query?.vnp_CardType,
+        vnp_OrderInfo: router?.query?.vnp_OrderInfo,
+        vnp_TransactionNo: router?.query?.vnp_TransactionNo,
+        vnp_TxnRef: router?.query?.vnp_TxnRef,
+      };
+      try {
+        const res = await axios.post(
+          'http://localhost:5000/vn-pay/create_bill',
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   const getPrice = async (e) => {
     try {
       const res = await axios.get(
@@ -72,18 +99,32 @@ const Pricing = () => {
       );
       setPrice(res.data);
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.data.debugInfo.status === 403) {
+        setPrice(undefined);
+        Swal.fire({
+          icon: 'warning',
+          title: `${trans.lessor.membership.tg_gia_han}`,
+          showConfirmButton: true,
+        });
+      }
     }
   };
 
   useEffect(() => {
     getData();
-    paymentSuccess();
   }, [member]);
+
+  useEffect(() => {
+    paymentSuccess();
+  }, []);
+
+  useEffect(() => {
+    createBill();
+  }, []);
 
   const isDisabled = (mem, type) => {
     if (mem === type) {
-      return true;
+      return false;
     }
     if (mem === 'FREE') {
       return false;

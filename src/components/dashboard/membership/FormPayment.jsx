@@ -44,43 +44,45 @@ function FormPayment({ title, member, price }) {
           ? `${trans.lessor.membership.goi_ht}`
           : `${trans.lessor.membership.chon}`}
       </span>
-      <Modal show={show} onHide={handleClose} centered>
-        {/* <Modal.Header closeButton>
+      {price ? (
+        <Modal show={show} onHide={handleClose} centered>
+          {/* <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
         </Modal.Header> */}
-        <Modal.Body>
-          <div className="row">
-            <div className="col-lg-6 col-xl-6">
-              <div className="my_profile_setting_input form-group">
-                <label htmlFor="package">Gói đang chọn: </label>
-                <h3 className="form-control" id="package">
-                  {title}
-                </h3>
+          <Modal.Body>
+            <div className="row">
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="package">Gói đang chọn: </label>
+                  <h3 className="form-control" id="package">
+                    {title}
+                  </h3>
+                </div>
+              </div>
+              <div className="col-lg-6 col-xl-6">
+                <div className="my_profile_setting_input form-group">
+                  <label htmlFor="price">Giá: </label>
+                  <h3 className="form-control" id="price">
+                    {String(price).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}đ
+                  </h3>
+                </div>
               </div>
             </div>
-            <div className="col-lg-6 col-xl-6">
-              <div className="my_profile_setting_input form-group">
-                <label htmlFor="price">Giá: </label>
-                <h3 className="form-control" id="price">
-                  {String(price).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}đ
-                </h3>
+            <div className="col-xl-12">
+              <div className="my_profile_setting_input overflow-hidden mt20">
+                <button className="btn btn2" onClick={paymentVNPay}>
+                  Thanh toán
+                </button>
               </div>
             </div>
-          </div>
-          <div className="col-xl-12">
-            <div className="my_profile_setting_input overflow-hidden mt20">
-              <button className="btn btn2" onClick={paymentVNPay}>
-                Thanh toán
-              </button>
-            </div>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            {trans.dong}
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              {trans.dong}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      ) : null}
     </>
   );
 }

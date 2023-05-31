@@ -12,7 +12,25 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/lessor/room/check-number-room', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      setShow(true)
+    } catch (err) {
+      if (err.response && err.response.data.debugInfo.status === 409) {
+        Swal.fire({
+          icon: 'error',
+          title: `${trans.lessor.rooms.het_phong}`,
+          text: `${trans.lessor.rooms.het_phong_text}`,
+          showConfirmButton: true,
+        });
+      }
+    }
+  }
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');

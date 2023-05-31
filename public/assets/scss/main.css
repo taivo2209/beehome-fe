@@ -11811,10 +11811,10 @@ a.btn.btn_error {
   height: 46px;
 }
 
-/* .pricing_table .pricing_footer a.btn.pricing_btn:hover {
-  background-color: var(--color-primary);
+.pricing_table .pricing_footer a.btn.pricing_btn:hover {
+  background-color: lightgreen;
   color: #ffffff;
-} */
+}
 
 .pricing_table_use {
   background-color: lightgray;
