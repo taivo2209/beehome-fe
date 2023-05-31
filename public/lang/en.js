@@ -141,6 +141,7 @@ export default {
       quan_ly_tk: 'Manage Account',
       thanh_vien: 'Membership',
       tk_cua_toi: 'My Profile',
+      hoa_don:'My Bills',
       dang_xuat: 'Logout',
     },
     houses: {
@@ -229,5 +230,13 @@ export default {
       thanh_toan_tc: 'Payment success!',
       tg_gia_han: 'It is not time to renew your membership yet!',
     },
+    bill:{
+      hoa_don:'My Bills',
+      goi_thanh_toan:'Package',
+      noi_dung:'Transaction Details',
+      ngay:'Transaction Dates',
+      phuong_thuc:'Payment Methods',
+      so_tien:'Money',
+    }
   },
 };

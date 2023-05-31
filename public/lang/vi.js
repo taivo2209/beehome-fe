@@ -143,6 +143,7 @@ export default {
       quan_ly_tk: 'Quản lý tài khoản',
       thanh_vien: 'Thành viên',
       tk_cua_toi: 'Tài khoản của tôi',
+      hoa_don:'Hóa đơn',
       dang_xuat: 'Đăng xuất',
     },
     houses: {
@@ -230,5 +231,13 @@ export default {
       thanh_toan_tc: 'Thanh toán thành công!',
       tg_gia_han: 'Hiện tại chưa đến lúc gia hạn!',
     },
+    bill:{
+      hoa_don:'Hóa đơn',
+      goi_thanh_toan:'Gói thanh toán',
+      noi_dung:'Nội dung thanh toán',
+      ngay:'Ngày thanh toán',
+      phuong_thuc:'Phương thức thanh toán',
+      so_tien:'Số tiền',
+    }
   },
 };
