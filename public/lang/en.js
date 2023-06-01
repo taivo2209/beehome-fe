@@ -124,13 +124,16 @@ export default {
     tao: 'Create',
     duoc_tao: 'Created',
     hanh_dong: 'Action',
-    xoa: 'Remove',
+    xoa: 'Delete',
     tao_thanh_cong: 'Create Success!',
     loi: 'Error!',
     loi_1: 'Please try again later!',
     loi_2: 'Please complete all information!',
     cap_nhat: 'Updated Success!',
     xoa_thanh_cong: 'Delete Success!',
+    xac_nhan_xoa:'Are you sure you want to delete?',
+    xac_nhan_chinh:'Are you sure you want to edit?',
+    xac_nhan:'Confirm',
     sidebar: {
       danh_sach: 'Manage Listings',
       quan_ly: 'Manage',
@@ -177,6 +180,8 @@ export default {
         'Please do not enter negative numbers in ElectricFee, WaterFee, ServiceFee!',
       tinh_trang: 'Status',
       thong_tin_tang: 'Floor Detail',
+      nha_tro:'MOTEL',
+      chung_cu:'APARTMENT'
     },
     rooms: {
       thong_tin: 'Information',
@@ -229,6 +234,7 @@ export default {
       goi_ht: 'My Package',
       thanh_toan_tc: 'Payment success!',
       tg_gia_han: 'It is not time to renew your membership yet!',
+      xac_nhan_tt:'Payment confirmation'
     },
     bill:{
       hoa_don:'My Bills',
@@ -237,6 +243,11 @@ export default {
       ngay:'Transaction Dates',
       phuong_thuc:'Payment Methods',
       so_tien:'Money',
+    },
+    busy:{
+      ngay_nghi:'Offdays',
+      them_ngay:'Create Offday',
+      chon_ngay:'Select a date',
     }
   },
 };

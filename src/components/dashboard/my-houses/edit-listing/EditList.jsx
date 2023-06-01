@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CheckBoxFilter from './CheckBoxFilter';
+// import CheckBoxFilter from './CheckBoxFilter';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -31,7 +31,6 @@ const EditList = () => {
   const [province, setProvince] = useState('');
   const [ward, setWard] = useState('');
   const [district, setDistrict] = useState('');
-  const [tagIds, setTagIds] = useState([]);
   const [imgIds, setImgIds] = useState([]);
   const [electricFee, setElectricFee] = useState('');
   const [waterFee, setWaterFee] = useState('');
@@ -58,8 +57,12 @@ const EditList = () => {
       setContentRuleEN(res.data?.boardingHouseRules?.[1]?.content);
       setContentDepositVN(res.data?.boardingHouseRentDeposits?.[0]?.content);
       setContentDepositEN(res.data?.boardingHouseRentDeposits?.[1]?.content);
-      setContentDescriptionVN(res.data?.boardingHouseDescriptions?.[0]?.content);
-      setContentDescriptionEN(res.data?.boardingHouseDescriptions?.[1]?.content);
+      setContentDescriptionVN(
+        res.data?.boardingHouseDescriptions?.[0]?.content,
+      );
+      setContentDescriptionEN(
+        res.data?.boardingHouseDescriptions?.[1]?.content,
+      );
       setAddress(res.data?.boardingHouseAddress?.address);
       setElectricFee(res.data?.electricFee);
       setWaterFee(res.data?.waterFee);
@@ -73,12 +76,11 @@ const EditList = () => {
     getDataHouses();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     const formData = {
       id: id,
       name: name,
       status: status,
-      tagIds: tagIds,
       imgIds: imgIds,
       electricFee: electricFee,
       waterFee: waterFee,
@@ -130,21 +132,30 @@ const EditList = () => {
     };
     e.preventDefault();
     try {
-      axios
-        .patch('http://localhost:5000/lessor/boardingHouse', formData, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
-        .then(() => {
-          Swal.fire({
-            title: `${trans.lessor.cap_nhat}`,
-            icon: 'success',
-            confirmButtonText: 'OK',
-          }).then(() => {
-            router.push('/my-houses');
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_chinh}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xac_nhan}`,
+        cancelButtonText: `${trans.huy_bo}`,
+      });
+      if (result.isConfirmed) {
+        axios
+          .patch('http://localhost:5000/lessor/boardingHouse', formData, {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          })
+          .then(() => {
+            Swal.fire({
+              title: `${trans.lessor.cap_nhat}`,
+              icon: 'success',
+              confirmButtonText: 'OK',
+            }).then(() => {
+              router.push('/my-houses');
+            });
           });
-        });
+      }
     } catch (err) {
       Swal.fire({
         icon: 'error',
@@ -346,14 +357,10 @@ const EditList = () => {
     // console.log('setWardId', data,event.target.value);
   };
 
-  const handleSelectionChange = async (selections) => {
-    setTagIds(selections);
-  };
-
   const handleUpload = (newImages) => {
     setImgIds(newImages);
   };
-  useEffect(() => {}, [tagIds]);
+
   useEffect(() => {
     getDataProvince();
   }, []);
@@ -459,7 +466,9 @@ const EditList = () => {
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">{trans.lessor.houses.quy_dinh_vn}</label>
+          <label htmlFor="propertyDescription">
+            {trans.lessor.houses.quy_dinh_vn}
+          </label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -471,7 +480,9 @@ const EditList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">{trans.lessor.houses.quy_dinh_en}</label>
+          <label htmlFor="propertyDescription">
+            {trans.lessor.houses.quy_dinh_en}
+          </label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -484,7 +495,9 @@ const EditList = () => {
       {/* End .col */}
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">{trans.lessor.houses.tien_coc_vn}</label>
+          <label htmlFor="propertyDescription">
+            {trans.lessor.houses.tien_coc_vn}
+          </label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -496,7 +509,9 @@ const EditList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">{trans.lessor.houses.tien_coc_en}</label>
+          <label htmlFor="propertyDescription">
+            {trans.lessor.houses.tien_coc_en}
+          </label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -510,7 +525,9 @@ const EditList = () => {
 
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">{trans.lessor.houses.mo_ta_vn}</label>
+          <label htmlFor="propertyDescription">
+            {trans.lessor.houses.mo_ta_vn}
+          </label>
           <textarea
             className="form-control"
             id="propertyDescription"
@@ -522,23 +539,22 @@ const EditList = () => {
       </div>
       <div className="col-lg-12">
         <div className="my_profile_setting_textarea">
-          <label htmlFor="propertyDescription">{trans.lessor.houses.mo_ta_en}</label>
+          <label htmlFor="propertyDescription">
+            {trans.lessor.houses.mo_ta_en}
+          </label>
           <textarea
             className="form-control"
             id="propertyDescription"
             rows="7"
-            defaultValue={housesData?.boardingHouseDescriptions?.[0]?.content}
+            defaultValue={housesData?.boardingHouseDescriptions?.[1]?.content}
             onChange={(e) => setContentDescriptionEN(e.target.value)}
           ></textarea>
         </div>
       </div>
       {/* End .col */}
 
-      <div className="col-xl-12">
-        {/* <h4 className="mb10">Tag</h4> */}
-      </div>
+      <div className="col-xl-12">{/* <h4 className="mb10">Tag</h4> */}</div>
 
-      <CheckBoxFilter onSelectionChange={handleSelectionChange} />
       <div className="col-xl-12">
         <h4 className="mb10">{trans.lessor.houses.anh}</h4>
       </div>
@@ -633,7 +649,7 @@ const EditList = () => {
             Edit
           </button>
           <button className="btn btn1 float-start" onClick={handleBack}>
-          {trans.tro_lai}
+            {trans.tro_lai}
           </button>
         </div>
       </div>

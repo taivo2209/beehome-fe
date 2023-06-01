@@ -1,11 +1,14 @@
-import { useState } from "react";
-import ModalVideo from "react-modal-video";
-import useTrans from "../../../pages/hooks/useTran";
+import { useState } from 'react';
+import ModalVideo from 'react-modal-video';
+import useTrans from '../../../pages/hooks/useTran';
 
-const PropertyVideo = ({thumbnail}) => {
+const PropertyVideo = ({ thumbnail, videoUrl }) => {
   const [isOpen, setOpen] = useState(false);
-  const idVideo= "cnOIfm7imwQ";
+  const url = new URL(videoUrl);
+  const searchParams = new URLSearchParams(url.search);
+  const idVideo = searchParams.get('v');
   const trans = useTrans();
+  console.log(idVideo);
   return (
     <>
       <ModalVideo

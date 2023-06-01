@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import FormAdd from './FormAdd';
 import Swal from 'sweetalert2';
 import Pagination from '../../common/Pagination';
+import useTrans from '../../../pages/hooks/useTran';
 
 const BusyData = () => {
+  const trans = useTrans();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,7 +30,7 @@ const BusyData = () => {
       console.log(err);
     }
   };
-  
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -38,25 +40,34 @@ const BusyData = () => {
     getData();
   }, [currentPage]);
 
-  const handleDelete = async (tagId) => {
+  const handleDelete = async (busyId) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/lessor/book-disable/${tagId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      // console.log(res.data);
-      // Call getData() again to update the table after deletion
-      getData();
-      Swal.fire({
-        icon: 'success',
-        title: 'Xóa thành công!',
-        showConfirmButton: false,
-        timer: 1500,
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_xoa}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xoa}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
+      if (result.isConfirmed) {
+        const res = await axios.delete(
+          `http://localhost:5000/lessor/book-disable/${busyId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        // console.log(res.data);
+        // Call getData() again to update the table after deletion
+        getData();
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.xoa_thanh_cong}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -78,13 +89,13 @@ const BusyData = () => {
       <table className="table">
         <thead className="thead-light">
           <tr>
-            <th scope="col">Date Busy</th>
+            <th scope="col">{trans.lessor.busy.ngay_nghi}</th>
             <th className="dn-lg" scope="col"></th>
             <th className="dn-lg" scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
-            <th scope="col">Created</th>
-            <th scope="col">Action</th>
+            <th scope="col">{trans.lessor.duoc_tao}</th>
+            <th scope="col">{trans.lessor.duoc_tao}</th>
           </tr>
         </thead>
         {/* End thead */}

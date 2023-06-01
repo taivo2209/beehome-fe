@@ -67,18 +67,18 @@ const FeaturedPropertiesHome3 = () => {
     <>
       <Slider {...settings} arrows={true}>
         {memoizedData.slice(0, 12)?.map((item) => (
-          <div className="item" key={item.id}>
+          <div className="item" key={item?.id}>
             <div className="feat_property home3">
               <div className="thumb">
-                <img className="img-whp" src={item.img} alt="fp1.jpg" />
+                <img className="img-whp" src={item?.img} alt="fp1.jpg" />
                 <div className="thmb_cntnt">
                   <Link
-                    onClick={() => getItem(item.id)}
-                    href={`/house-details/${item.id}`}
+                    onClick={() => getItem(item?.id)}
+                    href={`/house-details/${item?.id}`}
                   >
                     <div className="fp_price">
                       {trans.from}{' '}
-                      {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
+                      {item?.price?.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
                       <small>{trans.detail.gia_thang}</small>
                     </div>
                   </Link>
@@ -87,20 +87,20 @@ const FeaturedPropertiesHome3 = () => {
 
               <div className="details">
                 <div className="tc_content">
-                  <p className="text-thm">{item.type}</p>
+                  <p className="text-thm">{item?.type}</p>
                   <h4>
                     <Link
-                      onClick={() => getItem(item.id)}
-                      href={`/house-details/${item.id}`}
+                      onClick={() => getItem(item?.id)}
+                      href={`/house-details/${item?.id}`}
                     >
-                      <Tooltip title={item.title} placement="bottom">
-                        <div>{item.title}</div>
+                      <Tooltip title={item?.title} placement="bottom">
+                        <div>{item?.title}</div>
                       </Tooltip>
                     </Link>
                   </h4>
                   <p>
                     <span className="flaticon-placeholder"></span>
-                    {item.location}
+                    {item?.location}
                   </p>
                 </div>
               </div>

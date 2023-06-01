@@ -28,6 +28,7 @@ const Pricing = () => {
         },
       });
       setData(res.data);
+      paymentSuccess();
     } catch (err) {
       console.log(err);
     }
@@ -38,6 +39,12 @@ const Pricing = () => {
       const formData = {
         packType: packType,
         startDate: currentDateTimeString,
+        vnp_Amount: router?.query?.vnp_Amount,
+        vnp_BankCode: router?.query?.vnp_BankCode,
+        vnp_CardType: router?.query?.vnp_CardType,
+        vnp_OrderInfo: router?.query?.vnp_OrderInfo,
+        vnp_TransactionNo: router?.query?.vnp_TransactionNo,
+        vnp_TxnRef: router?.query?.vnp_TxnRef,
       };
       try {
         const res = await axios.post(
@@ -60,32 +67,33 @@ const Pricing = () => {
     }
   };
 
-  const createBill = async () => {
-    if (router?.query?.vnp_TransactionStatus == '00') {
-      const formData = {
-        packType: packType,
-        vnp_Amount: router?.query?.vnp_Amount,
-        vnp_BankCode: router?.query?.vnp_BankCode,
-        vnp_CardType: router?.query?.vnp_CardType,
-        vnp_OrderInfo: router?.query?.vnp_OrderInfo,
-        vnp_TransactionNo: router?.query?.vnp_TransactionNo,
-        vnp_TxnRef: router?.query?.vnp_TxnRef,
-      };
-      try {
-        const res = await axios.post(
-          'http://localhost:5000/vn-pay/create_bill',
-          formData,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          },
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  // const createBill = async () => {
+  //   if (router?.query?.vnp_TransactionStatus == '00' && router?.query?.vnp_TransactionStatus) {
+  //     const formData = {
+  //       packType: packType,
+  //       vnp_Amount: router?.query?.vnp_Amount,
+  //       vnp_BankCode: router?.query?.vnp_BankCode,
+  //       vnp_CardType: router?.query?.vnp_CardType,
+  //       vnp_OrderInfo: router?.query?.vnp_OrderInfo,
+  //       vnp_TransactionNo: router?.query?.vnp_TransactionNo,
+  //       vnp_TxnRef: router?.query?.vnp_TxnRef,
+  //     };
+  //     try {
+  //       const res = await axios.post(
+  //         'http://localhost:5000/vn-pay/create_bill',
+  //         formData,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${accessToken}`,
+  //           },
+  //         },
+  //       );
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     // console.log(router?.query?.vnp_TransactionStatus);
+  //   }
+  // };
 
   const getPrice = async (e) => {
     try {
@@ -113,14 +121,6 @@ const Pricing = () => {
   useEffect(() => {
     getData();
   }, [member]);
-
-  useEffect(() => {
-    paymentSuccess();
-  }, []);
-
-  useEffect(() => {
-    createBill();
-  }, []);
 
   const isDisabled = (mem, type) => {
     if (mem === type) {

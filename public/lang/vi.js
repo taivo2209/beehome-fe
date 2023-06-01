@@ -33,7 +33,7 @@ export default {
     chi_phi: 'Chi phí',
     tien_ich: 'Tiện ích',
     quy_dinh: 'Quy định',
-    tien_coc: 'Tiến cọc',
+    tien_coc: 'Tiền cọc',
     vi_tri: 'Vị trí',
     danh_gia: {
       viet_danh_gia: 'Đánh giá',
@@ -133,6 +133,9 @@ export default {
     loi_2: 'Vui lòng điền đầy đủ thông tin!',
     cap_nhat: 'Cập nhật thành công!',
     xoa_thanh_cong: 'Xóa thành công!',
+    xac_nhan_xoa:'Bạn có chắc chắn muốn xóa?',
+    xac_nhan_chinh:'Bạn có chắc bạn muốn sửa?',
+    xac_nhan:'Xác nhận',
     sidebar: {
       danh_sach: 'Danh sách quản lý',
       quan_ly: 'Quản lý',
@@ -178,6 +181,8 @@ export default {
         'Vui lòng không nhập âm số ở Tiền điện, Tiền nước và Phí dịch vụ!',
       tinh_trang: 'Tình trạng',
       thong_tin_tang: 'Thông tin các tầng',
+      nha_tro:'Nhà trọ',
+      chung_cu:'Chung cư'
     },
     rooms: {
       thong_tin: 'Thông tin',
@@ -230,6 +235,7 @@ export default {
       goi_ht: 'Gói Hiện tại',
       thanh_toan_tc: 'Thanh toán thành công!',
       tg_gia_han: 'Hiện tại chưa đến lúc gia hạn!',
+      xac_nhan_tt:'Xác nhận thanh toán'
     },
     bill:{
       hoa_don:'Hóa đơn',
@@ -238,6 +244,11 @@ export default {
       ngay:'Ngày thanh toán',
       phuong_thuc:'Phương thức thanh toán',
       so_tien:'Số tiền',
+    },
+    busy:{
+      ngay_nghi:'Ngày nghỉ',
+      them_ngay:'Thêm ngày nghỉ',
+      chon_ngay:'Chọn ngày',
     }
   },
 };

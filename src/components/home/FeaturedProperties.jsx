@@ -59,15 +59,15 @@ const FeaturedProperties = () => {
     <div className="item" key={item.id}>
       <div className="feat_property">
         <div className="thumb">
-          <img className="img-whp" src={item.img} alt="fp1.jpg" />
+          <img className="img-whp" src={item?.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
-            <ul className="tag mb0">
+            {/* <ul className="tag mb0">
               {item?.saleTag.map((val, i) => (
                 <li className="list-inline-item" key={i}>
                   <a href="#">{val}</a>
                 </li>
               ))}
-            </ul>
+            </ul> */}
             {/* End .tag */}
 
             <ul className="icon mb0">

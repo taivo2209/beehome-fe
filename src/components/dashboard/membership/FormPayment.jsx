@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import useTrans from '../../../pages/hooks/useTran';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 
 function FormPayment({ title, member, price }) {
   const router = useRouter();
@@ -13,7 +14,6 @@ function FormPayment({ title, member, price }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [link, setLink] = useState();
 
   const paymentVNPay = async () => {
     const formData = {
@@ -21,17 +21,25 @@ function FormPayment({ title, member, price }) {
       packType: title,
     };
     try {
-      const res = await axios.post(
-        'http://localhost:5000/vn-pay/create_payment_url',
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
+      const result = await Swal.fire({
+        title: `${trans.lessor.membership.xac_nhan_tt}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xac_nhan}`,
+        cancelButtonText: `${trans.huy_bo}`,
+      });
+      if (result.isConfirmed) {
+        const res = await axios.post(
+          'http://localhost:5000/vn-pay/create_payment_url',
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
           },
-        },
-      );
-      setLink(res.data);
-      router.push(link);
+        );
+        router.push(res.data);
+      }
     } catch (error) {
       console.log(error);
     }

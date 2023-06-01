@@ -22,24 +22,33 @@ function FormEdit({ id, getData }) {
       status: status,
     };
     try {
-      const res = await axios.patch(
-        `http://localhost:5000/lessor/book/status`,
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      // reset();
-      Swal.fire({
-        icon: 'success',
-        title: `${trans.lessor.cap_nhat}`,
-        showConfirmButton: false,
-        timer: 1500,
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_chinh}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xac_nhan}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
-      getData();
-      handleClose();
+      if (result.isConfirmed) {
+        const res = await axios.patch(
+          `http://localhost:5000/lessor/book/status`,
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        // reset();
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.cap_nhat}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        getData();
+        handleClose();
+      }
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -72,10 +81,18 @@ function FormEdit({ id, getData }) {
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option disabled>Select</option>
-                  <option value="PROCESSING">{trans.lessor.bookings.dang_cho}</option>
-                  <option value="APPROVED">{trans.lessor.bookings.da_xn}</option>
-                  <option value="DONE">{trans.lessor.bookings.hoan_thanh}</option>
-                  <option value="MISSING">{trans.lessor.bookings.lo_hen}</option>
+                  <option value="PROCESSING">
+                    {trans.lessor.bookings.dang_cho}
+                  </option>
+                  <option value="APPROVED">
+                    {trans.lessor.bookings.da_xn}
+                  </option>
+                  <option value="DONE">
+                    {trans.lessor.bookings.hoan_thanh}
+                  </option>
+                  <option value="MISSING">
+                    {trans.lessor.bookings.lo_hen}
+                  </option>
                 </select>
               </div>
             </div>

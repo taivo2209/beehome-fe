@@ -8,10 +8,12 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import useTrans from '../../../pages/hooks/useTran';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Ho_Chi_Minh');
 function FormAdd({ getData }) {
+  const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -52,7 +54,7 @@ function FormAdd({ getData }) {
         // reset();
         Swal.fire({
           icon: 'success',
-          title: 'Tạo thành công!',
+          title: `${trans.lessor.tao_thanh_cong}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -62,8 +64,8 @@ function FormAdd({ getData }) {
       } catch (error) {
         Swal.fire({
           icon: 'error',
-          title: 'Đã xảy ra lỗi!',
-          text: 'Thêm mới thất bại.',
+          title: `${trans.lessor.loi}`,
+          text: `${trans.lessor.loi_1}`,
           confirmButtonText: 'OK',
         });
         console.log(error);
@@ -112,7 +114,7 @@ function FormAdd({ getData }) {
               /> */}
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
-                  label="Select a date"
+                  label={`${trans.lessor.busy.chon_ngay}`}
                   inputFormat="dd/MM/yyyy"
                   shouldDisableDate={disablePastDates}
                   onChange={handleDateChange}
@@ -121,7 +123,7 @@ function FormAdd({ getData }) {
             </div>
             <div className="my_profile_setting_input overflow-hidden mt20">
               <button type="submit" className="btn btn2 float-end">
-                Add
+                {trans.lessor.tao}
               </button>
             </div>
           </form>

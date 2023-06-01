@@ -48,11 +48,11 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, pic }) => {
     (total, current) => total + current?.comment?.star,
     0,
   );
-
+// console.log(dataDetail);
   return (
     <>
       <div className="shop_single_tab_content style2 mb30">
-        <PropertyVideo thumbnail={pic}/>
+        <PropertyVideo thumbnail={pic} videoUrl={dataDetail?.videoUrl}/>
       </div>
       <div className="listing_single_description">
         {/* End .listing_single_description */}
