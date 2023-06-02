@@ -7,6 +7,8 @@ export default {
   tro_lai: 'Trở lại',
   huy_bo: 'Hủy',
   dong: 'Đóng',
+  tim_duoc:' kết quả tìm kiếm',
+  khong_tim:'Không tìm thấy kế quả',
   home: {
     title: 'Chào mừng tới Viblo!',
     content: 'Bắt đầu một bài viết nào',

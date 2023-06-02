@@ -7,6 +7,8 @@ export default {
   tro_lai: 'Back',
   huy_bo: 'Cancel',
   dong: 'Close',
+  tim_duoc:' searching results',
+  khong_tim:'Not found any results',
   home: {
     title: 'Home',
     content: 'Home',

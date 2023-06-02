@@ -13,9 +13,6 @@ const Creator = ({ data }) => {
       <div className="media-body">
         <h5 className="mt-0 mb0">{data?.posterName}</h5>
 
-        <a className="text-thm" href="#">
-          View My Listing
-        </a>
       </div>
     </div>
   );
