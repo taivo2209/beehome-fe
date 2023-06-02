@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import CheckBoxFilter from './CheckBoxFilter';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import Swal from 'sweetalert2';
 import PropertyMediaUploader from '../PropertyMediaUploader';
 import useTrans from '../../../../pages/hooks/useTran';
+import AttributesCheckBox from '../my-rooms/AttributesCheckBox';
 
 const CreateList = () => {
   const router = useRouter();
@@ -389,9 +389,9 @@ const CreateList = () => {
       {/* End .col */}
 
       <div className="col-xl-12">
-        {/* <h4 className="mb10">Tag</h4> */}
+        <h4 className="mb10">Tag</h4>
       </div>
-      {/* <CheckBoxFilter onSelectionChange={handleSelectionChange} /> */}
+      <AttributesCheckBox onSelectionChange={handleSelectionChange} />
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
           <label htmlFor="linkVideo">Video mô tả (không bắt buộc)</label>

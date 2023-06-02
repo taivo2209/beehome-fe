@@ -12,12 +12,12 @@ function FormView({ id }) {
   const handleShow = () => setShow(true);
   const getData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/admin/lessor/${id}`, {
+      const res = await axios.get(`http://localhost:5000/admin/report/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      setData(res.data.lessor);
+      setData(res.data);
       // console.log(accessToken);
     } catch (err) {
       console.log(err);
@@ -40,7 +40,7 @@ function FormView({ id }) {
                 <div className="my_profile_setting_input form-group">
                   <label htmlFor="formGroupExamplePrice">Detail</label>
                   <p className="form-control" id="formGroupExamplePrice">
-                    {data?.name}
+                    {data?.title}
                   </p>
                 </div>
               </div>

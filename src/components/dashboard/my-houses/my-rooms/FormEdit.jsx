@@ -3,7 +3,6 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import PropertyMediaUploader from '../PropertyMediaUploader';
-import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
 import useTrans from '../../../../pages/hooks/useTran';
@@ -171,10 +170,6 @@ function FormEdit({ id, updateData }) {
                 </select>
               </div>
             </div>
-            {/* <div className="my_profile_setting_input form-group col-xl-12">
-              <label htmlFor="categoryIds">Category</label>
-              <CategoriesCheckBox onSelectionChange={handleCategoryChange} />
-            </div> */}
             <div className="my_profile_setting_input form-group mb-2">
               <label htmlFor="attributeIds">
                 {trans.lessor.rooms.tien_ich}

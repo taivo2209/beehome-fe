@@ -29,7 +29,7 @@ const ReportsData = () => {
       console.log(err);
     }
   };
-
+  
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };

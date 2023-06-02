@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 
-const CategoriesCheckBox = ({ onSelectionChange }) => {
+const AttributesCheckBox = ({ onSelectionChange }) => {
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [data, setData] = useState({});
   const [selections, setSelections] = useState([]);
@@ -40,10 +40,10 @@ const CategoriesCheckBox = ({ onSelectionChange }) => {
   //   console.log('===',chunkedArray);
 
   return (
-    <>
+    <div style={{display:'flex'}}>
       {chunkedArray?.map((chunk,i) => (
         <>
-          {/* {console.log('chunk', chunk)} */}
+          {console.log('chunk', chunk)}
           <div className="col-xxs-6 col-sm col-lg col-xl" key={i}>
             <ul className="ui_kit_checkbox selectable-list">
               {chunk?.map((item) => (
@@ -68,8 +68,8 @@ const CategoriesCheckBox = ({ onSelectionChange }) => {
           {/* End .col */}
         </>
       ))}
-    </>
+    </div>
   );
 };
 
-export default CategoriesCheckBox;
+export default AttributesCheckBox;
