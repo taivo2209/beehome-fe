@@ -90,7 +90,6 @@ const GlobalFilter = ({ className = '' }) => {
 
   const submitHandler = () => {
     Router.push('/searching-list');
-
     dispatch(fetchDataSearch(data));
     dispatch(setDataSearch());
   };
