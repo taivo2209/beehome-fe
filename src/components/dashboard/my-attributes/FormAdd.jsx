@@ -86,7 +86,7 @@ function FormAdd({ getData }) {
         <span className="dn-lg"> {trans.lessor.attributes.them_tien_ich}</span>
       </button>
 
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>Add Attributes</Modal.Title>
         </Modal.Header>

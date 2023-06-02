@@ -1,10 +1,12 @@
+import useTrans from "../../../pages/hooks/useTran";
 import Header from "../../common/header/dashboard/Header";
 import SidebarMenu from "../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
 import BusyData from "./BusyData";
 import SearchBox from "./SearchBox";
 
-const index = () => {
+const Index = () => {
+  const trans = useTrans();
   return (
     <>
       {/* <!-- Main Header Nav --> */}
@@ -53,8 +55,8 @@ const index = () => {
               <div className="row align-items-center">
                 <div className="col-md-8 col-lg-8 col-xl-9 mb20">
                   <div className="breadcrumb_content style2 mb30-991">
-                    <h2 className="breadcrumb_title">My Busy Dates</h2>
-                    <p>We are glad to see you again!</p>
+                    <h2 className="breadcrumb_title">{trans.lessor.busy.ngay_nghi}</h2>
+                    <p>{trans.han_hanh}</p>
                   </div>
                 </div>
                 {/* End .col */}
@@ -102,4 +104,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

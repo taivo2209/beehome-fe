@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import useTrans from '../../../pages/hooks/useTran';
 
 function FormEdit({ id, getData }) {
-  const trans= useTrans();
+  const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,42 +38,51 @@ function FormEdit({ id, getData }) {
 
   const onSubmit = async (formData) => {
     try {
-      const res = await axios.patch(
-        `http://localhost:5000/lessor/roomAttribute`,
-        {
-          id: id,
-          roomAttributeDetails: formData.roomAttributeDetails.map((item) => ({
-            id: item.id,
-            lang: item.lang,
-            name: item.name,
-          })),
-          roomAttributeTerms: formData.roomAttributeTerms.map((item) => ({
-            id: item.id,
-            roomAttributeTermDetails: item.roomAttributeTermDetails.map(
-              (itemDetails) => ({
-                id: itemDetails.id,
-                lang: itemDetails.lang,
-                name: itemDetails.name,
-                slug: itemDetails.slug,
-              }),
-            ),
-          })),
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      // console.log(res.data); // log response data to the console
-      Swal.fire({
-        icon: 'success',
-        title: `${trans.lessor.cap_nhat}`,
-        showConfirmButton: false,
-        timer: 1500,
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_chinh}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xac_nhan}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
-      getData();
-      handleClose();
+      if (result.isConfirmed) {
+        const res = await axios.patch(
+          `http://localhost:5000/lessor/roomAttribute`,
+          {
+            id: id,
+            roomAttributeDetails: formData.roomAttributeDetails.map((item) => ({
+              id: item.id,
+              lang: item.lang,
+              name: item.name,
+            })),
+            roomAttributeTerms: formData.roomAttributeTerms.map((item) => ({
+              id: item.id,
+              roomAttributeTermDetails: item.roomAttributeTermDetails.map(
+                (itemDetails) => ({
+                  id: itemDetails.id,
+                  lang: itemDetails.lang,
+                  name: itemDetails.name,
+                  slug: itemDetails.slug,
+                }),
+              ),
+            })),
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        // console.log(res.data); // log response data to the console
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.cap_nhat}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        getData();
+        handleClose();
+      }
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -111,7 +120,7 @@ function FormEdit({ id, getData }) {
     <>
       <span className="flaticon-edit" onClick={handleShow}></span>
 
-      <Modal show={show} onHide={handleClose} size="lg">
+      <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Header closeButton>
           <Modal.Title>Edit Attributes</Modal.Title>
         </Modal.Header>

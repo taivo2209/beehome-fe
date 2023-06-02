@@ -59,7 +59,7 @@ const FeaturedProperties = () => {
     <div className="item" key={item.id}>
       <div className="feat_property">
         <div className="thumb">
-          <img className="img-whp" src={item.img} alt="fp1.jpg" />
+          <img className="img-whp" src={item?.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
             <ul className="tag mb0">
               {/* {item?.saleTag.map((val, i) => (
@@ -86,7 +86,7 @@ const FeaturedProperties = () => {
 
             <Link
               onClick={() => getItem(item.id)}
-              href={`/listing-details-v1/${item.id}`}
+              href={`/house-details/${item.id}`}
               className="fp_price"
             >
               {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
@@ -102,7 +102,7 @@ const FeaturedProperties = () => {
             <h4>
               <Link
                 onClick={() => getItem(item.id)}
-                href={`/listing-details-v1/${item.id}`}
+                href={`/house-details/${item.id}`}
               >
                 {item.title}
               </Link>

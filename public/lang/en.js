@@ -1,5 +1,5 @@
 export default {
-  danh_sach_tk:'Searching list',
+  danh_sach_tk: 'Searching list',
   from: 'from',
   finish: 'Finish',
   han_hanh: 'We are glad to see you again!',
@@ -50,6 +50,7 @@ export default {
     noi_dung_bc: 'Report details',
     bao_cao_tc: 'Report has been sented to Admin',
     bc_full: 'You reported too many times!',
+    video: 'Video Review',
   },
   login: {
     dang_nhap: 'Login',
@@ -117,19 +118,22 @@ export default {
     loi: 'Error!',
     loi_1: 'Please try again later!',
     chon_ngay: 'Please select an appointment date to continue!',
-    chon:'Select a date',
+    chon: 'Select a date',
   },
   lessor: {
     tao: 'Create',
     duoc_tao: 'Created',
     hanh_dong: 'Action',
-    xoa: 'Remove',
+    xoa: 'Delete',
     tao_thanh_cong: 'Create Success!',
     loi: 'Error!',
     loi_1: 'Please try again later!',
     loi_2: 'Please complete all information!',
     cap_nhat: 'Updated Success!',
     xoa_thanh_cong: 'Delete Success!',
+    xac_nhan_xoa:'Are you sure you want to delete?',
+    xac_nhan_chinh:'Are you sure you want to edit?',
+    xac_nhan:'Confirm',
     sidebar: {
       danh_sach: 'Manage Listings',
       quan_ly: 'Manage',
@@ -140,6 +144,7 @@ export default {
       quan_ly_tk: 'Manage Account',
       thanh_vien: 'Membership',
       tk_cua_toi: 'My Profile',
+      hoa_don:'My Bills',
       dang_xuat: 'Logout',
     },
     houses: {
@@ -175,12 +180,14 @@ export default {
         'Please do not enter negative numbers in ElectricFee, WaterFee, ServiceFee!',
       tinh_trang: 'Status',
       thong_tin_tang: 'Floor Detail',
+      nha_tro:'MOTEL',
+      chung_cu:'APARTMENT'
     },
     rooms: {
       thong_tin: 'Information',
       phong: 'Rooms',
       tao_phong: 'Create Room',
-      cap_nhat:'Edit Room',
+      cap_nhat: 'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
       dien_tich: 'acreage (m2)',
@@ -194,6 +201,10 @@ export default {
       text_2: 'Please do not enter negative numbers in Price and Acreage!',
       du_doan:
         'Based on the information you provided, the average house price in this area is around ',
+      du_doan_tb:
+        'Currently, I do not have much information about the price of accommodation in this area.',
+      het_phong: 'Your current package cannot create more rooms!',
+      het_phong_text: 'Please upgrade your membership!',
     },
     attributes: {
       tien_ich: 'Attributes',
@@ -216,5 +227,27 @@ export default {
       sdt: 'Phone Number',
       phong_muon_xem: 'Room want to see',
     },
+    membership: {
+      chon_goi_thich_hop: 'Choose Your Perfect Plan From Us',
+      cung_cap: 'We provide full service at every step',
+      chon: 'Select',
+      goi_ht: 'My Package',
+      thanh_toan_tc: 'Payment success!',
+      tg_gia_han: 'It is not time to renew your membership yet!',
+      xac_nhan_tt:'Payment confirmation'
+    },
+    bill:{
+      hoa_don:'My Bills',
+      goi_thanh_toan:'Package',
+      noi_dung:'Transaction Details',
+      ngay:'Transaction Dates',
+      phuong_thuc:'Payment Methods',
+      so_tien:'Money',
+    },
+    busy:{
+      ngay_nghi:'Offdays',
+      them_ngay:'Create Offday',
+      chon_ngay:'Select a date',
+    }
   },
 };

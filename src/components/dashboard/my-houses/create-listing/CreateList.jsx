@@ -34,6 +34,7 @@ const CreateList = () => {
   const [serviceFee, setServiceFee] = useState('');
   const [tagIds, setTagIds] = useState([]);
   const [imgIds, setImgIds] = useState([]);
+  const [linkVideo, setLinkVideo] = useState('');
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   const handleBack = () => {
@@ -105,6 +106,7 @@ const CreateList = () => {
       waterFee: waterFee,
       serviceFee: serviceFee,
       type: type,
+      videoUrl: linkVideo,
       houseRentDeposits: [
         {
           content: contentDepositVN,
@@ -249,8 +251,8 @@ const CreateList = () => {
             onChange={(e) => setType(e.target.value)}
           >
             <option disabled>Select</option>
-            <option value="SINGLE_ROOM">SINGLE-ROOM</option>
-            <option value="MULTIPLE_ROOM">MULTIPLE-ROOM</option>
+            <option value="APARTMENT">{trans.lessor.houses.chung_cu}</option>
+            <option value="MOTEL">{trans.lessor.houses.nha_tro}</option>
           </select>
         </div>
       </div>
@@ -389,7 +391,19 @@ const CreateList = () => {
       <div className="col-xl-12">
         {/* <h4 className="mb10">Tag</h4> */}
       </div>
-      <CheckBoxFilter onSelectionChange={handleSelectionChange} />
+      {/* <CheckBoxFilter onSelectionChange={handleSelectionChange} /> */}
+      <div className="col-lg-12">
+        <div className="my_profile_setting_input form-group">
+          <label htmlFor="linkVideo">Video mô tả (không bắt buộc)</label>
+          <input
+            type="text"
+            className="form-control"
+            id="linkVideo"
+            onChange={(e) => setLinkVideo(e.target.value)}
+          />
+        </div>
+        <p>VD: https://www.youtube.com/watch?v=kg7AZ3SR62c&ab_channel=TheLateLateShowwithJamesCorden</p>
+      </div>
       <div className="col-xl-12">
         <h4 className="mb10">{trans.lessor.houses.anh}</h4>
       </div>

@@ -3,7 +3,6 @@ import CopyrightFooter from "../../components/common/footer/CopyrightFooter";
 import Footer from "../../components/common/footer/Footer";
 import Header from "../../components/common/header/DefaultHeader";
 import MobileMenu from "../../components/common/header/MobileMenu";
-import PopupSignInUp from "../../components/common/PopupSignInUp";
 import Social from "../common/footer/Social";
 import BreadCrumb2 from "./BreadCrumb2";
 import Comments from "./Comments";
@@ -20,9 +19,6 @@ const index = () => {
 
       {/* <!--  Mobile Menu --> */}
       <MobileMenu />
-
-      {/* <!-- Modal --> */}
-      <PopupSignInUp />
 
       {/* <!-- Main Blog Post Content --> */}
       <section className="blog_post_container bgc-f7">

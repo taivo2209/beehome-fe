@@ -3,12 +3,22 @@ import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
+import useTrans from '../../../pages/hooks/useTran';
+import { useRouter } from 'next/router';
+import FormPayment from './FormPayment';
 
 const Pricing = () => {
+  const router = useRouter();
+  const trans = useTrans();
   const [data, setData] = useState();
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [price, setPrice] = useState();
   const member = data?.package;
+  const orderInfo = router?.query?.vnp_OrderInfo;
+  const newOrderInfo = String(orderInfo).split(':')[1];
+  const packType = String(newOrderInfo).slice(1);
+  const currentDate = new Date();
+  const currentDateTimeString = currentDate.toISOString();
 
   const getData = async () => {
     try {
@@ -18,25 +28,93 @@ const Pricing = () => {
         },
       });
       setData(res.data);
+      paymentSuccess();
     } catch (err) {
       console.log(err);
     }
   };
 
+  const paymentSuccess = async () => {
+    if (router?.query?.vnp_TransactionStatus == '00') {
+      const formData = {
+        packType: packType,
+        startDate: currentDateTimeString,
+        vnp_Amount: router?.query?.vnp_Amount,
+        vnp_BankCode: router?.query?.vnp_BankCode,
+        vnp_CardType: router?.query?.vnp_CardType,
+        vnp_OrderInfo: router?.query?.vnp_OrderInfo,
+        vnp_TransactionNo: router?.query?.vnp_TransactionNo,
+        vnp_TxnRef: router?.query?.vnp_TxnRef,
+      };
+      try {
+        const res = await axios.post(
+          'http://localhost:5000/lessor/service-pack',
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.membership.thanh_toan_tc}`,
+          confirmButtonText: 'OK',
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  // const createBill = async () => {
+  //   if (router?.query?.vnp_TransactionStatus == '00' && router?.query?.vnp_TransactionStatus) {
+  //     const formData = {
+  //       packType: packType,
+  //       vnp_Amount: router?.query?.vnp_Amount,
+  //       vnp_BankCode: router?.query?.vnp_BankCode,
+  //       vnp_CardType: router?.query?.vnp_CardType,
+  //       vnp_OrderInfo: router?.query?.vnp_OrderInfo,
+  //       vnp_TransactionNo: router?.query?.vnp_TransactionNo,
+  //       vnp_TxnRef: router?.query?.vnp_TxnRef,
+  //     };
+  //     try {
+  //       const res = await axios.post(
+  //         'http://localhost:5000/vn-pay/create_bill',
+  //         formData,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${accessToken}`,
+  //           },
+  //         },
+  //       );
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //     // console.log(router?.query?.vnp_TransactionStatus);
+  //   }
+  // };
+
   const getPrice = async (e) => {
     try {
-      const res = await axios.get(`http://localhost:5000/vn-pay/vnpay_price?status=${e}`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+      const res = await axios.get(
+        `http://localhost:5000/lessor/service-pack/service_pack_price?packType=${e}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      });
+      );
       setPrice(res.data);
-      Swal.fire({
-        title: `${price}`,
-        confirmButtonText: 'OK',
-      });
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.data.debugInfo.status === 403) {
+        setPrice(undefined);
+        Swal.fire({
+          icon: 'warning',
+          title: `${trans.lessor.membership.tg_gia_han}`,
+          showConfirmButton: true,
+        });
+      }
     }
   };
 
@@ -46,7 +124,7 @@ const Pricing = () => {
 
   const isDisabled = (mem, type) => {
     if (mem === type) {
-      return true;
+      return false;
     }
     if (mem === 'FREE') {
       return false;
@@ -62,15 +140,11 @@ const Pricing = () => {
       id: 1,
       price: '0',
       title: 'FREE',
-      features: [
-        '1 Bài đăng',
-        'Hiển thị tối đa 7 ngày',
-        'Không được hỗ trợ',
-      ],
+      features: ['1 Bài đăng', 'Hiển thị tối đa 7 ngày', 'Không được hỗ trợ'],
     },
     {
       id: 2,
-      price: '400000',
+      price: '400.000đ',
       title: 'BASIC',
       features: [
         '50 Bài đăng',
@@ -80,7 +154,7 @@ const Pricing = () => {
     },
     {
       id: 3,
-      price: '1000000',
+      price: '1.000.000đ',
       title: 'PREMIUM',
       features: [
         'Không giới hạn bài đăng',
@@ -116,9 +190,13 @@ const Pricing = () => {
                   className={clsx('btn pricing_btn btn-block', {
                     ['disabled']: isDisabled(member, item.title),
                   })}
-                  onClick={()=>getPrice(item.title)}
+                  onClick={() => getPrice(item.title)}
                 >
-                  {member === item.title ? 'My Package' : 'Select'}
+                  <FormPayment
+                    title={item.title}
+                    member={member}
+                    price={price}
+                  />
                 </button>
               </div>
             </div>

@@ -16,12 +16,21 @@ const ProfileInfo = () => {
 
   const getData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/lessor/profile', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_chinh}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xac_nhan}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
-      setData(res.data);
+      if (result.isConfirmed) {
+        const res = await axios.get('http://localhost:5000/lessor/profile', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        setData(res.data);
+      }
       // console.log(accessToken);
     } catch (err) {
       console.log(err);

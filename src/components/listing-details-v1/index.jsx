@@ -3,7 +3,6 @@ import Footer from '../common/footer/Footer';
 import Header from '../common/header/DefaultHeader';
 import MobileMenu from '../common/header/MobileMenu';
 import ListingGallery from '../common/listing-details/ListingGallery';
-import PopupSignInUp from '../common/PopupSignInUp';
 import DetailsContent from './DetailsContent';
 import Sidebar from './Sidebar';
 
@@ -15,9 +14,6 @@ const index = () => {
 
       {/* <!--  Mobile Menu --> */}
       <MobileMenu />
-
-      {/* <!-- Modal --> */}
-      <PopupSignInUp />
 
       {/* <!-- Listing Single Property --> */}
       <section className="listing-title-area mt85 md-mt0">

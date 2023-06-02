@@ -24,7 +24,7 @@ function FloorDetail({ floorData, province, district, ward }) {
         }}
         onClick={handleShow}
       ></button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>{trans.lessor.houses.thong_tin_tang}</Modal.Title>
         </Modal.Header>

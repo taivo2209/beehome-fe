@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
 import Seo from "../../components/common/seo";
-import MyMembership from "../../components/dashboard/membership"
+import MyBills from "../../components/dashboard/my-bill"
 
 const index = () => {
     return (
       <>
-        <Seo pageTitle="My Membership" />
-        <MyMembership />
+        <Seo pageTitle="Bills" />
+        <MyBills />
       </>
     );
   };

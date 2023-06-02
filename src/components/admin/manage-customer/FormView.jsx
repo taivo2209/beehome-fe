@@ -32,7 +32,7 @@ function FormView({ id }) {
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Customer Information</Modal.Title>
         </Modal.Header>

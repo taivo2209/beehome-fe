@@ -43,25 +43,34 @@ const AttributesData = () => {
     getData();
   }, [currentPage]);
 
-  const handleDelete = async (categoryId) => {
+  const handleDelete = async (attributeId) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/lessor/roomAttribute/${categoryId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      // console.log(res.data);
-      // Call getData() again to update the table after deletion
-      getData();
-      Swal.fire({
-        icon: 'success',
-        title: 'Xóa thành công!',
-        showConfirmButton: false,
-        timer: 1500,
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_xoa}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xoa}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
+      if (result.isConfirmed) {
+        const res = await axios.delete(
+          `http://localhost:5000/lessor/roomAttribute/${attributeId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        // console.log(res.data);
+        // Call getData() again to update the table after deletion
+        getData();
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.xoa_thanh_cong}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -122,7 +131,7 @@ const AttributesData = () => {
                     >
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
-                        <FormView id={item.id} getDataNew={data}/>
+                        <FormView id={item.id} getDataNew={data} />
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>

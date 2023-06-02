@@ -92,7 +92,7 @@ function FormEdit({ id, updateData }) {
     <>
       <span className="flaticon-edit" onClick={handleShow}></span>
 
-      <Modal show={show} onHide={handleClose} size="xl">
+      <Modal show={show} onHide={handleClose} size="xl" centered>
         <Modal.Header closeButton>
           <Modal.Title>{trans.lessor.rooms.cap_nhat}</Modal.Title>
         </Modal.Header>

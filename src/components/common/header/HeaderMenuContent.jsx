@@ -86,13 +86,23 @@ const HeaderMenuContent = ({ float = '' }) => {
               href="#"
               data-bs-toggle="dropdown"
             >
-              <img
-                className="rounded-circle"
-                src={newPath}
-                alt="img"
-                width={45}
-                height={45}
-              />
+              {newPath ? (
+                <img
+                  className="rounded-circle"
+                  src={newPath}
+                  alt="img"
+                  width={45}
+                  height={45}
+                />
+              ) : (
+                <img
+                  className="rounded-circle"
+                  src="assets/images/avatar.png"
+                  alt="avatar.png"
+                  width={45}
+                  height={45}
+                />
+              )}
               <span className="dn-1199 ms-1"></span>
             </a>
             <div className="dropdown-menu">

@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import featureContent from '../../../data/properties';
 import useTrans from '../../../pages/hooks/useTran';
 import { Tooltip } from '@mui/material';
 
@@ -14,7 +13,7 @@ const FeaturedListings = ({ data }) => {
     <>
       {viewedItems.slice(0, 3).map((item) => (
         <div className="media d-flex" key={item[0]?.id}>
-          <Link href={`/listing-details-v1/${item[0]?.id}`}>
+          <Link href={`/house-details/${item[0]?.id}`}>
             <img
               className="align-self-start me-3"
               src={item[0]?.img}

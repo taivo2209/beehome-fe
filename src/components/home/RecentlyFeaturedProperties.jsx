@@ -62,13 +62,6 @@ const RecentlyFeaturedProperties = () => {
         <div className="thumb">
           <img className="img-whp" src={item[0]?.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
-            <ul className="tag mb0">
-              {/* {item[0]?.saleTag.map((val, i) => (
-                <li className="list-inline-item" key={i}>
-                  <a href="#">{val}</a>
-                </li>
-              ))} */}
-            </ul>
             {/* End .tag */}
 
             <ul className="icon mb0">
@@ -87,7 +80,7 @@ const RecentlyFeaturedProperties = () => {
 
             <Link
               onClick={() => getItem(item[0]?.id)}
-              href={`/listing-details-v1/${item[0]?.id}`}
+              href={`/house-details/${item[0]?.id}`}
               className="fp_price"
             >
               {trans.from}{' '}
@@ -104,7 +97,7 @@ const RecentlyFeaturedProperties = () => {
             <h4>
               <Link
                 onClick={() => getItem(item[0]?.id)}
-                href={`/listing-details-v1/${item[0]?.id}`}
+                href={`/house-details/${item[0]?.id}`}
               >
                 <Tooltip title={item[0]?.title} placement="bottom">
                   <div>{item[0]?.title}</div>

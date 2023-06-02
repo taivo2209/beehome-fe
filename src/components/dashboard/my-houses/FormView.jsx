@@ -38,7 +38,7 @@ function FormView(props) {
   return (
     <>
       <span className="flaticon-view" onClick={handleShow}></span>
-      <Modal show={show} onHide={handleClose} size="xl">
+      <Modal show={show} onHide={handleClose} size="xl" centered>
         <Modal.Header closeButton>
           <Modal.Title>
             {trans.lessor.houses.thong_tin} {data?.name}

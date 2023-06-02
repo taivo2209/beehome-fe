@@ -12,13 +12,15 @@ import useTrans from '../../../pages/hooks/useTran';
 
 const HousesData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
+  const endDate = useSelector((state) => state.auth.endDate);
+  console.log('====', endDate);
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const trans = useTrans();
   const getData = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/boardingHouse?page=1&limit=20',
+        `http://localhost:5000/lessor/boardingHouse?page=${currentPage}&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -43,23 +45,32 @@ const HousesData = () => {
 
   const handleDelete = async (houseId) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/lessor/boardingHouse/${houseId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      // console.log(res.data);
-      // Call getData() again to update the table after deletion
-      getData();
-      Swal.fire({
-        icon: 'success',
-        title: `${trans.lessor.xoa_thanh_cong}`,
-        showConfirmButton: false,
-        timer: 1500,
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_xoa}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xoa}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
+      if (result.isConfirmed) {
+        const res = await axios.delete(
+          `http://localhost:5000/lessor/boardingHouse/${houseId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          },
+        );
+        // console.log(res.data);
+        // Call getData() again to update the table after deletion
+        getData();
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.xoa_thanh_cong}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     } catch (err) {
       console.log(err);
     }

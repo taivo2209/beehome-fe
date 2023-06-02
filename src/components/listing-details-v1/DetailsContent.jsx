@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 // import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
 import axios from 'axios';
 import useTrans from '../../pages/hooks/useTran';
+import PropertyVideo from '../common/listing-details/PropertyVideo';
 
 const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
   const { typeData } = useSelector((state) => state.langType);
@@ -50,9 +51,12 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
     (total, current) => total + current?.comment?.star,
     0,
   );
-  // floor.boardingHouse.boardingHouseRentDeposits.filter((item) => item.lang === 'VN')[0].content;
+
   return (
     <>
+      <div className="shop_single_tab_content style2 mb30">
+        <PropertyVideo thumbnail={pic} videoUrl={dataDetail?.videoUrl} />
+      </div>
       <div className="listing_single_description">
         {/* End .listing_single_description */}
         <h4 className="mb30">{trans.detail.mo_ta}</h4>
@@ -60,7 +64,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
       </div>
       {/* End .listing_single_description */}
 
-      <div className="additional_details">
+      <div className="additional_details mt30">
         <div className="row">
           <div className="col-lg-12">
             {/* Fee */}
