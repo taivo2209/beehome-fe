@@ -20,7 +20,7 @@ const EditList = () => {
   const [wardId, setWardId] = useState();
   const [name, setName] = useState('');
   const [status, setStatus] = useState('ACTIVE');
-  const [type, setType] = useState('SINGLE_ROOM');
+  const [type, setType] = useState('MOTEL');
   const [contentRuleVN, setContentRuleVN] = useState('');
   const [contentRuleEN, setContentRuleEN] = useState('');
   const [contentDepositVN, setContentDepositVN] = useState('');
@@ -417,8 +417,8 @@ const EditList = () => {
             onChange={(e) => setType(e.target.value)}
           >
             <option disabled>Select</option>
-            <option value="SINGLE_ROOM">SINGLE-ROOM</option>
-            <option value="MULTIPLE_ROOM">MULTIPLE-ROOM</option>
+            <option value="APARTMENT">{trans.lessor.houses.chung_cu}</option>
+            <option value="MOTEL">{trans.lessor.houses.nha_tro}</option>
           </select>
         </div>
       </div>

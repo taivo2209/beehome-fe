@@ -192,7 +192,7 @@ export default {
       cap_nhat: 'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
-      dien_tich: 'acreage (m2)',
+      dien_tich: 'Acreage (m2)',
       tien_ich: 'Attributes',
       anh: 'Image',
       tinh_trang: 'Status',

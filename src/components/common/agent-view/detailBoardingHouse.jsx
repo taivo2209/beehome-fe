@@ -10,11 +10,7 @@ import useTrans from '../../../pages/hooks/useTran';
 const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
   const trans = useTrans();
   const { className } = PropTypes.string;
-  const closeBtn = (
-    <button className="close" onClick={() => handleToggle()} type="button">
-      &times;
-    </button>
-  );
+  
   //-----------------------------------------------------------------------------------------
 
   const [detailIsOpen, setDetailIsOpen] = useState(false);
@@ -45,7 +41,7 @@ const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
         width: '1000px',
       }}
     >
-      <ModalHeader toggle={toggle} close={closeBtn}></ModalHeader>
+      <ModalHeader toggle={toggle}></ModalHeader>
       <ModalBody
         style={{
           height: '70vh',
