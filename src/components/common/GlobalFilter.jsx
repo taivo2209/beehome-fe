@@ -53,7 +53,7 @@ const GlobalFilter = ({ className = '' }) => {
       } else if (type === 'DISTRICT') {
         setDataDistrict(res.data);
         dispatch(setDistrictData(res.data));
-        dispatch(setDistrict(data));
+        // dispatch(setDistrict(data));
         dispatch(resetWard());
         setWardId('');
       } else if (type === 'WARD') {

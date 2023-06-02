@@ -364,15 +364,6 @@ const EditList = () => {
   useEffect(() => {
     getDataProvince();
   }, []);
-  console.log(
-    'duy nè',
-    dataProvince,
-    dataDistrict,
-    dataWard,
-    provinceId,
-    districtId,
-    wardId,
-  );
   // console.log(tagIds);
   return (
     <>

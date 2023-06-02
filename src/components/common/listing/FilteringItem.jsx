@@ -85,7 +85,7 @@ const FilteringItem = () => {
     );
     dispatch(setWard(data));
   };
-
+  // console.log(data.district.district.id);
   return (
     <ul className="sasw_list mb0">
       <li className="search_area">
