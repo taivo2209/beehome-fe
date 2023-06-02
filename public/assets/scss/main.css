@@ -1393,8 +1393,8 @@ header.header-nav.menu_style_home_one.stricky-fixed .ace-responsive-menu li a,
 header.header-nav.menu_style_home_one.stricky-fixed a.navbar_brand span,
 header.header-nav.menu_style_home_one.stricky-fixed .sign_up_btn .btn,
 header.header-nav.menu_style_home_one.stricky-fixed #search-button i {
-  /* color: #484848; */
-  color: #ffffff;
+  color: #484848;
+  /* color: #ffffff; */
 }
 
 header.header-nav.menu_style_home_one.dashbord_pages.stricky-fixed
@@ -2224,9 +2224,9 @@ header.header-nav.menu_style_home_five .ace-responsive-menu > li > a {
 }
 
 header.header-nav.menu_style_home_one.style2 {
-  /* background-color: #ffffff; */
-  z-index: 1000;
-  background-color: #025464;
+  background-color: #ffffff;
+  /* z-index: 1000; */
+  /* background-color: #025464; */
   -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.09);
   -o-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.09);
@@ -2243,8 +2243,8 @@ header.header-nav.menu_style_home_one.style2 a.navbar_brand {
 }
 
 header.header-nav.menu_style_home_one.style2 a.navbar_brand span {
-  /* color: #484848; */
-  color: #ffffff;
+  color: #484848;
+  /* color: #ffffff; */
 
   font-family: 'Nunito';
   font-size: 28px;
@@ -2307,8 +2307,8 @@ header.header-nav.menu_style_home_one.style2.home10
 header.header-nav.menu_style_home_one.style2 .ace-responsive-menu li a {
   font-size: 16px;
   font-family: 'Nunito';
-  /* color: #484848; */
-  color: #ffffff;
+  color: #484848;
+  /* color: #ffffff; */
 
   line-height: 1.2;
 }
