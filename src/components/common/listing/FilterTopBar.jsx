@@ -5,8 +5,10 @@ import {
   addFeatured,
   addStatusType,
 } from '../../../features/filter/filterSlice';
+import useTrans from '../../../pages/hooks/useTran';
 
 const FilterTopBar = () => {
+  const trans = useTrans();
   const { length } = useSelector((state) => state.properties);
   const { statusType, featured } = useSelector((state) => state.filter);
   const [getStatus, setStatus] = useState(statusType);
@@ -39,9 +41,9 @@ const FilterTopBar = () => {
               {length}{' '}
             </span>
             {length !== 0 ? (
-              'Search results'
+              `${trans.tim_duoc}`
             ) : (
-              <span className="text-danger">Not found results</span>
+              <span className="text-danger">{trans.khong_tim}</span>
             )}
           </p>
         </div>

@@ -53,7 +53,7 @@ const MyAccount = () => {
           <Link
             href={item.routerPath}
             key={item.id}
-            className="dropdown-item"
+            className="dropdown-item color-black"
             style={
               isSinglePageActive(`${item.routerPath}`, route.pathname)
                 ? { color: '#ff5a5f' }

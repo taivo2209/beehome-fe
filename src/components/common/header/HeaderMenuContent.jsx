@@ -98,7 +98,7 @@ const HeaderMenuContent = ({ float = '' }) => {
                 <img
                   className="rounded-circle"
                   src="assets/images/avatar.png"
-                  alt="avatar.png"
+                  alt="img"
                   width={45}
                   height={45}
                 />

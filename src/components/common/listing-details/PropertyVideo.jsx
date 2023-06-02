@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ModalVideo from 'react-modal-video';
 import useTrans from '../../../pages/hooks/useTran';
 
-const PropertyVideo = ({ thumbnail, videoUrl }) => {
+const PropertyVideo = ({ videoUrl }) => {
   const [isOpen, setOpen] = useState(false);
   const url = videoUrl && new URL(videoUrl);
   const searchParams = url?.search && new URLSearchParams(url.search);

@@ -7,6 +7,8 @@ export default {
   tro_lai: 'Back',
   huy_bo: 'Cancel',
   dong: 'Close',
+  tim_duoc:' searching results',
+  khong_tim:'Not found any results',
   home: {
     title: 'Home',
     content: 'Home',
@@ -190,7 +192,7 @@ export default {
       cap_nhat: 'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
-      dien_tich: 'acreage (m2)',
+      dien_tich: 'Acreage (m2)',
       tien_ich: 'Attributes',
       anh: 'Image',
       tinh_trang: 'Status',
