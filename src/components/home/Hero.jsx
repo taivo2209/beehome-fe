@@ -7,7 +7,7 @@ import useTrans from '../../pages/hooks/useTran';
 const Hero = () => {
   const dispatch = useDispatch();
   const trans = useTrans();
-  dispatch(resetData());
+  // dispatch(resetData());
   return (
     <section className="home-one home5-overlay home5_bgi5 parallax">
       <div className="container">
