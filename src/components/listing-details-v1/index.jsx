@@ -2,7 +2,6 @@ import CopyrightFooter from '../common/footer/CopyrightFooter';
 import Footer from '../common/footer/Footer';
 import Header from '../common/header/DefaultHeader';
 import MobileMenu from '../common/header/MobileMenu';
-import ListingGallery from '../common/listing-details/ListingGallery';
 import DetailsContent from './DetailsContent';
 import Sidebar from './Sidebar';
 
@@ -14,14 +13,6 @@ const index = () => {
 
       {/* <!--  Mobile Menu --> */}
       <MobileMenu />
-
-      {/* <!-- Listing Single Property --> */}
-      <section className="listing-title-area mt85 md-mt0">
-        <div className="container">
-          <ListingGallery />
-        </div>
-      </section>
-
       {/* <!-- Agent Single Grid View --> */}
       <section className="our-agent-single bgc-f7 pb30-991">
         <div className="container">
