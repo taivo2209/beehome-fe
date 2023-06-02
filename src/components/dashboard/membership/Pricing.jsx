@@ -144,16 +144,20 @@ const Pricing = () => {
       id: 1,
       price: '0',
       title: 'FREE',
-      features: ['1 Bài đăng', 'Hiển thị tối đa 7 ngày', 'Không được hỗ trợ'],
+      features: [
+        `${trans.lessor.membership.free_1}`,
+        `${trans.lessor.membership.free_2}`,
+        `${trans.lessor.membership.free_3}`,
+      ],
     },
     {
       id: 2,
       price: '400.000đ',
       title: 'BASIC',
       features: [
-        '50 Bài đăng',
-        'Hiển thị kéo dài hơn 2 tháng',
-        'Hỗ trợ trong giờ hành chính',
+        `${trans.lessor.membership.basic_1}`,
+        `${trans.lessor.membership.basic_2}`,
+        `${trans.lessor.membership.basic_3}`,
       ],
     },
     {
@@ -161,9 +165,9 @@ const Pricing = () => {
       price: '1.000.000đ',
       title: 'PREMIUM',
       features: [
-        'Không giới hạn bài đăng',
-        'Hiển thị đến khi được thuê hết phòng',
-        'Hỗ trợ mọi lúc trừ Chủ nhật',
+        `${trans.lessor.membership.premium_1}`,
+        `${trans.lessor.membership.premium_2}`,
+        `${trans.lessor.membership.premium_3}`,
       ],
     },
   ];

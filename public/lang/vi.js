@@ -243,7 +243,16 @@ export default {
       goi_ht: 'Gói Hiện tại',
       thanh_toan_tc: 'Thanh toán thành công!',
       tg_gia_han: 'Hiện tại chưa đến lúc gia hạn!',
-      xac_nhan_tt:'Xác nhận thanh toán'
+      xac_nhan_tt:'Xác nhận thanh toán',
+      free_1:'Sử dụng thử',
+      free_2:'Đăng được duy nhất 1 phòng',
+      free_3:'Không được hỗ trợ',
+      basic_1:'3 tháng sử dụng dịch vụ',
+      basic_2:'Được đăng tối đa 20 phòng trọ',
+      basic_3:'Hỗ trợ trong giờ hành chính',
+      premium_1:'3 tháng sử dụng dịch vụ',
+      premium_2:'Không giới hạn số phòng trọ',
+      premium_3:'Hỗ trợ mọi lúc mọi nơi',
     },
     bill:{
       hoa_don:'Hóa đơn',

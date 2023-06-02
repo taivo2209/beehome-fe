@@ -1,7 +1,6 @@
 import Header from "../../common/header/admin/Header";
 import SidebarMenu from "../../common/header/admin/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
-import SearchBox from "./SearchBox";
 import ReportsData from "./ReportsData";
 
 const index = () => {
@@ -58,14 +57,7 @@ const index = () => {
                   </div>
                 </div>
                 {/* End .col */}
-                <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-                  <ul className="sasw_list mb0">
-                    <li className="search_area">
-                      <SearchBox />
-                    </li>
-                  </ul>
-                </div>
-                {/* End .col */}
+                
               </div>
               {/* End .row */}
 

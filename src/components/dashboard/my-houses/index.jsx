@@ -3,7 +3,6 @@ import Header from '../../common/header/dashboard/Header';
 import SidebarMenu from '../../common/header/dashboard/SidebarMenu';
 import MobileMenu from '../../common/header/MobileMenu';
 import HousesData from './HousesData';
-import SearchBox from './SearchBox';
 import Demo from './CheckPackage'
 
 const Index = () => {
@@ -64,14 +63,7 @@ const Index = () => {
                   </div>
                 </div>
                 {/* End .col */}
-                <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-                  <ul className="sasw_list mb0">
-                    <li className="search_area">
-                      <SearchBox />
-                    </li>
-                  </ul>
-                </div>
-                {/* End .col */}
+                
               </div>
               {/* End .row */}
 

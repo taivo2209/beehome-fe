@@ -2,7 +2,6 @@ import Header from "../../common/header/admin/Header";
 import SidebarMenu from "../../common/header/admin/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
 import CustomersData from "./CustomersData";
-import SearchBox from "./SearchBox";
 
 const index = () => {
   return (
@@ -56,14 +55,6 @@ const index = () => {
                     <h2 className="breadcrumb_title">Customers List</h2>
                     <p>We are glad to see you again!</p>
                   </div>
-                </div>
-                {/* End .col */}
-                <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-                  <ul className="sasw_list mb0">
-                    <li className="search_area">
-                      <SearchBox />
-                    </li>
-                  </ul>
                 </div>
                 {/* End .col */}
               </div>

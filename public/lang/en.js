@@ -242,7 +242,16 @@ export default {
       goi_ht: 'My Package',
       thanh_toan_tc: 'Payment success!',
       tg_gia_han: 'It is not time to renew your membership yet!',
-      xac_nhan_tt:'Payment confirmation'
+      xac_nhan_tt:'Payment confirmation',
+      free_1:'Free to use',
+      free_2:'Only 1 room can be posted',
+      free_3:'Use without supported',
+      basic_1:'3 months of service use',
+      basic_2:'Post up to 20 rooms',
+      basic_3:'Support during office hours',
+      premium_1:'3 months of service use',
+      premium_2:'Unlimited number of rooms',
+      premium_3:'Support anytime, anywhere',
     },
     bill:{
       hoa_don:'My Bills',
