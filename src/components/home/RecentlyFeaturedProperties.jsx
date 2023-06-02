@@ -62,7 +62,6 @@ const RecentlyFeaturedProperties = () => {
         <div className="thumb">
           <img className="img-whp" src={item[0]?.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
-            
             {/* End .tag */}
 
             <ul className="icon mb0">

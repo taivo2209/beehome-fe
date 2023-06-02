@@ -5,6 +5,7 @@ import DetailBoardingHouse from '../common/agent-view/detailBoardingHouse';
 import useTrans from '../../pages/hooks/useTran';
 import Link from 'next/link';
 import ReportBox from '../blog-details/ReportBox';
+import { useRouter } from 'next/router';
 const Sidebar = ({
   data,
   customer,
@@ -18,6 +19,7 @@ const Sidebar = ({
   const toggle = () => {
     setModal(!modal);
   };
+  const router = useRouter();
   // console.log('====', customer);
   return (
     <>
@@ -61,11 +63,14 @@ const Sidebar = ({
       ) : (
         <button
           type="submit"
-          className="btn btn-thm col-lg-8 bg-danger border-0"
+          className="btn btn-thm col-lg-8 offset-lg-3"
+          onClick={() => {
+            router.push('/login');
+          }}
         >
-          <Link href="/login">
-            <span className="text-white">{trans.detail.dang_nhap_bc}</span>
-          </Link>
+          {/* <Link href="/login"> */}
+          <span>{trans.detail.dang_nhap_bc}</span>
+          {/* </Link> */}
         </button>
       )}
     </>

@@ -1,7 +1,6 @@
 import Slider from 'react-slick';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSlice';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';

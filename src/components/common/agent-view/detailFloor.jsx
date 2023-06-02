@@ -34,7 +34,7 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
       }}
       subheader={<li />}
     >
-      {data[0]?.floors?.map((itemFloor) => (
+      {data?.floors?.map((itemFloor) => (
         <div key={`section-${itemFloor.floorNumber}`}>
           <ListSubheader>{`${trans.lessor.houses.tang} ${itemFloor.floorNumber}`}</ListSubheader>
           <Grid
@@ -56,77 +56,80 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                 }}
               >
-                <Grid container spacing={2}>
-                  <Grid item>
-                    <ButtonBase sx={{ width: 128, height: 128 }}>
-                      <Image
-                        src={roomImg}
-                        alt=""
-                        style={{
-                          margin: 'auto',
-                          display: 'block',
-                          maxWidth: '100%',
-                          maxHeight: '100%',
-                        }}
-                      />
-                    </ButtonBase>
-                  </Grid>
-                  <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={2}>
-                      <Grid item xs>
-                        <Typography
-                          gutterBottom
-                          variant="subtitle1"
-                          component="div"
-                        >
-                          {trans.lessor.rooms.gia} : {item.price}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {trans.lessor.rooms.dien_tich}: {item.acreage}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {trans.lessor.rooms.ten_phong}: {item.name}
-                        </Typography>
-                      </Grid>
+                {item.status == 'ACTIVE' ? (
+                  <Grid container spacing={2}>
+                    <Grid item>
+                      <ButtonBase sx={{ width: 128, height: 128 }}>
+                        <Image
+                          src={roomImg}
+                          alt=""
+                          style={{
+                            margin: 'auto',
+                            display: 'block',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                          }}
+                        />
+                      </ButtonBase>
                     </Grid>
-                    <Grid item></Grid>
-                  </Grid>
-                </Grid>
-                {/* <Grid container spacing={2}>
-                  <Grid item>
-                    <ButtonBase sx={{ width: 128, height: 128 }}>
-                      <Image
-                        src={disableRoom}
-                        alt=""
-                        style={{
-                          margin: 'auto',
-                          display: 'block',
-                          maxWidth: '100%',
-                          maxHeight: '100%',
-                        }}
-                      />
-                    </ButtonBase>
-                  </Grid>
-                  <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={2}>
-                      <Grid item xs>
-                        <Typography
-                          gutterBottom
-                          variant="subtitle1"
-                          component="div"
-                        >
-                          Phòng đã được thuê
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          Acreage: {item.acreage}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          Room: {item.name}
-                        </Typography>
+                    <Grid item xs={12} sm container>
+                      <Grid item xs container direction="column" spacing={2}>
+                        <Grid item xs>
+                          <Typography
+                            gutterBottom
+                            variant="subtitle1"
+                            component="div"
+                          >
+                            {trans.lessor.rooms.gia} : {item.price}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {trans.lessor.rooms.dien_tich}: {item.acreage}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {trans.lessor.rooms.ten_phong}: {item.name}
+                          </Typography>
+                        </Grid>
                       </Grid>
+                      <Grid item></Grid>
                     </Grid>
                   </Grid>
-                </Grid> */}
+                ) : (
+                  <Grid container spacing={2}>
+                    <Grid item>
+                      <ButtonBase sx={{ width: 128, height: 128 }}>
+                        <Image
+                          src={disableRoom}
+                          alt=""
+                          style={{
+                            margin: 'auto',
+                            display: 'block',
+                            maxWidth: '100%',
+                            maxHeight: '100%',
+                          }}
+                        />
+                      </ButtonBase>
+                    </Grid>
+                    <Grid item xs={12} sm container>
+                      <Grid item xs container direction="column" spacing={2}>
+                        <Grid item xs>
+                          <Typography
+                            gutterBottom
+                            variant="subtitle1"
+                            component="div"
+                          >
+                            Phòng đã được thuê
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            Acreage: {item.acreage}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            Room: {item.name}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                )}
               </Paper>
             ))}
           </Grid>
