@@ -268,15 +268,15 @@ const EditList = () => {
       // setDataWard(res2?.data);
       // setWardId(ward[0]?.id);
 
-      console.log(
-        'data province',
-        res,
-        res1,
-        res2,
-        // province[0]?.id,
-        // district[0]?.id,
-        // ward[0]?.id,
-      );
+      // console.log(
+      //   'data province',
+      //   res,
+      //   res1,
+      //   res2,
+      //   // province[0]?.id,
+      //   // district[0]?.id,
+      //   // ward[0]?.id,
+      // );
     } catch (err) {
       console.log(err);
     }

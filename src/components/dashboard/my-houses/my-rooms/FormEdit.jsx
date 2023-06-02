@@ -6,6 +6,7 @@ import PropertyMediaUploader from '../PropertyMediaUploader';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
 import useTrans from '../../../../pages/hooks/useTran';
+import Swal from 'sweetalert2';
 
 function FormEdit({ id, updateData }) {
   const trans = useTrans();
@@ -20,7 +21,6 @@ function FormEdit({ id, updateData }) {
   const [roomSimple, setRoomSimple] = useState('');
   const [toilet, setToilet] = useState('1');
   const [status, setStatus] = useState('ACTIVE');
-  const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
   const [imgIds, setImgIds] = useState([]);
 
@@ -46,7 +46,7 @@ function FormEdit({ id, updateData }) {
     getData();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       roomId: id,
@@ -61,18 +61,30 @@ function FormEdit({ id, updateData }) {
       status: status,
     };
     try {
-      axios.patch('http://localhost:5000/lessor/room', formData, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+      const result = await Swal.fire({
+        title: `${trans.lessor.xac_nhan_chinh}`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: `${trans.lessor.xac_nhan}`,
+        cancelButtonText: `${trans.huy_bo}`,
       });
-      updateData();
+      if (result.isConfirmed) {
+        await axios.patch('http://localhost:5000/lessor/room', formData, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        Swal.fire({
+          icon: 'success',
+          title: `${trans.lessor.cap_nhat}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        updateData();
+      }
     } catch (err) {
       console.log(err);
     }
-  };
-  const handleCategoryChange = async (selections) => {
-    setCategoryIds(selections);
   };
 
   const handleAttributeChange = async (selections) => {
@@ -83,7 +95,7 @@ function FormEdit({ id, updateData }) {
     setImgIds(newImages);
   };
 
-  useEffect(() => {}, [categoryIds, attributeIds]);
+  useEffect(() => {}, [attributeIds]);
   // console.log('categoryIds', categoryIds);
   // console.log('attri', attributeIds);
 

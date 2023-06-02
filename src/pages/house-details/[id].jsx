@@ -82,6 +82,7 @@ const ListingDynamicDetailsV1 = () => {
                 <div className="single_property_social_share position-static transform-none">
                   <div className="price float-start fn-400">
                     <h2>
+                      {trans.from}{' '}
                       {boardingHouseDetail[0]?.price.replace(
                         /\B(?=(\d{3})+(?!\d))/g,
                         '.',

@@ -40,7 +40,6 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   const [roomSimple, setRoomSimple] = useState('');
   const [toilet, setToilet] = useState('1');
   const [imgIds, setImgIds] = useState([]);
-  const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
   const [prediction, setPrediction] = useState();
 
@@ -52,7 +51,6 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
       !roomSimple ||
       !toilet ||
       !imgIds ||
-      !categoryIds ||
       !attributeIds
     ) {
       Swal.fire({
@@ -98,7 +96,6 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
       roomSimple: roomSimple,
       toilet: toilet,
       imgIds: imgIds,
-      categoryIds: categoryIds,
       attributeIds: attributeIds,
     };
     if (isValid) {
@@ -140,7 +137,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   };
   // console.log('img', imgIds);
 
-  useEffect(() => {}, [categoryIds, attributeIds]);
+  useEffect(() => {}, [attributeIds]);
   // console.log('categoryIds', categoryIds);
   // console.log('attri', attributeIds);
   const predict = async () => {

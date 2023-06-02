@@ -80,7 +80,8 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                             variant="subtitle1"
                             component="div"
                           >
-                            {trans.lessor.rooms.gia} : {item.price}
+                            {trans.lessor.rooms.gia_1} :{' '}
+                            {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}đ
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
                             {trans.lessor.rooms.dien_tich}: {item.acreage}
@@ -117,13 +118,13 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                             variant="subtitle1"
                             component="div"
                           >
-                            Phòng đã được thuê
+                            {trans.lessor.rooms.da_duoc_thue}
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
-                            Acreage: {item.acreage}
+                            {trans.lessor.rooms.dien_tich}: {item.acreage}
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
-                            Room: {item.name}
+                            {trans.lessor.rooms.ten_phong}: {item.name}
                           </Typography>
                         </Grid>
                       </Grid>

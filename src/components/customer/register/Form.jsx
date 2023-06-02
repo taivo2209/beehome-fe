@@ -217,6 +217,7 @@ const Form = () => {
           onChange={(e) => setBirthDate(e.target.value)}
         />
       </div>
+
       {/* End .form-group */}
 
       <div className="form-group form-check custom-checkbox mb-3">

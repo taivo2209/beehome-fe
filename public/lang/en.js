@@ -78,7 +78,7 @@ export default {
     text_1: 'Register a Customer account',
     text_2: 'Register a Lessor account',
     text_3: 'I have read and accept the Terms and Privacy Policy?',
-    xac_nhan: 'Conform Password',
+    xac_nhan: 'Confirm Password',
     ten: 'First Name',
     ho: 'Last Name',
     sdt: 'Phone Number',
@@ -196,6 +196,7 @@ export default {
       cap_nhat: 'Edit Room',
       ten_phong: 'Name',
       gia: 'Price (đ/month)',
+      gia_1: 'Price',
       dien_tich: 'Acreage (m2)',
       tien_ich: 'Attributes',
       anh: 'Image',
@@ -211,6 +212,7 @@ export default {
         'Currently, I do not have much information about the price of accommodation in this area.',
       het_phong: 'Your current package cannot create more rooms!',
       het_phong_text: 'Please upgrade your membership!',
+      da_duoc_thue:'This room is already rented.'
     },
     attributes: {
       tien_ich: 'Attributes',

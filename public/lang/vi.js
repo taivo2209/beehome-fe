@@ -197,6 +197,7 @@ export default {
       cap_nhat: 'Sửa phòng',
       ten_phong: 'Tên phòng',
       gia: 'Giá (đ/tháng)',
+      gia_1: 'Giá',
       dien_tich: 'Diện tích (m2)',
       tien_ich: 'Tiện ích',
       anh: 'Ảnh',
@@ -212,6 +213,7 @@ export default {
         'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này!',
       het_phong: 'Gói bạn sử dụng hiện tại không thể tạo thêm phòng!',
       het_phong_text:'Vui lòng nâng cấp gói thành viên!',
+      da_duoc_thue:'Phòng này đã được thuê.'
     },
     attributes: {
       tien_ich: 'Tiện ích',
