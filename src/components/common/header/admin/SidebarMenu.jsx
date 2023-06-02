@@ -4,33 +4,45 @@ import {
   isParentPageActive,
   isSinglePageActive,
 } from '../../../../utils/daynamicNavigation';
+import useTrans from '../../../../pages/hooks/useTran';
 
 const SidebarMenu = () => {
   const route = useRouter();
-
+  const trans = useTrans();
   const adminManage = [
     {
       id: 1,
-      name: 'Manage Lessor',
+      name: `${trans.admin.sidebar.quan_ly_cn}`,
       route: '/manage-lessor',
       icon: 'flaticon-user',
     },
     {
       id: 2,
-      name: 'Manage Customer',
+      name: `${trans.admin.sidebar.quan_ly_kh}`,
       route: '/manage-customer',
       icon: 'flaticon-user',
     },
     {
       id: 3,
-      name: 'Manage Report',
+      name: `${trans.admin.sidebar.quan_ly_bc}`,
       route: '/manage-report',
       icon: 'flaticon-chat',
+    },
+    {
+      id: 4,
+      name: `${trans.admin.sidebar.quan_ly_nha}`,
+      route: '/manage-house',
+      icon: 'flaticon-home',
     },
   ];
 
   const manageAccount = [
-    { id: 1, name: 'Logout', route: '/login', icon: 'flaticon-logout' },
+    {
+      id: 1,
+      name: `${trans.admin.sidebar.dang_xuat}`,
+      route: '/login',
+      icon: 'flaticon-logout',
+    },
   ];
 
   return (
@@ -54,7 +66,7 @@ const SidebarMenu = () => {
             >
               <Link href="/dashboard">
                 <i className="flaticon-layers"></i>
-                <span> Dashboard</span>
+                <span> {trans.admin.sidebar.thong_ke}</span>
               </Link>
             </li>
             <li
@@ -66,7 +78,7 @@ const SidebarMenu = () => {
             >
               <Link href="/manage-income">
                 <i className="flaticon-money-bag"></i>
-                <span> Income</span>
+                <span> {trans.admin.sidebar.doanh_thu}</span>
               </Link>
             </li>
           </ul>
@@ -74,7 +86,7 @@ const SidebarMenu = () => {
         {/* End Main */}
 
         <li className="title">
-          <span>Admin Manage</span>
+          <span>{trans.admin.sidebar.quan_ly}</span>
           <ul>
             <li
               className={`treeview ${
@@ -82,7 +94,8 @@ const SidebarMenu = () => {
               }`}
             >
               <a data-bs-toggle="collapse" href="#my-property">
-                <i className="flaticon-plus"></i> <span>Admin Manage</span>
+                <i className="flaticon-plus"></i>{' '}
+                <span>{trans.admin.sidebar.quan_ly}</span>
                 <i className="fa fa-angle-down pull-right"></i>
               </a>
               <ul className="treeview-menu collapse" id="my-property">
@@ -99,7 +112,7 @@ const SidebarMenu = () => {
         </li>
 
         <li className="title">
-          <span>Manage Account</span>
+          <span>{trans.lessor.sidebar.quan_ly_tk}</span>
           <ul>
             {manageAccount.map((item) => (
               <li

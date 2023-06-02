@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import FormView from './FormView';
 import Swal from 'sweetalert2';
 import Pagination from '../../common/Pagination';
+import FormEdit from './FormEdit';
 
 const CustomersData = () => {
   const accessToken = useSelector((state) => state.auth.accessToken);
@@ -81,12 +82,14 @@ const CustomersData = () => {
           {data?.items &&
             data?.items?.map((item) => (
               <tr key={item.id} className="title" scope="row">
-                <td>{item.firstName}{' '}{item.lastName}</td>
+                <td>
+                  {item.firstName} {item.lastName}
+                </td>
                 <td className="dn-lg"></td>
                 <td className="dn-lg"></td>
                 <td></td>
                 <td></td>
-                
+
                 <td>
                   <ul className="view_edit_delete_list mb0">
                     <li
@@ -98,6 +101,18 @@ const CustomersData = () => {
                       <a href="#">
                         {/* <span className="flaticon-view"></span> */}
                         <FormView id={item.id} />
+                        {/* {console.log(item.categoryId)} */}
+                      </a>
+                    </li>
+                    <li
+                      className="list-inline-item"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="View"
+                    >
+                      <a href="#">
+                        {/* <span className="flaticon-view"></span> */}
+                        <FormEdit id={item.id} getData={getData} />
                         {/* {console.log(item.categoryId)} */}
                       </a>
                     </li>

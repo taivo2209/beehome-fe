@@ -251,4 +251,23 @@ export default {
       chon_ngay:'Chọn ngày',
     }
   },
+  admin:{
+    sidebar:{
+      thong_ke:'Thống kê',
+      doanh_thu:'Doanh thu',
+      quan_ly:'Quản lý',
+      quan_ly_cn:'Quản lý chủ nhà',
+      quan_ly_kh:'Quản lý khách hàng',
+      quan_ly_bc:'Quản lý báo cáo',
+      quan_ly_nha:'Quản lý bài đăng',
+      dang_xuat:'Đăng xuất'
+    },
+    thong_ke:{
+      thong_ke:'Thống kê',
+      nha:'Bài đăng',
+      chu_nha:'Chủ nhà',
+      khach_hang:'Khách hàng',
+      bao_cao:'Báo cáo',
+    }
+  }
 };

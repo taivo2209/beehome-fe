@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
-import FloorDetail from './FloorDetail';
 import useTrans from '../../../pages/hooks/useTran';
 
 function FormView({id, getNewData}) {
@@ -13,13 +12,11 @@ function FormView({id, getNewData}) {
   const [data, setData] = useState({});
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleFloorClick = () => {
-    setShow(true);
-  };
+ 
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/boardingHouse/${id}`,
+        `http://localhost:5000/admin/boardingHouse/${id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -89,15 +86,6 @@ function FormView({id, getNewData}) {
                 {data?.boardingHouseAddress?.district},{' '}
                 {data?.boardingHouseAddress?.province}
               </span>
-            </li>
-            <li onClick={handleFloorClick}>
-              <span className="text-danger">{trans.lessor.houses.tang}: </span>
-              <FloorDetail
-                floorData={data?.floors}
-                province={data?.boardingHouseAddress?.province}
-                district={data?.boardingHouseAddress?.district}
-                ward={data?.boardingHouseAddress?.ward}
-              />
             </li>
           </ul>
         </Modal.Body>
