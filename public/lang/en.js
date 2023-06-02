@@ -268,7 +268,7 @@ export default {
       dang_xuat:'Logout'
     },
     thong_ke:{
-      thong_ke:'Dashboard',
+      thong_ke:'Statistical',
       nha:`House's Posts`,
       chu_nha:'Lessors',
       khach_hang:'Customers',
