@@ -15,8 +15,10 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import useTrans from '../../pages/hooks/useTran';
 import PropertyVideo from '../common/listing-details/PropertyVideo';
+import { useRouter } from 'next/router';
 
 const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
+  const router = useRouter();
   const { typeData } = useSelector((state) => state.langType);
   const locale = typeData;
   const transs = locale === 'vi' ? 'VN' : 'EN';
@@ -39,14 +41,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
   useEffect(() => {
     getData();
   }, [boardingHouseId]);
-  // useEffect(() => {
-  //   const getCoords = async () => {
-  //     const results = await geocodeByAddress(dataDetail?.location);
-  //     const latLng = await getLatLng(results[0]);
-  //     setCoords(latLng);
-  //   };
-  //   dataDetail && getCoords();
-  // }, [dataDetail]);
+
   const sum = comments.reduce(
     (total, current) => total + current?.comment?.star,
     0,
@@ -55,12 +50,21 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
   return (
     <>
       <div className="shop_single_tab_content style2 mb30">
-        <PropertyVideo thumbnail={pic} videoUrl={dataDetail?.videoUrl} />
+        <PropertyVideo
+          //  thumbnail={pic}
+          videoUrl={dataDetail?.videoUrl}
+        />
       </div>
       <div className="listing_single_description">
         {/* End .listing_single_description */}
         <h4 className="mb30">{trans.detail.mo_ta}</h4>
-        <PropertyDescriptions description={dataDetail?.boardingHouse} />
+        <PropertyDescriptions
+          description={
+            floor?.boardingHouse?.boardingHouseDescriptions?.filter(
+              (item) => item.lang === transs,
+            )[0].content
+          }
+        />
       </div>
       {/* End .listing_single_description */}
 
@@ -74,7 +78,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
         </div>
       </div>
 
-      <div className="application_statics mt30">
+      <div className="additional_details mt30">
         <div className="row">
           <div className="col-lg-12">
             <h4 className="mb10">{trans.detail.tien_ich}</h4>
@@ -89,7 +93,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
         </div>
       </div>
 
-      <div className="listing_single_description">
+      <div className="additional_details mt30">
         {/* End .listing_single_description */}
         <h4 className="mb30">{trans.detail.quy_dinh}</h4>
         <PropertyRule
@@ -101,7 +105,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
         />
       </div>
 
-      <div className="listing_single_description">
+      <div className="additional_details mt30">
         {/* End .listing_single_description */}
         <h4 className="mb30">{trans.detail.tien_coc}</h4>
         <PropertyRenDeposits
@@ -140,8 +144,8 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
               <Ratings />
             </ul>
             <a className="tr_outoff pl10" href="#">
-              ( {sum ? sum : '0' / comments.length} {trans.detail.danh_gia.tren}{' '}
-              5 )
+              {/* ( {sum ? sum : '0' / comments.length} {trans.detail.danh_gia.tren}{' '}
+              5 ) */}
             </a>
             <a className="write_review float-end fn-xsd" href="#">
               {trans.detail.danh_gia.viet_danh_gia}
@@ -181,10 +185,14 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
               <button
                 type="submit"
                 className="btn btn-thm col-lg-6 offset-lg-3"
+                onClick={() => {
+                  router.push('/login');
+                }}
               >
-                <Link href="/login">
-                  <span>{trans.detail.danh_gia.dang_nhap}</span>
-                </Link>
+                {/* <Link href="/login"> */}
+
+                <span>{trans.detail.danh_gia.dang_nhap}</span>
+                {/* </Link> */}
               </button>
             )}
           </div>

@@ -52,7 +52,7 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
         Swal.fire({
           icon: 'success',
           title: `${trans.booking.dat_lich_ok}`,
-          text:`${trans.booking.xac_nhan_dat}`,
+          text: `${trans.booking.xac_nhan_dat}`,
           confirmButtonText: 'OK',
         });
       } catch (error) {
@@ -102,65 +102,67 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
   };
   return (
     <>
-      {/* <div style={{ color: '#0000' }}> */}
-      <Box sx={{ width: '100%' }}>
-        <Stepper activeStep={activeStep}>
-          {steps.map((label, index) => {
-            const stepProps = {};
-            const labelProps = { color: '#ee7b35' };
+      <div className="chonngay">
+        <Box sx={{ width: '100%' }}>
+          <Stepper activeStep={activeStep}>
+            {steps.map((label, index) => {
+              const stepProps = {};
+              const labelProps = { color: '#ee7b35' };
 
-            if (isStepSkipped(index)) {
-              stepProps.completed = false;
-            }
-            return (
-              <Step key={label} {...stepProps}>
-                <StepLabel className="step_color" {...labelProps}>
-                  {label}
-                </StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
-        {activeStep === steps.length ? (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Box sx={{ flex: '1 1 auto' }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              {activeStep == 0 ? (
-                <FormDateSelect customer={book} setBook={setBook} />
-              ) : (
-                <FormInfoBookDayToMeet customer={book} setBook={setBook} />
-              )}
-            </Typography>
+              if (isStepSkipped(index)) {
+                stepProps.completed = false;
+              }
+              return (
+                <Step key={label} {...stepProps}>
+                  <StepLabel className="step_color" {...labelProps}>
+                    {label}
+                  </StepLabel>
+                </Step>
+              );
+            })}
+          </Stepper>
+          {activeStep === steps.length ? (
+            <React.Fragment>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                <Box sx={{ flex: '1 1 auto' }} />
+                <Button onClick={handleReset}>Reset</Button>
+              </Box>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Typography sx={{ mt: 2, mb: 1 }}>
+                {activeStep == 0 ? (
+                  <FormDateSelect customer={book} setBook={setBook} />
+                ) : (
+                  <FormInfoBookDayToMeet customer={book} setBook={setBook} />
+                )}
+              </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-              <Button
-                style={{ color: '#ee7b35' }}
-                color="primary"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                {trans.tro_lai}
-              </Button>
-              <Box sx={{ flex: '1 1 auto' }} />
+              <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                <Button
+                  style={{ color: '#ee7b35' }}
+                  color="primary"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: 1 }}
+                >
+                  {trans.tro_lai}
+                </Button>
+                <Box sx={{ flex: '1 1 auto' }} />
 
-              <Button onClick={handleNext} style={{ color: '#ee7b35' }}>
-                {activeStep === steps.length - 1 ? `${trans.finish}` : `${trans.tiep_tuc}`}
-              </Button>
-            </Box>
-          </React.Fragment>
-        )}
-      </Box>
-      {/* </div> */}
+                <Button onClick={handleNext} style={{ color: '#ee7b35' }}>
+                  {activeStep === steps.length - 1
+                    ? `${trans.finish}`
+                    : `${trans.tiep_tuc}`}
+                </Button>
+              </Box>
+            </React.Fragment>
+          )}
+        </Box>
+      </div>
     </>
   );
 };

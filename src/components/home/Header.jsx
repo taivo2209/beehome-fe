@@ -20,6 +20,7 @@ const Header = () => {
   return (
     // {/* <!-- /.theme-main-menu --> */}
     <header
+      style={{ backgroundColor: '#025464' }}
       className={`header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu  ${
         navbar ? 'stricky-fixed ' : ''
       }`}

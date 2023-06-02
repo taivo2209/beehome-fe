@@ -4,9 +4,9 @@ import useTrans from '../../../pages/hooks/useTran';
 
 const PropertyVideo = ({ thumbnail, videoUrl }) => {
   const [isOpen, setOpen] = useState(false);
-  const url = new URL(videoUrl);
-  const searchParams = new URLSearchParams(url.search);
-  const idVideo = searchParams.get('v');
+  const url = videoUrl && new URL(videoUrl);
+  const searchParams = url?.search && new URLSearchParams(url.search);
+  const idVideo = searchParams?.get('v');
   const trans = useTrans();
   console.log(idVideo);
   return (

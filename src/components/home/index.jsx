@@ -42,7 +42,7 @@ const Index = () => {
         </div>
       </section>
       {/* <!-- Property Cities --> */}
-      <section id="property-city" className="property-city pb30">
+      <section id="property-city" className="property-cityy pb30">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
