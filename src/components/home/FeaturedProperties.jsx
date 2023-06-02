@@ -62,11 +62,11 @@ const FeaturedProperties = () => {
           <img className="img-whp" src={item.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
             <ul className="tag mb0">
-              {item?.saleTag.map((val, i) => (
+              {/* {item?.saleTag.map((val, i) => (
                 <li className="list-inline-item" key={i}>
                   <a href="#">{val}</a>
                 </li>
-              ))}
+              ))} */}
             </ul>
             {/* End .tag */}
 

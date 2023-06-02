@@ -13447,6 +13447,7 @@ legend span {
 .sidebar_feature_listing .media img {
   max-width: 102px;
   height: 80px;
+  min-width: 102px;
   border-radius: 6px;
 }
 
@@ -20849,6 +20850,10 @@ ul.total_reivew_view .star_list li:last-child a {
   margin-bottom: 0;
 }
 
+.media-body {
+  overflow: hidden;
+  white-space: nowrap;
+}
 .shop_single_tab_content .nav-tabs .nav-link {
   border: none;
   font-size: 18px;

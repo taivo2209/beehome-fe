@@ -1,7 +1,6 @@
 import Slider from 'react-slick';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBoardingHouse } from '../../features/boardingHouse/boardingHouseSlice';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { removeFloor, setFloor } from '../../features/floor/floorSlice';
@@ -63,13 +62,13 @@ const FeaturedAvgStarProperties = () => {
         <div className="thumb">
           <img className="img-whp" src={item.img} alt="fp1.jpg" />
           <div className="thmb_cntnt">
-            <ul className="tag mb0">
+            {/* <ul className="tag mb0">
               {item?.saleTag.map((val, i) => (
                 <li className="list-inline-item" key={i}>
                   <a href="#">{val}</a>
                 </li>
               ))}
-            </ul>
+            </ul> */}
             {/* End .tag */}
 
             <ul className="icon mb0">

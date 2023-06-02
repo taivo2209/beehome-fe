@@ -168,6 +168,7 @@ const ListingDynamicDetailsV1 = () => {
             <div className="col-md-12 col-lg-8">
               <DetailsContent
                 customer={customer}
+                floor={floorData[0]}
                 dataDetail={boardingHouseDetail[0]}
                 boardingHouseId={id}
               />
@@ -176,7 +177,7 @@ const ListingDynamicDetailsV1 = () => {
 
             <div className="col-lg-4 col-xl-4">
               <Sidebar
-                data={floorData}
+                data={floorData[0].boardingHouse}
                 customer={customer}
                 posterId={boardingHouseDetail[0]?.posterId}
                 poster={boardingHouseDetail[0]}

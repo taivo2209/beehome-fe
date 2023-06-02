@@ -27,11 +27,11 @@ const FeatureProperties = () => {
 
                 <div className="thmb_cntnt">
                   <ul className="tag mb0">
-                    {item.saleTag.map((val, i) => (
+                    {/* {item.saleTag.map((val, i) => (
                       <li className="list-inline-item" key={i}>
                         <a href="#">{val}</a>
                       </li>
-                    ))}
+                    ))} */}
                   </ul>
                   <a className="fp_price" href="#">
                     ${item.price}
