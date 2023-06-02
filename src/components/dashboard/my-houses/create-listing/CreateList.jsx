@@ -402,7 +402,7 @@ const CreateList = () => {
             onChange={(e) => setLinkVideo(e.target.value)}
           />
         </div>
-        <p>VD: https://www.youtube.com/watch?v=kg7AZ3SR62c&ab_channel=TheLateLateShowwithJamesCorden</p>
+        <p>VD: https://www.youtube.com/watch?v=Dba3BwkszZE&ab_channel=THÁICÔNGTV</p>
       </div>
       <div className="col-xl-12">
         <h4 className="mb10">{trans.lessor.houses.anh}</h4>

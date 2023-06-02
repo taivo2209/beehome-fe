@@ -201,6 +201,11 @@ const Form = () => {
           placeholder={trans.register.sdt}
           onChange={(e) => setPhoneNum(e.target.value)}
         />
+        <div className="input-group-prepend">
+          <div className="input-group-text">
+            <i className="flaticon-smartphone-call"></i>
+          </div>
+        </div>
       </div>
       {/* End .form-group */}
 

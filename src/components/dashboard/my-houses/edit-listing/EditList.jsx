@@ -35,6 +35,7 @@ const EditList = () => {
   const [electricFee, setElectricFee] = useState('');
   const [waterFee, setWaterFee] = useState('');
   const [serviceFee, setServiceFee] = useState('');
+  const [linkVideo, setLinkVideo] = useState('');
   const accessToken = useSelector((state) => state.auth.accessToken);
 
   const handleBack = () => {
@@ -64,9 +65,13 @@ const EditList = () => {
         res.data?.boardingHouseDescriptions?.[1]?.content,
       );
       setAddress(res.data?.boardingHouseAddress?.address);
+      setProvince(res.data?.boardingHouseAddress?.province);
+      setDistrict(res.data?.boardingHouseAddress?.district);
+      setWard(res.data?.boardingHouseAddress?.ward);
       setElectricFee(res.data?.electricFee);
       setWaterFee(res.data?.waterFee);
       setServiceFee(res.data?.serviceFee);
+      setLinkVideo(res.data?.videoUrl);
     } catch (err) {
       console.log(err);
     }
@@ -85,6 +90,7 @@ const EditList = () => {
       electricFee: electricFee,
       waterFee: waterFee,
       serviceFee: serviceFee,
+      videoUrl: linkVideo,
       type: type,
       houseRentDeposits: [
         {
@@ -545,6 +551,22 @@ const EditList = () => {
       {/* End .col */}
 
       <div className="col-xl-12">{/* <h4 className="mb10">Tag</h4> */}</div>
+      <div className="col-lg-12">
+        <div className="my_profile_setting_input form-group">
+          <label htmlFor="linkVideo">Video mô tả (không bắt buộc)</label>
+          <input
+            type="text"
+            className="form-control"
+            id="linkVideo"
+            defaultValue={housesData?.videoUrl}
+            onChange={(e) => setLinkVideo(e.target.value)}
+          />
+        </div>
+        <p>
+          VD:
+          https://www.youtube.com/watch?v=Dba3BwkszZE&ab_channel=THÁICÔNGTV
+        </p>
+      </div>
 
       <div className="col-xl-12">
         <h4 className="mb10">{trans.lessor.houses.anh}</h4>

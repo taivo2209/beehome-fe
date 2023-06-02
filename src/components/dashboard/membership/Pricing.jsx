@@ -15,8 +15,8 @@ const Pricing = () => {
   const [price, setPrice] = useState();
   const member = data?.package;
   const orderInfo = router?.query?.vnp_OrderInfo;
-  const newOrderInfo = String(orderInfo).split(':')[1];
-  const packType = String(newOrderInfo).slice(1);
+  const reg = /(BASIC|PREMIUM)/;
+  const packType = String(orderInfo).match(reg)?.[0];
   const currentDate = new Date();
   const currentDateTimeString = currentDate.toISOString();
 
@@ -28,7 +28,6 @@ const Pricing = () => {
         },
       });
       setData(res.data);
-      paymentSuccess();
     } catch (err) {
       console.log(err);
     }
@@ -118,10 +117,6 @@ const Pricing = () => {
     }
   };
 
-  useEffect(() => {
-    getData();
-  }, [member]);
-
   const isDisabled = (mem, type) => {
     if (mem === type) {
       return false;
@@ -134,6 +129,15 @@ const Pricing = () => {
     }
     return true;
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  useEffect(() => {
+    if (router?.query?.vnp_TransactionStatus == '00') {
+      paymentSuccess();
+    }
+  }, [router]);
 
   const pricingContent = [
     {

@@ -49,6 +49,9 @@ export default {
     xem_phong: 'Xem phòng trống',
     chu_nha: 'Chủ nhà',
     bao_cao: 'Báo cáo',
+    xac_nhan_dat_lich:'Bạn có chắc muốn đặt lịch không?',
+    co:'Có',
+    khong:'Không',
     dang_nhap_bc: 'Đăng nhập để báo cáo',
     noi_dung_bc: 'Nội dung báo cáo',
     bao_cao_tc: 'Báo cáo đã được gửi đến Admin',
@@ -80,6 +83,7 @@ export default {
     ten: 'Tên',
     ho: 'Họ',
     sdt: 'Số điện thoại',
+    dia_chi:'Địa chỉ',
     thong_bao_cus:
       'Vui lòng vào email của bạn xác thực để tiến hành đăng nhập!',
     thong_bao: 'Đăng ký thành công!',
