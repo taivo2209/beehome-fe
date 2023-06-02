@@ -1,32 +1,35 @@
+import useTrans from "../../../pages/hooks/useTran";
+
 const AllStatistics = () => {
+  const trans = useTrans();
   const allStatistics = [
     {
       id: 1,
       blockStyle: "",
       icon: "flaticon-home",
       timer: "14",
-      name: "Houses",
+      name: `${trans.admin.thong_ke.nha}`,
     },
     {
       id: 2,
       blockStyle: "style2",
       icon: "flaticon-user",
       timer: "14",
-      name: "Lessors",
+      name: `${trans.admin.thong_ke.chu_nha}`,
     },
     {
       id: 3,
       blockStyle: "style3",
       icon: "flaticon-user",
       timer: "4",
-      name: "Customers",
+      name: `${trans.admin.thong_ke.khach_hang}`,
     },
     {
       id: 4,
       blockStyle: "style4",
       icon: "flaticon-chat",
       timer: "0",
-      name: "Report",
+      name: `${trans.admin.thong_ke.bao_cao}`,
     },
   ];
 

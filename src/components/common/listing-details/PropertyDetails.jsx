@@ -1,11 +1,14 @@
+import useTrans from "../../../pages/hooks/useTran";
+
 const PropertyDetails = ({ dataDetail }) => {
+  const trans = useTrans()
   return (
     <>
       <div className="col-md-6 col-lg-6 col-xl-4">
         <ul className="list-inline-item">
           <li>
             <p>
-              Điện : <span>{dataDetail?.electricFee}</span>
+              {trans.lessor.houses.dien} : <span>{dataDetail?.electricFee}đ</span>
             </p>
           </li>
         </ul>
@@ -16,7 +19,7 @@ const PropertyDetails = ({ dataDetail }) => {
         <ul className="list-inline-item">
           <li>
             <p>
-              Nước : <span>{dataDetail?.waterFee}</span>
+            {trans.lessor.houses.nuoc} : <span>{dataDetail?.waterFee}đ</span>
             </p>
           </li>
         </ul>
@@ -27,7 +30,7 @@ const PropertyDetails = ({ dataDetail }) => {
         <ul className="list-inline-item">
           <li>
             <p>
-              Dịch vụ : <span>{dataDetail?.serviceFee}</span>
+            {trans.lessor.houses.dich_vu} : <span>{dataDetail?.serviceFee}đ</span>
             </p>
           </li>
         </ul>

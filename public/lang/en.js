@@ -250,4 +250,23 @@ export default {
       chon_ngay:'Select a date',
     }
   },
+  admin:{
+    sidebar:{
+      thong_ke:'Dashboard',
+      doanh_thu:'Income',
+      quan_ly:`Admin's Manage`,
+      quan_ly_cn:'Manage Lessors',
+      quan_ly_kh:'Manage Customers',
+      quan_ly_bc:'Manage Reports',
+      quan_ly_nha:`Manage House's Posts`,
+      dang_xuat:'Logout'
+    },
+    thong_ke:{
+      thong_ke:'Dashboard',
+      nha:`House's Posts`,
+      chu_nha:'Lessors',
+      khach_hang:'Customers',
+      bao_cao:'Reports',
+    }
+  }
 };

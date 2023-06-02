@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import useTrans from '../../../../pages/hooks/useTran';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEN, setVI } from '../../../../features/langType/langTypeSlice';
+import AdminAccount from './AdminAccount';
 
 const HeaderMenuContent = ({ float = '' }) => {
   const route = useRouter();
@@ -10,7 +11,6 @@ const HeaderMenuContent = ({ float = '' }) => {
   const dispatch = useDispatch();
   const { accessToken } = useSelector((state) => state.auth);
   const { typeData } = useSelector((state) => state.langType);
-
 
   return (
     <ul
@@ -45,6 +45,22 @@ const HeaderMenuContent = ({ float = '' }) => {
             </div>
           </li>
         </ul>
+      </li>
+      <li className="user_setting">
+        <div className="dropdown">
+          <a className="btn dropdown-toggle" href="#" data-bs-toggle="dropdown">
+            <img
+              className="rounded-circle"
+              src="assets/images/avatarAdmin.jpg"
+              alt="avatarAdmin.jpg"
+              width={45}
+              height={45}
+            />
+          </a>
+          <div className="dropdown-menu">
+            <AdminAccount />
+          </div>
+        </div>
       </li>
     </ul>
   );
