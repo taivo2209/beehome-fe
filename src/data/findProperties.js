@@ -6,6 +6,7 @@ module.exports = [
     number: '24',
     rows: 2,
     cols: 2,
+    districtId: 630,
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ module.exports = [
     name: 'Quận 1',
     number: '18',
     column: 'col-lg-8 col-xl-8',
+    districtId: 628,
   },
   {
     id: 3,
@@ -20,6 +22,7 @@ module.exports = [
     name: 'Quận 7',
     number: '89',
     column: 'col-lg-8 col-xl-8',
+    districtId: 646,
   },
   {
     id: 4,
@@ -27,6 +30,7 @@ module.exports = [
     name: 'Quận Bình Thạnh',
     number: '47',
     cols: 2,
+    districtId: 633,
   },
   {
     id: 5,
