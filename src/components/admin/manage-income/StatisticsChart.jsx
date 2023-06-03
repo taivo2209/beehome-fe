@@ -7,9 +7,9 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import { faker } from '@faker-js/faker';
 
 ChartJS.register(
   CategoryScale,
@@ -18,7 +18,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export const options = {
@@ -33,32 +33,47 @@ export const options = {
     },
 
     tooltips: {
-      position: "nearest",
-      mode: "index",
+      position: 'nearest',
+      mode: 'index',
       intersect: false,
       yPadding: 10,
       xPadding: 10,
       caretSize: 8,
-      backgroundColor: "rgba(72, 241, 12, 1)",
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-      borderColor: "rgba(0,0,0,1)",
+      backgroundColor: 'rgba(72, 241, 12, 1)',
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      borderColor: 'rgba(0,0,0,1)',
       borderWidth: 4,
     },
   },
 };
 
-const labels = ["January", "February", "March", "April", "May", "June"];
+const labels = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 
 export const data = {
   labels,
   datasets: [
     {
-      label: "Dataset",
-      data: labels.map(() => faker.datatype.number({ min: 100, max: 400 })),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-      data: [196, 132, 215, 362, 210, 252],
+      label: 'Income',
+      data: labels.map(() =>
+        faker.datatype.number({ min: 500000, max: 10000000 }),
+      ),
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      data: [100, 10000, 10000, 10000, 10000, 10000],
       fill: false,
     },
   ],

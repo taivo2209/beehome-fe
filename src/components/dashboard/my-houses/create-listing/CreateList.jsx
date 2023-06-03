@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import CheckBoxFilter from './CheckBoxFilter';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
@@ -388,10 +387,10 @@ const CreateList = () => {
       </div>
       {/* End .col */}
 
-      <div className="col-xl-12">
-        {/* <h4 className="mb10">Tag</h4> */}
+      {/* <div className="col-xl-12">
+        <h4 className="mb10">Tag</h4>
       </div>
-      {/* <CheckBoxFilter onSelectionChange={handleSelectionChange} /> */}
+      <AttributesCheckBox onSelectionChange={handleSelectionChange} /> */}
       <div className="col-lg-12">
         <div className="my_profile_setting_input form-group">
           <label htmlFor="linkVideo">Video mô tả (không bắt buộc)</label>
@@ -402,7 +401,7 @@ const CreateList = () => {
             onChange={(e) => setLinkVideo(e.target.value)}
           />
         </div>
-        <p>VD: https://www.youtube.com/watch?v=kg7AZ3SR62c&ab_channel=TheLateLateShowwithJamesCorden</p>
+        <p>VD: https://www.youtube.com/watch?v=Dba3BwkszZE&ab_channel=THÁICÔNGTV</p>
       </div>
       <div className="col-xl-12">
         <h4 className="mb10">{trans.lessor.houses.anh}</h4>

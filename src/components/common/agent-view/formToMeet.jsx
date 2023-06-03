@@ -48,13 +48,22 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
         return;
       }
       try {
-        await axios.post('http://localhost:5000/customer/book', book);
-        Swal.fire({
-          icon: 'success',
-          title: `${trans.booking.dat_lich_ok}`,
-          text: `${trans.booking.xac_nhan_dat}`,
-          confirmButtonText: 'OK',
+        const result = await Swal.fire({
+          title: `${trans.detail.xac_nhan_dat_lich}`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: `${trans.detail.co}`,
+          cancelButtonText: `${trans.detail.khong}`,
         });
+        if (result.isConfirmed) {
+          await axios.post('http://localhost:5000/customer/book', book);
+          Swal.fire({
+            icon: 'success',
+            title: `${trans.booking.dat_lich_ok}`,
+            text: `${trans.booking.xac_nhan_dat}`,
+            confirmButtonText: 'OK',
+          });
+        }
       } catch (error) {
         Swal.fire({
           icon: 'error',

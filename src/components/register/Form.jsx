@@ -11,6 +11,8 @@ const Form = () => {
   const trans = useTrans();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [address, setAddress] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -34,7 +36,7 @@ const Form = () => {
     }
     let url = 'http://localhost:5000/lessor/auth/register';
     try {
-      const res = await axios.post(url, { email, password });
+      const res = await axios.post(url, { email, password, address, phoneNumber });
       // console.log(res.data);
       Swal.fire({
         icon: 'success',
@@ -153,6 +155,35 @@ const Form = () => {
         </div>
       </div>
       {/* End .form-group */}
+      <div className="form-group input-group">
+        <input
+          type="text"
+          className="form-control"
+          required
+          placeholder={trans.register.dia_chi}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <div className="input-group-prepend">
+          <div className="input-group-text">
+            <i className="flaticon-maps-and-flags"></i>
+          </div>
+        </div>
+      </div>
+
+      <div className="form-group input-group">
+        <input
+          type="text"
+          className="form-control"
+          required
+          placeholder={trans.register.sdt}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <div className="input-group-prepend">
+          <div className="input-group-text">
+            <i className="flaticon-smartphone-call"></i>
+          </div>
+        </div>
+      </div>
 
       <div className="form-group form-check custom-checkbox mb-3">
         <input

@@ -3,7 +3,6 @@ import Header from "../../common/header/dashboard/Header";
 import SidebarMenu from "../../common/header/dashboard/SidebarMenu";
 import MobileMenu from "../../common/header/MobileMenu";
 import BillsData from "./BillsData";
-import SearchBox from "./SearchBox";
 
 const Index = () => {
   const trans = useTrans();
@@ -60,14 +59,7 @@ const Index = () => {
                   </div>
                 </div>
                 {/* End .col */}
-                <div className="col-md-4 col-lg-4 col-xl-3 mb20">
-                  <ul className="sasw_list mb0">
-                    <li className="search_area">
-                      <SearchBox />
-                    </li>
-                  </ul>
-                </div>
-                {/* End .col */}
+               
               </div>
               {/* End .row */}
 

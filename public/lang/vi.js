@@ -49,6 +49,9 @@ export default {
     xem_phong: 'Xem phòng trống',
     chu_nha: 'Chủ nhà',
     bao_cao: 'Báo cáo',
+    xac_nhan_dat_lich:'Bạn có chắc muốn đặt lịch không?',
+    co:'Có',
+    khong:'Không',
     dang_nhap_bc: 'Đăng nhập để báo cáo',
     noi_dung_bc: 'Nội dung báo cáo',
     bao_cao_tc: 'Báo cáo đã được gửi đến Admin',
@@ -80,6 +83,7 @@ export default {
     ten: 'Tên',
     ho: 'Họ',
     sdt: 'Số điện thoại',
+    dia_chi:'Địa chỉ',
     thong_bao_cus:
       'Vui lòng vào email của bạn xác thực để tiến hành đăng nhập!',
     thong_bao: 'Đăng ký thành công!',
@@ -193,6 +197,7 @@ export default {
       cap_nhat: 'Sửa phòng',
       ten_phong: 'Tên phòng',
       gia: 'Giá (đ/tháng)',
+      gia_1: 'Giá',
       dien_tich: 'Diện tích (m2)',
       tien_ich: 'Tiện ích',
       anh: 'Ảnh',
@@ -208,6 +213,7 @@ export default {
         'Hiện tại tôi chưa có nhiều thông tin về giá phòng trọ trong khu vực này!',
       het_phong: 'Gói bạn sử dụng hiện tại không thể tạo thêm phòng!',
       het_phong_text:'Vui lòng nâng cấp gói thành viên!',
+      da_duoc_thue:'Phòng này đã được thuê.'
     },
     attributes: {
       tien_ich: 'Tiện ích',
@@ -237,7 +243,16 @@ export default {
       goi_ht: 'Gói Hiện tại',
       thanh_toan_tc: 'Thanh toán thành công!',
       tg_gia_han: 'Hiện tại chưa đến lúc gia hạn!',
-      xac_nhan_tt:'Xác nhận thanh toán'
+      xac_nhan_tt:'Xác nhận thanh toán',
+      free_1:'Sử dụng thử',
+      free_2:'Đăng được duy nhất 1 phòng',
+      free_3:'Không được hỗ trợ',
+      basic_1:'3 tháng sử dụng dịch vụ',
+      basic_2:'Được đăng tối đa 20 phòng trọ',
+      basic_3:'Hỗ trợ trong giờ hành chính',
+      premium_1:'3 tháng sử dụng dịch vụ',
+      premium_2:'Không giới hạn số phòng trọ',
+      premium_3:'Hỗ trợ mọi lúc mọi nơi',
     },
     bill:{
       hoa_don:'Hóa đơn',

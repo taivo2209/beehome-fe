@@ -5758,6 +5758,7 @@ form.home5_advanced_search_form
   right: 0;
   top: 0;
   width: 100%;
+  z-index: -100000;
 }
 
 .cs_row_one .courses_big_thumb .thumb .overlay_icon a,
@@ -7634,6 +7635,7 @@ form.home5_advanced_search_form
   text-align: center;
   width: 70px;
   animation: pulse-black 2s infinite;
+  z-index: -1000000;
 }
 
 .video_popup_btn span {

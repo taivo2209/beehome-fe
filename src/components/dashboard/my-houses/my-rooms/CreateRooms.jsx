@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import PropertyMediaUploader from '../PropertyMediaUploader';
-import CategoriesCheckBox from './CategoriesCheckBox';
 import { useSelector } from 'react-redux';
 import AttributesCheckBox from './AttributesCheckBox';
 import Swal from 'sweetalert2';
@@ -14,12 +13,15 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   const handleClose = () => setShow(false);
   const handleShow = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/lessor/room/check-number-room', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+      const res = await axios.get(
+        'http://localhost:5000/lessor/room/check-number-room',
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      })
-      setShow(true)
+      );
+      setShow(true);
     } catch (err) {
       if (err.response && err.response.data.debugInfo.status === 409) {
         Swal.fire({
@@ -30,7 +32,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
         });
       }
     }
-  }
+  };
   const accessToken = useSelector((state) => state.auth.accessToken);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -38,7 +40,6 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   const [roomSimple, setRoomSimple] = useState('');
   const [toilet, setToilet] = useState('1');
   const [imgIds, setImgIds] = useState([]);
-  const [categoryIds, setCategoryIds] = useState([]);
   const [attributeIds, setAttributeIds] = useState([]);
   const [prediction, setPrediction] = useState();
 
@@ -50,7 +51,6 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
       !roomSimple ||
       !toilet ||
       !imgIds ||
-      !categoryIds ||
       !attributeIds
     ) {
       Swal.fire({
@@ -96,7 +96,6 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
       roomSimple: roomSimple,
       toilet: toilet,
       imgIds: imgIds,
-      categoryIds: categoryIds,
       attributeIds: attributeIds,
     };
     if (isValid) {
@@ -138,7 +137,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   };
   // console.log('img', imgIds);
 
-  useEffect(() => {}, [categoryIds, attributeIds]);
+  useEffect(() => {}, [attributeIds]);
   // console.log('categoryIds', categoryIds);
   // console.log('attri', attributeIds);
   const predict = async () => {
@@ -246,16 +245,13 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
                 </span>
               ) : null}
             </div>
-            {/* <span className="text-danger">{trans.lessor.rooms.du_doan_tb}</span> */}
-            {/* <div className="my_profile_setting_input form-group col-xl-12">
-              <label htmlFor="categoryIds">Category</label>
-              <CategoriesCheckBox onSelectionChange={handleCategoryChange} />
-            </div> */}
-            <div className="my_profile_setting_input form-group mb-2">
-              <label htmlFor="attributeIds">
-                {trans.lessor.rooms.tien_ich}
-              </label>
-              <AttributesCheckBox onSelectionChange={handleAttributeChange} />
+            <div className="row">
+              <div className="my_profile_setting_input form-group mb-2">
+                <label htmlFor="attributeIds">
+                  {trans.lessor.rooms.tien_ich}
+                </label>
+                <AttributesCheckBox onSelectionChange={handleAttributeChange} />
+              </div>
             </div>
             <div className="my_profile_setting_input form-group mb-2">
               <label htmlFor="imagesId">{trans.lessor.rooms.anh}</label>

@@ -201,6 +201,11 @@ const Form = () => {
           placeholder={trans.register.sdt}
           onChange={(e) => setPhoneNum(e.target.value)}
         />
+        <div className="input-group-prepend">
+          <div className="input-group-text">
+            <i className="flaticon-smartphone-call"></i>
+          </div>
+        </div>
       </div>
       {/* End .form-group */}
 
@@ -212,6 +217,7 @@ const Form = () => {
           onChange={(e) => setBirthDate(e.target.value)}
         />
       </div>
+
       {/* End .form-group */}
 
       <div className="form-group form-check custom-checkbox mb-3">

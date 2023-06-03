@@ -15,8 +15,8 @@ const Pricing = () => {
   const [price, setPrice] = useState();
   const member = data?.package;
   const orderInfo = router?.query?.vnp_OrderInfo;
-  const newOrderInfo = String(orderInfo).split(':')[1];
-  const packType = String(newOrderInfo).slice(1);
+  const reg = /(BASIC|PREMIUM)/;
+  const packType = String(orderInfo).match(reg)?.[0];
   const currentDate = new Date();
   const currentDateTimeString = currentDate.toISOString();
 
@@ -28,7 +28,6 @@ const Pricing = () => {
         },
       });
       setData(res.data);
-      paymentSuccess();
     } catch (err) {
       console.log(err);
     }
@@ -118,10 +117,6 @@ const Pricing = () => {
     }
   };
 
-  useEffect(() => {
-    getData();
-  }, [member]);
-
   const isDisabled = (mem, type) => {
     if (mem === type) {
       return false;
@@ -135,21 +130,34 @@ const Pricing = () => {
     return true;
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+  useEffect(() => {
+    if (router?.query?.vnp_TransactionStatus == '00') {
+      paymentSuccess();
+    }
+  }, [router]);
+
   const pricingContent = [
     {
       id: 1,
       price: '0',
       title: 'FREE',
-      features: ['1 Bài đăng', 'Hiển thị tối đa 7 ngày', 'Không được hỗ trợ'],
+      features: [
+        `${trans.lessor.membership.free_1}`,
+        `${trans.lessor.membership.free_2}`,
+        `${trans.lessor.membership.free_3}`,
+      ],
     },
     {
       id: 2,
       price: '400.000đ',
       title: 'BASIC',
       features: [
-        '50 Bài đăng',
-        'Hiển thị kéo dài hơn 2 tháng',
-        'Hỗ trợ trong giờ hành chính',
+        `${trans.lessor.membership.basic_1}`,
+        `${trans.lessor.membership.basic_2}`,
+        `${trans.lessor.membership.basic_3}`,
       ],
     },
     {
@@ -157,9 +165,9 @@ const Pricing = () => {
       price: '1.000.000đ',
       title: 'PREMIUM',
       features: [
-        'Không giới hạn bài đăng',
-        'Hiển thị đến khi được thuê hết phòng',
-        'Hỗ trợ mọi lúc trừ Chủ nhật',
+        `${trans.lessor.membership.premium_1}`,
+        `${trans.lessor.membership.premium_2}`,
+        `${trans.lessor.membership.premium_3}`,
       ],
     },
   ];
