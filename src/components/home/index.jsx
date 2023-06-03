@@ -47,7 +47,7 @@ const Index = () => {
           <div className="row">
             <div className="col-lg-6 offset-lg-3">
               <div className="main-title text-center">
-                <h2>{trans.home.dia_diem_noi_bat}</h2>
+                {/* <h2>{trans.home.dia_diem_noi_bat}</h2> */}
               </div>
             </div>
           </div>
