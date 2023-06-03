@@ -74,8 +74,8 @@ const ListingDynamicDetailsV1 = () => {
             <div className="row mb30">
               <div className="col-lg-7 col-xl-8">
                 <div className="single_property_title mt30-767">
-                  <h2>{boardingHouseDetail[0]?.title}</h2>
-                  <p>{boardingHouseDetail[0]?.location}</p>
+                  <h2>{boardingHouseDetail?.[0]?.title}</h2>
+                  <p>{boardingHouseDetail?.[0]?.location}</p>
                 </div>
               </div>
               <div className="col-lg-5 col-xl-4">
@@ -83,7 +83,7 @@ const ListingDynamicDetailsV1 = () => {
                   <div className="price float-start fn-400">
                     <h2>
                       {trans.from}{' '}
-                      {boardingHouseDetail[0]?.price.replace(
+                      {boardingHouseDetail?.[0]?.price.replace(
                         /\B(?=(\d{3})+(?!\d))/g,
                         '.',
                       )}
@@ -101,8 +101,8 @@ const ListingDynamicDetailsV1 = () => {
                   <div className="col-lg-12">
                     <div className="spls_style_two mb30-520">
                       <Item
-                        original={boardingHouseDetail[0]?.itemDetails[0]}
-                        thumbnail={boardingHouseDetail[0]?.itemDetails[0]}
+                        original={boardingHouseDetail?.[0]?.itemDetails[0]}
+                        thumbnail={boardingHouseDetail?.[0]?.itemDetails[0]}
                         width={752}
                         height={450}
                       >
@@ -110,7 +110,7 @@ const ListingDynamicDetailsV1 = () => {
                           <div role="button" ref={ref} onClick={open}>
                             <img
                               className="img-fluid w100 cover lds-1"
-                              src={boardingHouseDetail[0]?.itemDetails[0]}
+                              src={boardingHouseDetail?.[0]?.itemDetails[0]}
                               alt="1.jpg"
                             />
                           </div>
@@ -124,7 +124,7 @@ const ListingDynamicDetailsV1 = () => {
 
               <div className="col-sm-5 col-lg-4">
                 <div className="row">
-                  {boardingHouseDetail[0]?.itemDetails
+                  {boardingHouseDetail?.[0]?.itemDetails
                     .slice(1)
                     .map((val, i) => (
                       <div className="col-6" key={i}>
@@ -166,9 +166,9 @@ const ListingDynamicDetailsV1 = () => {
               <DetailsContent
                 customer={customer}
                 floor={floorData[0]}
-                dataDetail={boardingHouseDetail[0]}
+                dataDetail={boardingHouseDetail?.[0]}
                 boardingHouseId={id}
-                pic={boardingHouseDetail[0]?.itemDetails[0]}
+                pic={boardingHouseDetail?.[0]?.itemDetails?.[0]}
               />
             </div>
             {/* End details content .col-lg-8 */}
@@ -177,8 +177,8 @@ const ListingDynamicDetailsV1 = () => {
               <Sidebar
                 data={floorData[0].boardingHouse}
                 customer={customer}
-                posterId={boardingHouseDetail[0]?.posterId}
-                poster={boardingHouseDetail[0]}
+                posterId={boardingHouseDetail?.[0]?.posterId}
+                poster={boardingHouseDetail?.[0]}
                 accessToken={accessToken}
                 boardingHouseId={id}
               />
