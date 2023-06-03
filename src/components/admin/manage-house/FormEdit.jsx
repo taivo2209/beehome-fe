@@ -11,7 +11,7 @@ function FormEdit({ id, getData }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('ACTIVE');
 
   const accessToken = useSelector((state) => state.auth.accessToken);
 
