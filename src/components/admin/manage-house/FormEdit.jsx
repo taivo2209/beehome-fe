@@ -51,12 +51,12 @@ function FormEdit({ id, getData }) {
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonText: 'OK',
+        icon: 'success',
+        title: 'Cập nhật thành công!',
+        showConfirmButton: false,
+        timer: 1500,
       });
-      console.log(error);
+      // console.log(error);
     }
     // console.log(data);
   };
