@@ -14,7 +14,7 @@ export default {
     content: 'Home',
     dia_diem_noi_bat: 'Prominent Place',
     duoc_danh_gia_cao: 'Highly Rated',
-    xu_huong: 'Trending',
+    xu_huong: 'Reference House',
     da_xem_gan_day: 'Recently Viewed',
     dang_ky: 'Register Now',
     thanh_vien: 'Become our Partner',

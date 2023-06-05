@@ -45,7 +45,6 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
           >
             {itemFloor.rooms.map((item) => (
               <Paper
-                onClick={() => setDetailIsOpen(item)}
                 key={`item-${itemFloor.floorNumber}-${item.name}`}
                 sx={{
                   p: 2,
@@ -57,7 +56,11 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                 }}
               >
                 {item.status == 'ACTIVE' ? (
-                  <Grid container spacing={2}>
+                  <Grid
+                    container
+                    spacing={2}
+                    onClick={() => setDetailIsOpen(item)}
+                  >
                     <Grid item>
                       <ButtonBase sx={{ width: 128, height: 128 }}>
                         <Image
@@ -97,7 +100,7 @@ const DetailFloor = ({ setDetailIsOpen, data }) => {
                 ) : (
                   <Grid container spacing={2}>
                     <Grid item>
-                      <ButtonBase sx={{ width: 128, height: 128 }}>
+                      <ButtonBase sx={{ width: 128, height: 128 }} disabled>
                         <Image
                           src={disableRoom}
                           alt=""
