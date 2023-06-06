@@ -39,7 +39,7 @@ function FormEdit({ id, getData }) {
   const onSubmit = async (formData) => {
     try {
       const res = await axios.patch(
-        `http://localhost:5000/lessor/category`,
+        `https://beehome.herokuapp.com/lessor/category`,
         {
           id: id,
           categoryDetails: formData.categoryDetails.map((item) => ({
@@ -90,7 +90,7 @@ function FormEdit({ id, getData }) {
     const fetchCategory = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/lessor/category/${id}`,
+          `https://beehome.herokuapp.com/lessor/category/${id}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

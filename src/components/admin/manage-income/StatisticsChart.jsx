@@ -71,7 +71,7 @@ export default function StatisticsChart() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/vn-pay/graph?page=1&limit=20', {
+      .get('https://beehome.herokuapp.com/vn-pay/graph?page=1&limit=20', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

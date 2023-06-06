@@ -22,7 +22,7 @@ const Pricing = () => {
 
   const getData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/lessor/profile', {
+      const res = await axios.get('https://beehome.herokuapp.com/lessor/profile', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -47,7 +47,7 @@ const Pricing = () => {
       };
       try {
         const res = await axios.post(
-          'http://localhost:5000/lessor/service-pack',
+          'https://beehome.herokuapp.com/lessor/service-pack',
           formData,
           {
             headers: {
@@ -79,7 +79,7 @@ const Pricing = () => {
   //     };
   //     try {
   //       const res = await axios.post(
-  //         'http://localhost:5000/vn-pay/create_bill',
+  //         'https://beehome.herokuapp.com/vn-pay/create_bill',
   //         formData,
   //         {
   //           headers: {
@@ -97,7 +97,7 @@ const Pricing = () => {
   const getPrice = async (e) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/service-pack/service_pack_price?packType=${e}`,
+        `https://beehome.herokuapp.com/lessor/service-pack/service_pack_price?packType=${e}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

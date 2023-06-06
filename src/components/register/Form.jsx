@@ -34,7 +34,7 @@ const Form = () => {
       });
       return;
     }
-    let url = 'http://localhost:5000/lessor/auth/register';
+    let url = 'https://beehome.herokuapp.com/lessor/auth/register';
     try {
       const res = await axios.post(url, { email, password, address, phoneNumber });
       // console.log(res.data);

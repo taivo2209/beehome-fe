@@ -26,11 +26,11 @@ const Form = () => {
     };
     let url = '';
     if (role === 'lessor') {
-      url = 'http://localhost:5000/lessor/auth/login';
+      url = 'https://beehome.herokuapp.com/lessor/auth/login';
     } else if (role === 'customer') {
-      url = 'http://localhost:5000/customer/auth/login';
+      url = 'https://beehome.herokuapp.com/customer/auth/login';
     } else if (role === 'admin') {
-      url = 'http://localhost:5000/admin/auth/login';
+      url = 'https://beehome.herokuapp.com/admin/auth/login';
     }
 
     e.preventDefault();

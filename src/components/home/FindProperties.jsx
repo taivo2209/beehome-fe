@@ -33,10 +33,10 @@ const FindProperties = () => {
   const getData = async (type, parentId, districtId) => {
     try {
       const res1 = await axios.get(
-        `http://localhost:5000/customer/province?type=PROVINCE&parentId=${1}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=PROVINCE&parentId=${1}&page=1&limit=70`,
       );
       const res = await axios.get(
-        `http://localhost:5000/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
       );
       dispatch(setProvince(res1.data.items.find((option) => option.id == 61)));
       dispatch(setProvinceData(res1.data));

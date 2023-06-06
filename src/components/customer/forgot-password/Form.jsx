@@ -16,7 +16,7 @@ const Form = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/customer/auth/forget-password',
+        'https://beehome.herokuapp.com/customer/auth/forget-password',
         data,
       );
       // console.log(res.data);

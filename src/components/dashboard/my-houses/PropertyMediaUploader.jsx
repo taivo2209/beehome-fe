@@ -31,7 +31,7 @@ const PropertyMediaUploader = ({ onUpload }) => {
     // formData.append("images", propertySelectedImgs[0]);
 
     axios
-      .post('http://localhost:5000/upload-file/multiple-file', formData, {
+      .post('https://beehome.herokuapp.com/upload-file/multiple-file', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

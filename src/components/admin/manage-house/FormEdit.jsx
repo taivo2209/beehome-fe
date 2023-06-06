@@ -31,7 +31,7 @@ function FormEdit({ id, getNewData }) {
       });
       if (result.isConfirmed) {
         const res = await axios.patch(
-          `http://localhost:5000/admin/boardingHouse`,
+          `https://beehome.herokuapp.com/admin/boardingHouse`,
           data,
           {
             headers: {

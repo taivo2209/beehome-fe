@@ -15,7 +15,7 @@ const ReportsData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/admin/report?page=${currentPage}&limit=10`,
+        `https://beehome.herokuapp.com/admin/report?page=${currentPage}&limit=10`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

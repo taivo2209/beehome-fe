@@ -43,7 +43,7 @@ function FormAdd({ getData }) {
     if (isValid) {
       try {
         const res = await axios.post(
-          'http://localhost:5000/lessor/book-disable',
+          'https://beehome.herokuapp.com/lessor/book-disable',
           data,
           {
             headers: {

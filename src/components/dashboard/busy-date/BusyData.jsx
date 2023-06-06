@@ -16,7 +16,7 @@ const BusyData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/book-disable?page=${currentPage}&limit=5`,
+        `https://beehome.herokuapp.com/lessor/book-disable?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -51,7 +51,7 @@ const BusyData = () => {
       });
       if (result.isConfirmed) {
         const res = await axios.delete(
-          `http://localhost:5000/lessor/book-disable/${busyId}`,
+          `https://beehome.herokuapp.com/lessor/book-disable/${busyId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

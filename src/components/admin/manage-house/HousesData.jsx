@@ -19,7 +19,7 @@ const HousesData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/admin/boardingHouse?page=${currentPage}&limit=20`,
+        `https://beehome.herokuapp.com/admin/boardingHouse?page=${currentPage}&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

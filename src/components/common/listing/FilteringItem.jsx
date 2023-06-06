@@ -41,7 +41,7 @@ const FilteringItem = () => {
   const getData = async (type, parentId) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
       );
       if (type === 'PROVINCE') {
         setDataProvince(res.data);

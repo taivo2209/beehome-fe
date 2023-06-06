@@ -31,7 +31,7 @@ function FormEdit({ id, getData }) {
       });
       if (result.isConfirmed) {
         const res = await axios.patch(
-          `http://localhost:5000/lessor/book/status`,
+          `https://beehome.herokuapp.com/lessor/book/status`,
           data,
           {
             headers: {

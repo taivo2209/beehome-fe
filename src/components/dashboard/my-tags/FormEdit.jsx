@@ -24,7 +24,7 @@ function FormEdit({ id, getData }) {
     };
     try {
       const res = await axios.patch(
-        `http://localhost:5000/lessor/tag/${id}`,
+        `https://beehome.herokuapp.com/lessor/tag/${id}`,
         data,
         {
           headers: {

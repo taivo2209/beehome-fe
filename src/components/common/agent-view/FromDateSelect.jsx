@@ -26,7 +26,7 @@ function FormDateSelect({ customer, setBook }) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/book-disable?page=1&limit=100`,
+        `https://beehome.herokuapp.com/lessor/book-disable?page=1&limit=100`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

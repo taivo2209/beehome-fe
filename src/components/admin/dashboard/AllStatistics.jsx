@@ -11,7 +11,7 @@ const AllStatistics = () => {
   const getStatic = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/admin/admin/statistical`,
+        `https://beehome.herokuapp.com/admin/admin/statistical`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

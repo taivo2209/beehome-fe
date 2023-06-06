@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const fetchDataSearchData = async (data) => {
   try {
-    let url = `http://localhost:5000/customer/boardingHouse?lang=VN&page=1&limit=20`;
+    let url = `https://beehome.herokuapp.com/customer/boardingHouse?lang=VN&page=1&limit=20`;
 
     if (data.searchText != undefined) {
       url += `&searchText=${data.searchText}`;

@@ -47,7 +47,7 @@ const FeaturedPropertiesHome3 = () => {
   const getItem = async (id) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/customer/boardingHouse/${id}`,
+        `https://beehome.herokuapp.com/customer/boardingHouse/${id}`,
       );
       dispatch(setDataBoardingHouse());
       dispatch(removeFloor(0));

@@ -40,7 +40,7 @@ function FormAdd({ getData }) {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        'http://localhost:5000/lessor/category',
+        'https://beehome.herokuapp.com/lessor/category',
         data,
         {
           headers: {

@@ -12,7 +12,7 @@ function FormView({ id }) {
   const handleShow = () => setShow(true);
   const getData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/admin/report/${id}`, {
+      const res = await axios.get(`https://beehome.herokuapp.com/admin/report/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

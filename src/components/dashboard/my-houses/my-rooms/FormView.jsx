@@ -16,7 +16,7 @@ function FormView({ id, getNewData }) {
 
   const getData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/lessor/room/${id}`, {
+      const res = await axios.get(`https://beehome.herokuapp.com/lessor/room/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

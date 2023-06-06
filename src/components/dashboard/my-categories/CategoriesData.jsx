@@ -17,7 +17,7 @@ const CategoriesData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/category?page=${currentPage}&limit=20`,
+        `https://beehome.herokuapp.com/lessor/category?page=${currentPage}&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -43,7 +43,7 @@ const CategoriesData = () => {
   const handleDelete = async (categoryId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/lessor/category/${categoryId}`,
+        `https://beehome.herokuapp.com/lessor/category/${categoryId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

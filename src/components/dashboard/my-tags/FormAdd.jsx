@@ -43,7 +43,7 @@ function FormAdd({ getData }) {
     if (isValid){
 
       try {
-        const res = await axios.post('http://localhost:5000/lessor/tag', data, {
+        const res = await axios.post('https://beehome.herokuapp.com/lessor/tag', data, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

@@ -14,7 +14,7 @@ const BillsData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/vn-pay?page=${currentPage}&limit=5`,
+        `https://beehome.herokuapp.com/vn-pay?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

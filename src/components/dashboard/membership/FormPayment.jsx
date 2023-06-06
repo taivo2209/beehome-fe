@@ -30,7 +30,7 @@ function FormPayment({ title, member, price }) {
       });
       if (result.isConfirmed) {
         const res = await axios.post(
-          'http://localhost:5000/vn-pay/create_payment_url',
+          'https://beehome.herokuapp.com/vn-pay/create_payment_url',
           formData,
           {
             headers: {

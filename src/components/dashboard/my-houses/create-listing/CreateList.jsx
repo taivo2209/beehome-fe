@@ -145,7 +145,7 @@ const CreateList = () => {
     };
     if (isValid) {
       try {
-        axios.post('http://localhost:5000/lessor/boardingHouse', formData, {
+        axios.post('https://beehome.herokuapp.com/lessor/boardingHouse', formData, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -173,7 +173,7 @@ const CreateList = () => {
   const getData = async (type, parentId) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
       );
       if (type === 'PROVINCE') {
         setDataProvince(res.data);

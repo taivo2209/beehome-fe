@@ -15,7 +15,7 @@ const LessorsData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/admin/lessor?page=${currentPage}&limit=5`,
+        `https://beehome.herokuapp.com/admin/lessor?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -42,7 +42,7 @@ const LessorsData = () => {
   const handleDelete = async (lessorId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/admin/lessor/${lessorId}`,
+        `https://beehome.herokuapp.com/admin/lessor/${lessorId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

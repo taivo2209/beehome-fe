@@ -56,7 +56,7 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
           cancelButtonText: `${trans.detail.khong}`,
         });
         if (result.isConfirmed) {
-          await axios.post('http://localhost:5000/customer/book', book);
+          await axios.post('https://beehome.herokuapp.com/customer/book', book);
           Swal.fire({
             icon: 'success',
             title: `${trans.booking.dat_lich_ok}`,

@@ -30,7 +30,7 @@ const DetailsContent = ({ dataDetail, boardingHouseId, customer, floor }) => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/customer/comment/${boardingHouseId}`,
+        `https://beehome.herokuapp.com/customer/comment/${boardingHouseId}`,
       );
       setCommentsData(res.data?.commentToBoardingHouses);
       setComment(res.data?.commentToBoardingHouses.slice(0, 4));

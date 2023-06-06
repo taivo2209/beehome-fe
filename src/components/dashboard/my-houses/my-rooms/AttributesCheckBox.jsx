@@ -10,7 +10,7 @@ const AttributesCheckBox = ({ onSelectionChange }) => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/roomAttribute/term?lang=VN&page=1&limit=20`,
+        `https://beehome.herokuapp.com/lessor/roomAttribute/term?lang=VN&page=1&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

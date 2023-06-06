@@ -14,7 +14,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   const handleShow = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/lessor/room/check-number-room',
+        'https://beehome.herokuapp.com/lessor/room/check-number-room',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -100,7 +100,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
     };
     if (isValid) {
       try {
-        axios.post('http://localhost:5000/lessor/room', formData, {
+        axios.post('https://beehome.herokuapp.com/lessor/room', formData, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -142,7 +142,7 @@ function CreateRooms({ floorId, updateData, province, district, ward }) {
   // console.log('attri', attributeIds);
   const predict = async () => {
     if (province && district && ward && acreage && toilet && roomSimple) {
-      let url = `http://localhost:5000/lessor/predict/predictions?province=${province}&district=${district}&ward=${ward}&acreage=${acreage}&toilet=${toilet}&room=${roomSimple}`;
+      let url = `https://beehome.herokuapp.com/lessor/predict/predictions?province=${province}&district=${district}&ward=${ward}&acreage=${acreage}&toilet=${toilet}&room=${roomSimple}`;
       try {
         const res = await axios.get(url);
         const title =

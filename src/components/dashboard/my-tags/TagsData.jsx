@@ -16,7 +16,7 @@ const TagsData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/tag?page=${currentPage}&limit=5`,
+        `https://beehome.herokuapp.com/lessor/tag?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -43,7 +43,7 @@ const TagsData = () => {
   const handleDelete = async (tagId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/lessor/tag/${tagId}`,
+        `https://beehome.herokuapp.com/lessor/tag/${tagId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

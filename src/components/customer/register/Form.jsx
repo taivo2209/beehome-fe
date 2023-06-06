@@ -48,7 +48,7 @@ const Form = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/customer/auth/register',
+        'https://beehome.herokuapp.com/customer/auth/register',
         data,
       );
       // console.log(res.data);

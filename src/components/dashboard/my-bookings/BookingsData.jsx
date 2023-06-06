@@ -16,7 +16,7 @@ const BookingsData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/book?page=${currentPage}&limit=5`,
+        `https://beehome.herokuapp.com/lessor/book?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

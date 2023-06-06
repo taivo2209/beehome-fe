@@ -21,7 +21,7 @@ const CustomerProfile = () => {
 
   const getData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/customer/profile', {
+      const res = await axios.get('https://beehome.herokuapp.com/customer/profile', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -53,7 +53,7 @@ const CustomerProfile = () => {
     };
     try {
       const res = await axios.put(
-        'http://localhost:5000/customer/profile',
+        'https://beehome.herokuapp.com/customer/profile',
         formData,
         {
           headers: {
@@ -90,7 +90,7 @@ const CustomerProfile = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/upload-file/single-file',
+        'https://beehome.herokuapp.com/upload-file/single-file',
         formData,
         {
           headers: {

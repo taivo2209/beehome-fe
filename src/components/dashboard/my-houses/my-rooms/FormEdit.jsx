@@ -26,7 +26,7 @@ function FormEdit({ id, updateData }) {
 
   const getData = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/lessor/room/${id}`, {
+      const res = await axios.get(`https://beehome.herokuapp.com/lessor/room/${id}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -69,7 +69,7 @@ function FormEdit({ id, updateData }) {
         cancelButtonText: `${trans.huy_bo}`,
       });
       if (result.isConfirmed) {
-        await axios.patch('http://localhost:5000/lessor/room', formData, {
+        await axios.patch('https://beehome.herokuapp.com/lessor/room', formData, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

@@ -27,7 +27,7 @@ const CustomizedSnackbars = () => {
 
   const checkPackage = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/lessor/service-pack', {
+      const res = await axios.get('https://beehome.herokuapp.com/lessor/service-pack', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

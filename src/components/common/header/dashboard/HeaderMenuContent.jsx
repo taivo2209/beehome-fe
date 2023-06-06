@@ -16,7 +16,7 @@ const HeaderMenuContent = ({ float = '' }) => {
 
   const getData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/lessor/profile', {
+      const res = await axios.get('https://beehome.herokuapp.com/lessor/profile', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

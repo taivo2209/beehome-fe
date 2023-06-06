@@ -19,7 +19,7 @@ const HeaderMenuContent = ({ float = '' }) => {
 
   const getData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/customer/profile', {
+      const res = await axios.get('https://beehome.herokuapp.com/customer/profile', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

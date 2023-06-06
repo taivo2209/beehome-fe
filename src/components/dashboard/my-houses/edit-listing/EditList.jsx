@@ -45,7 +45,7 @@ const EditList = () => {
   const getDataHouses = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/boardingHouse/${id}`,
+        `https://beehome.herokuapp.com/lessor/boardingHouse/${id}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -147,7 +147,7 @@ const EditList = () => {
       });
       if (result.isConfirmed) {
         axios
-          .patch('http://localhost:5000/lessor/boardingHouse', formData, {
+          .patch('https://beehome.herokuapp.com/lessor/boardingHouse', formData, {
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
@@ -176,7 +176,7 @@ const EditList = () => {
   const getData = async (type, parentId) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=${type}&parentId=${parentId}&page=1&limit=70`,
       );
       if (type === 'PROVINCE') {
         setDataProvince(res.data);
@@ -196,7 +196,7 @@ const EditList = () => {
   // const getDataProvince = async (type, parentId) => {
   //   try {
   //     let res = await axios.get(
-  //       `http://localhost:5000/customer/province?type=PROVINCE&parentId=1&page=1&limit=70`,
+  //       `https://beehome.herokuapp.com/customer/province?type=PROVINCE&parentId=1&page=1&limit=70`,
   //     );
 
   //     const province = res?.data?.items.filter(
@@ -204,7 +204,7 @@ const EditList = () => {
   //     );
   //     if (province[0]?.id) {
   //       let res1 = await axios.get(
-  //         `http://localhost:5000/customer/province?type=DISTRICT&parentId=${province[0]?.id}&page=1&limit=70`,
+  //         `https://beehome.herokuapp.com/customer/province?type=DISTRICT&parentId=${province[0]?.id}&page=1&limit=70`,
   //       );
 
   //       const district = res1?.data?.items.filter(
@@ -213,7 +213,7 @@ const EditList = () => {
   //     }
   //     if (district[0]?.id) {
   //       let res2 = await axios.get(
-  //         `http://localhost:5000/customer/province?type=WARD&parentId=${district[0]?.id}&page=1&limit=70`,
+  //         `https://beehome.herokuapp.com/customer/province?type=WARD&parentId=${district[0]?.id}&page=1&limit=70`,
   //       );
 
   //       const ward = res2?.data?.items.filter(
@@ -242,13 +242,13 @@ const EditList = () => {
   const getDataProvince = async (type, parentId) => {
     try {
       let res = await axios.get(
-        `http://localhost:5000/customer/province?type=PROVINCE&searchText=${boardingHouseAddress?.province}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=PROVINCE&searchText=${boardingHouseAddress?.province}&page=1&limit=70`,
       );
       let res1 = await axios.get(
-        `http://localhost:5000/customer/province?type=DISTRICT&searchText=${boardingHouseAddress?.district}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=DISTRICT&searchText=${boardingHouseAddress?.district}&page=1&limit=70`,
       );
       let res2 = await axios.get(
-        `http://localhost:5000/customer/province?type=WARD&searchText=${boardingHouseAddress?.ward}&page=1&limit=70`,
+        `https://beehome.herokuapp.com/customer/province?type=WARD&searchText=${boardingHouseAddress?.ward}&page=1&limit=70`,
       );
 
       // const province = res?.data?.items.filter(
@@ -284,7 +284,7 @@ const EditList = () => {
   // const getDataProvince = async (type, parentId) => {
   //   try {
   //     let res = await axios.get(
-  //       `http://localhost:5000/customer/province?type=PROVINCE&parentId=1&page=1&limit=70`,
+  //       `https://beehome.herokuapp.com/customer/province?type=PROVINCE&parentId=1&page=1&limit=70`,
   //     );
 
   //     if (res?.data?.items) {
@@ -293,7 +293,7 @@ const EditList = () => {
   //       );
   //       if (province[0]?.id) {
   //         let res1 = await axios.get(
-  //           `http://localhost:5000/customer/province?type=DISTRICT&parentId=${province[0]?.id}&page=1&limit=70`,
+  //           `https://beehome.herokuapp.com/customer/province?type=DISTRICT&parentId=${province[0]?.id}&page=1&limit=70`,
   //         );
   //         if (res1?.data?.items) {
   //           const district = res1?.data?.items.filter(
@@ -301,7 +301,7 @@ const EditList = () => {
   //           );
   //           if (district[0]?.id) {
   //             let res2 = await axios.get(
-  //               `http://localhost:5000/customer/province?type=WARD&parentId=${district[0]?.id}&page=1&limit=70`,
+  //               `https://beehome.herokuapp.com/customer/province?type=WARD&parentId=${district[0]?.id}&page=1&limit=70`,
   //             );
   //             if (res2?.data?.items) {
   //               const ward = res2?.data?.items.filter(

@@ -20,7 +20,7 @@ const ReportBox = ({ accessToken, boardingHouseId }) => {
     // console.log(data);
     try {
       const res = await axios.post(
-        'http://localhost:5000/customer/report',
+        'https://beehome.herokuapp.com/customer/report',
         data,
         {
           headers: {

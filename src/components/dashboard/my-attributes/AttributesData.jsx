@@ -19,7 +19,7 @@ const AttributesData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/roomAttribute?page=${currentPage}&limit=50`,
+        `https://beehome.herokuapp.com/lessor/roomAttribute?page=${currentPage}&limit=50`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -54,7 +54,7 @@ const AttributesData = () => {
       });
       if (result.isConfirmed) {
         const res = await axios.delete(
-          `http://localhost:5000/lessor/roomAttribute/${attributeId}`,
+          `https://beehome.herokuapp.com/lessor/roomAttribute/${attributeId}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

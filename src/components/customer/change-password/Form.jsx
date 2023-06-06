@@ -25,7 +25,7 @@ const Form = () => {
       password: password,
       newPassword: newPassword,
     };
-    let url = 'http://localhost:5000/customer/profile/update-password';
+    let url = 'https://beehome.herokuapp.com/customer/profile/update-password';
 
     e.preventDefault();
     try {

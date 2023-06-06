@@ -47,7 +47,7 @@ function FormEdit({ id, getData }) {
       });
       if (result.isConfirmed) {
         const res = await axios.patch(
-          `http://localhost:5000/lessor/roomAttribute`,
+          `https://beehome.herokuapp.com/lessor/roomAttribute`,
           {
             id: id,
             roomAttributeDetails: formData.roomAttributeDetails.map((item) => ({
@@ -100,7 +100,7 @@ function FormEdit({ id, getData }) {
     const fetchCategory = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/lessor/roomAttribute/${id}`,
+          `https://beehome.herokuapp.com/lessor/roomAttribute/${id}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,

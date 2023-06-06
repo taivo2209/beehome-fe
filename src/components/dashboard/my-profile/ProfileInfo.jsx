@@ -24,7 +24,7 @@ const ProfileInfo = () => {
         cancelButtonText: `${trans.huy_bo}`,
       });
       if (result.isConfirmed) {
-        const res = await axios.get('http://localhost:5000/lessor/profile', {
+        const res = await axios.get('https://beehome.herokuapp.com/lessor/profile', {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
@@ -48,7 +48,7 @@ const ProfileInfo = () => {
     };
     try {
       const res = await axios.put(
-        'http://localhost:5000/lessor/profile',
+        'https://beehome.herokuapp.com/lessor/profile',
         formData,
         {
           headers: {
@@ -85,7 +85,7 @@ const ProfileInfo = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/upload-file/single-file',
+        'https://beehome.herokuapp.com/upload-file/single-file',
         formData,
         {
           headers: {

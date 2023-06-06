@@ -9,7 +9,7 @@ const CheckBoxFilter = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/tag?page=1&limit=20`,
+        `https://beehome.herokuapp.com/lessor/tag?page=1&limit=20`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,

@@ -27,7 +27,7 @@ function RoomsData({ floorData, province, district, ward }) {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/floor/${floorData.id}?page=${currentPage}&limit=5`,
+        `https://beehome.herokuapp.com/lessor/floor/${floorData.id}?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -50,7 +50,7 @@ function RoomsData({ floorData, province, district, ward }) {
   const handleDelete = async (roomId) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/lessor/room/${roomId}`,
+        `https://beehome.herokuapp.com/lessor/room/${roomId}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
