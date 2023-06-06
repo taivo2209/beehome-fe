@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import useTrans from '../../../pages/hooks/useTran';
 
-function FormEdit({ id, getData }) {
+function FormEdit({ id, getNewData }) {
   const trans = useTrans();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -42,21 +42,15 @@ function FormEdit({ id, getData }) {
         // reset();
         Swal.fire({
           icon: 'success',
-          title: 'Cập nhật thành công!',
+          title: 'Edit Success!',
           showConfirmButton: false,
           timer: 1500,
         });
-        getData();
+        getNewData();
         handleClose();
       }
     } catch (error) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Cập nhật thành công!',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      // console.log(error);
+      console.log(error);
     }
     // console.log(data);
   };

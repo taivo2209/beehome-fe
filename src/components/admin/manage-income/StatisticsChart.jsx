@@ -9,7 +9,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(
   CategoryScale,
@@ -63,22 +65,41 @@ const labels = [
   'December',
 ];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Income',
-      data: labels.map(() =>
-        faker.datatype.number({ min: 500000, max: 10000000 }),
-      ),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      data: [100, 10000, 10000, 10000, 10000, 10000],
-      fill: false,
-    },
-  ],
-};
-
 export default function StatisticsChart() {
-  return <Line options={options} data={data} />;
+  const [chartData, setChartData] = useState(null);
+  const accessToken = useSelector((state) => state.auth.accessToken);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/vn-pay/graph?page=1&limit=20', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => {
+        const apiData = response.data;
+        const data = {
+          labels,
+          datasets: [
+            {
+              label: 'Income',
+              data: apiData.map((item) => item.total),
+              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: 'rgba(255, 99, 132, 0.5)',
+              fill: false,
+            },
+          ],
+        };
+        setChartData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching chart data:', error);
+      });
+  }, []);
+
+  if (!chartData) {
+    return <div>Loading...</div>;
+  }
+
+  return <Line options={options} data={chartData} />;
 }

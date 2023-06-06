@@ -19,7 +19,7 @@ const AttributesData = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/lessor/roomAttribute?page=${currentPage}&limit=20`,
+        `http://localhost:5000/lessor/roomAttribute?page=${currentPage}&limit=50`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
