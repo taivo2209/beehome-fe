@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import Ratings from './Ratings';
 
 const Comments = ({ comments }) => {
+  console.log(comments);
   return (
     <>
       {comments.map((item) => (
         <div className="mbp_first media" key={item.comment.id}>
           <img
-            src={`/assets/images/testimonial/${item.comment.img}.png`}
+            src={item?.comment?.user?.customer?.avatar?.path}
             className="mr-3"
             alt={item.comment.img}
+            width={40}
+            height={40}
           />
           <div className="media-body">
             <h4 className="sub_title mt-0">
