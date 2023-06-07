@@ -1,4 +1,7 @@
+import useTrans from '../../../pages/hooks/useTran';
+
 const Creator = ({ data }) => {
+  const trans = useTrans();
   return (
     <div className="media d-flex">
       {/* <img className="me-3" src={data.posterAvatar} alt="lc1.png" /> */}
@@ -12,7 +15,9 @@ const Creator = ({ data }) => {
       </div>
       <div className="media-body">
         <h5 className="mt-0 mb0">{data?.posterName}</h5>
-
+        <h5 className="mt-0 mb0">
+          {trans.detail.lien_he}: {data?.phoneNumber}
+        </h5>
       </div>
     </div>
   );

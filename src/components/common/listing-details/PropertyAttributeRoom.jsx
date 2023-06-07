@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-const PropertyAttribute = (dataRoom) => {
+const PropertyAttribute = ({ attributes }) => {
   return (
     <>
-      {dataRoom.attributes.roomToAttributes.map((val, i) => (
+      {attributes?.map((val, i) => (
         <div className="col-sm-6 col-md-6 col-lg-4 " key={i}>
           <ul className="order_list list-inline-item">
             <li>
               <span className="flaticon-tick"></span>
-              {val.roomAttributeTerm.roomAttributeTermDetails[0].name}
+              {val}
             </li>
           </ul>
         </div>

@@ -7,10 +7,17 @@ import { useState } from 'react';
 import FormBookDayToMeet from './formToMeet';
 import useTrans from '../../../pages/hooks/useTran';
 
-const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
+const DetailBoardingHouse = ({
+  isOpen,
+  toggle,
+  data,
+  customer,
+  posterId,
+  floor,
+}) => {
   const trans = useTrans();
   const { className } = PropTypes.string;
-  
+
   //-----------------------------------------------------------------------------------------
 
   const [detailIsOpen, setDetailIsOpen] = useState(false);
@@ -55,7 +62,11 @@ const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
             posterId={posterId}
           />
         ) : detailIsOpen ? (
-          <DetailRoom openFormToMeet={HandleFormToMeet} dataRoom={dataRoom} />
+          <DetailRoom
+            openFormToMeet={HandleFormToMeet}
+            dataRoom={dataRoom}
+            floor={floor}
+          />
         ) : (
           <DetailFloor setDetailIsOpen={HandleDetailIsOpen} data={data} />
         )}

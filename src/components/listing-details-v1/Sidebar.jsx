@@ -7,6 +7,7 @@ import Link from 'next/link';
 import ReportBox from '../blog-details/ReportBox';
 import { useRouter } from 'next/router';
 const Sidebar = ({
+  floor,
   data,
   customer,
   posterId,
@@ -41,6 +42,7 @@ const Sidebar = ({
             </button>
           </div>
           <DetailBoardingHouse
+            floor={floor}
             isOpen={modal}
             toggle={toggle}
             data={data}

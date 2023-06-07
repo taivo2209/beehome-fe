@@ -1,10 +1,14 @@
+import { useSelector } from 'react-redux';
 import useTrans from '../../../pages/hooks/useTran';
 import PropertyAttribute from '../listing-details/PropertyAttributeRoom';
 import PropertyItem from '../listing-details/PropertyItem';
 import FeatureRooms from '../listing/FeatureRooms';
 
-const DetailRoom = ({ openFormToMeet, dataRoom }) => {
-  const trans= useTrans();
+const DetailRoom = ({ openFormToMeet, dataRoom, floor }) => {
+  const { typeData } = useSelector((state) => state.langType);
+  const locale = typeData;
+  const transs = locale === 'vi' ? 'VN' : 'EN';
+  const trans = useTrans();
   return (
     <div
       style={{
@@ -26,7 +30,11 @@ const DetailRoom = ({ openFormToMeet, dataRoom }) => {
         <h4 className="mb30">{trans.lessor.rooms.tien_ich}</h4>
         <div className="application_statics mt30">
           <div className="row">
-            <PropertyAttribute attributes={dataRoom} />
+            <PropertyAttribute
+              attributes={floor?.queryBuilder
+                .filter((item) => item.lang === transs)
+                .map((item) => item.name)}
+            />
           </div>
         </div>
       </div>
