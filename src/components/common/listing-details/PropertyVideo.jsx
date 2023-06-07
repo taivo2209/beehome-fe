@@ -8,7 +8,7 @@ const PropertyVideo = ({ videoUrl }) => {
   const searchParams = url?.search && new URLSearchParams(url.search);
   const idVideo = searchParams?.get('v');
   const trans = useTrans();
-  console.log(idVideo);
+  // console.log(idVideo);
   return (
     <>
       <ModalVideo

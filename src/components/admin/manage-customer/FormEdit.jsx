@@ -32,19 +32,13 @@ function FormEdit({ id, getData }) {
       // reset();
       Swal.fire({
         icon: 'success',
-        title: 'Cập nhật thành công!',
+        title: 'Edit Success!',
         showConfirmButton: false,
         timer: 1500,
       });
       getData();
       handleClose();
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonText: 'OK',
-      });
       console.log(error);
     }
     // console.log(data);

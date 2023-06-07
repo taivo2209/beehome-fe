@@ -17,33 +17,10 @@ import useTrans from '../../../pages/hooks/useTran';
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault('Asia/Ho_Chi_Minh'); // Set default timezone
-function FormDateSelect({ customer, setBook }) {
+function FormDateSelect({ customer, setBook, data }) {
   const trans = useTrans();
   const [selectedDate, setSelectedDate] = useState(null);
-  const [data, setData] = useState();
   const accessToken = useSelector((state) => state.auth.accessToken);
-
-  const getData = async () => {
-    try {
-      const res = await axios.get(
-        `http://localhost:5000/lessor/book-disable?page=1&limit=100`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      );
-      setData(res.data);
-      // dispatch(setCategories(res.data.items));
-      // console.log(accessToken);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getData();
-  });
 
   const handleDateChange = (date) => {
     setSelectedDate(dayjs(date).tz('Asia/Ho_Chi_Minh').set('hour', 9));
@@ -60,7 +37,7 @@ function FormDateSelect({ customer, setBook }) {
     }
   };
 
-  const disableDates = data?.items?.map((item) => {
+  const disableDates = data?.user?.bookDisables.map((item) => {
     return new Date(item.dateDisable);
   });
   // console.log(disableDates);

@@ -60,6 +60,7 @@ const DetailBoardingHouse = ({
             customer={customer}
             dataRoom={dataRoom}
             posterId={posterId}
+            data={data}
           />
         ) : detailIsOpen ? (
           <DetailRoom

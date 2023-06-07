@@ -32,19 +32,13 @@ function FormEdit({ id, getData }) {
       // reset();
       Swal.fire({
         icon: 'success',
-        title: 'Cập nhật thành công!',
+        title: 'Edit Success!',
         showConfirmButton: false,
         timer: 1500,
       });
       getData();
       handleClose();
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Đã xảy ra lỗi!',
-        text: 'Vui lòng thử lại sau.',
-        confirmButtonText: 'OK',
-      });
       console.log(error);
     }
     // console.log(data);
@@ -70,10 +64,10 @@ function FormEdit({ id, getData }) {
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option disabled>Select</option>
-                  <option value="UNVERIFIED">UNVERIFIED</option>
-                  <option value="VERIFIED">VERIFIED</option>
+                  {/* <option value="UNVERIFIED">UNVERIFIED</option> */}
+                  {/* <option value="VERIFIED">VERIFIED</option> */}
                   <option value="APPROVED">APPROVED</option>
-                  <option value="REFUSED">REFUSED</option>
+                  {/* <option value="REFUSED">REFUSED</option> */}
                   <option value="BLOCKED">BLOCKED</option>
                 </select>
               </div>

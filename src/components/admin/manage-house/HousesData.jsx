@@ -97,7 +97,7 @@ const HousesData = () => {
                       title="Edit"
                     >
                       <a href="#">
-                        <FormEdit id={item?.id} />
+                        <FormEdit id={item?.id} getNewData={getData}/>
                       </a>
                     </li>
                   </ul>

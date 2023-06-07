@@ -14,7 +14,7 @@ export default {
     content: 'Bắt đầu một bài viết nào',
     dia_diem_noi_bat: 'Địa điểm nổi bật',
     duoc_danh_gia_cao: 'Được đánh giá cao',
-    xu_huong: 'Xu hướng',
+    xu_huong: 'Nhà trọ tham khảo',
     da_xem_gan_day: 'Đã xem gần đây',
     dang_ky: 'Đăng ký ngay',
     thanh_vien: 'Hãy trờ thành Thành viên của chúng tôi',

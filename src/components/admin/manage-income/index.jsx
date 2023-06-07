@@ -67,7 +67,7 @@ const index = () => {
                   </div>
                 </div>
                 {/* End statistics chart */}
-                <div className="row mt-4">
+                {/* <div className="row mt-4">
                   <div className="col-lg-12">
                     <div className="my_dashboard_review mb40">
                       <div className="col-lg-12">
@@ -77,11 +77,10 @@ const index = () => {
                             <IncomesData />
                           </div>
                         </div>
-                        {/* End .packages_table */}
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               {/* End .row  */}
 

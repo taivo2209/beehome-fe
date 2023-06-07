@@ -53,7 +53,7 @@ const FeaturedItem = () => {
             </ul> */}
 
             <Link href={`/house-details/${item.id}`} className="fp_price">
-              {trans.from} {item.price}
+              {trans.from} {item.price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}
               <small>{trans.detail.gia_thang}</small>
             </Link>
           </div>
