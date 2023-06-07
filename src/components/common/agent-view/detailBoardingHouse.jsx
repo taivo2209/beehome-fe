@@ -53,6 +53,7 @@ const DetailBoardingHouse = ({ isOpen, toggle, data, customer, posterId }) => {
             customer={customer}
             dataRoom={dataRoom}
             posterId={posterId}
+            data={data}
           />
         ) : detailIsOpen ? (
           <DetailRoom openFormToMeet={HandleFormToMeet} dataRoom={dataRoom} />

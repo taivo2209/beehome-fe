@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import useTrans from '../../../pages/hooks/useTran';
 const steps = ['Information', 'Select date time to meet'];
-const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
+const FormBookDayToMeet = ({ customer, dataRoom, posterId,data }) => {
   const trans = useTrans();
   const [book, setBook] = useState({
     firstName: customer?.firstName,
@@ -144,7 +144,7 @@ const FormBookDayToMeet = ({ customer, dataRoom, posterId }) => {
             <React.Fragment>
               <Typography sx={{ mt: 2, mb: 1 }}>
                 {activeStep == 0 ? (
-                  <FormDateSelect customer={book} setBook={setBook} />
+                  <FormDateSelect customer={book} setBook={setBook} data={data}/>
                 ) : (
                   <FormInfoBookDayToMeet customer={book} setBook={setBook} />
                 )}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Ratings from './Ratings';
 
 const Comments = ({ comments }) => {
-  console.log(comments);
+  // console.log(comments);
   return (
     <>
       {comments.map((item) => (
